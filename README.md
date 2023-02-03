@@ -21,7 +21,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 To use this gem, simply add it to your Gemfile (as described above).
 
-## Helpers
+### Helpers
 
 To include the helper methods from the `GovUKFrontend` and `CCSFrontend` module, you can include the `CCS::FrontendHelpers` module in your `app/helpers/application_helper.rb` file like so:
 
@@ -42,9 +42,59 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Linting
+
+The [rubocop](https://github.com/rubocop-hq/rubocop) & [rubocop-rspec](https://github.com/rubocop-hq/rubocop-rspec) gems are used to enforce standard coding styles.
+Some "cops" in the standard configuration have been disabled or adjusted in [`.rubocop.yml`](https://github.com/Crown-Commercial-Service/crown-marketplace-legacy/blob/master/.rubocop.yml).
+Rubocop linting is run as part of the default Rake task, but can be run individually using `rake rubocop`.
+
+### Testing
+
+#### Unit testing
+There is an automated RSpec-based test suite.
+
+You can run all the unit tests with:
+```shell
+bundle exec rake
+```
+
+To run a specific unit test, use:
+```shell
+bundle exec rspec /path/to/file_spec.rb
+```
+
+All the specs are run as part of the Pull Request process.
+
+### Code coverage
+
+Code coverage is measured by [simplecov](https://github.com/simplecov-ruby/simplecov)
+
+After running the Rspec tests, open [coverage/index.html](coverage/index.html) in a browser to see the code coverage percentage.
+
+### Managing dependencies
+ 
+We use [dependabot](https://github.com/dependabot) and [Snyk](https://app.snyk.io/org/ccs-wattsa) to help manage our dependencies.
+
+We schedule `dependabot` to run every Sunday night which will get the latest dependency updates.
+ 
+Snyk is used more for analysing security issues and it will raise PRs itself for a developer to analyse.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/tim-s-ccs/ccs-frontend_helpers.
+
+To contribute to the project, you should checkout a new branch from `main` and make your changes.
+
+Before pushing to the remote, you should squash your commits into a single commit.
+This can be done using `git rebase -i main` and changing `pick` to `s` for the commits you want to squash (usually all but the first).
+This is not required but it helps keep the commit history fairly neat and tidy
+
+Once you have pushed your changes, you should open a Pull Request on the main branch.
+This will run:
+- Rubocop
+- Unit tests
+
+Once all these have passed, and the PR has been reviewed and approved by another developer, you can merge the PR.
 
 ## Licence
 
