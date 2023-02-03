@@ -264,25 +264,45 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
         [
           {
             text: 'Sign out',
-            href: '/sign-out'
+            href: href
           }.merge(service_authentication_item_options)
         ]
       end
 
-      context 'when there is a custom class' do
-        let(:service_authentication_item_options) { { attributes: { class: 'my-custom-service-authentication-item-class' } } }
+      context 'when there is a href' do
+        let(:href) { '/sign-out' }
 
-        it 'does not have the custom class' do
-          expect(service_authentication_item_element[:class]).to eq('ccs-header__link')
+        context 'when there is a custom class' do
+          let(:service_authentication_item_options) { { attributes: { class: 'my-custom-service-authentication-item-class' } } }
+
+          it 'does not have the custom class' do
+            expect(service_authentication_item_element[:class]).to eq('ccs-header__link')
+          end
+        end
+
+        context 'when there are additional attributes' do
+          let(:service_authentication_item_options) { { attributes: { id: 'my-custom-service-authentication-item-id', data: { test: 'hello there' } } } }
+
+          it 'has the additional attributes' do
+            expect(service_authentication_item_element[:id]).to eq('my-custom-service-authentication-item-id')
+            expect(service_authentication_item_element[:'data-test']).to eq('hello there')
+          end
         end
       end
 
-      context 'when there are additional attributes' do
+      context 'when there is no href' do
+        let(:href) { nil }
         let(:service_authentication_item_options) { { attributes: { id: 'my-custom-service-authentication-item-id', data: { test: 'hello there' } } } }
 
-        it 'has the additional attributes' do
-          expect(service_authentication_item_element[:id]).to eq('my-custom-service-authentication-item-id')
-          expect(service_authentication_item_element[:'data-test']).to eq('hello there')
+        let(:service_authentication_item_element) { header_element.first('div.ccs-header__service-authentication li.ccs-header__service-authentication-item') }
+
+        it 'does not have a link' do
+          expect(service_authentication_item_element).not_to have_css('a')
+        end
+
+        it 'does not have the additional attributes' do
+          expect(service_authentication_item_element[:id]).to be_nil
+          expect(service_authentication_item_element[:'data-test']).to be_nil
         end
       end
     end
