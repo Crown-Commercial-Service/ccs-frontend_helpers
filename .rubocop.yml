@@ -121,3 +121,7 @@ Rails/DynamicFindBy:
 
 RSpec/MultipleExpectations:
     Max: 3
+
+RSpec/FilePath:
+    CustomTransform:
+        GovUKFrontend: govuk_frontend

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'ccs/frontend_helpers'
+require 'capybara'
+
+Dir['spec/support/**/*.rb'].sort.each { |f| require f[5..] }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,4 +15,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.default_formatter = 'doc' if config.files_to_run.one?
 end
