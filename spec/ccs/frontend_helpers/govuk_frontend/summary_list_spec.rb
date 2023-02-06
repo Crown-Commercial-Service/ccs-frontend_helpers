@@ -526,5 +526,288 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, type: :helper d
         expect(summary_list_row_elements[2][:class]).to eq('govuk-summary-list__row')
       end
     end
+
+    context 'when a card is present' do
+      let(:summary_card_element) { Capybara::Node::Simple.new(result).find('div.govuk-summary-card') }
+      let(:summary_card_title_element) { summary_card_element.find('.govuk-summary-card__title') }
+      let(:summary_card_actions) { summary_card_element.find('.govuk-summary-card__actions') }
+
+      let(:options) do
+        {
+          card: {
+            title: {
+              text: 'Ouroboros members'
+            }.merge(card_title_options),
+            actions: {
+              items: [
+                {
+                  text: 'Delete memebr',
+                  href: '/delete-member'
+                }
+              ]
+            }.merge(card_actions_options)
+          }.merge(card_options)
+        }
+      end
+      let(:card_options) { {} }
+      let(:card_title_options) { {} }
+      let(:card_actions_options) { {} }
+
+      context 'when the default attributes are sent' do
+        it 'correctly formats the HTML with the summary with the title text and actions' do
+          expect(summary_card_element.to_html).to eq('
+            <div class="govuk-summary-card">
+              <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">
+                  Ouroboros members
+                </h2>
+                <div class="govuk-summary-card__actions">
+                  <a class="govuk-link" href="/delete-member">
+                    Delete memebr
+                  </a>
+                </div>
+              </div>
+              <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Eunie
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a class="govuk-link" href="/change-name">
+                        Change
+                        <span class="govuk-visually-hidden">
+                          name
+                        </span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Age
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      9th term
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a class="govuk-link" href="/change-age">
+                        Change
+                        <span class="govuk-visually-hidden">
+                          age
+                        </span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Nation
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Keves
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a class="govuk-link" href="/change-nation">
+                        Change
+                        <span class="govuk-visually-hidden">
+                          nation
+                        </span>
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when additional classes are passed' do
+        let(:card_options) { { classes: 'my-custom-summary-card-class' } }
+
+        it 'has the custom class' do
+          expect(summary_card_element[:class]).to eq('govuk-summary-card my-custom-summary-card-class')
+        end
+      end
+
+      context 'when additional attributes are passed' do
+        let(:card_options) { { attributes: { id: 'my-custom-card-id', data: { test: 'hello there' } } } }
+
+        it 'has the additional attributes' do
+          expect(summary_card_element[:id]).to eq('my-custom-card-id')
+          expect(summary_card_element[:'data-test']).to eq('hello there')
+        end
+      end
+
+      context 'when considering the title' do
+        context 'when there is no title' do
+          let(:card_options) { { title: nil } }
+
+          it 'does not have the heading' do
+            expect(summary_card_element).not_to have_css('.govuk-summary-card__title')
+          end
+        end
+
+        context 'when a custom heading level is passed' do
+          let(:card_title_options) { { heading_level: 4 } }
+
+          it 'has the correct heading level' do
+            expect(summary_card_title_element.to_html).to eq '<h4 class="govuk-summary-card__title">Ouroboros members</h4>'
+          end
+        end
+
+        context 'when additional classes are passed' do
+          let(:card_title_options) { { classes: 'my-custom-summary-card--title-class' } }
+
+          it 'has the custom class' do
+            expect(summary_card_title_element[:class]).to eq('govuk-summary-card__title my-custom-summary-card--title-class')
+          end
+        end
+
+        context 'when additional attributes are passed' do
+          let(:card_title_options) { { attributes: { id: 'my-custom-card-id', data: { test: 'hello there' } } } }
+
+          it 'does not have the the additional attributes' do
+            expect(summary_card_title_element[:id]).to be_nil
+            expect(summary_card_title_element[:'data-test']).to be_nil
+          end
+        end
+      end
+
+      context 'when considering actions' do
+        context 'when there are no action items' do
+          let(:card_options) { { actions: nil } }
+
+          it 'does not render nay action items' do
+            expect(summary_card_element).not_to have_css('.govuk-summary-card__actions')
+          end
+        end
+
+        context 'when there is a single action items' do
+          it 'has single action within a div' do
+            expect(summary_card_actions.to_html).to eq('
+              <div class="govuk-summary-card__actions">
+                <a class="govuk-link" href="/delete-member">
+                  Delete memebr
+                </a>
+              </div>
+            '.to_one_line)
+          end
+        end
+
+        context 'when there is are multiple action items' do
+          let(:card_actions_options) do
+            {
+              items: [
+                {
+                  text: 'Delete memebr',
+                  href: '/delete-member'
+                },
+                {
+                  text: 'Disable memebr',
+                  href: '/disable-member'
+                }
+              ]
+            }
+          end
+
+          it 'has the actions within an unordered list' do
+            expect(summary_card_actions.to_html).to eq('
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="/delete-member">
+                    Delete memebr
+                  </a>
+                </li>
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="/disable-member">
+                  Disable memebr
+                  </a>
+                </li>
+              </ul>
+            '.to_one_line)
+          end
+        end
+
+        context 'and it has custom classes' do
+          let(:card_actions_options) { { classes: 'my-custom-actions-class' } }
+
+          it 'renders the row with the custom class' do
+            expect(summary_card_actions[:class]).to eq('govuk-summary-card__actions my-custom-actions-class')
+          end
+        end
+
+        context 'and it has hidden text' do
+          let(:card_actions_options) do
+            {
+              items: [
+                {
+                  text: 'Delete memebr',
+                  href: '/delete-member',
+                  visually_hidden_text: 'Eunie'
+                }
+              ]
+            }
+          end
+
+          it 'renders the row with the custom class' do
+            expect(summary_card_actions.to_html).to eq('
+              <div class="govuk-summary-card__actions">
+                <a class="govuk-link" href="/delete-member">
+                  Delete memebr
+                  <span class="govuk-visually-hidden">
+                    Eunie
+                  </span>
+                </a>
+              </div>
+            '.to_one_line)
+          end
+        end
+
+        context 'and an action has custom classes' do
+          let(:card_actions_options) do
+            {
+              items: [
+                {
+                  text: 'Delete memebr',
+                  href: '/delete-member',
+                  classes: 'my-custom-action-class'
+                }
+              ]
+            }
+          end
+
+          it 'renders the action link with the custom class' do
+            expect(summary_card_actions.first('a')[:class]).to eq('govuk-link my-custom-action-class')
+          end
+        end
+
+        context 'and an action has custom attributes' do
+          let(:card_actions_options) do
+            {
+              items: [
+                {
+                  text: 'Delete memebr',
+                  href: '/delete-member',
+                  attributes: {
+                    id: 'my-custom-action-id',
+                    data: {
+                      test: 'hello there'
+                    }
+                  }
+                }
+              ]
+            }
+          end
+
+          it 'renders the action link with the custom class' do
+            expect(summary_card_actions.first('a')[:id]).to eq('my-custom-action-id')
+            expect(summary_card_actions.first('a')[:'data-test']).to eq('hello there')
+          end
+        end
+      end
+    end
   end
 end
