@@ -31,6 +31,27 @@ module CCS
         #                                     which can then be rendered on the page
 
         def govuk_summary_list(summary_list_items, **govuk_summary_list_options)
+          if govuk_summary_list_options[:card]
+            govuk_summary_card(**govuk_summary_list_options[:card]) do
+              _govuk_summary_list(summary_list_items, govuk_summary_list_options)
+            end
+          else
+            _govuk_summary_list(summary_list_items, govuk_summary_list_options)
+          end
+        end
+
+        private
+
+        # Generates the HTML for the GOV.UK Summary list.
+        # Used in {govuk_summary_list} to gererate the actual summary list.
+        #
+        # @param (see govuk_summary_list)
+        #
+        # @option (see govuk_summary_list)
+        #
+        # @return (see govuk_summary_list)
+
+        def _govuk_summary_list(summary_list_items, govuk_summary_list_options)
           initialise_attributes_and_set_classes(govuk_summary_list_options, 'govuk-summary-list')
 
           any_row_has_actions = summary_list_items.any? { |summary_list_item| summary_list_item.dig(:actions, :items).present? }
@@ -41,8 +62,6 @@ module CCS
             end
           end
         end
-
-        private
 
         # rubocop:disable Metrics/AbcSize
 
@@ -122,6 +141,69 @@ module CCS
           link_to(summary_list_action_item[:href], **summary_list_action_item[:attributes]) do
             concat(summary_list_action_item[:text])
             concat(tag.span(summary_list_action_item[:visually_hidden_text], class: 'govuk-visually-hidden')) if summary_list_action_item[:visually_hidden_text]
+          end
+        end
+
+        # rubocop:disable Metrics/AbcSize
+
+        # Creates the wrapper for the govuk summary card used in {govuk_summary_list}
+        #
+        # @param govuk_summary_card_options [Hash] options for the summary card
+        #
+        # @option govuk_summary_card_options [Hash] :title options for the title section of the card header
+        # @option govuk_summary_card_options [Hash] :actions options for the summary card actions section (see {govuk_summary_card_actions})
+        # @option govuk_summary_card_options [String] :classes additional CSS classes for the summary card HTML
+        # @option govuk_summary_card_options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
+        #
+        # @option title [String] :text the title of the card
+        # @option title [String] :heading_level (2) heading level, from 1 to 6
+        # @option title [String] :classes additional classes to add to the title wrapper
+        #
+        # @yield HTML for the summary list (see {_govuk_summary_list})
+        #
+        # @return [ActiveSupport::SafeBuffer] the HTML for the summary card that
+        #                                     wraps round {_govuk_summary_list} and
+        #                                     used in {govuk_summary_list}
+
+        def govuk_summary_card(**govuk_summary_card_options, &block)
+          initialise_attributes_and_set_classes(govuk_summary_card_options, 'govuk-summary-card')
+
+          tag.div(**govuk_summary_card_options[:attributes]) do
+            concat(tag.div(class: 'govuk-summary-card__title-wrapper') do
+              if govuk_summary_card_options[:title]
+                govuk_summary_card_options[:title][:heading_level] ||= 2
+
+                concat(tag.send(:"h#{govuk_summary_card_options[:title][:heading_level]}", govuk_summary_card_options[:title][:text], class: "govuk-summary-card__title #{govuk_summary_card_options[:title][:classes]}".rstrip))
+              end
+              concat(govuk_summary_card_actions(govuk_summary_card_options[:actions])) if govuk_summary_card_options[:actions]
+            end)
+            concat(tag.div(class: 'govuk-summary-card__content', &block))
+          end
+        end
+
+        # rubocop:enable Metrics/AbcSize
+
+        # Generates the HTML for a summary card actions used in {govuk_summary_card}
+        #
+        # @param actions [Hash] options for the summary card actions
+        #
+        # @option actions [String] :classes additional CSS classes for the summary card actions HTML
+        # @option actions [Array] :items the action item objects which are passed to {govuk_summary_list_action_link}
+        #
+        # @return [ActiveSupport::SafeBuffer] the HTML for the summary card actions
+        #                                     used in {govuk_summary_card}
+
+        def govuk_summary_card_actions(actions)
+          action_classes = "govuk-summary-card__actions #{actions[:classes]}".rstrip
+
+          if actions[:items].length == 1
+            tag.div(class: action_classes) do
+              govuk_summary_list_action_link(actions[:items][0])
+            end
+          else
+            tag.ul(class: action_classes) do
+              actions[:items].each { |action_item| concat(tag.li(govuk_summary_list_action_link(action_item), class: 'govuk-summary-card__action')) }
+            end
           end
         end
 

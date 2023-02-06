@@ -32,7 +32,7 @@ end
 ```
 
 This will give you access to a variety of [GDS components](https://design-system.service.gov.uk/components) and [CCS components](https://github.com/tim-s-ccs/ts-ccs-frontend) to use in your application views.
-The `GovUKFrontend` components are based on the components found in [GOV.UK Frontend v4.3.1](https://github.com/alphagov/govuk-frontend/releases/tag/v4.3.1).
+The `GovUKFrontend` components are based on the components found in [GOV.UK Frontend v4.5.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.5.0).
 
 Documentation for the helper methods can be found at [LINK TO RDOCS](#)
 
