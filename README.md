@@ -2,7 +2,7 @@
 
 ![Test Status](https://github.com/tim-s-ccs/ccs-frontend_helpers/actions/workflows/main.yml/badge.svg)
 
-The Crown Marketplace Utilities gem was created for use in the Crown Marketplace projects at the Crown Commercial Service.
+The CCS Frontend Helpers gem was created for use in the Crown Marketplace projects at the Crown Commercial Service.
 This project contains two applications (both use the Ruby on Rails framework):
 - [Crown Marketplace](https://github.com/Crown-Commercial-Service/crown-marketplace)
 - [Crown Marketplace Legacy](https://github.com/Crown-Commercial-Service/crown-marketplace-legacy)
