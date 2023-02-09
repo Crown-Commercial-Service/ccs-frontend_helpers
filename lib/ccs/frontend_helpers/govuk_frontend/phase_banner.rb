@@ -38,7 +38,7 @@ module CCS
 
           tag.div(**govuk_phase_banner_options[:attributes]) do
             tag.p(class: 'govuk-phase-banner__content') do
-              concat(govuk_tag(tag_options[:text], tag_options[:colour], tag_options[:options]))
+              concat(govuk_tag(tag_options[:text], tag_options[:colour], **tag_options[:options]))
               concat(tag.span(text, class: 'govuk-phase-banner__text'))
             end
           end

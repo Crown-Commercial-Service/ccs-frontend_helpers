@@ -34,7 +34,7 @@ module CCS
         def govuk_tag(text, colour = nil, **govuk_tag_options)
           initialise_attributes_and_set_classes(govuk_tag_options, "govuk-tag #{"govuk-tag--#{colour}" if colour}".rstrip)
 
-          tag.strong(text, govuk_tag_options[:attributes])
+          tag.strong(text, **govuk_tag_options[:attributes])
         end
       end
     end

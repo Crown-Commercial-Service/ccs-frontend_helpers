@@ -48,7 +48,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, type: :h
       let(:result) { govuk_notification_banner }
 
       it 'has nothing in the content' do
-        expect(notification_banner_element.find('.govuk-notification-banner__content')).to have_no_content
+        expect(notification_banner_element.find('.govuk-notification-banner__content').text).to be_blank
       end
     end
 
