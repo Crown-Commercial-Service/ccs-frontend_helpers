@@ -11,10 +11,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, type: :helper do
   let(:table_row_elements) { table_element.all('tbody > tr') }
 
   describe '.govuk_table' do
-    let(:result) { govuk_table(rows, head, caption, **options) }
+    let(:result) { govuk_table(rows, head, **options) }
 
     let(:head) { nil }
-    let(:caption) { nil }
     let(:rows) do
       [
         [
@@ -117,10 +116,12 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, type: :helper do
     end
 
     context 'when a caption is present' do
-      let(:caption) do
+      let(:options) do
         {
-          text: 'The memebrs of Ouroboros'
-        }.merge(caption_options)
+          caption: {
+            text: 'The memebrs of Ouroboros'
+          }.merge(caption_options)
+        }
       end
       let(:caption_options) { {} }
 
@@ -279,11 +280,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, type: :helper do
     end
 
     context 'when the caption and head are present' do
-      let(:caption) do
-        {
-          text: 'The memebrs of Ouroboros'
-        }
-      end
       let(:head) do
         [
           {
@@ -296,6 +292,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, type: :helper do
             text: 'Class'
           }
         ]
+      end
+      let(:options) do
+        {
+          caption: {
+            text: 'The memebrs of Ouroboros'
+          }
+        }
       end
 
       it 'renders the caption and head in the table' do
