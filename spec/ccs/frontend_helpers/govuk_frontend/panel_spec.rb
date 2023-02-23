@@ -17,7 +17,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Panel, type: :helper do
     let(:default_html) do
       '
         <div class="govuk-panel govuk-panel--confirmation">
-          <h1>
+          <h1 class="govuk-panel__title">
             Eunie\'s the boss
           </h1>
           <div class="govuk-panel__body">
@@ -83,7 +83,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Panel, type: :helper do
       it 'renders the panel with the block' do
         expect(panel_element.to_html).to eq('
           <div class="govuk-panel govuk-panel--confirmation">
-            <h1>
+            <h1 class="govuk-panel__title">
               Eunie\'s the boss
             </h1>
             <div class="govuk-panel__body">
