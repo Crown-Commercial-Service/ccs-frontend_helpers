@@ -37,7 +37,7 @@ module CCS
           initialise_attributes_and_set_classes(govuk_panel_options, 'govuk-panel govuk-panel--confirmation')
 
           tag.div(**govuk_panel_options[:attributes]) do
-            concat(tag.send(:"h#{govuk_panel_options[:heading_level] || 1}", title_text))
+            concat(tag.send(:"h#{govuk_panel_options[:heading_level] || 1}", title_text, class: 'govuk-panel__title'))
             if panel_text || block_given?
               concat(tag.div(class: 'govuk-panel__body') do
                 panel_text || yield
