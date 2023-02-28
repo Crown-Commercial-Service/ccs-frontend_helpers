@@ -350,7 +350,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, type: :helper 
             ]
           },
           {
-            html: 'You’ve accepted additional cookies',
+            text: 'You’ve accepted additional cookies',
             actions: [
               {
                 text: 'Hide cookie message',
@@ -361,7 +361,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, type: :helper 
             }
           },
           {
-            html: 'You’ve rejected additional cookies',
+            text: 'You’ve rejected additional cookies',
             actions: [
               {
                 text: 'Hide cookie message',

@@ -68,7 +68,7 @@ module CCS
           # @param govuk_date_input_options [Hash] options that will be used in customising the HTML
           #
           # @option govuk_date_input_options [String] :classes additional CSS classes for the date inputs HTML
-          # @option govuk_date_input_options[Array] :date_items an array of the date items that will be rendered.
+          # @option govuk_date_input_options [Array] :date_items an array of the date items that will be rendered.
           #                                                     Each date item hash must contain the +:name+ to add as suffix to attribute.
           #                                                     Anything else in the hash will be used as options in a {govuk_input}.
           # @option govuk_date_input_options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
