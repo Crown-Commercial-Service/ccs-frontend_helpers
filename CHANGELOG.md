@@ -19,7 +19,9 @@ The following GOV.UK helpers have been added:
 - Fieldset
 - File upload
 - Footer
+- Form group
 - Header
+- Hint
 - Inset text
 - Notification banner
 - Pagination
@@ -28,6 +30,7 @@ The following GOV.UK helpers have been added:
 - Radios
 - Select
 - Skip link
+- Step by step navigation
 - Summary list
 - Table
 - Tabs
