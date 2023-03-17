@@ -6,20 +6,13 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
   include described_class
 
   let(:header_element) { Capybara::Node::Simple.new(result).find('header.ccs-header') }
-  let(:header_container_element) { header_element.find('div.ccs-header__container') }
-  let(:header_content_element) { header_element.find('div.ccs-header__content') }
-  let(:service_authentication_item_element) { header_element.first('div.ccs-header__service-authentication a.ccs-header__link') }
-  let(:header_navigation_element) { header_element.find('nav.ccs-header__navigation') }
-  let(:menu_button) { header_content_element.find('button.ccs-header__menu-button', visible: :hidden) }
-  let(:primary_navigation_item_element) { header_navigation_element.first('#navigation-primary a.ccs-header__link') }
-  let(:secondary_navigation_item_element) { header_navigation_element.first('#navigation-secondary a.ccs-header__link') }
 
   describe '.ccs_header' do
     let(:result) { ccs_header(**header_options) }
 
     let(:header_options) do
       {
-        service_authentication: service_authentication,
+        service_authentication_items: service_authentication,
         service: service_options,
         navigation: navigation_options,
       }.merge(options)
@@ -106,7 +99,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
                   Menu
                 </button>
                 <div id="navigation" class="ccs-header__navigation-lists">
-                  <ul id="navigation-secondary" class="ccs-header__navigation-secondary-list ">
+                  <ul id="navigation-secondary" class="ccs-header__navigation-secondary-list">
                     <li class="ccs-header__navigation-item">
                       <a class="ccs-header__link" href="/plus">
                         Plus
@@ -118,7 +111,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
                       </a>
                     </li>
                   </ul>
-                  <ul id="navigation-primary" class="ccs-header__navigation-primary-list ">
+                  <ul id="navigation-primary" class="ccs-header__navigation-primary-list">
                     <li class="ccs-header__navigation-item">
                       <a class="ccs-header__link" href="/go">
                         Go
@@ -170,294 +163,6 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
             </div>
           </header>
         '.to_one_line)
-      end
-    end
-
-    context 'when additional classes are passed' do
-      let(:options) { { classes: 'my-custom-class' } }
-
-      it 'has the custom class' do
-        expect(header_element[:class]).to eq('ccs-header my-custom-class')
-      end
-    end
-
-    context 'when additional attributes are passed' do
-      let(:options) { { attributes: { data: { test: 'hello there' }, test: 'General Kenobi' } } }
-
-      it 'has the additional attributes' do
-        expect(header_element[:'data-module']).to eq('ccs-header')
-        expect(header_element[:'data-test']).to eq('hello there')
-        expect(header_element[:test]).to eq('General Kenobi')
-      end
-    end
-
-    context 'when custom container classes are passed' do
-      let(:options) { { container_classes: 'ccs-header__container--full-width' } }
-
-      it 'has the custom class' do
-        expect(header_container_element[:class]).to eq('ccs-header__container ccs-header__container--full-width')
-      end
-    end
-
-    context 'when considering the serivce options' do
-      context 'when there are no service options' do
-        let(:header_options) do
-          {
-            service_authentication: service_authentication,
-            navigation: navigation_options,
-          }.merge(options)
-        end
-
-        it 'does not render the service name' do
-          expect(header_content_element).not_to have_css('.ccs-header__service-name')
-        end
-      end
-
-      context 'when there is as service name' do
-        it 'renders the service name' do
-          expect(header_content_element).to have_css('span.ccs-header__link--service-name', text: 'U.A. High')
-        end
-      end
-
-      context 'when a service name url is provided' do
-        let(:service_options) { super().merge({ href: '/ua-high' }) }
-
-        it 'renders the service name as a link' do
-          expect(header_content_element).to have_css('a.ccs-header__link.ccs-header__link--service-name', text: 'U.A. High')
-        end
-      end
-    end
-
-    context 'when considering the navigation' do
-      context 'and there is no service name' do
-        let(:header_options) do
-          {
-            service_authentication: service_authentication,
-            navigation: navigation_options,
-          }.merge(options)
-        end
-
-        it 'has the no service name class' do
-          expect(header_navigation_element[:class]).to eq('ccs-header__navigation ccs-header__navigation--no-service-name')
-        end
-      end
-
-      context 'and custom navigation classes are passed' do
-        let(:navigation_options) { super().merge({ classes: 'ccs-header__navigation--end' }) }
-
-        it 'has the custom class' do
-          expect(header_navigation_element[:class]).to eq('ccs-header__navigation ccs-header__navigation--end')
-        end
-      end
-
-      context 'when custom navigation label is passed' do
-        let(:navigation_options) { super().merge({ label: 'my-custom-navigation-label' }) }
-
-        it 'has the custom navigation aria label' do
-          expect(header_navigation_element[:'aria-label']).to eq('my-custom-navigation-label')
-        end
-      end
-    end
-
-    context 'when considering the service authentication links' do
-      let(:service_authentication) do
-        [
-          {
-            text: 'Sign out',
-            href: href
-          }.merge(service_authentication_item_options)
-        ]
-      end
-
-      context 'when there is a href' do
-        let(:href) { '/sign-out' }
-
-        context 'when there is a custom class' do
-          let(:service_authentication_item_options) { { attributes: { class: 'my-custom-service-authentication-item-class' } } }
-
-          it 'does not have the custom class' do
-            expect(service_authentication_item_element[:class]).to eq('ccs-header__link')
-          end
-        end
-
-        context 'when there are additional attributes' do
-          let(:service_authentication_item_options) { { attributes: { id: 'my-custom-service-authentication-item-id', data: { test: 'hello there' } } } }
-
-          it 'has the additional attributes' do
-            expect(service_authentication_item_element[:id]).to eq('my-custom-service-authentication-item-id')
-            expect(service_authentication_item_element[:'data-test']).to eq('hello there')
-          end
-        end
-      end
-
-      context 'when there is no href' do
-        let(:href) { nil }
-        let(:service_authentication_item_options) { { attributes: { id: 'my-custom-service-authentication-item-id', data: { test: 'hello there' } } } }
-
-        let(:service_authentication_item_element) { header_element.first('div.ccs-header__service-authentication li.ccs-header__service-authentication-item') }
-
-        it 'does not have a link' do
-          expect(service_authentication_item_element).not_to have_css('a')
-        end
-
-        it 'does not have the additional attributes' do
-          expect(service_authentication_item_element[:id]).to be_nil
-          expect(service_authentication_item_element[:'data-test']).to be_nil
-        end
-      end
-    end
-
-    context 'when considering the navigation section' do
-      context 'and there is only primary navigation' do
-        let(:navigation_options) do
-          {
-            primary_items: [
-              {
-                text: 'Go',
-                href: '/go'
-              },
-              {
-                text: 'Beyond',
-                active: true
-              },
-            ]
-          }
-        end
-
-        it 'has the no second list class' do
-          expect(header_navigation_element).to have_css('ul#navigation-primary.ccs-header__navigation-primary-list.ccs-header__navigation--no-second-list')
-        end
-
-        it 'does not have the secondary navigation section' do
-          expect(header_navigation_element).not_to have_css('ul#navigation-secondary')
-        end
-      end
-
-      context 'and there is only secondary navigation' do
-        let(:navigation_options) do
-          {
-            secondary_items: [
-              {
-                text: 'Plus',
-                href: '/plus'
-              },
-              {
-                text: 'Ultra!',
-                href: '/ultra'
-              },
-            ]
-          }
-        end
-
-        it 'has the no second list class' do
-          expect(header_navigation_element).to have_css('ul#navigation-secondary.ccs-header__navigation-secondary-list.ccs-header__navigation--no-second-list')
-        end
-
-        it 'does not have the primary navigation section' do
-          expect(header_navigation_element).not_to have_css('ul#navigation-primary')
-        end
-      end
-
-      context 'and there is both primary abd secondary navigation' do
-        it 'has the both sections' do
-          expect(header_navigation_element).to have_css('ul#navigation-primary')
-          expect(header_navigation_element).to have_css('ul#navigation-secondary')
-        end
-
-        it 'does not have the no second list class' do
-          expect(header_navigation_element).not_to have_css('ul#navigation-secondary.ccs-header__navigation-secondary-list.ccs-header__navigation--no-second-list')
-          expect(header_navigation_element).not_to have_css('ul#navigation-primary.ccs-header__navigation-primary-list.ccs-header__navigation--no-second-list')
-        end
-      end
-    end
-
-    context 'when considering the menu button' do
-      context 'and no custom menu text is passed' do
-        it 'has the default menu button text' do
-          expect(menu_button).to have_content('Menu')
-        end
-      end
-
-      context 'and custom menu text is passed' do
-        let(:options) { { menu_button: { text: 'This is the menu' } } }
-
-        it 'has the custom menu button text' do
-          expect(menu_button).to have_content('This is the menu')
-        end
-      end
-
-      context 'and no custom menu label text is passed' do
-        it 'has the default menu button text' do
-          expect(menu_button[:'aria-label']).to eq 'Show or hide menu'
-        end
-      end
-
-      context 'and custom menu label text is passed' do
-        let(:options) { { menu_button: { label: 'This is the menu that you can show or hide' } } }
-
-        it 'has the custom menu button text' do
-          expect(menu_button[:'aria-label']).to eq 'This is the menu that you can show or hide'
-        end
-      end
-    end
-
-    context 'when considering the primary navigation links' do
-      let(:navigation_options) do
-        {
-          primary_items: [
-            {
-              text: 'Here',
-              href: '/here'
-            }.merge(primary_navigation_item_options)
-          ]
-        }
-      end
-
-      context 'when there is a custom class' do
-        let(:primary_navigation_item_options) { { attributes: { class: 'my-custom-primary-navigation-item-class' } } }
-
-        it 'does not have the custom class' do
-          expect(primary_navigation_item_element[:class]).to eq('ccs-header__link')
-        end
-      end
-
-      context 'when there are additional attributes' do
-        let(:primary_navigation_item_options) { { attributes: { id: 'my-custom-primary-navigation-item-id', data: { test: 'hello there' } } } }
-
-        it 'has the additional attributes' do
-          expect(primary_navigation_item_element[:id]).to eq('my-custom-primary-navigation-item-id')
-          expect(primary_navigation_item_element[:'data-test']).to eq('hello there')
-        end
-      end
-    end
-
-    context 'when considering the secondary navigation links' do
-      let(:navigation_options) do
-        {
-          secondary_items: [
-            {
-              text: 'Here',
-              href: '/here'
-            }.merge(secondary_navigation_item_options)
-          ]
-        }
-      end
-
-      context 'when there is a custom class' do
-        let(:secondary_navigation_item_options) { { attributes: { class: 'my-custom-secondary-navigation-item-class' } } }
-
-        it 'does not have the custom class' do
-          expect(secondary_navigation_item_element[:class]).to eq('ccs-header__link')
-        end
-      end
-
-      context 'when there are additional attributes' do
-        let(:secondary_navigation_item_options) { { attributes: { id: 'my-custom-secondary-navigation-item-id', data: { test: 'hello there' } } } }
-
-        it 'has the additional attributes' do
-          expect(secondary_navigation_item_element[:id]).to eq('my-custom-secondary-navigation-item-id')
-          expect(secondary_navigation_item_element[:'data-test']).to eq('hello there')
-        end
       end
     end
   end

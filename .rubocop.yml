@@ -3,6 +3,7 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-rake
+  - rubocop-capybara
 
 AllCops:
     NewCops: enable
@@ -86,6 +87,7 @@ RSpec/ContextWording:
 Metrics/ModuleLength:
     Exclude:
         - 'spec/ccs/frontend_helpers/**/*'
+        - 'spec/ccs/components/**/*'
 
 RSpec/MultipleMemoizedHelpers:
     Enabled: false
@@ -113,7 +115,8 @@ RSpec/NestedGroups:
 
 RSpec/ExampleLength:
     Exclude:
-         - 'spec/ccs/frontend_helpers/**/*'
+        - 'spec/ccs/frontend_helpers/**/*'
+        - 'spec/ccs/components/**/*'
 
 Rails/DynamicFindBy:
   Whitelist:
@@ -125,3 +128,4 @@ RSpec/MultipleExpectations:
 RSpec/FilePath:
     CustomTransform:
         GovUKFrontend: govuk_frontend
+        GovUK: govuk
