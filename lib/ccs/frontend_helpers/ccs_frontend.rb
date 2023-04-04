@@ -2,8 +2,7 @@
 
 require_relative 'ccs_frontend/footer'
 require_relative 'ccs_frontend/header'
-require_relative 'ccs_frontend/logo'
-require_relative 'ccs_frontend/dashboard_panels'
+require_relative 'ccs_frontend/dashboard_section'
 
 module CCS
   module FrontendHelpers
@@ -11,10 +10,9 @@ module CCS
     # These are a collection of view helpers to help render CCS components
 
     module CCSFrontend
-      include DashboardPanels
+      include DashboardSection
       include Footer
       include Header
-      include Logo
     end
   end
 end

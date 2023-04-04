@@ -7,6 +7,7 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 
+require 'action_view'
 require 'ccs/frontend_helpers'
 require 'capybara'
 
@@ -24,4 +25,7 @@ RSpec.configure do |config|
   end
 
   config.default_formatter = 'doc' if config.files_to_run.one?
+
+  config.include ActionView::Context
+  config.include ActionView::Helpers
 end
