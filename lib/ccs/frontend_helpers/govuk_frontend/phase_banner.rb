@@ -3,25 +3,27 @@
 require_relative '../../components/govuk/phase_banner'
 
 module CCS
-  module FrontendHelpers::GovUKFrontend
-    # = GOV.UK Phase banner
-    #
-    # This helper is used for generating the phase banner component from the
-    # {https://design-system.service.gov.uk/components/phase-banner GDS - Components - Phase banner}
+  module FrontendHelpers
+    module GovUKFrontend
+      # = GOV.UK Phase banner
+      #
+      # This helper is used for generating the phase banner component from the
+      # {https://design-system.service.gov.uk/components/phase-banner GDS - Components - Phase banner}
 
-    module PhaseBanner
-      # Generates the HTML for the GOV.UK Phase banner component
-      #
-      # @param (see CCS::Components::GovUK::PhaseBanner#initialize)
-      #
-      # @option (see CCS::Components::GovUK::PhaseBanner#initialize)
-      #
-      # @yield (see CCS::Components::GovUK::PhaseBanner#render)
-      #
-      # @return (see CCS::Components::GovUK::PhaseBanner#render)
+      module PhaseBanner
+        # Generates the HTML for the GOV.UK Phase banner component
+        #
+        # @param (see CCS::Components::GovUK::PhaseBanner#initialize)
+        #
+        # @option (see CCS::Components::GovUK::PhaseBanner#initialize)
+        #
+        # @yield (see CCS::Components::GovUK::PhaseBanner#render)
+        #
+        # @return (see CCS::Components::GovUK::PhaseBanner#render)
 
-      def govuk_phase_banner(tag_options, text = nil, **options, &block)
-        Components::GovUK::PhaseBanner.new(context: self, tag_options: tag_options, text: text, **options).render(&block)
+        def govuk_phase_banner(tag_options, text = nil, **options, &block)
+          Components::GovUK::PhaseBanner.new(context: self, tag_options: tag_options, text: text, **options).render(&block)
+        end
       end
     end
   end

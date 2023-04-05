@@ -1,35 +1,37 @@
 require_relative '../radio'
 
-module CCS::Components
-  module GovUK
-    class Field < Base
-      class Inputs < Field
-        class Item < Base
-          class Radio < Item
-            # = GOV.UK Field Inputs Radio tag
-            #
-            # This is used to generate an individual radio item using +radio_button_tag+
-
-            class Tag < Radio
-              # @param (see CCS::Components::GovUK::Field::Items::Item::Radio#initialize)
+module CCS
+  module Components
+    module GovUK
+      class Field < Base
+        class Inputs < Field
+          class Item < Base
+            class Radio < Item
+              # = GOV.UK Field Inputs Radio tag
               #
-              # @option (see CCS::Components::GovUK::Field::Items::Item::Radio#initialize)
+              # This is used to generate an individual radio item using +radio_button_tag+
 
-              def initialize(attribute:, label:, **options)
-                super(attribute: attribute, label: label, **options)
+              class Tag < Radio
+                # @param (see CCS::Components::GovUK::Field::Items::Item::Radio#initialize)
+                #
+                # @option (see CCS::Components::GovUK::Field::Items::Item::Radio#initialize)
 
-                @options[:attributes][:id] ||= "#{sanitize_to_id(@attribute)}_#{sanitize_to_id(@value)}"
+                def initialize(attribute:, label:, **options)
+                  super(attribute: attribute, label: label, **options)
 
-                @label = Label.new(attribute: @options[:attributes][:id], context: @context, **label)
-              end
+                  @options[:attributes][:id] ||= "#{sanitize_to_id(@attribute)}_#{sanitize_to_id(@value)}"
 
-              # Generates the HTML for the radio input
-              #
-              # @return [ActiveSupport::SafeBuffer]
+                  @label = Label.new(attribute: @options[:attributes][:id], context: @context, **label)
+                end
 
-              def render
-                super() do
-                  context.radio_button_tag(@attribute, @value, @options[:checked], **@options[:attributes])
+                # Generates the HTML for the radio input
+                #
+                # @return [ActiveSupport::SafeBuffer]
+
+                def render
+                  super() do
+                    context.radio_button_tag(@attribute, @value, @options[:checked], **@options[:attributes])
+                  end
                 end
               end
             end
