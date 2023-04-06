@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+require_relative 'ccs_frontend/dashboard_section'
 require_relative 'ccs_frontend/footer'
 require_relative 'ccs_frontend/header'
-require_relative 'ccs_frontend/dashboard_section'
 
 module CCS
   module FrontendHelpers
