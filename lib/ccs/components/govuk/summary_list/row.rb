@@ -36,11 +36,13 @@ module CCS
           def initialize(any_row_has_actions:, key:, value:, actions: nil, **options)
             super(**options)
 
-            @options[:attributes][:class] << ' govuk-summary-list__row--no-actions' if any_row_has_actions && !actions
+            actions_present = actions && actions[:items].present?
+
+            @options[:attributes][:class] << ' govuk-summary-list__row--no-actions' if any_row_has_actions && !actions_present
 
             @key = Key.new(context: @context, **key)
             @value = Value.new(context: @context, **value)
-            @actions = Actions.new(context: @context, **actions) if actions
+            @actions = Actions.new(context: @context, **actions) if actions_present
           end
 
           # Generates the HTML for the GOV.UK Summary list row

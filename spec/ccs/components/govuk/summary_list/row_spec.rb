@@ -94,5 +94,29 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Row do
         end
       end
     end
+
+    context 'when there are no action items' do
+      let(:actions) do
+        {
+          items: []
+        }
+      end
+
+      it 'does not render the actions section' do
+        expect(summary_list_row_element).not_to have_css('dd.govuk-summary-list__actions')
+      end
+
+      it 'has the no actions class' do
+        expect(summary_list_row_element[:class]).to eq('govuk-summary-list__row govuk-summary-list__row--no-actions')
+      end
+
+      context 'and no rows have actions' do
+        let(:any_row_has_actions) { false }
+
+        it 'does not have the no actions class' do
+          expect(summary_list_row_element[:class]).to eq('govuk-summary-list__row')
+        end
+      end
+    end
   end
 end
