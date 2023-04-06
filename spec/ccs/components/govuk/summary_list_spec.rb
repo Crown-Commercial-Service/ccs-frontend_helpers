@@ -254,6 +254,110 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
         expect(summary_list_row_elements[2][:class]).to eq('govuk-summary-list__row')
       end
     end
+
+    context 'when some rows have actions without items' do
+      let(:summary_list) do
+        [
+          {
+            key: {
+              text: 'Name'
+            },
+            value: {
+              text: 'Eunie'
+            },
+            actions: {
+              items: [
+                {
+                  href: '/change-name',
+                  text: 'Change',
+                  visually_hidden_text: 'name'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: 'Age'
+            },
+            value: {
+              text: '9th term'
+            },
+            actions: {
+              items: []
+            }
+          },
+          {
+            key: {
+              text: 'Nation'
+            },
+            value: {
+              text: 'Keves'
+            },
+            actions: {
+              items: [
+                {
+                  href: '/change-nation',
+                  text: 'Change',
+                  visually_hidden_text: 'nation'
+                }
+              ]
+            }
+          }
+        ]
+      end
+
+      it 'adds the no-actions modifier to the correct rows' do
+        expect(summary_list_row_elements[0][:class]).to eq('govuk-summary-list__row')
+        expect(summary_list_row_elements[1][:class]).to eq('govuk-summary-list__row govuk-summary-list__row--no-actions')
+        expect(summary_list_row_elements[2][:class]).to eq('govuk-summary-list__row')
+      end
+    end
+
+    context 'when all rows have actions without items' do
+      let(:summary_list) do
+        [
+          {
+            key: {
+              text: 'Name'
+            },
+            value: {
+              text: 'Eunie'
+            },
+            actions: {
+              items: []
+            }
+          },
+          {
+            key: {
+              text: 'Age'
+            },
+            value: {
+              text: '9th term'
+            },
+            actions: {
+              items: []
+            }
+          },
+          {
+            key: {
+              text: 'Nation'
+            },
+            value: {
+              text: 'Keves'
+            },
+            actions: {
+              items: []
+            }
+          }
+        ]
+      end
+
+      it 'adds the no-actions modifier to none of the rows' do
+        expect(summary_list_row_elements[0][:class]).to eq('govuk-summary-list__row')
+        expect(summary_list_row_elements[1][:class]).to eq('govuk-summary-list__row')
+        expect(summary_list_row_elements[2][:class]).to eq('govuk-summary-list__row')
+      end
+    end
   end
 
   describe 'render with a card' do

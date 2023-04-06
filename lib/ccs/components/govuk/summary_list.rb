@@ -33,7 +33,7 @@ module CCS
         def initialize(summary_list_items:, card: nil, **options)
           super(**options)
 
-          any_row_has_actions = summary_list_items.any? { |summary_list_item| summary_list_item[:actions].present? }
+          any_row_has_actions = summary_list_items.any? { |summary_list_item| summary_list_item.dig(:actions, :items).present? }
 
           @summary_list_rows = summary_list_items.map { |summary_list_item| Row.new(any_row_has_actions: any_row_has_actions, context: @context, **summary_list_item) }
           @card = Card.new(context: @context, **card) if card
