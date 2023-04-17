@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', '>= 6.0'
 
   spec.add_development_dependency 'bundler', '~> 2.3'
-  spec.add_development_dependency 'capybara', '~> 3.38.0'
+  spec.add_development_dependency 'capybara', '~> 3.39.0'
   spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'rubocop', '~> 1.36'
   spec.add_development_dependency 'rubocop-rails', '~> 2.16'
