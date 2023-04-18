@@ -40,7 +40,7 @@ module CCS
 
         def render
           tag.div(**options[:attributes]) do
-            concat(tag.span('!', class: 'govuk-warning-text__icon'))
+            concat(tag.span('!', class: 'govuk-warning-text__icon', aria: { hidden: true }))
             concat(tag.strong(class: 'govuk-warning-text__text') do
               concat(tag.span(options[:icon_fallback_text] || 'Warning', class: 'govuk-warning-text__assistive'))
               if text
