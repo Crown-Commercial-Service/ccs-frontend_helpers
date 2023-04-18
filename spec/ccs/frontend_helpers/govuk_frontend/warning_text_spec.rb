@@ -16,7 +16,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::WarningText, type: :helper d
     let(:default_html) do
       '
         <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon">!</span>
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
             <span class="govuk-warning-text__assistive">Warning</span>
             You cannot go beyond here
@@ -51,7 +51,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::WarningText, type: :helper d
         expect(warning_text_element.to_html).to eq(
           '
             <div class="govuk-warning-text">
-              <span class="govuk-warning-text__icon">!</span>
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
               <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Warning</span>
                 <span>You cannot go beyond here.</span>
