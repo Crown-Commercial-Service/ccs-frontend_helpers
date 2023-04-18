@@ -1,4 +1,4 @@
-## [0.1.0] - 2023-02-22
+## [0.1.0.rc.5] - 2023-04-18
 
 Initial release of CCS Frontend Helpers.
 This release contains view helpers that are used to create GOV.UK and CCS components.
