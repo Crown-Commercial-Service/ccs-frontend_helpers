@@ -52,10 +52,8 @@ module CCS
                   concat(tag.h2(title_text, class: 'ccs-dashboard-section__heading govuk-heading-m'))
                   concat(tag.hr(class: 'ccs-dashboard-section__heading-section-break govuk-section-break govuk-section-break--visible'))
                 end
-                concat(tag.div(class: 'ccs-dashboard-section__container') do
-                  tag.div(class: 'govuk-grid-row') do
-                    dashboard_section_panels.each { |dashboard_section_panel| concat(dashboard_section_panel.render) }
-                  end
+                concat(tag.div(class: 'govuk-grid-row ccs-dashboard-section__container') do
+                  dashboard_section_panels.each { |dashboard_section_panel| concat(dashboard_section_panel.render) }
                 end)
               end
             end

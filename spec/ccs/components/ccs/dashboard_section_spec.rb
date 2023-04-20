@@ -42,32 +42,30 @@ RSpec.describe CCS::Components::CCS::DashboardSection do
                 Ouroboros
               </h2>
               <hr class="ccs-dashboard-section__heading-section-break govuk-section-break govuk-section-break--visible">
-              <div class="ccs-dashboard-section__container">
-                <div class="govuk-grid-row">
-                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                    <a class="ccs-dashboard-section__panel-title" href="/eunie">
-                      Eunie
-                    </a>
-                    <p class="ccs-dashboard-section__panel-description">
-                      Eunie\'s the boss
-                    </p>
-                  </div>
-                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                    <a class="ccs-dashboard-section__panel-title" href="/noah">
-                      Noah
-                    </a>
-                    <p class="ccs-dashboard-section__panel-description">
-                      Noah is not the boss
-                    </p>
-                  </div>
-                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                    <a class="ccs-dashboard-section__panel-title" href="/lanz">
-                      Lanz
-                    </a>
-                    <p class="ccs-dashboard-section__panel-description">
-                      Lanz is not the boss
-                    </p>
-                  </div>
+              <div class="govuk-grid-row ccs-dashboard-section__container">
+                <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                  <a class="ccs-dashboard-section__panel-title" href="/eunie">
+                    Eunie
+                  </a>
+                  <p class="ccs-dashboard-section__panel-description">
+                    Eunie\'s the boss
+                  </p>
+                </div>
+                <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                  <a class="ccs-dashboard-section__panel-title" href="/noah">
+                    Noah
+                  </a>
+                  <p class="ccs-dashboard-section__panel-description">
+                    Noah is not the boss
+                  </p>
+                </div>
+                <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                  <a class="ccs-dashboard-section__panel-title" href="/lanz">
+                    Lanz
+                  </a>
+                  <p class="ccs-dashboard-section__panel-description">
+                    Lanz is not the boss
+                  </p>
                 </div>
               </div>
             </div>
@@ -98,32 +96,30 @@ RSpec.describe CCS::Components::CCS::DashboardSection do
           <div class="ccs-dashboard-section">
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-full">
-                <div class="ccs-dashboard-section__container">
-                  <div class="govuk-grid-row">
-                    <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                      <a class="ccs-dashboard-section__panel-title" href="/eunie">
-                        Eunie
-                      </a>
-                      <p class="ccs-dashboard-section__panel-description">
-                        Eunie\'s the boss
-                      </p>
-                    </div>
-                    <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                      <a class="ccs-dashboard-section__panel-title" href="/noah">
-                        Noah
-                      </a>
-                      <p class="ccs-dashboard-section__panel-description">
-                        Noah is not the boss
-                      </p>
-                    </div>
-                    <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
-                      <a class="ccs-dashboard-section__panel-title" href="/lanz">
-                        Lanz
-                      </a>
-                      <p class="ccs-dashboard-section__panel-description">
-                        Lanz is not the boss
-                      </p>
-                    </div>
+                <div class="govuk-grid-row ccs-dashboard-section__container">
+                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                    <a class="ccs-dashboard-section__panel-title" href="/eunie">
+                      Eunie
+                    </a>
+                    <p class="ccs-dashboard-section__panel-description">
+                      Eunie\'s the boss
+                    </p>
+                  </div>
+                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                    <a class="ccs-dashboard-section__panel-title" href="/noah">
+                      Noah
+                    </a>
+                    <p class="ccs-dashboard-section__panel-description">
+                      Noah is not the boss
+                    </p>
+                  </div>
+                  <div class="ccs-dashboard-section__panel govuk-grid-column-one-third">
+                    <a class="ccs-dashboard-section__panel-title" href="/lanz">
+                      Lanz
+                    </a>
+                    <p class="ccs-dashboard-section__panel-description">
+                      Lanz is not the boss
+                    </p>
                   </div>
                 </div>
               </div>
