@@ -19,7 +19,14 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Table#render)
 
-        def govuk_table(rows, head_cells = nil, **options)
+        def govuk_table(head_cells_or_rows, rows = nil, **options)
+          if rows.nil?
+            rows = head_cells_or_rows
+            head_cells = nil
+          else
+            head_cells = head_cells_or_rows
+          end
+
           Components::GovUK::Table.new(context: self, rows: rows, head_cells: head_cells, **options).render
         end
       end
