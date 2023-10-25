@@ -129,3 +129,8 @@ RSpec/FilePath:
     CustomTransform:
         GovUKFrontend: govuk_frontend
         GovUK: govuk
+
+RSpec/SpecFilePathFormat:
+    CustomTransform:
+        GovUKFrontend: govuk_frontend
+        GovUK: govuk
