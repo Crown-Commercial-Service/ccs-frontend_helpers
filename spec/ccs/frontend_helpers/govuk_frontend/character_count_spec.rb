@@ -38,7 +38,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, type: :helpe
   end
   let(:form_group_options) { {} }
   let(:character_count_options) { { maxlength: 200 } }
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_character_count' do
     let(:result) { govuk_character_count(attribute, character_count_options, error_message: error_message, **options) }
@@ -168,7 +168,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, type: :helpe
   end
 
   describe '.govuk_character_count with model' do
-    let(:result) { govuk_character_count(attribute, character_count_options, model: model, **options) }
+    let(:result) { govuk_character_count(attribute, character_count_options, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -194,7 +194,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, type: :helpe
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_character_count(attribute, character_count_options, model: model, **options) }
+      let(:result) { govuk_character_count(attribute, character_count_options, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with character count around the textarea form' do

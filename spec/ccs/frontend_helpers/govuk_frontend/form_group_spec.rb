@@ -89,5 +89,31 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FormGroup, type: :helper do
         end
       end
     end
+
+    context 'when there is a model' do
+      let(:test_model) { TestModel.new }
+
+      let(:result) do
+        govuk_form_group(attribute, model: test_model, **options) do |displayed_error_message|
+          concat(tag.label('Ouroboros', for: 'ouroboros'))
+          concat(displayed_error_message)
+          concat(tag.input(id: 'ouroboros'))
+        end
+      end
+
+      context 'and there is no error' do
+        it 'correctly formats the HTML without the error message' do
+          expect(form_group_element.to_html).to eq(no_error_html)
+        end
+      end
+
+      context 'and there is an error' do
+        before { test_model.errors.add(attribute, error_message) }
+
+        it 'correctly formats the HTML with the error message' do
+          expect(form_group_element.to_html).to eq(default_html)
+        end
+      end
+    end
   end
 end

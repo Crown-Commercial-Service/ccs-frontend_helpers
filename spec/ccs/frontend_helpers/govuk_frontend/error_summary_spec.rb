@@ -97,8 +97,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, type: :helper 
   end
 
   describe '.govuk_error_summary_with_model' do
-    let(:result) { govuk_error_summary_with_model(model, title, description, **options) }
-    let(:model) { TestModel.new }
+    let(:result) { govuk_error_summary_with_model(test_model, title, description, **options) }
+    let(:test_model) { TestModel.new }
 
     let(:default_html) do
       '
@@ -127,8 +127,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, type: :helper 
     end
 
     before do
-      model.errors.add(:ouroboros, message: 'You must select your favourite member')
-      model.errors.add(:xenoblade_chronicles_3, message: 'You must select your favourite hero')
+      test_model.errors.add(:ouroboros, message: 'You must select your favourite member')
+      test_model.errors.add(:xenoblade_chronicles_3, message: 'You must select your favourite hero')
     end
 
     context 'when the default attributes are sent' do
@@ -138,7 +138,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, type: :helper 
     end
 
     context 'when the no options are sent' do
-      let(:result) { govuk_error_summary_with_model(model, title) }
+      let(:result) { govuk_error_summary_with_model(test_model, title) }
 
       it 'correctly formats the HTML with the summary' do
         expect(error_summary_element.to_html).to eq(default_html)

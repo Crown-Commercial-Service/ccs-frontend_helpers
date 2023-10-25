@@ -116,7 +116,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
   let(:legend_options) { {} }
   let(:hint_options) { {} }
   let(:radios_options) { {} }
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.render' do
     let(:govuk_radios) { described_class.new(attribute: attribute, radio_items: radio_items, error_message: error_message, context: view_context, **options) }
@@ -440,7 +440,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
   end
 
   describe '.render with model' do
-    let(:govuk_radios) { described_class.new(attribute: attribute, radio_items: radio_items, model: model, context: view_context, **options) }
+    let(:govuk_radios) { described_class.new(attribute: attribute, radio_items: radio_items, model: test_model, context: view_context, **options) }
 
     let(:default_html) do
       '
@@ -535,7 +535,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
     end
 
     context 'when one of the items is checked' do
-      before { model.ouroboros = 'eunie' }
+      before { test_model.ouroboros = 'eunie' }
 
       it 'checks the right option' do
         expect(radio_item_elements.count { |element| element.find('input').checked? }).to eq 1
@@ -657,7 +657,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
     context 'when there is an error message' do
       let(:radio_items) { single_radio_item }
 
-      before { model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -696,7 +696,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
       let(:options) { options_with_hint }
       let(:radio_items) { single_radio_item }
 
-      before { model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('
@@ -833,7 +833,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
     end
 
     context 'when one of the items is checked' do
-      before { model.ouroboros = 'eunie' }
+      before { test_model.ouroboros = 'eunie' }
 
       it 'checks the right option' do
         expect(radio_item_elements.count { |element| element.find('input').checked? }).to eq 1
@@ -955,7 +955,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
     context 'when there is an error message' do
       let(:radio_items) { single_radio_item }
 
-      before { model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -994,7 +994,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
       let(:options) { options_with_hint }
       let(:radio_items) { single_radio_item }
 
-      before { model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must choose your favourite character') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('

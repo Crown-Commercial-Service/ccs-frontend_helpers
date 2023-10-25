@@ -36,7 +36,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, type: :helper do
     }
   end
   let(:input_options) { {} }
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_input' do
     let(:result) { govuk_input(attribute, error_message: error_message, **options) }
@@ -184,7 +184,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, type: :helper do
   end
 
   describe '.govuk_input with model' do
-    let(:result) { govuk_input(attribute, model: model, **options) }
+    let(:result) { govuk_input(attribute, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -204,7 +204,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, type: :helper do
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_input(attribute, model: model, **options) }
+      let(:result) { govuk_input(attribute, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with input in the form' do

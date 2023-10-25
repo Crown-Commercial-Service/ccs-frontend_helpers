@@ -74,7 +74,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
   let(:label_options) { {} }
   let(:hint_options) { {} }
   let(:select_options) { {} }
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.render' do
     let(:govuk_select) { described_class.new(attribute: attribute, items: select_items, error_message: error_message, context: view_context, **options) }
@@ -333,7 +333,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
   end
 
   describe '.render with model' do
-    let(:govuk_select) { described_class.new(attribute: attribute, items: select_items, model: model, context: view_context, **options) }
+    let(:govuk_select) { described_class.new(attribute: attribute, items: select_items, model: test_model, context: view_context, **options) }
 
     let(:default_html) do
       '
@@ -418,7 +418,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     end
 
     context 'when one of the options is selected' do
-      before { model.ouroboros = 'eunie' }
+      before { test_model.ouroboros = 'eunie' }
 
       it 'has the correct selected option' do
         expect(select_element).to have_css('option[selected="selected"]', text: 'Eunie')
@@ -514,7 +514,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     end
 
     context 'when there is an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must select your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must select your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -550,7 +550,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     context 'when there is a hint and an error message' do
       let(:options) { options_with_hint }
 
-      before { model.errors.add(:ouroboros, message: 'You must select your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must select your favourite character') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('
@@ -675,7 +675,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     end
 
     context 'when one of the options is selected' do
-      before { model.ouroboros = 'eunie' }
+      before { test_model.ouroboros = 'eunie' }
 
       it 'has the correct selected option' do
         expect(select_element).to have_css('option[selected="selected"]', text: 'Eunie')
@@ -771,7 +771,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     end
 
     context 'when there is an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must select your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must select your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -805,7 +805,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
     end
 
     context 'when there is a hint and an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must select your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must select your favourite character') }
 
       let(:options) { options_with_hint }
 

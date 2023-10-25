@@ -22,7 +22,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
     let(:conditional) { nil }
     let(:options) { {} }
 
-    let(:model) { TestModel.new }
+    let(:test_model) { TestModel.new }
 
     let(:default_html) do
       '
@@ -50,7 +50,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
     end
 
     context 'when the item is checked' do
-      before { model.ouroboros = 'eunie' }
+      before { test_model.ouroboros = 'eunie' }
 
       it 'checks the checbox' do
         expect(radio_item_input_element).to be_checked

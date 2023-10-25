@@ -34,7 +34,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, type: :helper do
       }
     }
   end
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_file_upload' do
     let(:result) { govuk_file_upload(attribute, error_message: error_message, **options) }
@@ -121,7 +121,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, type: :helper do
   end
 
   describe '.govuk_file_upload with model' do
-    let(:result) { govuk_file_upload(attribute, model: model, **options) }
+    let(:result) { govuk_file_upload(attribute, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -141,7 +141,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, type: :helper do
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_file_upload(attribute, model: model, **options) }
+      let(:result) { govuk_file_upload(attribute, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with file upload input in the form' do

@@ -109,7 +109,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, type: :helper do
       }
     }
   end
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_radios' do
     let(:result) { govuk_radios(attribute, radio_items, error_message: error_message, **options) }
@@ -301,7 +301,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, type: :helper do
   end
 
   describe '.govuk_radios with model' do
-    let(:result) { govuk_radios(attribute, radio_items, model: model, **options) }
+    let(:result) { govuk_radios(attribute, radio_items, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -360,7 +360,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, type: :helper do
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_radios(attribute, radio_items, model: model, **options) }
+      let(:result) { govuk_radios(attribute, radio_items, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with radios in the form' do

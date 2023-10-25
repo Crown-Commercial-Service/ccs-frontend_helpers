@@ -45,7 +45,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
   let(:label_options) { {} }
   let(:hint_options) { {} }
   let(:textarea_options) { {} }
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.render' do
     let(:govuk_textarea) { described_class.new(attribute: attribute, error_message: error_message, context: view_context, **options) }
@@ -244,7 +244,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
   end
 
   describe '.render with model' do
-    let(:govuk_textarea) { described_class.new(attribute: attribute, model: model, context: view_context, **options) }
+    let(:govuk_textarea) { described_class.new(attribute: attribute, model: test_model, context: view_context, **options) }
 
     let(:default_html) do
       '
@@ -297,7 +297,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     end
 
     context 'when the model has a value' do
-      before { model.ouroboros = 'Come on, who else?' }
+      before { test_model.ouroboros = 'Come on, who else?' }
 
       it 'has the content in the text area' do
         expect(textarea_element).to have_content('Come on, who else?')
@@ -377,7 +377,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     end
 
     context 'when there is an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -405,7 +405,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     end
 
     context 'when there is a hint and an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
 
       let(:options) { options_with_hint }
 
@@ -470,7 +470,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     end
 
     context 'when the model has a value' do
-      before { model.ouroboros = 'Come on, who else?' }
+      before { test_model.ouroboros = 'Come on, who else?' }
 
       it 'has the content in the text area' do
         expect(textarea_element).to have_content('Come on, who else?')
@@ -574,7 +574,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     end
 
     context 'when there is an error message' do
-      before { model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -604,7 +604,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
     context 'when there is a hint and an error message' do
       let(:options) { options_with_hint }
 
-      before { model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
+      before { test_model.errors.add(:ouroboros, message: 'You must enter your favourite character') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('

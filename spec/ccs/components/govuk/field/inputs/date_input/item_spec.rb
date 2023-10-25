@@ -16,7 +16,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
   let(:label) { {} }
   let(:options) { {} }
 
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.render' do
     let(:govuk_date_input_item) { described_class.new(attribute: attribute, name: name, input: input, label: label, context: view_context, **options) }
@@ -103,7 +103,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
   end
 
   describe '.render with model' do
-    let(:govuk_date_input_item) { described_class.new(attribute: attribute, name: name, input: input, label: label, model: model, context: view_context, **options) }
+    let(:govuk_date_input_item) { described_class.new(attribute: attribute, name: name, input: input, label: label, model: test_model, context: view_context, **options) }
 
     let(:name) { 'month' }
 
@@ -127,7 +127,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
     end
 
     context 'when some options are not passed' do
-      let(:govuk_date_input_item) { described_class.new(attribute: attribute, name: name, model: model, context: view_context) }
+      let(:govuk_date_input_item) { described_class.new(attribute: attribute, name: name, model: test_model, context: view_context) }
 
       it 'correctly formats the HTML with date input in the form' do
         expect(date_input_item_element.to_html).to eq(default_html)
@@ -135,7 +135,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
     end
 
     context 'when the item has a value' do
-      before { model.xenoblade_chronicles_3_month = '07' }
+      before { test_model.xenoblade_chronicles_3_month = '07' }
 
       it 'has the correct value' do
         expect(date_input_item_input_element[:value]).to eq('07')
@@ -178,7 +178,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
     end
 
     context 'when there is an error message on the parent attribute' do
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'does not add the error class to the item' do
         expect(date_input_item_input_element[:class]).to eq 'govuk-input govuk-date-input__input'
@@ -221,7 +221,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
     end
 
     context 'when the item has a value' do
-      before { model.xenoblade_chronicles_3_year = '2022' }
+      before { test_model.xenoblade_chronicles_3_year = '2022' }
 
       it 'has the correct value' do
         expect(date_input_item_input_element[:value]).to eq('2022')
@@ -264,7 +264,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
     end
 
     context 'when there is an error message on the parent attribute' do
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'does not add the error class to the item' do
         expect(date_input_item_input_element[:class]).to eq 'govuk-input govuk-date-input__input'
