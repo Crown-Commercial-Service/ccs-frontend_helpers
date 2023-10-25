@@ -26,7 +26,7 @@ module CCS
 
         def govuk_form_group(attribute, **options, &block)
           error_message = if options[:model]
-                            model.errors[attribute].first
+                            options[:model].errors[attribute].first
                           else
                             options[:error_message]
                           end

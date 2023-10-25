@@ -69,7 +69,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, type: :helper do
     }
   end
 
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_select' do
     let(:result) { govuk_select(attribute, select_items, error_message: error_message, **options) }
@@ -192,7 +192,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, type: :helper do
   end
 
   describe '.govuk_select with model' do
-    let(:result) { govuk_select(attribute, select_items, model: model, **options) }
+    let(:result) { govuk_select(attribute, select_items, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -219,7 +219,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, type: :helper do
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_select(attribute, select_items, model: model, **options) }
+      let(:result) { govuk_select(attribute, select_items, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with select in the form' do

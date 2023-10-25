@@ -63,7 +63,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       }
     ]
   end
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.render' do
     let(:govuk_date_input) { described_class.new(attribute: attribute, error_message: error_message, context: view_context, **options) }
@@ -336,7 +336,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
   end
 
   describe '.render with model' do
-    let(:govuk_date_input) { described_class.new(attribute: attribute, model: model, context: view_context, **options) }
+    let(:govuk_date_input) { described_class.new(attribute: attribute, model: test_model, context: view_context, **options) }
 
     let(:default_html) do
       '
@@ -521,7 +521,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
     context 'when there is an error message on the main attribute' do
       let(:date_input_options) { { date_items: single_date_item } }
 
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -562,7 +562,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       let(:options) { options_with_hint }
       let(:date_input_options) { { date_items: single_date_item } }
 
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('
@@ -791,7 +791,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
     context 'when there is an error message on the main attribute' do
       let(:date_input_options) { { date_items: single_date_item } }
 
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'correctly formats the HTML with error message and classes' do
         expect(form_group_element.to_html).to eq('
@@ -832,7 +832,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       let(:options) { options_with_hint }
       let(:date_input_options) { { date_items: single_date_item } }
 
-      before { model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
+      before { test_model.errors.add(:xenoblade_chronicles_3, 'You must enter the date') }
 
       it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
         expect(form_group_element.to_html).to eq('

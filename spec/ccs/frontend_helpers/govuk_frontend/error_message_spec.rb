@@ -39,10 +39,10 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, type: :helper 
   end
 
   describe 'govuk_error_message_with_model' do
-    let(:result) { govuk_error_message_with_model(model, attribute, **options) }
-    let(:model) { TestModel.new }
+    let(:result) { govuk_error_message_with_model(test_model, attribute, **options) }
+    let(:test_model) { TestModel.new }
 
-    before { model.errors.add(:ouroboros, message: message) }
+    before { test_model.errors.add(:ouroboros, message: message) }
 
     context 'when the default attributes are sent' do
       it 'correctly formats the HTML with the message and ID derived from the attribute' do
@@ -51,7 +51,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, type: :helper 
     end
 
     context 'when the no options are sent' do
-      let(:result) { govuk_error_message_with_model(model, attribute) }
+      let(:result) { govuk_error_message_with_model(test_model, attribute) }
 
       it 'correctly formats the HTML with the message and ID derived from the attribute' do
         expect(error_message_element.to_html).to eq(default_html)
@@ -59,7 +59,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, type: :helper 
     end
 
     context 'when there is no error message on the model' do
-      before { model.errors.clear }
+      before { test_model.errors.clear }
 
       it 'returns nil' do
         expect(result).to be_nil

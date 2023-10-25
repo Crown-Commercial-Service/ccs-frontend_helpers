@@ -104,7 +104,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, type: :helper do
     }
   end
 
-  let(:model) { TestModel.new }
+  let(:test_model) { TestModel.new }
 
   describe '.govuk_checkboxes' do
     let(:result) { govuk_checkboxes(attribute, checkbox_items, error_message: error_message, **options) }
@@ -296,7 +296,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, type: :helper do
   end
 
   describe '.govuk_checkboxes with model' do
-    let(:result) { govuk_checkboxes(attribute, checkbox_items, model: model, **options) }
+    let(:result) { govuk_checkboxes(attribute, checkbox_items, model: test_model, **options) }
 
     let(:default_html) do
       '
@@ -355,7 +355,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, type: :helper do
     end
 
     context 'when some options are not passed' do
-      let(:result) { govuk_checkboxes(attribute, checkbox_items, model: model, **options) }
+      let(:result) { govuk_checkboxes(attribute, checkbox_items, model: test_model, **options) }
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with checkboxes in the form' do

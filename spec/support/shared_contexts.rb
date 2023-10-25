@@ -10,7 +10,7 @@ RSpec.shared_context 'and I have a form from a model' do
   let(:form) do
     ActionView::Helpers::FormBuilder.new(
       TestModel.model_name.singular,
-      model,
+      test_model,
       view_context,
       {}
     )
