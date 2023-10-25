@@ -11,7 +11,7 @@ require 'action_view'
 require 'ccs/frontend_helpers'
 require 'capybara'
 
-Dir['spec/support/**/*.rb'].sort.each { |f| require f[5..] }
+Dir['spec/support/**/*.rb'].each { |f| require f[5..] }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
