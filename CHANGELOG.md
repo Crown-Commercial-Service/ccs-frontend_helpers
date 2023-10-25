@@ -1,3 +1,7 @@
+## [0.1.1] - 2023-10-25
+
+Fix some bugs with various helpers and update dependencies
+
 ## [0.1.0] - 2023-02-22
 
 Initial release of CCS Frontend Helpers.
