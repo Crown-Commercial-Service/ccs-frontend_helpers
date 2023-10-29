@@ -187,7 +187,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
@@ -267,7 +267,7 @@ DEPENDENCIES
   bundler (~> 2.3)
   capybara (~> 3.39.2)
   ccs-frontend_helpers!
-  rake (~> 13.0)
+  rake (~> 13.1)
   rspec (~> 3.12)
   rubocop (~> 1.57)
   rubocop-rails (~> 2.21)
