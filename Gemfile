@@ -7,7 +7,7 @@ gemspec
 
 # Gems for building the package
 gem 'bundler', '~> 2.3'
-gem 'rake', '~> 13.0'
+gem 'rake', '~> 13.1'
 
 # Gems for testing the package
 gem 'capybara', '~> 3.39.2'
