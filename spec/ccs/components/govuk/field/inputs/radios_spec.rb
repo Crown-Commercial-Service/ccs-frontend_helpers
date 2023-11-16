@@ -543,6 +543,32 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
       end
     end
 
+    context 'when one of the items is checked and the options are booleans' do
+      let(:radio_items) do
+        [
+          {
+            value: true,
+            label: {
+              text: 'Noah'
+            }
+          },
+          {
+            value: false,
+            label: {
+              text: 'N'
+            }
+          }
+        ]
+      end
+
+      before { test_model.ouroboros = true }
+
+      it 'checks the right option' do
+        expect(radio_item_elements.count { |element| element.find('input').checked? }).to eq 1
+        expect(radio_item_elements[0].find('input')).to be_checked
+      end
+    end
+
     context 'when there is a divider' do
       let(:radio_items) do
         [
@@ -838,6 +864,32 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
       it 'checks the right option' do
         expect(radio_item_elements.count { |element| element.find('input').checked? }).to eq 1
         expect(radio_item_elements[2].find('input')).to be_checked
+      end
+    end
+
+    context 'when one of the items is checked and the options are booleans' do
+      let(:radio_items) do
+        [
+          {
+            value: true,
+            label: {
+              text: 'Noah'
+            }
+          },
+          {
+            value: false,
+            label: {
+              text: 'N'
+            }
+          }
+        ]
+      end
+
+      before { test_model.ouroboros = true }
+
+      it 'checks the right option' do
+        expect(radio_item_elements.count { |element| element.find('input').checked? }).to eq 1
+        expect(radio_item_elements[0].find('input')).to be_checked
       end
     end
 

@@ -23,7 +23,7 @@ module CCS
 
             public
 
-            # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+            # rubocop:disable Metrics/CyclomaticComplexity
 
             # @param (see CCS::Components::GovUK::Field::Inputs#initialize)
             # @param radio_items [Array<Hash>] an array of options for the radios.
@@ -35,8 +35,8 @@ module CCS
               super(attribute: attribute, **options)
 
               if @options[:model] || @options[:form]
-                values = (@options[:model] || @options[:form].object).send(attribute) || []
-                radio_items.each { |radio_item| radio_item[:checked] = values.include?(radio_item[:value]) }
+                value = (@options[:model] || @options[:form].object).send(attribute)
+                radio_items.each { |radio_item| radio_item[:checked] = value == radio_item[:value] }
               end
 
               radio_item_class = @options[:form] ? Item::Radio::Form : Inputs::Item::Radio::Tag
@@ -44,7 +44,7 @@ module CCS
               @radio_items = radio_items.map { |radio_item| radio_item[:divider] ? Item::Divider.new(divider: radio_item[:divider], type: 'radios') : radio_item_class.new(attribute: attribute, form: @options[:form], context: @context, **radio_item) }
             end
 
-            # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+            # rubocop:enable Metrics/CyclomaticComplexity
 
             # Generates the HTML for the GOV.UK Radios component
             #
