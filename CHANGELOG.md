@@ -1,4 +1,4 @@
-## Unreleased
+## [0.1.2] - 2023-11-16
 
 Fix issue with radios component which, when passed a model or form, would treat the value as an array.
 This did not cause an issue for strings as the `include?` method still works for them but if the value was a boolean or a number then an error would be thrown.
