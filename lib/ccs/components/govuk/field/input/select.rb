@@ -39,7 +39,7 @@ module CCS
                 [
                   item[:text] || item[:value],
                   item[:value],
-                  (item[:attributes] || {})
+                  item[:attributes] || {}
                 ]
               end
               @selected = @options[:model] ? @options[:model].send(attribute) : selected
