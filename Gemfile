@@ -15,7 +15,7 @@ gem 'rspec', '~> 3.12'
 gem 'simplecov', '~> 0.21'
 
 # Gems for linting/formatting the package
-gem 'rubocop', '~> 1.58'
+gem 'rubocop', '~> 1.59'
 gem 'rubocop-rails', '~> 2.22'
 gem 'rubocop-rake', '~> 0.6'
 gem 'rubocop-rspec', '~> 2.25'
