@@ -161,7 +161,7 @@ RSpec.describe CCS::Components::GovUK::Header do
         end
 
         it 'does not render the service name' do
-          expect(header_content_element).not_to have_css('.govuk-header__service-name')
+          expect(header_content_element).to have_no_css('.govuk-header__service-name')
         end
       end
 

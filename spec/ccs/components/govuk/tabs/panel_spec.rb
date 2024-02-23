@@ -78,7 +78,7 @@ RSpec.describe CCS::Components::GovUK::Tabs::Panel do
       let(:text) { "Eunie's the boss" }
 
       it 'renders the content only' do
-        expect(tabs_panel_element).not_to have_css('p.govuk-body', text: "Eunie's the boss")
+        expect(tabs_panel_element).to have_no_css('p.govuk-body', text: "Eunie's the boss")
         expect(tabs_panel_element).to have_css('div.my-random-content', text: 'Eunie is apparently, and these are her words not mine, "the boss"')
       end
     end

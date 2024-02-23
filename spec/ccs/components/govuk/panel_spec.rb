@@ -115,7 +115,7 @@ RSpec.describe CCS::Components::GovUK::Panel do
       let(:govuk_panel) { described_class.new(title_text: title_text, context: view_context, **options) }
 
       it 'does not render any panel body' do
-        expect(panel_element).not_to have_css('div.govuk-panel__body')
+        expect(panel_element).to have_no_css('div.govuk-panel__body')
       end
     end
   end

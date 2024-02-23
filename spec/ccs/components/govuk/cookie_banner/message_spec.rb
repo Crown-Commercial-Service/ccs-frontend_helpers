@@ -115,7 +115,7 @@ RSpec.describe CCS::Components::GovUK::CookieBanner::Message do
       let(:text) { 'Here is the text' }
 
       it 'renders the content only' do
-        expect(cookie_banner_messages_element).not_to have_css('p.govuk-body', text: 'Here is the text')
+        expect(cookie_banner_messages_element).to have_no_css('p.govuk-body', text: 'Here is the text')
         expect(cookie_banner_messages_element).to have_css('div.my-random-content', text: 'Here is the content')
       end
     end

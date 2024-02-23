@@ -133,7 +133,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
       let(:pagination_next) { nil }
 
       it 'does not render the next element' do
-        expect(pagination_section).not_to have_css('div.govuk-pagination__next')
+        expect(pagination_section).to have_no_css('div.govuk-pagination__next')
       end
     end
 
@@ -141,7 +141,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
       let(:pagination_previous) { nil }
 
       it 'does not render the next element' do
-        expect(pagination_section).not_to have_css('div.govuk-pagination__previous')
+        expect(pagination_section).to have_no_css('div.govuk-pagination__previous')
       end
     end
 
@@ -268,7 +268,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
       let(:pagination_next) { nil }
 
       it 'does not render the next element' do
-        expect(pagination_section).not_to have_css('div.govuk-pagination__next')
+        expect(pagination_section).to have_no_css('div.govuk-pagination__next')
       end
     end
 
@@ -276,7 +276,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
       let(:pagination_previous) { nil }
 
       it 'does not render the next element' do
-        expect(pagination_section).not_to have_css('div.govuk-pagination__previous')
+        expect(pagination_section).to have_no_css('div.govuk-pagination__previous')
       end
     end
 
