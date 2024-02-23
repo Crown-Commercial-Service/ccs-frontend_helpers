@@ -11,7 +11,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
   let(:hint_element) { Capybara::Node::Simple.new(result).find('div.govuk-form-group > div.govuk-hint') }
   let(:error_message_element) { Capybara::Node::Simple.new(result).find('p.govuk-error-message') }
   let(:textarea_element) { Capybara::Node::Simple.new(result).find('textarea.govuk-textarea') }
-  let(:fallback_hint_element) { Capybara::Node::Simple.new(result).find('div.govuk-character-count__message') }
+  let(:textarea_description_element) { Capybara::Node::Simple.new(result).find('div.govuk-character-count__message') }
 
   let(:result) { govuk_character_count.render }
 
@@ -78,31 +78,42 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
     end
 
     context 'when some options are not passed' do
-      let(:govuk_character_count) { described_class.new(attribute: attribute, character_count_options: character_count_options, context: view_context, **options) }
+      let(:govuk_character_count) { described_class.new(attribute: attribute, context: view_context, **options) }
 
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with character count around the textarea form' do
-        expect(character_count_element.to_html).to eq(default_html)
+        expect(character_count_element.to_html).to eq('
+          <div class="govuk-character-count" data-module="govuk-character-count">
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+            </div>
+            <div id="ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
+          </div>
+        '.to_one_line)
       end
     end
 
     context 'when max words is provided for the character count options' do
       let(:character_count_options) { { maxwords: 150 } }
 
-      it 'has the max words data attribute and the text for the fallback hint is updated' do
+      it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
     context 'when max words is provided along with maxlength for the character count options' do
       let(:character_count_options) { super().merge({ maxwords: 150 }) }
 
-      it 'has the max length and words data attribute but the fallback hint uses max words' do
+      it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
@@ -115,19 +126,70 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
     end
 
-    context 'when there is a fallback hint' do
-      let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters' } }) }
+    context 'when translation options are provided for the character count options' do
+      let(:character_count_options) do
+        super().merge(
+          {
+            characters_under_limit: {
+              other: 'characters_under_limit_other',
+              one: 'characters_under_limit_one',
+            },
+            characters_at_limit_text: 'characters_at_limit_text',
+            characters_over_limit: {
+              other: 'characters_over_limit_other',
+              one: 'characters_over_limit_one',
+            },
+            words_under_limit: {
+              other: 'words_under_limit_other',
+              one: 'words_under_limit_one',
+            },
+            words_at_limit_text: 'words_at_limit_text',
+            words_over_limit: {
+              other: 'words_over_limit_other',
+              one: 'words_over_limit_one',
+            },
+          }
+        )
+      end
 
-      it 'uses the custom fallback hint message' do
-        expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
+      # rubocop:disable RSpec/MultipleExpectations
+      it 'has the translations as data attributes' do
+        expect(character_count_element[:'data-i18n.characters-under-limit.other']).to eq('characters_under_limit_other')
+        expect(character_count_element[:'data-i18n.characters-under-limit.one']).to eq('characters_under_limit_one')
+        expect(character_count_element[:'data-i18n.characters-at-limit']).to eq('characters_at_limit_text')
+        expect(character_count_element[:'data-i18n.characters-over-limit.other']).to eq('characters_over_limit_other')
+        expect(character_count_element[:'data-i18n.characters-over-limit.one']).to eq('characters_over_limit_one')
+        expect(character_count_element[:'data-i18n.words-under-limit.other']).to eq('words_under_limit_other')
+        expect(character_count_element[:'data-i18n.words-under-limit.one']).to eq('words_under_limit_one')
+        expect(character_count_element[:'data-i18n.words-at-limit']).to eq('words_at_limit_text')
+        expect(character_count_element[:'data-i18n.words-over-limit.other']).to eq('words_over_limit_other')
+        expect(character_count_element[:'data-i18n.words-over-limit.one']).to eq('words_over_limit_one')
+      end
+      # rubocop:enable RSpec/MultipleExpectations
+    end
+
+    context 'when there is a textarea description' do
+      let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
+
+      it 'uses the custom textarea description message' do
+        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
-        let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-fallback-hint-class' } }) }
+        let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
-        it 'has the custom classes for the fallback hint' do
-          expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
-          expect(fallback_hint_element[:class]).to eq('govuk-hint extra-fallback-hint-class govuk-character-count__message')
+        it 'has the custom classes for the textarea description' do
+          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
+        end
+      end
+
+      context 'and there is no maxlength or maxwords' do
+        let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
+
+        it 'has no message but does have the data attribute' do
+          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
     end
@@ -141,7 +203,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         it 'has the custom classes' do
           expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
-          expect(textarea_element[:class]).to eq('govuk-textarea my-custom-textarea-class govuk-js-character-count')
+          expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
       end
 
@@ -253,8 +315,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   Explain why they are your favourite character
                 </label>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
                 </textarea>
@@ -290,8 +351,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   For example, is it their combat, or their style?
                 </div>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
                 </textarea>
@@ -341,29 +401,42 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
     end
 
     context 'when some options are not passed' do
+      let(:govuk_character_count) { described_class.new(attribute: attribute, model: test_model, context: view_context, **options) }
+
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with character count around the textarea form' do
-        expect(character_count_element.to_html).to eq(default_html)
+        expect(character_count_element.to_html).to eq('
+          <div class="govuk-character-count" data-module="govuk-character-count">
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+            </div>
+            <div id="ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
+          </div>
+        '.to_one_line)
       end
     end
 
     context 'when max words is provided for the character count options' do
       let(:character_count_options) { { maxwords: 150 } }
 
-      it 'has the max words data attribute and the text for the fallback hint is updated' do
+      it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
     context 'when max words is provided along with maxlength for the character count options' do
       let(:character_count_options) { super().merge({ maxwords: 150 }) }
 
-      it 'has the max length and words data attribute but the fallback hint uses max words' do
+      it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
@@ -376,19 +449,70 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
     end
 
-    context 'when there is a fallback hint' do
-      let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters' } }) }
+    context 'when translation options are provided for the character count options' do
+      let(:character_count_options) do
+        super().merge(
+          {
+            characters_under_limit: {
+              other: 'characters_under_limit_other',
+              one: 'characters_under_limit_one',
+            },
+            characters_at_limit_text: 'characters_at_limit_text',
+            characters_over_limit: {
+              other: 'characters_over_limit_other',
+              one: 'characters_over_limit_one',
+            },
+            words_under_limit: {
+              other: 'words_under_limit_other',
+              one: 'words_under_limit_one',
+            },
+            words_at_limit_text: 'words_at_limit_text',
+            words_over_limit: {
+              other: 'words_over_limit_other',
+              one: 'words_over_limit_one',
+            },
+          }
+        )
+      end
 
-      it 'uses the custom fallback hint message' do
-        expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
+      # rubocop:disable RSpec/MultipleExpectations
+      it 'has the translations as data attributes' do
+        expect(character_count_element[:'data-i18n.characters-under-limit.other']).to eq('characters_under_limit_other')
+        expect(character_count_element[:'data-i18n.characters-under-limit.one']).to eq('characters_under_limit_one')
+        expect(character_count_element[:'data-i18n.characters-at-limit']).to eq('characters_at_limit_text')
+        expect(character_count_element[:'data-i18n.characters-over-limit.other']).to eq('characters_over_limit_other')
+        expect(character_count_element[:'data-i18n.characters-over-limit.one']).to eq('characters_over_limit_one')
+        expect(character_count_element[:'data-i18n.words-under-limit.other']).to eq('words_under_limit_other')
+        expect(character_count_element[:'data-i18n.words-under-limit.one']).to eq('words_under_limit_one')
+        expect(character_count_element[:'data-i18n.words-at-limit']).to eq('words_at_limit_text')
+        expect(character_count_element[:'data-i18n.words-over-limit.other']).to eq('words_over_limit_other')
+        expect(character_count_element[:'data-i18n.words-over-limit.one']).to eq('words_over_limit_one')
+      end
+      # rubocop:enable RSpec/MultipleExpectations
+    end
+
+    context 'when there is a textarea description' do
+      let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
+
+      it 'uses the custom textarea description message' do
+        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
-        let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-fallback-hint-class' } }) }
+        let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
-        it 'has the custom classes for the fallback hint' do
-          expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
-          expect(fallback_hint_element[:class]).to eq('govuk-hint extra-fallback-hint-class govuk-character-count__message')
+        it 'has the custom classes for the textarea description' do
+          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
+        end
+      end
+
+      context 'and there is no maxlength or maxwords' do
+        let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
+
+        it 'has no message but does have the data attribute' do
+          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
     end
@@ -410,7 +534,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         it 'has the custom classes' do
           expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
-          expect(textarea_element[:class]).to eq('govuk-textarea my-custom-textarea-class govuk-js-character-count')
+          expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
       end
 
@@ -514,8 +638,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   Explain why they are your favourite character
                 </label>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
                 </textarea>
@@ -552,8 +675,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   For example, is it their combat, or their style?
                 </div>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
                 </textarea>
@@ -605,29 +727,42 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
     end
 
     context 'when some options are not passed' do
+      let(:govuk_character_count) { described_class.new(attribute: attribute, form: form, context: view_context, **options) }
+
       let(:options) { minimum_options }
 
       it 'correctly formats the HTML with character count around the textarea form' do
-        expect(character_count_element.to_html).to eq(default_html)
+        expect(character_count_element.to_html).to eq('
+          <div class="govuk-character-count" data-module="govuk-character-count">
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+            </div>
+            <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
+          </div>
+        '.to_one_line)
       end
     end
 
     context 'when max words is provided for the character count options' do
       let(:character_count_options) { { maxwords: 150 } }
 
-      it 'has the max words data attribute and the text for the fallback hint is updated' do
+      it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
     context 'when max words is provided along with maxlength for the character count options' do
       let(:character_count_options) { super().merge({ maxwords: 150 }) }
 
-      it 'has the max length and words data attribute but the fallback hint uses max words' do
+      it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(fallback_hint_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_content('You can enter up to 150 words')
       end
     end
 
@@ -640,19 +775,70 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
     end
 
-    context 'when there is a fallback hint' do
-      let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters' } }) }
+    context 'when translation options are provided for the character count options' do
+      let(:character_count_options) do
+        super().merge(
+          {
+            characters_under_limit: {
+              other: 'characters_under_limit_other',
+              one: 'characters_under_limit_one',
+            },
+            characters_at_limit_text: 'characters_at_limit_text',
+            characters_over_limit: {
+              other: 'characters_over_limit_other',
+              one: 'characters_over_limit_one',
+            },
+            words_under_limit: {
+              other: 'words_under_limit_other',
+              one: 'words_under_limit_one',
+            },
+            words_at_limit_text: 'words_at_limit_text',
+            words_over_limit: {
+              other: 'words_over_limit_other',
+              one: 'words_over_limit_one',
+            },
+          }
+        )
+      end
 
-      it 'uses the custom fallback hint message' do
-        expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
+      # rubocop:disable RSpec/MultipleExpectations
+      it 'has the translations as data attributes' do
+        expect(character_count_element[:'data-i18n.characters-under-limit.other']).to eq('characters_under_limit_other')
+        expect(character_count_element[:'data-i18n.characters-under-limit.one']).to eq('characters_under_limit_one')
+        expect(character_count_element[:'data-i18n.characters-at-limit']).to eq('characters_at_limit_text')
+        expect(character_count_element[:'data-i18n.characters-over-limit.other']).to eq('characters_over_limit_other')
+        expect(character_count_element[:'data-i18n.characters-over-limit.one']).to eq('characters_over_limit_one')
+        expect(character_count_element[:'data-i18n.words-under-limit.other']).to eq('words_under_limit_other')
+        expect(character_count_element[:'data-i18n.words-under-limit.one']).to eq('words_under_limit_one')
+        expect(character_count_element[:'data-i18n.words-at-limit']).to eq('words_at_limit_text')
+        expect(character_count_element[:'data-i18n.words-over-limit.other']).to eq('words_over_limit_other')
+        expect(character_count_element[:'data-i18n.words-over-limit.one']).to eq('words_over_limit_one')
+      end
+      # rubocop:enable RSpec/MultipleExpectations
+    end
+
+    context 'when there is a textarea description' do
+      let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
+
+      it 'uses the custom textarea description message' do
+        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
-        let(:character_count_options) { super().merge({ fallback_hint: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-fallback-hint-class' } }) }
+        let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
-        it 'has the custom classes for the fallback hint' do
-          expect(fallback_hint_element).to have_content('Enter no more than 200 characters')
-          expect(fallback_hint_element[:class]).to eq('govuk-hint extra-fallback-hint-class govuk-character-count__message')
+        it 'has the custom classes for the textarea description' do
+          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
+        end
+      end
+
+      context 'and there is no maxlength or maxwords' do
+        let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
+
+        it 'has no message but does have the data attribute' do
+          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
     end
@@ -674,7 +860,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         it 'has the custom classes' do
           expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
-          expect(textarea_element[:class]).to eq('govuk-textarea my-custom-textarea-class govuk-js-character-count')
+          expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
       end
 
@@ -778,8 +964,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   Explain why they are your favourite character
                 </label>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea aria-describedby="test_model_ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
                 </textarea>
@@ -816,8 +1001,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
                   For example, is it their combat, or their style?
                 </div>
                 <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error: </span>
-                  You must enter your favourite character
+                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
                 </p>
                 <textarea aria-describedby="test_model_ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
                 </textarea>

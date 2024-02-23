@@ -41,7 +41,7 @@ module CCS
         def render
           tag.fieldset(**options[:attributes]) do
             concat(legend.render) if legend
-            yield
+            yield if block_given?
           end
         end
 

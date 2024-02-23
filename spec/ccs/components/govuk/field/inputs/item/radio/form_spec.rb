@@ -6,6 +6,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
   include_context 'and I have a view context'
 
   let(:radio_item_element) { Capybara::Node::Simple.new(result).find('div.govuk-radios__item') }
+  let(:radio_item_conditional_element) { Capybara::Node::Simple.new(result).find('body') }
   let(:radio_item_input_element) { radio_item_element.find('input') }
   let(:radio_item_label_element) { radio_item_element.find('label') }
 
@@ -158,16 +159,18 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
       let(:conditional_options) { {} }
 
       it 'correctly formats the HTML with the conditional item' do
-        expect(radio_item_element.to_html).to eq('
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" data-aria-controls="ouroboros_eunie_conditional" type="radio" value="eunie" name="test_model[ouroboros]" id="test_model_ouroboros_eunie">
-            <label class="govuk-label govuk-radios__label" for="test_model_ouroboros_eunie">
-              Eunie
-            </label>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="ouroboros_eunie_conditional">
+        expect(radio_item_conditional_element.to_html).to eq('
+          <body>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" data-aria-controls="conditional-ouroboros_eunie" type="radio" value="eunie" name="test_model[ouroboros]" id="test_model_ouroboros_eunie">
+              <label class="govuk-label govuk-radios__label" for="test_model_ouroboros_eunie">
+                Eunie
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ouroboros_eunie">
               Hello there!
             </div>
-          </div>
+          </body>
         '.to_one_line)
       end
 
@@ -175,7 +178,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
         let(:options) { { checked: true } }
 
         it 'does not hide the conditional content' do
-          expect(radio_item_element.find_by_id('ouroboros_eunie_conditional')[:class]).to eq('govuk-radios__conditional')
+          expect(radio_item_conditional_element.find_by_id('conditional-ouroboros_eunie')[:class]).to eq('govuk-radios__conditional')
         end
       end
 
@@ -184,7 +187,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
 
         it 'has the custom id' do
           expect(radio_item_input_element[:'data-aria-controls']).to eq('my-custom-conditional-id')
-          expect(radio_item_element.find('div')[:id]).to eq('my-custom-conditional-id')
+          expect(radio_item_conditional_element.find('div.govuk-radios__conditional')[:id]).to eq('my-custom-conditional-id')
         end
       end
 
@@ -193,7 +196,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Radio::Form do
 
         it 'has the both data attributes on the input' do
           expect(radio_item_input_element[:'data-test']).to eq('data-test')
-          expect(radio_item_input_element[:'data-aria-controls']).to eq('ouroboros_eunie_conditional')
+          expect(radio_item_input_element[:'data-aria-controls']).to eq('conditional-ouroboros_eunie')
         end
       end
     end

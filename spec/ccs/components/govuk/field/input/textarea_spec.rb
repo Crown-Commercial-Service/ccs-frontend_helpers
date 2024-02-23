@@ -192,8 +192,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               Explain why they are your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea name="ouroboros" id="ouroboros" class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-error" rows="5">
             </textarea>
@@ -224,8 +223,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               For example, is it their combat, or their style?
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea name="ouroboros" id="ouroboros" class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-hint ouroboros-error" rows="5">
             </textarea>
@@ -386,8 +384,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               Explain why they are your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea name="ouroboros" id="ouroboros" class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-error" rows="5">
             </textarea>
@@ -419,8 +416,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               For example, is it their combat, or their style?
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea name="ouroboros" id="ouroboros" class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-hint ouroboros-error" rows="5">
             </textarea>
@@ -583,8 +579,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               Explain why they are your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
             </textarea>
@@ -616,8 +611,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
               For example, is it their combat, or their style?
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <textarea class="govuk-textarea govuk-textarea--error" aria-describedby="ouroboros-hint ouroboros-error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
             </textarea>

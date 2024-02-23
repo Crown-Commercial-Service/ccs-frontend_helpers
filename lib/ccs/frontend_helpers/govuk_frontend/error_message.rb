@@ -19,7 +19,7 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ErrorMessage#render)
 
-        def govuk_error_message(error_message, attribute, **options)
+        def govuk_error_message(error_message, attribute = nil, **options)
           Components::GovUK::ErrorMessage.new(context: self, message: error_message, attribute: attribute, **options).render
         end
 

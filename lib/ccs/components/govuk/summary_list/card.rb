@@ -34,7 +34,7 @@ module CCS
             super(**options)
 
             @title = Title.new(context: @context, **title) if title
-            @actions = Actions.new(context: @context, **actions) if actions
+            @actions = Actions.new(context: @context, card_title: title&.dig(:text), **actions) if actions
           end
 
           # Generates the HTML for the GOV.UK Summary card

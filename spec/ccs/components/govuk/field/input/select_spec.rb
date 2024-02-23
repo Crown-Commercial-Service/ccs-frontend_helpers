@@ -155,6 +155,92 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
       end
     end
 
+    context 'when the text is nil' do
+      let(:select_items) do
+        [
+          {
+            value: 'noah',
+          },
+          {
+            value: 'mio',
+          },
+          {
+            value: 'eunie',
+          },
+          {
+            value: 'taion',
+          },
+          {
+            value: 'lanz',
+          },
+          {
+            value: 'sena',
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with value as the text' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Select your favourite characters
+            </label>
+            <select name="ouroboros" id="ouroboros" class="govuk-select">
+              <option value="noah">noah</option>
+              <option value="mio">mio</option>
+              <option value="eunie">eunie</option>
+              <option value="taion">taion</option>
+              <option value="lanz">lanz</option>
+              <option value="sena">sena</option>
+            </select>
+          </div>
+        '.to_one_line)
+      end
+    end
+
+    context 'when the value is nil' do
+      let(:select_items) do
+        [
+          {
+            text: 'Noah'
+          },
+          {
+            text: 'Mio'
+          },
+          {
+            text: 'Eunie'
+          },
+          {
+            text: 'Taion'
+          },
+          {
+            text: 'Lanz'
+          },
+          {
+            text: 'Sena'
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with text as the value' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Select your favourite characters
+            </label>
+            <select name="ouroboros" id="ouroboros" class="govuk-select">
+              <option value="Noah">Noah</option>
+              <option value="Mio">Mio</option>
+              <option value="Eunie">Eunie</option>
+              <option value="Taion">Taion</option>
+              <option value="Lanz">Lanz</option>
+              <option value="Sena">Sena</option>
+            </select>
+          </div>
+        '.to_one_line)
+      end
+    end
+
     context 'when there is a prompt' do
       let(:select_options) { { attributes: { prompt: 'Come on, who else?' } } }
 
@@ -269,8 +355,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Select your favourite characters
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select name="ouroboros" id="ouroboros" class="govuk-select govuk-select--error" aria-describedby="ouroboros-error">
               <option value="noah">Noah</option>
@@ -307,8 +392,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select name="ouroboros" id="ouroboros" class="govuk-select govuk-select--error" aria-describedby="ouroboros-hint ouroboros-error">
               <option value="noah">Noah</option>
@@ -406,6 +490,92 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
         expect(select_element[:multiple]).to eq('multiple')
         expect(select_element[:'aria-describedby']).to eq('some-id')
         expect(select_element[:'data-test']).to eq('my data value')
+      end
+    end
+
+    context 'when the text is nil' do
+      let(:select_items) do
+        [
+          {
+            value: 'noah',
+          },
+          {
+            value: 'mio',
+          },
+          {
+            value: 'eunie',
+          },
+          {
+            value: 'taion',
+          },
+          {
+            value: 'lanz',
+          },
+          {
+            value: 'sena',
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with value as the text' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Select your favourite characters
+            </label>
+            <select name="ouroboros" id="ouroboros" class="govuk-select">
+              <option value="noah">noah</option>
+              <option value="mio">mio</option>
+              <option value="eunie">eunie</option>
+              <option value="taion">taion</option>
+              <option value="lanz">lanz</option>
+              <option value="sena">sena</option>
+            </select>
+          </div>
+        '.to_one_line)
+      end
+    end
+
+    context 'when the value is nil' do
+      let(:select_items) do
+        [
+          {
+            text: 'Noah'
+          },
+          {
+            text: 'Mio'
+          },
+          {
+            text: 'Eunie'
+          },
+          {
+            text: 'Taion'
+          },
+          {
+            text: 'Lanz'
+          },
+          {
+            text: 'Sena'
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with text as the value' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Select your favourite characters
+            </label>
+            <select name="ouroboros" id="ouroboros" class="govuk-select">
+              <option value="Noah">Noah</option>
+              <option value="Mio">Mio</option>
+              <option value="Eunie">Eunie</option>
+              <option value="Taion">Taion</option>
+              <option value="Lanz">Lanz</option>
+              <option value="Sena">Sena</option>
+            </select>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -523,8 +693,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Select your favourite characters
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select name="ouroboros" id="ouroboros" class="govuk-select govuk-select--error" aria-describedby="ouroboros-error">
               <option value="noah">Noah</option>
@@ -562,8 +731,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select name="ouroboros" id="ouroboros" class="govuk-select govuk-select--error" aria-describedby="ouroboros-hint ouroboros-error">
               <option value="noah">Noah</option>
@@ -663,6 +831,92 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
         expect(select_element[:multiple]).to eq('multiple')
         expect(select_element[:'aria-describedby']).to eq('some-id')
         expect(select_element[:'data-test']).to eq('my data value')
+      end
+    end
+
+    context 'when the text is nil' do
+      let(:select_items) do
+        [
+          {
+            value: 'noah',
+          },
+          {
+            value: 'mio',
+          },
+          {
+            value: 'eunie',
+          },
+          {
+            value: 'taion',
+          },
+          {
+            value: 'lanz',
+          },
+          {
+            value: 'sena',
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with value as the text' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="test_model_ouroboros">
+              Select your favourite characters
+            </label>
+            <select class="govuk-select" name="test_model[ouroboros]" id="test_model_ouroboros">
+              <option value="noah">noah</option>
+              <option value="mio">mio</option>
+              <option value="eunie">eunie</option>
+              <option value="taion">taion</option>
+              <option value="lanz">lanz</option>
+              <option value="sena">sena</option>
+            </select>
+          </div>
+        '.to_one_line)
+      end
+    end
+
+    context 'when the value is nil' do
+      let(:select_items) do
+        [
+          {
+            text: 'Noah'
+          },
+          {
+            text: 'Mio'
+          },
+          {
+            text: 'Eunie'
+          },
+          {
+            text: 'Taion'
+          },
+          {
+            text: 'Lanz'
+          },
+          {
+            text: 'Sena'
+          }
+        ]
+      end
+
+      it 'correctly formats the HTML with text as the value' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="test_model_ouroboros">
+              Select your favourite characters
+            </label>
+            <select class="govuk-select" name="test_model[ouroboros]" id="test_model_ouroboros">
+              <option value="Noah">Noah</option>
+              <option value="Mio">Mio</option>
+              <option value="Eunie">Eunie</option>
+              <option value="Taion">Taion</option>
+              <option value="Lanz">Lanz</option>
+              <option value="Sena">Sena</option>
+            </select>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -780,8 +1034,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Select your favourite characters
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select class="govuk-select govuk-select--error" aria-describedby="ouroboros-error" name="test_model[ouroboros]" id="test_model_ouroboros">
               <option value="noah">Noah</option>
@@ -819,8 +1072,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Select do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must select your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must select your favourite character
             </p>
             <select class="govuk-select govuk-select--error" aria-describedby="ouroboros-hint ouroboros-error" name="test_model[ouroboros]" id="test_model_ouroboros">
               <option value="noah">Noah</option>

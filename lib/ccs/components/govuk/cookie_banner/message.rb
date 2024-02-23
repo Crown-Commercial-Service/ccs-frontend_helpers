@@ -56,7 +56,7 @@ module CCS
                 tag.div(class: 'govuk-grid-column-two-thirds') do
                   concat(tag.h2(heading_text, class: 'govuk-cookie-banner__heading govuk-heading-m')) if heading_text
                   concat(tag.div(class: 'govuk-cookie-banner__content') do
-                    content || tag.p(text, class: 'govuk-body')
+                    content || tag.p(text, class: 'govuk-body') if content || text
                   end)
                 end
               end)

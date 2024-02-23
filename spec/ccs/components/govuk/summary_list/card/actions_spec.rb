@@ -8,7 +8,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
   let(:summary_card_actions_element) { Capybara::Node::Simple.new(result).find('.govuk-summary-card__actions') }
 
   describe '.render' do
-    let(:govuk_summary_card_actions) { described_class.new(items: items, context: view_context, **options) }
+    let(:govuk_summary_card_actions) { described_class.new(items: items, card_title: card_title, context: view_context, **options) }
     let(:result) { govuk_summary_card_actions.render }
 
     let(:items) do
@@ -19,6 +19,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
         }
       ]
     end
+    let(:card_title) { 'Ouroboros members' }
     let(:options) { {} }
 
     context 'when there is one item' do
@@ -26,7 +27,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
         '
           <div class="govuk-summary-card__actions">
             <a class="govuk-link" href="/delete-member">
-              Delete memebr
+              Delete memebr<span class="govuk-visually-hidden"> (Ouroboros members)</span>
             </a>
           </div>
         '.to_one_line
@@ -39,7 +40,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
       end
 
       context 'when the no options are sent' do
-        let(:govuk_summary_card_actions) { described_class.new(items: items, context: view_context) }
+        let(:govuk_summary_card_actions) { described_class.new(items: items, card_title: card_title, context: view_context) }
 
         it 'correctly formats the HTML with the summary card action link' do
           expect(summary_card_actions_element.to_html).to eq(default_html)
@@ -66,12 +67,12 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
               <a class="govuk-link" href="/delete-member">
-                Delete memebr
+                Delete memebr<span class="govuk-visually-hidden"> (Ouroboros members)</span>
               </a>
             </li>
             <li class="govuk-summary-card__action">
               <a class="govuk-link" href="/disable-member">
-              Disable memebr
+                Disable memebr<span class="govuk-visually-hidden"> (Ouroboros members)</span>
               </a>
             </li>
           </ul>
@@ -85,7 +86,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Card::Actions do
       end
 
       context 'when the no options are sent' do
-        let(:govuk_summary_card_actions) { described_class.new(items: items, context: view_context) }
+        let(:govuk_summary_card_actions) { described_class.new(items: items, card_title: card_title, context: view_context) }
 
         it 'correctly formats the HTML with the summary card action links in a list' do
           expect(summary_card_actions_element.to_html).to eq(default_html)

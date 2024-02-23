@@ -6,6 +6,17 @@ RSpec.shared_context 'and I have a view context from self' do
   let(:view_context) { self }
 end
 
+RSpec.shared_context 'and I have loaded the fixture' do
+  let(:fixture) { FixturesLoader.get_fixture(component_name, fixture_name) }
+  let(:fixture_options) { fixture[:options] }
+  let(:fixture_html) { fixture[:html].to_one_line }
+end
+
+RSpec.shared_context 'and I am using a field fixture' do
+  # We automatically add an ID for the fromgroup in our helper
+  let(:fixture_html) { fixture[:html].to_one_line.sub('<div class="govuk-form-group', "<div id=\"#{fixture_options[:name]}-form-group\" class=\"govuk-form-group") }
+end
+
 RSpec.shared_context 'and I have a form from a model' do
   let(:form) do
     ActionView::Helpers::FormBuilder.new(

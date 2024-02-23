@@ -19,7 +19,7 @@ RSpec.describe CCS::Components::GovUK::WarningText do
         <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
-            <span class="govuk-warning-text__assistive">Warning</span>
+            <span class="govuk-visually-hidden">Warning</span>
             You cannot go beyond here
           </strong>
         </div>
@@ -56,7 +56,7 @@ RSpec.describe CCS::Components::GovUK::WarningText do
             <div class="govuk-warning-text">
               <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
               <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
+                <span class="govuk-visually-hidden">Warning</span>
                 <span>You cannot go beyond here.</span>
                 <span>And we mean it this time!</span>
               </strong>
@@ -70,7 +70,7 @@ RSpec.describe CCS::Components::GovUK::WarningText do
       let(:options) { { icon_fallback_text: 'Do not worry' } }
 
       it 'has the custom icon fallback text' do
-        expect(warning_text_element).to have_css('span.govuk-warning-text__assistive', text: 'Do not worry')
+        expect(warning_text_element).to have_css('span.govuk-visually-hidden', text: 'Do not worry')
       end
     end
 

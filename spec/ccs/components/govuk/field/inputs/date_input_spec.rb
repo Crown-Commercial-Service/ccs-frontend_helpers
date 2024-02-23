@@ -26,15 +26,6 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       }.merge(fieldset_options)
     }.merge(date_input_options)
   end
-  let(:minimum_options) do
-    {
-      fieldset: {
-        legend: {
-          text: 'When did you buy Xenoblade Chronicles 3?',
-        }
-      }
-    }
-  end
   let(:options_with_hint) do
     {
       form_group: form_group_options,
@@ -117,10 +108,39 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
     context 'when some options are not passed' do
       let(:govuk_date_input) { described_class.new(attribute: attribute, context: view_context, **options) }
 
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
       it 'correctly formats the HTML with date input in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="xenoblade_chronicles_3-form-group">
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_month-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_month">
+                    Month
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_month" id="xenoblade_chronicles_3_month" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_year-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_year">
+                    Year
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_year" id="xenoblade_chronicles_3_year" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-4">
+                </div>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -264,8 +284,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 When did you buy Xenoblade Chronicles 3?
               </legend>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">
@@ -307,8 +326,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 This is when the money went out of your account
               </div>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">
@@ -383,10 +401,39 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
     end
 
     context 'when some options are not passed' do
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
       it 'correctly formats the HTML with date input in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="xenoblade_chronicles_3-form-group">
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_month-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_month">
+                    Month
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_month" id="xenoblade_chronicles_3_month" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_year-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_year">
+                    Year
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_year" id="xenoblade_chronicles_3_year" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-4">
+                </div>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -531,8 +578,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 When did you buy Xenoblade Chronicles 3?
               </legend>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">
@@ -575,8 +621,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 This is when the money went out of your account
               </div>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">
@@ -653,10 +698,39 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
     end
 
     context 'when some options are not passed' do
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
       it 'correctly formats the HTML with date input in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="xenoblade_chronicles_3-form-group">
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2" type="text" name="test_model[xenoblade_chronicles_3_day]" id="test_model_xenoblade_chronicles_3_day">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_month-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_month">
+                    Month
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2" type="text" name="test_model[xenoblade_chronicles_3_month]" id="test_model_xenoblade_chronicles_3_month">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_year-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_year">
+                    Year
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-4" type="text" name="test_model[xenoblade_chronicles_3_year]" id="test_model_xenoblade_chronicles_3_year">
+                </div>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -801,8 +875,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 When did you buy Xenoblade Chronicles 3?
               </legend>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">
@@ -845,8 +918,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
                 This is when the money went out of your account
               </div>
               <p class="govuk-error-message" id="xenoblade_chronicles_3-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must enter the date
+                <span class="govuk-visually-hidden">Error:</span> You must enter the date
               </p>
               <div class="govuk-date-input">
                 <div class="govuk-date-input__item">

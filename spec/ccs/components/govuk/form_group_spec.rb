@@ -26,8 +26,7 @@ RSpec.describe CCS::Components::GovUK::FormGroup do
         <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
           <label for="ouroboros">Ouroboros</label>
           <p class="govuk-error-message" id="ouroboros-error">
-            <span class="govuk-visually-hidden">Error: </span>
-            There is an enemy in our path
+            <span class="govuk-visually-hidden">Error:</span> There is an enemy in our path
           </p>
           <input id="ouroboros">
         </div>

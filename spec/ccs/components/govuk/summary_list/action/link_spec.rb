@@ -8,12 +8,13 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Action::Link do
   let(:summary_list_action_link_element) { Capybara::Node::Simple.new(result).find('a') }
 
   describe '.render' do
-    let(:govuk_summary_list_action_link) { described_class.new(text: text, href: href, visually_hidden_text: visually_hidden_text, context: view_context, **options) }
+    let(:govuk_summary_list_action_link) { described_class.new(text: text, href: href, visually_hidden_text: visually_hidden_text, card_title: card_title, context: view_context, **options) }
     let(:result) { govuk_summary_list_action_link.render }
 
     let(:text) { 'Change' }
     let(:href) { '/change-name' }
     let(:visually_hidden_text) { nil }
+    let(:card_title) { nil }
     let(:options) { {} }
 
     let(:default_html) { '<a class="govuk-link" href="/change-name">Change</a>' }
@@ -57,15 +58,37 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Action::Link do
     end
 
     context 'when there is visually hidden text' do
-      let(:options) { { visually_hidden_text: 'name' } }
+      let(:visually_hidden_text) { 'name' }
 
       it 'has the visually hidden text' do
         expect(summary_list_action_link_element.to_html).to eq('
           <a class="govuk-link" href="/change-name">
-            Change
-            <span class="govuk-visually-hidden">
-              name
-            </span>
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        '.to_one_line)
+      end
+    end
+
+    context 'when there is a card title' do
+      let(:card_title) { 'Ouroboros members' }
+
+      it 'has the visually hidden text' do
+        expect(summary_list_action_link_element.to_html).to eq('
+          <a class="govuk-link" href="/change-name">
+            Change<span class="govuk-visually-hidden"> (Ouroboros members)</span>
+          </a>
+        '.to_one_line)
+      end
+    end
+
+    context 'when there is visually hidden text and a card title' do
+      let(:visually_hidden_text) { 'name' }
+      let(:card_title) { 'Ouroboros members' }
+
+      it 'has the visually hidden text' do
+        expect(summary_list_action_link_element.to_html).to eq('
+          <a class="govuk-link" href="/change-name">
+            Change<span class="govuk-visually-hidden"> name (Ouroboros members)</span>
           </a>
         '.to_one_line)
       end

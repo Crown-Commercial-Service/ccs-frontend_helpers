@@ -20,10 +20,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+
+    - name: Fetch the GOV.UK Frontend fixtures
+      run: yarn install
+
     - name: Run the default task
       run: bundle exec rake

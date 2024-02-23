@@ -17,21 +17,9 @@ module CCS
               # @option (see CCS::Components::GovUK::Field::Items::Item#initialize))
 
               def initialize(attribute:, label:, **options)
-                super(attribute: attribute, **options)
+                super(attribute: attribute, item_class: 'govuk-checkboxes__item', **options)
 
                 label[:classes] = "govuk-checkboxes__label #{label[:classes]}".rstrip
-              end
-
-              # Generates the HTML to wrap arround a checkbox input
-              #
-              # @yield the checkbox item input HTML
-              #
-              # @return [ActiveSupport::SafeBuffer]
-
-              def render(&block)
-                tag.div(class: 'govuk-checkboxes__item') do
-                  super(&block)
-                end
               end
 
               # The default attributes for the checkbox

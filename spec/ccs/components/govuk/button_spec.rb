@@ -49,6 +49,7 @@ RSpec.describe CCS::Components::GovUK::Button do
 
         it 'has the disabled attribute' do
           expect(button_element[:disabled]).to eq('disabled')
+          expect(button_element[:'aria-disabled']).to eq('true')
         end
       end
 

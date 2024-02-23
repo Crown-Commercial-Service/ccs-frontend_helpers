@@ -82,10 +82,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/change-name">
-                Change
-                <span class="govuk-visually-hidden">
-                  name
-                </span>
+                Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
@@ -98,10 +95,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/change-age">
-                Change
-                <span class="govuk-visually-hidden">
-                  age
-                </span>
+                Change<span class="govuk-visually-hidden"> age</span>
               </a>
             </dd>
           </div>
@@ -114,10 +108,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/change-nation">
-                Change
-                <span class="govuk-visually-hidden">
-                  nation
-                </span>
+                Change<span class="govuk-visually-hidden"> nation</span>
               </a>
             </dd>
           </div>
@@ -393,7 +384,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
             </h2>
             <div class="govuk-summary-card__actions">
               <a class="govuk-link" href="/delete-member">
-                Delete memebr
+                Delete memebr<span class="govuk-visually-hidden"> (Ouroboros members)</span>
               </a>
             </div>
           </div>
@@ -408,10 +399,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="/change-name">
-                    Change
-                    <span class="govuk-visually-hidden">
-                      name
-                    </span>
+                    Change<span class="govuk-visually-hidden"> name (Ouroboros members)</span>
                   </a>
                 </dd>
               </div>
@@ -424,10 +412,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="/change-age">
-                    Change
-                    <span class="govuk-visually-hidden">
-                      age
-                    </span>
+                    Change<span class="govuk-visually-hidden"> age (Ouroboros members)</span>
                   </a>
                 </dd>
               </div>
@@ -440,10 +425,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="/change-nation">
-                    Change
-                    <span class="govuk-visually-hidden">
-                      nation
-                    </span>
+                    Change<span class="govuk-visually-hidden"> nation (Ouroboros members)</span>
                   </a>
                 </dd>
               </div>

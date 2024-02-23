@@ -25,15 +25,18 @@ module CCS
 
           public
 
+          # rubocop:disable Metrics/ParameterLists
+
           # @param any_row_has_actions [Boolean] flag to indicate if any rows have actions
           # @param key [Hash] attributes for the key, see {CCS::Components::GovUK::SummaryList::Row::Key#initialize Key#initialize} for more details.
           # @param value [Hash] attributes for the value, see {CCS::Components::GovUK::SummaryList::Row::Value#initialize Value#initialize} for more details.
           # @param actions [Hash] attributes for the actions, see {CCS::Components::GovUK::SummaryList::Row::Actions#initialize Actions#initialize} for more details.
+          # @param card_title [String] the text for the card title
           # @param options [Hash] options that will be used in customising the HTML
           #
           # @option options [String] :classes additional CSS classes for the summary list row HTML
 
-          def initialize(any_row_has_actions:, key:, value:, actions: nil, **options)
+          def initialize(any_row_has_actions:, key:, value:, actions: nil, card_title: nil, **options)
             super(**options)
 
             actions_present = actions && actions[:items].present?
@@ -42,8 +45,10 @@ module CCS
 
             @key = Key.new(context: @context, **key)
             @value = Value.new(context: @context, **value)
-            @actions = Actions.new(context: @context, **actions) if actions_present
+            @actions = Actions.new(context: @context, card_title: card_title, **actions) if actions_present
           end
+
+          # rubocop:enable Metrics/ParameterLists
 
           # Generates the HTML for the GOV.UK Summary list row
           #

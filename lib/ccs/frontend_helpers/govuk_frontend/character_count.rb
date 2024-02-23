@@ -19,7 +19,7 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::CharacterCount#render)
 
-        def govuk_character_count(attribute, character_count_options, **options)
+        def govuk_character_count(attribute, character_count_options = {}, **options)
           Components::GovUK::Field::Input::CharacterCount.new(context: self, attribute: attribute, character_count_options: character_count_options, **options).render
         end
       end

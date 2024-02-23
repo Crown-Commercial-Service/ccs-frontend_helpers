@@ -41,7 +41,7 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              tag.div(class: 'govuk-accordion__section-content', id: "#{accordion_id}-content-#{index}", aria: { labelledby: "#{accordion_id}-heading-#{index}" }) do
+              tag.div(class: 'govuk-accordion__section-content', id: "#{accordion_id}-content-#{index}") do
                 section[:content] || tag.p(section[:text], class: 'govuk-body')
               end
             end

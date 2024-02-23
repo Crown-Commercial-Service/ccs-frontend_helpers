@@ -13,6 +13,7 @@ gem 'rake', '~> 13.1'
 gem 'capybara', '~> 3.40.0'
 gem 'rspec', '~> 3.13'
 gem 'simplecov', '~> 0.21'
+gem 'nokogiri-diff', '~> 0.3.0'
 
 # Gems for linting/formatting the package
 gem 'rubocop', '~> 1.60'

@@ -50,9 +50,11 @@ module CCS
         def render
           tag.div(**options[:attributes]) do
             concat(tag.h2(title, class: 'govuk-tabs__title'))
-            concat(tag.ul(class: 'govuk-tabs__list') do
-              @tabs.each { |tab| concat(tab.render) }
-            end)
+            if @tabs.present?
+              concat(tag.ul(class: 'govuk-tabs__list') do
+                @tabs.each { |tab| concat(tab.render) }
+              end)
+            end
             @panels.each { |panel| concat(panel.render) }
           end
         end

@@ -44,7 +44,7 @@ module CCS
           def render
             capture do
               concat(tag.h2(visually_hidden_title, class: 'govuk-visually-hidden'))
-              if meta_links
+              if meta_links.present?
                 concat(tag.ul(class: 'govuk-footer__inline-list') do
                   meta_links.each { |meta_link| concat(meta_link.render) }
                 end)

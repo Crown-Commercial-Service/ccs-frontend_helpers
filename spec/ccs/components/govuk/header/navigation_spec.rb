@@ -36,7 +36,7 @@ RSpec.describe CCS::Components::GovUK::Header::Navigation do
     let(:default_html) do
       '
         <nav aria-label="Menu" class="govuk-header__navigation">
-          <button name="button" type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" hidden="hidden">
+          <button name="button" type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden="hidden">
             Menu
           </button>
           <ul id="navigation" class="govuk-header__navigation-list">

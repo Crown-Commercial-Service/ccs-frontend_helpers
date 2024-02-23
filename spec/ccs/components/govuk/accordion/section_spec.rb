@@ -30,7 +30,7 @@ RSpec.describe CCS::Components::GovUK::Accordion::Section do
                 </span>
               </h2>
             </div>
-            <div class="govuk-accordion__section-content" id="ouroboros-content-1" aria-labelledby="ouroboros-heading-1">
+            <div class="govuk-accordion__section-content" id="ouroboros-content-1">
               <p class="govuk-body">
                 Content 1
               </p>
