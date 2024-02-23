@@ -18,7 +18,7 @@ gem 'simplecov', '~> 0.21'
 gem 'rubocop', '~> 1.60'
 gem 'rubocop-rails', '~> 2.23'
 gem 'rubocop-rake', '~> 0.6'
-gem 'rubocop-rspec', '~> 2.25'
+gem 'rubocop-rspec', '~> 2.26'
 
 # Gems for documenting the package
 gem 'yard', '~> 0.9'

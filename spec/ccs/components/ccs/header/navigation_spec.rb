@@ -133,7 +133,7 @@ RSpec.describe CCS::Components::CCS::Header::Navigation do
       end
 
       it 'does not have the secondary navigation section' do
-        expect(navigation_section_element).not_to have_css('ul#navigation-secondary')
+        expect(navigation_section_element).to have_no_css('ul#navigation-secondary')
       end
     end
 
@@ -158,7 +158,7 @@ RSpec.describe CCS::Components::CCS::Header::Navigation do
       end
 
       it 'does not have the primary navigation section' do
-        expect(navigation_section_element).not_to have_css('ul#navigation-primary')
+        expect(navigation_section_element).to have_no_css('ul#navigation-primary')
       end
     end
 
@@ -169,8 +169,8 @@ RSpec.describe CCS::Components::CCS::Header::Navigation do
       end
 
       it 'does not have the no second list class' do
-        expect(navigation_section_element).not_to have_css('ul#navigation-secondary.ccs-header__navigation-secondary-list.ccs-header__navigation--no-second-list')
-        expect(navigation_section_element).not_to have_css('ul#navigation-primary.ccs-header__navigation-primary-list.ccs-header__navigation--no-second-list')
+        expect(navigation_section_element).to have_no_css('ul#navigation-secondary.ccs-header__navigation-secondary-list.ccs-header__navigation--no-second-list')
+        expect(navigation_section_element).to have_no_css('ul#navigation-primary.ccs-header__navigation-primary-list.ccs-header__navigation--no-second-list')
       end
     end
 

@@ -79,7 +79,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Row do
       let(:actions) { nil }
 
       it 'does not render the actions section' do
-        expect(summary_list_row_element).not_to have_css('dd.govuk-summary-list__actions')
+        expect(summary_list_row_element).to have_no_css('dd.govuk-summary-list__actions')
       end
 
       it 'has the no actions class' do
@@ -103,7 +103,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList::Row do
       end
 
       it 'does not render the actions section' do
-        expect(summary_list_row_element).not_to have_css('dd.govuk-summary-list__actions')
+        expect(summary_list_row_element).to have_no_css('dd.govuk-summary-list__actions')
       end
 
       it 'has the no actions class' do

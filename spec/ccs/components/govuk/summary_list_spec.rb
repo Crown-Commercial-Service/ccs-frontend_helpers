@@ -488,7 +488,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
       let(:card_options) { { title: nil } }
 
       it 'does not have the title' do
-        expect(summary_card_element).not_to have_css('.govuk-summary-card__title')
+        expect(summary_card_element).to have_no_css('.govuk-summary-card__title')
       end
     end
 
@@ -496,7 +496,7 @@ RSpec.describe CCS::Components::GovUK::SummaryList do
       let(:card_options) { { actions: nil } }
 
       it 'does not render any action items' do
-        expect(summary_card_element).not_to have_css('.govuk-summary-card__actions')
+        expect(summary_card_element).to have_no_css('.govuk-summary-card__actions')
       end
     end
   end

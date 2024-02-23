@@ -74,7 +74,7 @@ RSpec.describe CCS::Components::GovUK::ErrorMessage do
       let(:options) { { visually_hidden_text: '' } }
 
       it 'has no visually hidden prefix' do
-        expect(error_message_element).not_to have_css('span.govuk-visually-hidden')
+        expect(error_message_element).to have_no_css('span.govuk-visually-hidden')
         expect(error_message_element).to have_content('There is an enemy in our path')
       end
     end

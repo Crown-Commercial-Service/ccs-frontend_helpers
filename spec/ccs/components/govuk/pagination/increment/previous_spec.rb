@@ -78,7 +78,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does not have the title decorated class' do
@@ -90,7 +90,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
         let(:options) { { label_text: 'Jet fire burn' } }
 
         it 'does not have the label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does not have the title decorated class' do
@@ -104,7 +104,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does have the title decorated class' do
@@ -189,7 +189,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does not have the title decorated class' do
@@ -201,7 +201,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
         let(:options) { { label_text: 'Jet fire burn' } }
 
         it 'does not have the label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does not have the title decorated class' do
@@ -215,7 +215,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Previous do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_previous_element).not_to have_content('Previous:Jet fire burn')
+          expect(pagination_previous_element).to have_no_content('Previous:Jet fire burn')
         end
 
         it 'does have the title decorated class' do

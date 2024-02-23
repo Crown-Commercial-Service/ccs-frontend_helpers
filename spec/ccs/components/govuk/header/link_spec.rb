@@ -34,7 +34,7 @@ RSpec.describe CCS::Components::GovUK::Header::Link do
       let(:govuk_header_link) { described_class.new(text: text, context: view_context, **options) }
 
       it 'has the text in the li without a link' do
-        expect(header_list_element).not_to have_css('a', text: 'Here we go')
+        expect(header_list_element).to have_no_css('a', text: 'Here we go')
         expect(header_list_element).to have_content('Here we go')
       end
 
