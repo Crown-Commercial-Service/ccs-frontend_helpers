@@ -11,7 +11,7 @@ gem 'rake', '~> 13.1'
 
 # Gems for testing the package
 gem 'capybara', '~> 3.40.0'
-gem 'rspec', '~> 3.12'
+gem 'rspec', '~> 3.13'
 gem 'simplecov', '~> 0.21'
 
 # Gems for linting/formatting the package
