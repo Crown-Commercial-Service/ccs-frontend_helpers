@@ -18,8 +18,7 @@ RSpec.describe CCS::Components::GovUK::ErrorMessage do
     let(:default_html) do
       '
         <p class="govuk-error-message" id="ouroboros-error">
-          <span class="govuk-visually-hidden">Error: </span>
-          There is an enemy in our path
+          <span class="govuk-visually-hidden">Error:</span> There is an enemy in our path
         </p>
       '.to_one_line
     end
@@ -35,6 +34,18 @@ RSpec.describe CCS::Components::GovUK::ErrorMessage do
 
       it 'correctly formats the HTML with the message and ID derived from the attribute' do
         expect(error_message_element.to_html).to eq(default_html)
+      end
+    end
+
+    context 'when the attribute is nil' do
+      let(:attribute) { nil }
+
+      it 'correctly formats the HTML with the message and no ID' do
+        expect(error_message_element.to_html).to eq('
+          <p class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> There is an enemy in our path
+          </p>
+        '.to_one_line)
       end
     end
 
@@ -66,7 +77,7 @@ RSpec.describe CCS::Components::GovUK::ErrorMessage do
       let(:options) { { visually_hidden_text: 'Custom hidden text' } }
 
       it 'has the custom visually hidden error prefix' do
-        expect(error_message_element).to have_css('span.govuk-visually-hidden', text: 'Custom hidden text: ')
+        expect(error_message_element).to have_css('span.govuk-visually-hidden', text: 'Custom hidden text:')
       end
     end
 

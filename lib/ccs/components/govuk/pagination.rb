@@ -47,7 +47,7 @@ module CCS
 
           @options[:attributes][:class] << ' govuk-pagination--block' if block_is_level
           @options[:attributes][:role] = 'navigation'
-          (@options[:attributes][:aria] ||= {})[:label] ||= 'results'
+          (@options[:attributes][:aria] ||= {})[:label] ||= 'Pagination'
 
           @pagination_previous = Increment::Previous.new(block_is_level: block_is_level, form: @options[:form], context: @context, **pagination_previous) if pagination_previous
           @pagination_next = Increment::Next.new(block_is_level: block_is_level, form: @options[:form], context: @context, **pagination_next) if pagination_next
@@ -88,7 +88,7 @@ module CCS
 
           pagination_item_class = form ? Item::Form : Item::Tag
 
-          @pagination_items = pagination_items.map { |pagination_item| pagination_item[:type] == :ellipsis ? Item::Ellipsis : pagination_item_class.new(form: form, context: context, **pagination_item) }
+          @pagination_items = pagination_items.map { |pagination_item| pagination_item[:ellipsis] ? Item::Ellipsis : pagination_item_class.new(form: form, context: context, **pagination_item) }
         end
       end
     end

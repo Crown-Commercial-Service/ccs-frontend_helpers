@@ -213,8 +213,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Select your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input type="text" name="ouroboros" id="ouroboros" class="govuk-input govuk-input--error" aria-describedby="ouroboros-error">
           </div>
@@ -244,8 +243,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input type="text" name="ouroboros" id="ouroboros" class="govuk-input govuk-input--error" aria-describedby="ouroboros-hint ouroboros-error">
           </div>
@@ -479,8 +477,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Select your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input type="text" name="ouroboros" id="ouroboros" class="govuk-input govuk-input--error" aria-describedby="ouroboros-error">
           </div>
@@ -511,8 +508,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input type="text" name="ouroboros" id="ouroboros" class="govuk-input govuk-input--error" aria-describedby="ouroboros-hint ouroboros-error">
           </div>
@@ -751,8 +747,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Select your favourite character
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input class="govuk-input govuk-input--error" aria-describedby="ouroboros-error" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
           </div>
@@ -783,8 +778,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
               Pick one option from the drop down
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must enter your favourite character
+              <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
             </p>
             <input class="govuk-input govuk-input--error" aria-describedby="ouroboros-hint ouroboros-error" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
           </div>

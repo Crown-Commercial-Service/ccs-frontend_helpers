@@ -46,7 +46,7 @@ module CCS
 
         # The default attributes for the details
 
-        DEFAULT_ATTRIBUTES = { class: 'govuk-details', data: { module: 'govuk-details' } }.freeze
+        DEFAULT_ATTRIBUTES = { class: 'govuk-details' }.freeze
       end
     end
   end

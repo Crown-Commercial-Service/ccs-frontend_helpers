@@ -76,15 +76,6 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
       }.merge(fieldset_options)
     }.merge(checkboxes_options)
   end
-  let(:minimum_options) do
-    {
-      fieldset: {
-        legend: {
-          text: 'Select your favourite characters'
-        }
-      }
-    }
-  end
   let(:options_with_hint) do
     {
       form_group: form_group_options,
@@ -168,10 +159,51 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
 
     context 'when some options are not passed' do
       let(:govuk_checkboxes) { described_class.new(attribute: attribute, checkbox_items: checkbox_items, context: view_context, **options) }
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
-      it 'correctly formats the HTML with checkboxes in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+      it 'correctly formats the HTML with checkboxes in the form without the fieldset' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_noah" value="noah" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_noah">
+                  Noah
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_mio" value="mio" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_mio">
+                  Mio
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_taion" value="taion" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_taion">
+                  Taion
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_lanz" value="lanz" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_lanz">
+                  Lanz
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_sena" value="sena" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_sena">
+                  Sena
+                </label>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -358,8 +390,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Select your favourite characters
               </legend>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -399,8 +430,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Pick at least one option from the list
               </div>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -485,10 +515,51 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
     end
 
     context 'when some options are not passed' do
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
-      it 'correctly formats the HTML with checkboxes in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+      it 'correctly formats the HTML with checkboxes in the form without the fieldset' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_noah" value="noah" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_noah">
+                  Noah
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_mio" value="mio" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_mio">
+                  Mio
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_taion" value="taion" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_taion">
+                  Taion
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_lanz" value="lanz" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_lanz">
+                  Lanz
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_sena" value="sena" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_sena">
+                  Sena
+                </label>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -654,8 +725,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Select your favourite characters
               </legend>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -696,8 +766,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Pick at least one option from the list
               </div>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -784,10 +853,51 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
     end
 
     context 'when some options are not passed' do
-      let(:options) { minimum_options }
+      let(:options) { {} }
 
-      it 'correctly formats the HTML with checkboxes in the form' do
-        expect(form_group_element.to_html).to eq(default_html)
+      it 'correctly formats the HTML with checkboxes in the form without the fieldset' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="noah" name="test_model[ouroboros][]" id="test_model_ouroboros_noah">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_noah">
+                  Noah
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="mio" name="test_model[ouroboros][]" id="test_model_ouroboros_mio">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_mio">
+                  Mio
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="taion" name="test_model[ouroboros][]" id="test_model_ouroboros_taion">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_taion">
+                  Taion
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="lanz" name="test_model[ouroboros][]" id="test_model_ouroboros_lanz">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_lanz">
+                  Lanz
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="sena" name="test_model[ouroboros][]" id="test_model_ouroboros_sena">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_sena">
+                  Sena
+                </label>
+              </div>
+            </div>
+          </div>
+        '.to_one_line)
       end
     end
 
@@ -953,8 +1063,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Select your favourite characters
               </legend>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -995,8 +1104,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
                 Pick at least one option from the list
               </div>
               <p class="govuk-error-message" id="ouroboros-error">
-                <span class="govuk-visually-hidden">Error: </span>
-                You must choose your favourite characters
+                <span class="govuk-visually-hidden">Error:</span> You must choose your favourite characters
               </p>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">

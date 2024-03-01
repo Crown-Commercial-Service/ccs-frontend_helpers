@@ -20,14 +20,15 @@ module CCS
 
             # @param items [Array<Hash>] An array of attributes for the action links.
             #                            See {Components::GovUK::SummaryList::Action::Link#initialize Action::Link#initialize} for details of the items in the array.
+            # @param card_title [String] the text for the card title
             # @param options [Hash] options that will be used in customising the HTML
             #
             # @option options [String] :classes additional CSS classes for the summary list row actions HTML
 
-            def initialize(items:, **options)
+            def initialize(items:, card_title: nil, **options)
               super(**options)
 
-              @action_links = items.map { |item| Action::Link.new(context: @context, **item) }
+              @action_links = items.map { |item| Action::Link.new(card_title: card_title, context: @context, **item) }
             end
 
             # Generates the HTML for the GOV.UK Summary list row actions

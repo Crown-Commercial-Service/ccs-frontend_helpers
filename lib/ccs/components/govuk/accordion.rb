@@ -28,6 +28,12 @@ module CCS
         #
         # @option options [String] :classes additional CSS classes for the accordion HTML
         # @option options [Integer] :heading_level (2) heading level, from 1 to 6
+        # @option options [String] :hide_all_sections_text The text content of the ‘Hide all sections’ button at the top of the accordion when all sections are expanded
+        # @option options [String] :hide_section_text The text content of the ‘Hide’ button within each section of the accordion, which is visible when the section is expanded
+        # @option options [String] :hide_section_aria_label_text  Text made available to assistive technologies, like screen-readers, as the final part of the toggle’s accessible name when the section is expanded. Defaults to "Hide this section".
+        # @option options [String] :show_all_sections_text The text content of the ‘Show all sections’ button at the top of the accordion when at least one section is collapsed
+        # @option options [String] :show_section_text The text content of the ‘Show’ button within each section of the accordion, which is visible when the section is collapsed
+        # @option options [String] :show_section_aria_label_text Text made available to assistive technologies, like screen-readers, as the final part of the toggle’s accessible name when the section is collapsed. Defaults to "Show this section".
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
         def initialize(accordion_id:, accordion_sections:, **options)
@@ -35,6 +41,11 @@ module CCS
 
           @options[:attributes][:id] = accordion_id
           @options[:heading_level] ||= 2
+
+          %i[hide_all_sections hide_section hide_section_aria_label show_all_sections show_section show_section_aria_label].each do |data_attribute|
+            data_attribute_name = :"#{data_attribute}_text"
+            @options[:attributes][:data][:"i18n.#{data_attribute.to_s.gsub('_', '-')}"] = options[data_attribute_name] if options[data_attribute_name]
+          end
 
           @accordion_sections = accordion_sections.map.with_index(1) { |accordion_section, index| Section.new(section: accordion_section, accordion_id: accordion_id, index: index, heading_level: @options[:heading_level]) }
         end

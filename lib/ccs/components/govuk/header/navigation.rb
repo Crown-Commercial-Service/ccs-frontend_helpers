@@ -44,7 +44,9 @@ module CCS
           def initialize(navigation:, context:, menu_button: nil)
             menu_button ||= {}
             menu_button[:text] ||= 'Menu'
-            menu_button[:label] ||= 'Show or hide menu'
+
+            menu_button[:aria] = { controls: 'navigation' }
+            menu_button[:aria][:label] = menu_button[:label] if menu_button[:label]
 
             @menu_button = menu_button
             @navigation_links = navigation[:items].map { |navigation_link| Link.new(context: context, **navigation_link) }
@@ -58,7 +60,7 @@ module CCS
 
           def render
             tag.nav(aria: { label: navigation_label }, class: navigation_classes) do
-              concat(button_tag(menu_button[:text], type: :button, class: 'govuk-header__menu-button govuk-js-header-toggle', aria: { controls: 'navigation', label: menu_button[:label] }, hidden: true))
+              concat(button_tag(menu_button[:text], type: :button, class: 'govuk-header__menu-button govuk-js-header-toggle', aria: menu_button[:aria], hidden: true))
               concat(tag.ul(id: 'navigation', class: 'govuk-header__navigation-list') do
                 navigation_links.each { |navigation_link| concat(navigation_link.render) }
               end)

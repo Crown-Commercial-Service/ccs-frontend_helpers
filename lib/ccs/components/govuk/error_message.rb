@@ -33,7 +33,7 @@ module CCS
         def initialize(message:, attribute:, **options)
           super(**options)
 
-          @options[:attributes][:id] ||= "#{attribute}-error"
+          @options[:attributes][:id] ||= "#{attribute}-error" if attribute
 
           @message = message
           @attribute = attribute
@@ -46,7 +46,10 @@ module CCS
 
         def render
           tag.p(**options[:attributes]) do
-            concat(tag.span("#{visually_hidden_text}: ", class: 'govuk-visually-hidden')) if visually_hidden_text.present?
+            if visually_hidden_text.present?
+              concat(tag.span("#{visually_hidden_text}:", class: 'govuk-visually-hidden'))
+              concat(' ')
+            end
             concat(message)
           end
         end

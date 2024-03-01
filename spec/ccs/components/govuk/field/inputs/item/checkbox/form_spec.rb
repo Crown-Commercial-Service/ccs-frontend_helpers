@@ -6,6 +6,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Checkbox::Form do
   include_context 'and I have a view context'
 
   let(:checkbox_item_element) { Capybara::Node::Simple.new(result).find('div.govuk-checkboxes__item') }
+  let(:checkbox_item_conditional_element) { Capybara::Node::Simple.new(result).find('body') }
   let(:checkbox_item_input_element) { checkbox_item_element.find('input') }
   let(:checkbox_item_label_element) { checkbox_item_element.find('label') }
 
@@ -158,16 +159,18 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Checkbox::Form do
       let(:conditional_options) { {} }
 
       it 'correctly formats the HTML with the conditional item' do
-        expect(checkbox_item_element.to_html).to eq('
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" data-aria-controls="ouroboros_eunie_conditional" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
-            <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
-              Eunie
-            </label>
-            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="ouroboros_eunie_conditional">
+        expect(checkbox_item_conditional_element.to_html).to eq('
+          <body>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" data-aria-controls="conditional-ouroboros_eunie" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
+              <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
+                Eunie
+              </label>
+            </div>
+            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-ouroboros_eunie">
               Hello there!
             </div>
-          </div>
+          </body>
         '.to_one_line)
       end
 
@@ -175,7 +178,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Checkbox::Form do
         let(:options) { { checked: true } }
 
         it 'does not hide the conditional content' do
-          expect(checkbox_item_element.find_by_id('ouroboros_eunie_conditional')[:class]).to eq('govuk-checkboxes__conditional')
+          expect(checkbox_item_conditional_element.find_by_id('conditional-ouroboros_eunie')[:class]).to eq('govuk-checkboxes__conditional')
         end
       end
 
@@ -184,7 +187,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Checkbox::Form do
 
         it 'has the custom id' do
           expect(checkbox_item_input_element[:'data-aria-controls']).to eq('my-custom-conditional-id')
-          expect(checkbox_item_element.find('div')[:id]).to eq('my-custom-conditional-id')
+          expect(checkbox_item_conditional_element.find('div.govuk-checkboxes__conditional')[:id]).to eq('my-custom-conditional-id')
         end
       end
 
@@ -193,7 +196,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Item::Checkbox::Form do
 
         it 'has the both data attributes on the input' do
           expect(checkbox_item_input_element[:'data-test']).to eq('data-test')
-          expect(checkbox_item_input_element[:'data-aria-controls']).to eq('ouroboros_eunie_conditional')
+          expect(checkbox_item_input_element[:'data-aria-controls']).to eq('conditional-ouroboros_eunie')
         end
       end
     end

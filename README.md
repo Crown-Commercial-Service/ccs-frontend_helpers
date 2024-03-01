@@ -8,6 +8,16 @@ This project contains two applications (both use the Ruby on Rails framework):
 - [Crown Marketplace](https://github.com/Crown-Commercial-Service/crown-marketplace)
 - [Crown Marketplace Legacy](https://github.com/Crown-Commercial-Service/crown-marketplace-legacy)
 
+## Compatibility
+
+The following table shows the version of CCS Frontend Helpers that you should use for your targeted version of GOV.UK Frontend:
+
+| CCS Frontend Helpers Version | Target GOV.UK Frontend Version |
+| ----------------------------- | ------------------------------ |
+| [0.1.2](https://github.com/tim-s-ccs/ccs-frontend_helpers/releases/tag/v0.1.2) | [4.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.7.0) |
+
+Any other versions of GOV.UK Frontend not shown above _may_ still be compatible, but have not been specifically tested and verified.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:

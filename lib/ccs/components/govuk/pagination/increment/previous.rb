@@ -14,8 +14,8 @@ module CCS
             #
             # @option (see Increment#initialize)
 
-            def initialize(text: 'Previous', **options)
-              super(type: :prev, text: text, **options)
+            def initialize(text: nil, **options)
+              super(type: :prev, text: text, default_text: 'Previous', **options)
             end
 
             # Generates the HTML for the previous link in the pagination
@@ -26,7 +26,10 @@ module CCS
               tag.div(class: 'govuk-pagination__prev') do
                 super() do
                   concat(pagination_icon)
-                  concat(tag.span(text, class: pagination_text_classes))
+                  concat(tag.span(class: pagination_text_classes) do
+                    concat(text)
+                    concat(tag.span(' page', class: 'govuk-visually-hidden')) if text == default_text
+                  end)
                   pagination_icon_label_text
                 end
               end

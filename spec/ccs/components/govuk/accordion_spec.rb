@@ -43,7 +43,7 @@ RSpec.describe CCS::Components::GovUK::Accordion do
                 </span>
               </h2>
             </div>
-            <div class="govuk-accordion__section-content" id="ouroboros-content-1" aria-labelledby="ouroboros-heading-1">
+            <div class="govuk-accordion__section-content" id="ouroboros-content-1">
               <p class="govuk-body">
                 Content 1
               </p>
@@ -60,7 +60,7 @@ RSpec.describe CCS::Components::GovUK::Accordion do
                 Summary 2
               </div>
             </div>
-            <div class="govuk-accordion__section-content" id="ouroboros-content-2" aria-labelledby="ouroboros-heading-2">
+            <div class="govuk-accordion__section-content" id="ouroboros-content-2">
               <p class="govuk-body">
                 Content 2
               </p>
@@ -74,7 +74,7 @@ RSpec.describe CCS::Components::GovUK::Accordion do
                 </span>
               </h2>
             </div>
-            <div class="govuk-accordion__section-content" id="ouroboros-content-3" aria-labelledby="ouroboros-heading-3">
+            <div class="govuk-accordion__section-content" id="ouroboros-content-3">
               <div class="content-3" id="content-3">
                 Content 3
               </div>
@@ -113,6 +113,30 @@ RSpec.describe CCS::Components::GovUK::Accordion do
         expect(accordion_element[:'data-module']).to eq('govuk-accordion')
         expect(accordion_element[:'data-test']).to eq('hello there')
       end
+    end
+
+    context 'when translations are passed' do
+      let(:options) do
+        {
+          hide_all_sections_text: 'hide_all_sections_text',
+          hide_section_text: 'hide_section_text',
+          hide_section_aria_label_text: 'hide_section_aria_label_text',
+          show_all_sections_text: 'show_all_sections_text',
+          show_section_text: 'show_section_text',
+          show_section_aria_label_text: 'show_section_aria_label_text'
+        }
+      end
+
+      # rubocop:disable RSpec/MultipleExpectations
+      it 'has the translations attributes' do
+        expect(accordion_element[:'data-i18n.hide-all-sections']).to eq('hide_all_sections_text')
+        expect(accordion_element[:'data-i18n.hide-section']).to eq('hide_section_text')
+        expect(accordion_element[:'data-i18n.hide-section-aria-label']).to eq('hide_section_aria_label_text')
+        expect(accordion_element[:'data-i18n.show-all-sections']).to eq('show_all_sections_text')
+        expect(accordion_element[:'data-i18n.show-section']).to eq('show_section_text')
+        expect(accordion_element[:'data-i18n.show-section-aria-label']).to eq('show_section_aria_label_text')
+      end
+      # rubocop:enable RSpec/MultipleExpectations
     end
 
     context 'when heading level is passed' do

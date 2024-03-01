@@ -55,10 +55,10 @@ RSpec.describe CCS::Components::GovUK::CookieBanner do
             </div>
           </div>
           <div class="govuk-button-group">
-            <button name="cookies" type="submit" value="accept" class="govuk-button" data-module="govuk-button">
+            <button name="cookies" type="button" value="accept" class="govuk-button" data-module="govuk-button">
               Accept ouroboros cookies
             </button>
-            <button name="cookies" type="submit" value="reject" class="govuk-button" data-module="govuk-button">
+            <button name="cookies" type="button" value="reject" class="govuk-button" data-module="govuk-button">
               Reject ouroboros cookies
             </button>
             <a class="govuk-link" href="#">View ouroboros cookies</a>

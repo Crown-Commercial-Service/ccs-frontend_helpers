@@ -22,7 +22,7 @@ RSpec.describe CCS::Components::GovUK::Accordion::Section::Content do
 
       it 'correctly formats the HTML with the text in a p tag' do
         expect(accordion_section_content.to_html).to eq('
-          <div class="govuk-accordion__section-content" id="ouroboros-content-1" aria-labelledby="ouroboros-heading-1">
+          <div class="govuk-accordion__section-content" id="ouroboros-content-1">
             <p class="govuk-body">
               Content 1
             </p>
@@ -41,7 +41,7 @@ RSpec.describe CCS::Components::GovUK::Accordion::Section::Content do
 
       it 'correctly formats the HTML with the content' do
         expect(accordion_section_content.to_html).to eq('
-          <div class="govuk-accordion__section-content" id="ouroboros-content-1" aria-labelledby="ouroboros-heading-1">
+          <div class="govuk-accordion__section-content" id="ouroboros-content-1">
               <div class="content-1" id="content-1">
                 Content 1
               </div>

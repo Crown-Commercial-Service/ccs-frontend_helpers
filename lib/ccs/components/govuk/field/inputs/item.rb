@@ -19,6 +19,8 @@ module CCS
           #   @return [String,Symbol] The attribute of the item
           # @!attribute [r] value
           #   @return [String] The value of the item
+          # @!attribute [r] item_class
+          #   @return [String] The CSS class for the item
           # @!attribute [r] label
           #   @return [Label] The initialised item label
           # @!attribute [r] hint
@@ -27,13 +29,19 @@ module CCS
           #   @return [ActiveSupport::SafeBuffer] The conditional HTML
 
           class Item < Base
+            include ActionView::Context
+            include ActionView::Helpers
+
             private
 
-            attr_reader :attribute, :value, :label, :hint, :conditional_content
+            attr_reader :attribute, :value, :item_class, :label, :hint, :conditional_content
 
             public
 
+            # rubocop:disable  Metrics/ParameterLists
+
             # @param attribute [String,Symbol] the attribute of the item
+            # @param item_class [String] the CSS class for the item
             # @param value [String] the value of the item
             # @param hint [Hash] options for an item hint see {CCS::Components::GovUK::Hint#initialize Hint#initialize} for more details.
             #                    If no hint is given then no hint will be rendered
@@ -48,14 +56,17 @@ module CCS
             # @option conditional [ActiveSupport::SafeBuffer] content the HTML content
             # @option conditional [Hash] attributes[:id] the id of the conditional section
 
-            def initialize(attribute:, value:, hint: nil, conditional: nil, **options)
+            def initialize(attribute:, value:, item_class:, hint: nil, conditional: nil, **options)
               super(**options)
 
               initialise_item_hint(attribute, value, hint) if hint
-              initialize_item_conditional(attribute, value, conditional) if conditional
+              initialize_item_conditional(attribute, value, conditional) if conditional && conditional[:content]
               @attribute = attribute
               @value = value
+              @item_class = item_class
             end
+
+            # rubocop:enable  Metrics/ParameterLists
 
             # Generates the HTML to wrap arround a input
             #
@@ -64,10 +75,14 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              concat(yield)
-              concat(label.render)
-              concat(hint.render) if hint
-              concat(conditional_content) if conditional_content
+              capture do
+                concat(tag.div(class: @item_class) do
+                  concat(yield)
+                  concat(label.render)
+                  concat(hint.render) if hint
+                end)
+                concat(conditional_content) if conditional_content
+              end
             end
 
             private
@@ -82,8 +97,7 @@ module CCS
               hint[:attributes] ||= {}
               hint[:classes] = "govuk-#{self.class::ITEM_TYPE}__hint #{hint[:classes]}".rstrip
               hint[:attributes][:id] ||= "#{attribute}_#{value}-item-hint"
-
-              (@options[:attributes][:aria] ||= {})[:describedby] = hint[:attributes][:id]
+              (@options[:attributes][:aria] ||= {})[:describedby] = [@options.dig(:attributes, :aria, :describedby), hint[:attributes][:id]].compact.join(' ')
 
               @hint = Hint.new(context: @context, **hint)
             end
@@ -97,7 +111,7 @@ module CCS
             def initialize_item_conditional(attribute, value, conditional)
               conditional[:attributes] ||= {}
               conditional[:attributes][:class] = "govuk-#{self.class::ITEM_TYPE}__conditional #{"govuk-#{self.class::ITEM_TYPE}__conditional--hidden" unless @options[:checked]}".rstrip
-              conditional[:attributes][:id] ||= sanitize_to_id("#{attribute}_#{value}_conditional")
+              conditional[:attributes][:id] ||= sanitize_to_id("conditional-#{attribute}_#{value}")
 
               (@options[:attributes][:data] ||= {})[:'aria-controls'] = conditional[:attributes][:id]
 

@@ -17,21 +17,9 @@ module CCS
               # @option (see CCS::Components::GovUK::Field::Items::Item#initialize))
 
               def initialize(attribute:, label:, **options)
-                super(attribute: attribute, **options)
+                super(attribute: attribute, item_class: 'govuk-radios__item', **options)
 
                 label[:classes] = "govuk-radios__label #{label[:classes]}".rstrip
-              end
-
-              # Generates the HTML to wrap arround a radio input
-              #
-              # @yield the radio item input HTML
-              #
-              # @return [ActiveSupport::SafeBuffer]
-
-              def render(&block)
-                tag.div(class: 'govuk-radios__item') do
-                  super(&block)
-                end
               end
 
               # The default attributes for the radio

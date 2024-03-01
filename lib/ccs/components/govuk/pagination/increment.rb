@@ -11,6 +11,8 @@ module CCS
         # @!attribute [r] type
         #   @return [Symbol] The type of pagination increment
         # @!attribute [r] text
+        #   @return [String] Default text for the pagination increment
+        # @!attribute [r] default_text
         #   @return [String] Text for the pagination increment
         # @!attribute [r] block_is_level
         #   @return [Boolean] Flag to indicate if previous and next blocks are level
@@ -20,11 +22,14 @@ module CCS
         class Increment < Base
           private
 
-          attr_reader :type, :text, :block_is_level, :label_text
+          attr_reader :type, :default_text, :text, :block_is_level, :label_text
 
           public
 
+          # rubocop:disable Metrics/ParameterLists
+
           # @param type [Symbol] the type of increment, either +:prev+ or +:next+
+          # @param default_text [String] the default text for the pagination increment
           # @param text [String] the text for the pagination increment
           # @param block_is_level [Boolean] when there are no items, this will be true and will add extra classes
           #                                 to the link to make the next and previous pagination links level
@@ -35,17 +40,20 @@ module CCS
           # @option options  [ActionView::Helpers::FormBuilder] :form optional form builder used to create the button
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(type:, text:, block_is_level:, label_text: nil, **options)
+          def initialize(type:, default_text:, block_is_level:, text: nil, label_text: nil, **options)
             super(**options)
 
             @options[:attributes][:class] = "govuk-link govuk-pagination__link #{'pagination--button_as_link' if @options[:form]}".rstrip
             @options[:attributes][:rel] = type.to_s
 
             @type = type
-            @text = text
+            @default_text = default_text
+            @text = text || default_text
             @block_is_level = block_is_level
             @label_text = label_text
           end
+
+          # rubocop:enable Metrics/ParameterLists
 
           # Generates the HTML for the pagination increment link/button
           #

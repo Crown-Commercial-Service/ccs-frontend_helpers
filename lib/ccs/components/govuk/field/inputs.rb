@@ -27,8 +27,10 @@ module CCS
           #
           # @option (see CCS::Components::GovUK::Field#initialize)
 
-          def initialize(attribute:, fieldset:, **options)
+          def initialize(attribute:, fieldset: nil, **options)
             super(attribute: attribute, **options)
+
+            return unless fieldset
 
             set_described_by(fieldset, @attribute, @error_message, options[:hint])
 
@@ -41,14 +43,30 @@ module CCS
           #
           # @return [ActiveSupport::SafeBuffer]
 
-          def render
+          def render(&block)
             super() do |display_error_message|
-              fieldset.render do
-                concat(hint.render) if hint
-                concat(display_error_message)
-                concat(yield)
+              if fieldset
+                fieldset.render do
+                  field_inner_html(display_error_message, &block)
+                end
+              else
+                field_inner_html(display_error_message, &block)
               end
             end
+          end
+
+          private
+
+          # Generates the HTML structure for the field component
+          #
+          # @yield (see CCS::Components::GovUK::Field#render)
+          #
+          # @return [ActiveSupport::SafeBuffer]
+
+          def field_inner_html(display_error_message)
+            concat(hint.render) if hint
+            concat(display_error_message)
+            concat(yield)
           end
         end
       end

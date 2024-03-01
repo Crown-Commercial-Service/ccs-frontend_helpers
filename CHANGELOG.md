@@ -1,3 +1,26 @@
+## Unreleased
+
+### 💥 Breaking changes
+
+Update components to be compatible with GOV.UK Frontend v5.2
+
+For pagination, the option to enable ellipsis is now:
+```ruby
+{
+  ellipsis: true
+}
+```
+instead of:
+```ruby
+{
+  type: :ellipsis
+}
+```
+
+### 🏠 Internal changes
+
+Add tests for GOV.UK Frontend fixtures
+
 ## [0.1.2] - 2023-11-16
 
 Fix issue with radios component which, when passed a model or form, would treat the value as an array.

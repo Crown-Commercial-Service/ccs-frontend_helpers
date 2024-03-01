@@ -97,7 +97,7 @@ RSpec.describe CCS::Components::GovUK::CookieBanner::Action do
 
       context 'and there is no type' do
         it 'renders a submit button' do
-          expect(cookie_banner_action_button.to_html).to eq('<button name="button" type="submit" class="govuk-button" data-module="govuk-button">Accept ouroboros cookies</button>')
+          expect(cookie_banner_action_button.to_html).to eq('<button name="button" type="button" class="govuk-button" data-module="govuk-button">Accept ouroboros cookies</button>')
         end
 
         context 'when additional classes are passed' do

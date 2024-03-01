@@ -27,7 +27,7 @@ RSpec.describe CCS::Components::GovUK::Details do
 
     let(:default_html) do
       '
-        <details class="govuk-details" data-module="govuk-details">
+        <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
               Ouroboros

@@ -46,6 +46,7 @@ module CCS
             if href && options[:attributes][:type] != :button
               link_to(text, href, **options[:attributes])
             else
+              options[:attributes][:type] ||= :button
               Button.new(text: text, href: href, context: context, **options).render
             end
           end

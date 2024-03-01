@@ -25,7 +25,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         <div class="govuk-pagination__next">
           <a class="govuk-link govuk-pagination__link" rel="next" href="/next">
             <span class="govuk-pagination__link-title">
-              Next
+              Next<span class="govuk-visually-hidden"> page</span>
             </span>
             <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
               <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
@@ -78,7 +78,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -90,7 +90,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -110,7 +110,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
                 <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
               </svg>
               <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">
-                Next
+                Next<span class="govuk-visually-hidden"> page</span>
               </span>
             </a>
           </div>
@@ -119,7 +119,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does have the title decorated class' do
@@ -131,7 +131,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does have the label text' do
-          expect(pagination_next_element).to have_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -151,7 +151,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         <div class="govuk-pagination__next">
           <button name="button" type="submit" class="govuk-link govuk-pagination__link pagination--button_as_link" rel="next">
             <span class="govuk-pagination__link-title">
-              Next
+              Next<span class="govuk-visually-hidden"> page</span>
             </span>
             <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
               <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
@@ -204,7 +204,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -216,7 +216,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -236,7 +236,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
                 <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
               </svg>
               <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">
-                Next
+                Next<span class="govuk-visually-hidden"> page</span>
               </span>
             </button>
           </div>
@@ -245,7 +245,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does have the title decorated class' do
@@ -257,7 +257,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does have the label text' do
-          expect(pagination_next_element).to have_content('Next:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_content('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do

@@ -38,7 +38,7 @@ module CCS
               @items = items.map do |item|
                 [
                   item[:text] || item[:value],
-                  item[:value],
+                  item[:value].nil? ? item[:text] : item[:value],
                   item[:attributes] || {}
                 ]
               end

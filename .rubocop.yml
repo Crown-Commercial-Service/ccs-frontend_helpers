@@ -126,11 +126,13 @@ RSpec/MultipleExpectations:
     Max: 3
 
 RSpec/FilePath:
-    CustomTransform:
-        GovUKFrontend: govuk_frontend
-        GovUK: govuk
+    Enabled: false
 
 RSpec/SpecFilePathFormat:
     CustomTransform:
         GovUKFrontend: govuk_frontend
         GovUK: govuk
+
+Rails/OutputSafety:
+    Exclude:
+        - 'spec/ccs/frontend_helpers/**/*fixtures_spec.rb'

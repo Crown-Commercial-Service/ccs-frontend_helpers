@@ -27,12 +27,12 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Inputs#initialize)
 
-            def initialize(attribute:, date_items: default_date_items, **options)
-              (options[:fieldset][:attributes] ||= {})[:role] = 'group'
+            def initialize(attribute:, date_items: nil, **options)
+              (options[:fieldset][:attributes] ||= {})[:role] = 'group' if options[:fieldset]
 
               super(attribute: attribute, **options)
 
-              # date_items ||= default_date_items
+              date_items = default_date_items if date_items.blank?
 
               @date_input_items = date_items.map { |date_input_item| Item.new(attribute: attribute, error_message: @error_message, model: @options[:model], form: @options[:form], context: @context, **date_input_item) }
             end

@@ -185,8 +185,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               Upload your favourite artwork
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-error">
           </div>
@@ -216,8 +215,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               This should be of your favourite character
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-hint ouroboros-error">
           </div>
@@ -370,8 +368,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               Upload your favourite artwork
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-error">
           </div>
@@ -402,8 +399,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               This should be of your favourite character
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-hint ouroboros-error">
           </div>
@@ -558,8 +554,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               Upload your favourite artwork
             </label>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-error" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
           </div>
@@ -590,8 +585,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
               This should be of your favourite character
             </div>
             <p class="govuk-error-message" id="ouroboros-error">
-              <span class="govuk-visually-hidden">Error: </span>
-              You must upload a file
+              <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-hint ouroboros-error" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
           </div>

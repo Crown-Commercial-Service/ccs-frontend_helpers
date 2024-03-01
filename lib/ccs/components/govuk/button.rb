@@ -32,7 +32,10 @@ module CCS
         def initialize(text:, **options)
           super(**options)
 
-          @options[:attributes][:class] << ' govuk-button--disabled' if @options[:attributes][:disabled]
+          if @options[:attributes][:disabled]
+            @options[:attributes][:aria] ||= {}
+            @options[:attributes][:aria][:disabled] = true
+          end
           @options[:attributes][:class] << ' govuk-button--start' if @options[:is_start_button]
 
           @text = text

@@ -23,7 +23,7 @@ module CCS
 
             public
 
-            # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+            # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
 
             # @param (see CCS::Components::GovUK::Field::Inputs#initialize)
             # @param checkbox_items [Array<Hash>] an array of options for the checkboxes.
@@ -34,17 +34,18 @@ module CCS
             def initialize(attribute:, checkbox_items:, **options)
               super(attribute: attribute, **options)
 
-              if @options[:model] || @options[:form]
-                values = (@options[:model] || @options[:form].object).send(attribute) || []
-                checkbox_items.each { |checkbox_item| checkbox_item[:checked] = values.include?(checkbox_item[:value]) }
-              end
+              @options[:values] ||= []
+              @options[:values] = (@options[:model] || @options[:form].object).send(attribute) || [] if @options[:model] || @options[:form]
+
+              checkbox_items.each { |checkbox_item| checkbox_item[:checked] = @options[:values].include?(checkbox_item[:value]) } if @options[:values].any?
+              checkbox_items.each { |checkbox_item| set_described_by(checkbox_item, @attribute, @error_message, @hint&.send(:options)) } unless @fieldset
 
               checkbox_item_class = @options[:form] ? Item::Checkbox::Form : Inputs::Item::Checkbox::Tag
 
               @checkbox_items = checkbox_items.map { |checkbox_item| checkbox_item[:divider] ? Item::Divider.new(divider: checkbox_item[:divider], type: 'checkboxes') : checkbox_item_class.new(attribute: attribute, form: @options[:form], context: @context, **checkbox_item) }
             end
 
-            # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+            # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
 
             # Generates the HTML for the GOV.UK Checkboxes component
             #

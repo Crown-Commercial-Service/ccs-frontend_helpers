@@ -53,7 +53,7 @@ module CCS
         def render
           tag.footer(**options[:attributes]) do
             tag.div(class: "govuk-width-container #{options[:container_classes]}".rstrip) do
-              if navigation
+              if navigation.present?
                 concat(tag.div(class: 'govuk-footer__navigation') do
                   navigation.each { |navigation_item| concat(navigation_item.render) }
                 end)
