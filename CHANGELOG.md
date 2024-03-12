@@ -21,6 +21,12 @@ instead of:
 
 Add tests for GOV.UK Frontend fixtures
 
+### 🆕 New features
+
+The following GOV.UK helpers have been added:
+
+- Exit this page
+
 ## [0.1.2] - 2023-11-16
 
 Fix issue with radios component which, when passed a model or form, would treat the value as an array.

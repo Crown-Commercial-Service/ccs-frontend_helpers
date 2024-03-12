@@ -11,6 +11,7 @@ require_relative 'govuk_frontend/date_input'
 require_relative 'govuk_frontend/details'
 require_relative 'govuk_frontend/error_message'
 require_relative 'govuk_frontend/error_summary'
+require_relative 'govuk_frontend/exit_this_page'
 require_relative 'govuk_frontend/fieldset'
 require_relative 'govuk_frontend/file_upload'
 require_relative 'govuk_frontend/footer'
@@ -52,6 +53,7 @@ module CCS
       include Details
       include ErrorMessage
       include ErrorSummary
+      include ExitThisPage
       include FileUpload
       include Fieldset
       include Footer
