@@ -21,8 +21,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend do
         helper_module.constantize
         expect(described_class).to include(helper_module.constantize)
       rescue StandardError
-        pending 'Helper not yet created'
-        raise 'Helper not yet created'
+        raise "Helper '#{helper_module}' not yet created"
       end
     end
   end
