@@ -26,6 +26,7 @@ Add tests for GOV.UK Frontend fixtures
 The following GOV.UK helpers have been added:
 
 - Exit this page
+- Task list
 
 ## [0.1.2] - 2023-11-16
 
