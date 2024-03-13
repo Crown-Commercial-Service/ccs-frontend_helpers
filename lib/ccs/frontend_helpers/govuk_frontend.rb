@@ -33,6 +33,7 @@ require_relative 'govuk_frontend/summary_list'
 require_relative 'govuk_frontend/table'
 require_relative 'govuk_frontend/tabs'
 require_relative 'govuk_frontend/tag'
+require_relative 'govuk_frontend/task_list'
 require_relative 'govuk_frontend/textarea'
 require_relative 'govuk_frontend/warning_text'
 
@@ -75,6 +76,7 @@ module CCS
       include Table
       include Tabs
       include Tag
+      include TaskList
       include Textarea
       include WarningText
     end
