@@ -45,7 +45,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
     context 'when the default attributes are sent' do
       it 'correctly formats the HTML with pagination' do
         expect(pagination_section.to_html).to eq('
-          <nav class="govuk-pagination" role="navigation" aria-label="Pagination">
+          <nav class="govuk-pagination" aria-label="Pagination">
             <div class="govuk-pagination__prev">
               <a class="govuk-link govuk-pagination__link" rel="prev" href="/previous">
                 <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
@@ -104,7 +104,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
     context 'when the default attributes are sent' do
       it 'correctly formats the HTML with pagination' do
         expect(pagination_section.to_html).to eq('
-          <nav class="govuk-pagination" role="navigation" aria-label="Pagination">
+          <nav class="govuk-pagination" aria-label="Pagination">
             <div class="govuk-pagination__prev">
               <button name="button" type="submit" class="govuk-link govuk-pagination__link pagination--button_as_link" rel="prev">
                 <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">

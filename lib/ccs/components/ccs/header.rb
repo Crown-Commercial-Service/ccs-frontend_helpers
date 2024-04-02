@@ -45,7 +45,6 @@ module CCS
         def initialize(service_authentication_items: nil, navigation: nil, menu_button: nil, service: nil, **options)
           super(**options)
 
-          @options[:attributes][:role] = 'banner'
           @options[:container_classes] ||= 'govuk-width-container'
           @options[:homepage_url] ||= 'https://www.crowncommercial.gov.uk'
 

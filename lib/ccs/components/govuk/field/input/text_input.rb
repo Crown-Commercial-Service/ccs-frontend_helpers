@@ -19,11 +19,13 @@ module CCS
           #   @return [Fix] The initialised prefix
           # @!attribute [r] suffix
           #   @return [Fix] The initialised suffix
+          # @!attribute [r] input_wrapper_html_options
+          #   @return [Fix] HTML options for the input wrapper
 
           class TextInput < Input
             private
 
-            attr_reader :field_type, :value, :prefix, :suffix
+            attr_reader :field_type, :value, :prefix, :suffix, :input_wrapper_html_options
 
             public
 
@@ -36,16 +38,20 @@ module CCS
             #                      see {CCS::Components::GovUK::Field::Input::TextInput::Fix#initialize Fix#initialize} for more details.
             # @param suffix [Hash] optional suffix for the input field,
             #                      see {CCS::Components::GovUK::Field::Input::TextInput::Fix#initialize Fix#initialize} for more details.
+            # @param input_wrapper [Hash] HTML options for the input wrapper
             #
             # @option (see CCS::Components::GovUK::Field::Input#initialize)
 
-            def initialize(attribute:, field_type: :text, value: nil, prefix: nil, suffix: nil, **options)
+            def initialize(attribute:, field_type: :text, value: nil, prefix: nil, suffix: nil, input_wrapper: {}, **options)
               super(attribute: attribute, **options)
 
               @field_type = :"#{field_type}_field"
               @value = @options[:model] ? @options[:model].send(attribute) : value
               @prefix = Fix.new(fix: 'pre', context: @context, **prefix) if prefix
               @suffix = Fix.new(fix: 'suf', context: @context, **suffix) if suffix
+              @input_wrapper_html_options = {
+                class: "govuk-input__wrapper #{input_wrapper[:classes]}".rstrip
+              }.merge(input_wrapper[:attributes] || {})
             end
 
             # rubocop:enable Metrics/ParameterLists
@@ -80,7 +86,7 @@ module CCS
 
             def text_input_wrapper
               if prefix || suffix
-                tag.div(class: 'govuk-input__wrapper') do
+                tag.div(**input_wrapper_html_options) do
                   concat(prefix.render) if prefix
                   concat(yield)
                   concat(suffix.render) if suffix

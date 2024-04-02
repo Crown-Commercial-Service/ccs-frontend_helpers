@@ -46,14 +46,12 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+          </textarea>
           <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>
@@ -91,17 +89,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
         context 'when the default attributes are sent' do
           it 'correctly formats the HTML with the hint' do
             expect(character_count_element.to_html).to eq('
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-                <div class="govuk-form-group" id="ouroboros-form-group">
-                  <label class="govuk-label" for="ouroboros">
-                    Explain why they are your favourite character
-                  </label>
-                  <div id="ouroboros-hint" class="govuk-hint">
-                    For example, is it their combat, or their style?
-                  </div>
-                  <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
-                  </textarea>
+              <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+                <label class="govuk-label" for="ouroboros">
+                  Explain why they are your favourite character
+                </label>
+                <div id="ouroboros-hint" class="govuk-hint">
+                  For example, is it their combat, or their style?
                 </div>
+                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
+                </textarea>
                 <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                   You can enter up to 200 characters
                 </div>
@@ -116,17 +112,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
 
         it 'correctly formats the HTML with error message and classes' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
-              </div>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -141,20 +135,18 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
 
         it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <div id="ouroboros-hint" class="govuk-hint">
-                  For example, is it their combat, or their style?
-                </div>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <div id="ouroboros-hint" class="govuk-hint">
+                For example, is it their combat, or their style?
               </div>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -170,14 +162,12 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+          </textarea>
           <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>
@@ -209,14 +199,12 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="test_model_ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="test_model_ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+          </textarea>
           <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>

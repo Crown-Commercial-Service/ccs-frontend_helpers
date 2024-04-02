@@ -71,7 +71,7 @@ RSpec.describe CCS::Components::CCS::Footer do
 
     let(:default_html) do
       '
-        <footer class="ccs-footer" role="contentinfo">
+        <footer class="ccs-footer">
           <div class="govuk-width-container">
             <div class="ccs-footer__navigation">
               <div class="ccs-footer__section govuk-grid-column-two-thirds">
@@ -163,7 +163,7 @@ RSpec.describe CCS::Components::CCS::Footer do
 
       it 'correctly formats the HTML for the footer without any navigation or meta item lists' do
         expect(footer_element.to_html).to eq('
-          <footer class="ccs-footer" role="contentinfo">
+          <footer class="ccs-footer">
             <div class="govuk-width-container">
               <div class="ccs-footer__meta">
                 <div class="ccs-footer__meta-item">

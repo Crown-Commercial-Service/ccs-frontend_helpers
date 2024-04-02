@@ -41,7 +41,6 @@ module CCS
         def initialize(navigation: nil, menu_button: nil, service: nil, **options)
           super(**options)
 
-          @options[:attributes][:role] = 'banner'
           @options[:container_classes] ||= 'govuk-width-container'
           @options[:homepage_url] ||= '/'
           @options[:use_tudor_crown] = true if @options[:use_tudor_crown].nil?

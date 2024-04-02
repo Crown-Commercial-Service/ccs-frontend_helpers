@@ -18,6 +18,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures',
     'with pattern attribute' => true,
     'with spellcheck enabled' => true,
     'with spellcheck disabled' => true,
+    'with autocapitalize turned off' => true,
     'with prefix' => true,
     'with suffix' => true,
     'with prefix and suffix' => true,
@@ -42,7 +43,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures',
     'with suffix with html as text' => true,
     'with suffix with html' => true,
     'with suffix with classes' => true,
-    'with suffix with attributes' => true
+    'with suffix with attributes' => true,
+    'with customised input wrapper' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures('input')

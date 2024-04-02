@@ -15,20 +15,26 @@ module CCS
         #
         # @!attribute [r] label
         #   @return [Label] The initialised label
+        # @!attribute [r] before_input
+        #   @return [String] Text or HTML to go before the input
+        # @!attribute [r] after_input
+        #   @return [String] Text or HTML to go after the input
 
         class Input < Field
           private
 
-          attr_reader :label
+          attr_reader :label, :before_input, :after_input
 
           public
 
           # @param (see CCS::Components::GovUK::Field#initialize)
           # @param label [Hash] attributes for the label, see {CCS::Components::GovUK::Label#initialize Label#initialize} for more details.
+          # @param before_input [String] text or HTML to go before the input
+          # @param after_input [String] text or HTML to go after the input
           #
           # @option (see CCS::Components::GovUK::Field#initialize)
 
-          def initialize(attribute:, label:, **options)
+          def initialize(attribute:, label:, before_input: nil, after_input: nil, **options)
             super(attribute: attribute, **options)
 
             set_described_by(@options, @attribute, @error_message, options[:hint])
@@ -39,6 +45,8 @@ module CCS
             (label[:attributes] ||= {})[:for] = field_id if field_id
 
             @label = Label.new(attribute: attribute, form: @options[:form], context: @context, **label)
+            @before_input = before_input
+            @after_input = after_input
           end
 
           # Generates the HTML to wrap arround a GDS form component
@@ -52,7 +60,9 @@ module CCS
               concat(label.render)
               concat(hint.render) if hint
               concat(display_error_message)
+              concat(before_input) if before_input
               concat(yield)
+              concat(after_input) if after_input
             end
           end
         end

@@ -46,7 +46,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
 
     let(:default_html) do
       '
-        <nav class="govuk-pagination" role="navigation" aria-label="Pagination">
+        <nav class="govuk-pagination" aria-label="Pagination">
           <div class="govuk-pagination__prev">
             <a class="govuk-link govuk-pagination__link" rel="prev" href="/previous">
               <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
@@ -147,7 +147,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
 
       it 'correctly formats the HTML with pagination in a block' do
         expect(pagination_section.to_html).to eq('
-          <nav class="govuk-pagination govuk-pagination--block" role="navigation" aria-label="Pagination">
+          <nav class="govuk-pagination govuk-pagination--block" aria-label="Pagination">
             <div class="govuk-pagination__prev">
               <a class="govuk-link govuk-pagination__link" rel="prev" href="/previous">
                 <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
@@ -181,7 +181,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
 
     let(:default_html) do
       '
-        <nav class="govuk-pagination" role="navigation" aria-label="Pagination">
+        <nav class="govuk-pagination" aria-label="Pagination">
           <div class="govuk-pagination__prev">
             <button name="button" type="submit" class="govuk-link govuk-pagination__link pagination--button_as_link" rel="prev">
               <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">
@@ -282,7 +282,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
 
       it 'correctly formats the HTML with pagination in a block' do
         expect(pagination_section.to_html).to eq('
-          <nav class="govuk-pagination govuk-pagination--block" role="navigation" aria-label="Pagination">
+          <nav class="govuk-pagination govuk-pagination--block" aria-label="Pagination">
             <div class="govuk-pagination__prev">
               <button name="button" type="submit" class="govuk-link govuk-pagination__link pagination--button_as_link" rel="prev">
                 <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewbox="0 0 15 13">

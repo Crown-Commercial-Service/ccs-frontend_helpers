@@ -46,7 +46,6 @@ module CCS
           block_is_level = pagination_items.blank? && (pagination_previous.present? || pagination_next.present?)
 
           @options[:attributes][:class] << ' govuk-pagination--block' if block_is_level
-          @options[:attributes][:role] = 'navigation'
           (@options[:attributes][:aria] ||= {})[:label] ||= 'Pagination'
 
           @pagination_previous = Increment::Previous.new(block_is_level: block_is_level, form: @options[:form], context: @context, **pagination_previous) if pagination_previous

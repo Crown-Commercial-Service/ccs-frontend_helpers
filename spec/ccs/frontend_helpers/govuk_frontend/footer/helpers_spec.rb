@@ -64,7 +64,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#helpers', type: :h
 
     let(:default_html) do
       '
-        <footer class="govuk-footer" role="contentinfo">
+        <footer class="govuk-footer">
           <div class="govuk-width-container">
             <div class="govuk-footer__navigation">
               <div class="govuk-footer__section govuk-grid-column-two-thirds">
@@ -136,7 +136,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#helpers', type: :h
 
       it 'correctly formats the HTML for the footer without any navigation or meta item lists' do
         expect(footer_element.to_html).to eq('
-          <footer class="govuk-footer" role="contentinfo">
+          <footer class="govuk-footer">
             <div class="govuk-width-container">
               <div class="govuk-footer__meta">
                 <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
