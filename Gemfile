@@ -19,7 +19,7 @@ gem 'nokogiri-diff', '~> 0.3.0'
 gem 'rubocop', '~> 1.62'
 gem 'rubocop-rails', '~> 2.24'
 gem 'rubocop-rake', '~> 0.6'
-gem 'rubocop-rspec', '~> 2.28'
+gem 'rubocop-rspec', '~> 2.29'
 
 # Gems for documenting the package
 gem 'yard', '~> 0.9'
