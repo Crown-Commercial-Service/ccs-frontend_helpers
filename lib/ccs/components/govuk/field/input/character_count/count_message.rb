@@ -33,7 +33,7 @@ module CCS
               #
               # @option (see CCS::Components::GovUK::Field::Input::CharacterCount.get_character_count_from_group_options)
 
-              def initialize(character_count_attribute:, context:, character_count_options:, after_input: nil, **)
+              def initialize(character_count_attribute:, context:, character_count_options:, after_input: nil)
                 count_message = character_count_options[:textarea_description] || {}
 
                 count_message_length = character_count_options[:maxwords] || character_count_options[:maxlength]

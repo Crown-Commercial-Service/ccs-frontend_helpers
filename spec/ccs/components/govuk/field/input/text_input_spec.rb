@@ -306,6 +306,103 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
         '.to_one_line)
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:input_options) { { before_input: before_input } }
+
+        it 'renders the text input with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:input_options) { { after_input: after_input } }
+
+        it 'renders the text input with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:input_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input and prefix and suffix' do
+        let(:input_options) { { prefix: { text: '£' }, suffix: { text: 'per week' }, before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <div class="govuk-input__prefix" aria-hidden="true">
+                  £
+                </div>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <div class="govuk-input__suffix" aria-hidden="true">
+                  per week
+                </div>
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -569,6 +666,103 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
             </div>
           </div>
         '.to_one_line)
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:input_options) { { before_input: before_input } }
+
+        it 'renders the text input with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:input_options) { { after_input: after_input } }
+
+        it 'renders the text input with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:input_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input and prefix and suffix' do
+        let(:input_options) { { prefix: { text: '£' }, suffix: { text: 'per week' }, before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <div class="govuk-input__prefix" aria-hidden="true">
+                  £
+                </div>
+                <input type="text" name="ouroboros" id="ouroboros" class="govuk-input">
+                <div class="govuk-input__suffix" aria-hidden="true">
+                  per week
+                </div>
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
       end
     end
   end
@@ -839,6 +1033,103 @@ RSpec.describe CCS::Components::GovUK::Field::Input::TextInput do
             </div>
           </div>
         '.to_one_line)
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:input_options) { { before_input: before_input } }
+
+        it 'renders the text input with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input class="govuk-input" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:input_options) { { after_input: after_input } }
+
+        it 'renders the text input with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <input class="govuk-input" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:input_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <input class="govuk-input" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input and prefix and suffix' do
+        let(:input_options) { { prefix: { text: '£' }, suffix: { text: 'per week' }, before_input: before_input, after_input: after_input } }
+
+        it 'renders the text input with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Select your favourite character
+              </label>
+              <div class="govuk-input__wrapper">
+                <p class="govuk-body">
+                  I am before input
+                </p>
+                <div class="govuk-input__prefix" aria-hidden="true">
+                  £
+                </div>
+                <input class="govuk-input" type="text" name="test_model[ouroboros]" id="test_model_ouroboros">
+                <div class="govuk-input__suffix" aria-hidden="true">
+                  per week
+                </div>
+                <p class="govuk-body">
+                  I am after input
+                </p>
+              </div>
+            </div>
+          '.to_one_line)
+        end
       end
     end
   end

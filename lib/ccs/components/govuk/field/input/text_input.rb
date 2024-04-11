@@ -55,20 +55,24 @@ module CCS
             end
 
             # rubocop:enable Metrics/ParameterLists
+            # rubocop:disable Metrics/AbcSize
 
             # Generates the HTML for the GOV.UK Text Input component
             #
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              super() do
-                text_input_wrapper do
+              form_group.render do |display_error_message|
+                concat(label.render)
+                concat(hint.render) if hint
+                concat(display_error_message)
+                concat(text_input_wrapper do
                   if options[:form]
                     options[:form].send(field_type, attribute, **options[:attributes])
                   else
                     context.send("#{field_type}_tag", attribute, value, **options[:attributes])
                   end
-                end
+                end)
               end
             end
 
@@ -78,6 +82,8 @@ module CCS
 
             private
 
+            # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
             # Wrapper method used by {render} to wrap the text input with a prefix or suffix if they exist
             #
             # @yield the text input HTML
@@ -85,16 +91,20 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def text_input_wrapper
-              if prefix || suffix
+              if prefix || suffix || before_input || after_input
                 tag.div(**input_wrapper_html_options) do
+                  concat(before_input) if before_input
                   concat(prefix.render) if prefix
                   concat(yield)
                   concat(suffix.render) if suffix
+                  concat(after_input) if after_input
                 end
               else
                 yield
               end
             end
+
+            # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
           end
         end
       end

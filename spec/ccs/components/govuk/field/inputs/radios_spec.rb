@@ -467,6 +467,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:radio_items) { single_radio_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the radios with the before input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the radios with the after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the radios with the before and after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -825,6 +894,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:radio_items) { single_radio_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the radios with the before input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the radios with the after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the radios with the before and after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input type="radio" name="ouroboros" id="ouroboros_eunie" value="eunie" class="govuk-radios__input">
+                <label class="govuk-label govuk-radios__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -1188,6 +1326,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Radios do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:radio_items) { single_radio_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the radios with the before input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" type="radio" value="eunie" name="test_model[ouroboros]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-radios__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the radios with the after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" type="radio" value="eunie" name="test_model[ouroboros]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-radios__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the radios with the before and after input' do
+          expect(radios_element.to_html).to eq('
+            <div class="govuk-radios" data-module="govuk-radios">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" type="radio" value="eunie" name="test_model[ouroboros]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-radios__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

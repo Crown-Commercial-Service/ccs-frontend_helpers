@@ -15,15 +15,11 @@ module CCS
         #
         # @!attribute [r] label
         #   @return [Label] The initialised label
-        # @!attribute [r] before_input
-        #   @return [String] Text or HTML to go before the input
-        # @!attribute [r] after_input
-        #   @return [String] Text or HTML to go after the input
 
         class Input < Field
           private
 
-          attr_reader :label, :before_input, :after_input
+          attr_reader :label
 
           public
 
@@ -34,7 +30,7 @@ module CCS
           #
           # @option (see CCS::Components::GovUK::Field#initialize)
 
-          def initialize(attribute:, label:, before_input: nil, after_input: nil, **options)
+          def initialize(attribute:, label:, **options)
             super(attribute: attribute, **options)
 
             set_described_by(@options, @attribute, @error_message, options[:hint])
@@ -45,8 +41,6 @@ module CCS
             (label[:attributes] ||= {})[:for] = field_id if field_id
 
             @label = Label.new(attribute: attribute, form: @options[:form], context: @context, **label)
-            @before_input = before_input
-            @after_input = after_input
           end
 
           # Generates the HTML to wrap arround a GDS form component

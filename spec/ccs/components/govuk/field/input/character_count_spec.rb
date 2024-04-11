@@ -361,6 +361,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -672,6 +746,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
           it 'has the textarea aria described by as the custom, hint and error id' do
             expect(textarea_element[:'aria-describedby']).to eq('some-id ouroboros-info ouroboros-hint ouroboros-error')
           end
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -988,6 +1136,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
           it 'has the textarea aria described by as the custom, hint and error id' do
             expect(textarea_element[:'aria-describedby']).to eq('some-id test_model_ouroboros-info ouroboros-hint ouroboros-error')
           end
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

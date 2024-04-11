@@ -14,11 +14,13 @@ module CCS
         #
         # @!attribute [r] fieldset
         #   @return [Fieldset] The initialised fieldset
+        # @!attribute [r] input_items
+        #   @return [Array<Item>] An array of the initialised items
 
         class Inputs < Field
           private
 
-          attr_reader :fieldset
+          attr_reader :fieldset, :input_items
 
           public
 
@@ -66,7 +68,11 @@ module CCS
           def field_inner_html(display_error_message)
             concat(hint.render) if hint
             concat(display_error_message)
-            concat(yield)
+            concat(tag.div(**options[:attributes]) do
+              concat(before_input) if before_input
+              input_items.each { |input_item| concat(input_item.render) }
+              concat(after_input) if after_input
+            end)
           end
         end
       end

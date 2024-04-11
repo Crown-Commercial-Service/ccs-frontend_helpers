@@ -18,13 +18,19 @@ module CCS
       #   @return [FormGroup] The initialised form group
       # @!attribute [r] hint
       #   @return [Hint] The initialised hint
+      # @!attribute [r] before_input
+      #   @return [String] Text or HTML to go before the input
+      # @!attribute [r] after_input
+      #   @return [String] Text or HTML to go after the input
 
       class Field < Base
         private
 
-        attr_reader :attribute, :error_message, :form_group, :hint
+        attr_reader :attribute, :error_message, :form_group, :hint, :before_input, :after_input
 
         public
+
+        # rubocop:disable Metrics/ParameterLists
 
         # @param attribute [String, Symbol] the attribute of the field
         # @param hint [Hash] attributes for the hint, see {CCS::Components::GovUK::Hint#initialize Hint#initialize} for more details.
@@ -39,7 +45,7 @@ module CCS
         # @option options [String] :classes additional CSS classes for the field HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(attribute:, form_group: nil, hint: nil, **options)
+        def initialize(attribute:, form_group: nil, hint: nil, before_input: nil, after_input: nil, **options)
           super(**options)
 
           (hint[:attributes] ||= {})[:id] = "#{attribute}-hint" if hint && !hint.dig(:attributes, :id)
@@ -49,7 +55,11 @@ module CCS
 
           @form_group = FormGroup.new(attribute: attribute, error_message: @error_message, context: @context, **(form_group || {}))
           @hint = Hint.new(context: @context, **hint) if hint
+          @before_input = before_input
+          @after_input = after_input
         end
+
+        # rubocop:enable Metrics/ParameterLists
 
         # Generates the HTML to wrap arround a GDS form input component
         #

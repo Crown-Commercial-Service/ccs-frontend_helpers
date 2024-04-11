@@ -239,6 +239,71 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the textarea with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the textarea with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the textarea with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -429,6 +494,71 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
 
         it 'has the textarea aria described by as the custom, hint and error id' do
           expect(textarea_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the textarea with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the textarea with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the textarea with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" class="govuk-textarea" rows="5">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -624,6 +754,71 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
 
         it 'has the textarea aria described by as the custom, hint and error id' do
           expect(textarea_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the textarea with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea class="govuk-textarea" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the textarea with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea class="govuk-textarea" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the textarea with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea class="govuk-textarea" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

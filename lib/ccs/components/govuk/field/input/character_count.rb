@@ -61,7 +61,7 @@ module CCS
               ((options[:attributes] ||= {})[:aria] ||= {})[:describedby] = [options.dig(:attributes, :aria, :describedby), "#{character_count_attribute}-info"].compact.join(' ')
               options[:classes] = "govuk-js-character-count #{options[:classes]}".rstrip
 
-              count_message = CountMessage.new(character_count_attribute: character_count_attribute, context: context, character_count_options: character_count_options, **options)
+              count_message = CountMessage.new(character_count_attribute: character_count_attribute, context: context, character_count_options: character_count_options, after_input: options.delete(:after_input))
               @textarea = Textarea.new(attribute: attribute, context: context, after_input: count_message.render, **options)
             end
 

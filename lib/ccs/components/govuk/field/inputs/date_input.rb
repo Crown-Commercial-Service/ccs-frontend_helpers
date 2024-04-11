@@ -10,17 +10,8 @@ module CCS
           #
           # This is used for generating the date input component from the
           # {https://design-system.service.gov.uk/components/date-input GDS - Components -  Date Input}
-          #
-          # @!attribute [r] date_input_items
-          #   @return [Array<DateInput::Item>] An array of the initialised date input items
 
           class DateInput < Inputs
-            private
-
-            attr_reader :date_input_items
-
-            public
-
             # @param (see CCS::Components::GovUK::Field::Inputs#initialize)
             # @param date_items [Array<Hash>] an array of options for the date items.
             #                                 See {Components::GovUK::Field::Inputs::DateInput::Item#initialize Item#initialize} for details of the items in the array.
@@ -34,19 +25,7 @@ module CCS
 
               date_items = default_date_items if date_items.blank?
 
-              @date_input_items = date_items.map { |date_input_item| Item.new(attribute: attribute, error_message: @error_message, model: @options[:model], form: @options[:form], context: @context, **date_input_item) }
-            end
-
-            # Generates the HTML for the GOV.UK date input component
-            #
-            # @return [ActiveSupport::SafeBuffer]
-
-            def render
-              super() do
-                tag.div(**options[:attributes]) do
-                  date_input_items.each { |date_input_item| concat(date_input_item.render) }
-                end
-              end
+              @input_items = date_items.map { |date_input_item| Item.new(attribute: attribute, error_message: @error_message, model: @options[:model], form: @options[:form], context: @context, **date_input_item) }
             end
 
             # The default attributes for the date input
