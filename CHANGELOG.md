@@ -1,3 +1,13 @@
+## [0.3.0] - 2024-04-12
+
+Update components to be compatible with GOV.UK Frontend v5.3
+
+### 🆕 New features
+
+The following GOV.UK helpers have been added:
+
+- Password input
+
 ## [0.2.0] - 2024-03-13
 
 ### 💥 Breaking changes
