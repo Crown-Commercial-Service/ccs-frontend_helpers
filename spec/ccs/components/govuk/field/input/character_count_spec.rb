@@ -367,7 +367,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:textarea_options) { { before_input: before_input } }
 
         it 'renders the character count with the before input' do
           expect(character_count_element.to_html).to eq('
@@ -389,7 +389,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:textarea_options) { { after_input: after_input } }
 
         it 'renders the character count with the after input' do
           expect(character_count_element.to_html).to eq('
@@ -411,7 +411,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the character count with the before and after input' do
           expect(character_count_element.to_html).to eq('
@@ -755,7 +755,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:textarea_options) { { before_input: before_input } }
 
         it 'renders the character count with the before input' do
           expect(character_count_element.to_html).to eq('
@@ -777,7 +777,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:textarea_options) { { after_input: after_input } }
 
         it 'renders the character count with the after input' do
           expect(character_count_element.to_html).to eq('
@@ -799,7 +799,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the character count with the before and after input' do
           expect(character_count_element.to_html).to eq('
@@ -1145,7 +1145,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:textarea_options) { { before_input: before_input } }
 
         it 'renders the character count with the before input' do
           expect(character_count_element.to_html).to eq('
@@ -1167,7 +1167,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:textarea_options) { { after_input: after_input } }
 
         it 'renders the character count with the after input' do
           expect(character_count_element.to_html).to eq('
@@ -1189,7 +1189,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the character count with the before and after input' do
           expect(character_count_element.to_html).to eq('

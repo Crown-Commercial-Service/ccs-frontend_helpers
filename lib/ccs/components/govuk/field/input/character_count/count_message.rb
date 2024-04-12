@@ -1,6 +1,3 @@
-require_relative '../character_count'
-require_relative '../../../hint'
-
 module CCS
   module Components
     module GovUK

@@ -358,7 +358,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
 
         it 'renders the date inputs with the before input' do
           expect(date_inputs_element.to_html).to eq('
@@ -380,7 +380,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
 
         it 'renders the date inputs with the after input' do
           expect(date_inputs_element.to_html).to eq('
@@ -402,7 +402,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
 
         it 'renders the date inputs with the before and after input' do
           expect(date_inputs_element.to_html).to eq('
@@ -728,7 +728,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
 
         it 'renders the date inputs with the before input' do
           expect(date_inputs_element.to_html).to eq('
@@ -750,7 +750,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
 
         it 'renders the date inputs with the after input' do
           expect(date_inputs_element.to_html).to eq('
@@ -772,7 +772,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
 
         it 'renders the date inputs with the before and after input' do
           expect(date_inputs_element.to_html).to eq('
@@ -1100,7 +1100,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
 
         it 'renders the date inputs with the before input' do
           expect(date_inputs_element.to_html).to eq('
@@ -1122,7 +1122,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
 
         it 'renders the date inputs with the after input' do
           expect(date_inputs_element.to_html).to eq('
@@ -1144,7 +1144,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
 
         it 'renders the date inputs with the before and after input' do
           expect(date_inputs_element.to_html).to eq('

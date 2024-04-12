@@ -236,7 +236,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:file_upload_options) { { before_input: before_input } }
 
         it 'renders the file upload with the before input' do
           expect(form_group_element.to_html).to eq('
@@ -254,7 +254,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:file_upload_options) { { after_input: after_input } }
 
         it 'renders the file upload with the after input' do
           expect(form_group_element.to_html).to eq('
@@ -272,7 +272,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the file upload with the before and after input' do
           expect(form_group_element.to_html).to eq('
@@ -482,7 +482,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:file_upload_options) { { before_input: before_input } }
 
         it 'renders the file upload with the before input' do
           expect(form_group_element.to_html).to eq('
@@ -500,7 +500,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:file_upload_options) { { after_input: after_input } }
 
         it 'renders the file upload with the after input' do
           expect(form_group_element.to_html).to eq('
@@ -518,7 +518,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the file upload with the before and after input' do
           expect(form_group_element.to_html).to eq('
@@ -730,7 +730,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
 
       context 'when there is a before input' do
-        let(:options) { super().merge({ before_input: before_input }) }
+        let(:file_upload_options) { { before_input: before_input } }
 
         it 'renders the file upload with the before input' do
           expect(form_group_element.to_html).to eq('
@@ -748,7 +748,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is an after input' do
-        let(:options) { super().merge({ after_input: after_input }) }
+        let(:file_upload_options) { { after_input: after_input } }
 
         it 'renders the file upload with the after input' do
           expect(form_group_element.to_html).to eq('
@@ -766,7 +766,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
       end
 
       context 'when there is a before and after input' do
-        let(:options) { super().merge({ before_input: before_input, after_input: after_input }) }
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
 
         it 'renders the file upload with the before and after input' do
           expect(form_group_element.to_html).to eq('
