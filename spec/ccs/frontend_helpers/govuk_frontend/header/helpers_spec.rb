@@ -44,7 +44,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#helpers', type: :h
 
     let(:default_html) do
       '
-        <header class="govuk-header" data-module="govuk-header" role="banner">
+        <header class="govuk-header" data-module="govuk-header">
           <div class="govuk-header__container govuk-width-container">
             <div class="govuk-header__logo">
               <a class="govuk-header__link govuk-header__link--homepage" href="https://www.crowncommercial.gov.uk/">
@@ -93,7 +93,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#helpers', type: :h
 
       it 'correctly formats the HTML with the hint text' do
         expect(header_element.to_html).to eq('
-          <header class="govuk-header" data-module="govuk-header" role="banner">
+          <header class="govuk-header" data-module="govuk-header">
             <div class="govuk-header__container govuk-width-container">
               <div class="govuk-header__logo">
                 <a class="govuk-header__link govuk-header__link--homepage" href="/">

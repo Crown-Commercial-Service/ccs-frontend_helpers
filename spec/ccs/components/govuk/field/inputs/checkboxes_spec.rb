@@ -453,6 +453,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:checkbox_items) { single_checkbox_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:checkboxes_options) { { before_input: before_input } }
+
+        it 'renders the checkboxes with the before input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:checkboxes_options) { { after_input: after_input } }
+
+        it 'renders the checkboxes with the after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:checkboxes_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the checkboxes with the before and after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -786,6 +855,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:checkbox_items) { single_checkbox_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:checkboxes_options) { { before_input: before_input } }
+
+        it 'renders the checkboxes with the before input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:checkboxes_options) { { after_input: after_input } }
+
+        it 'renders the checkboxes with the after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:checkboxes_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the checkboxes with the before and after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="ouroboros[]" id="ouroboros_eunie" value="eunie" class="govuk-checkboxes__input">
+                <label class="govuk-label govuk-checkboxes__label" for="ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -1124,6 +1262,75 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::Checkboxes do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:checkbox_items) { single_checkbox_item }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:checkboxes_options) { { before_input: before_input } }
+
+        it 'renders the checkboxes with the before input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:checkboxes_options) { { after_input: after_input } }
+
+        it 'renders the checkboxes with the after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:checkboxes_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the checkboxes with the before and after input' do
+          expect(checkboxes_element.to_html).to eq('
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" type="checkbox" value="eunie" name="test_model[ouroboros][]" id="test_model_ouroboros_eunie">
+                <label class="govuk-label govuk-checkboxes__label" for="test_model_ouroboros_eunie">
+                  Eunie
+                </label>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

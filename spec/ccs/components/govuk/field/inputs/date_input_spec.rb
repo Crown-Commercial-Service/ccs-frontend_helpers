@@ -351,6 +351,81 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:date_input_options) { { date_items: single_date_item } }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the date inputs with the before input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the date inputs with the after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the date inputs with the before and after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -643,6 +718,81 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id xenoblade_chronicles_3-hint xenoblade_chronicles_3-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:date_input_options) { { date_items: single_date_item } }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the date inputs with the before input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the date inputs with the after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the date inputs with the before and after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input type="text" name="xenoblade_chronicles_3_day" id="xenoblade_chronicles_3_day" inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -940,6 +1090,81 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput do
 
         it 'has the fieldset aria described by as the custom, hint and error id' do
           expect(fieldset_element[:'aria-describedby']).to eq('some-id xenoblade_chronicles_3-hint xenoblade_chronicles_3-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:date_input_options) { { date_items: single_date_item } }
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:date_input_options) { super().merge({ before_input: before_input }) }
+
+        it 'renders the date inputs with the before input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2" type="text" name="test_model[xenoblade_chronicles_3_day]" id="test_model_xenoblade_chronicles_3_day">
+                </div>
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:date_input_options) { super().merge({ after_input: after_input }) }
+
+        it 'renders the date inputs with the after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2" type="text" name="test_model[xenoblade_chronicles_3_day]" id="test_model_xenoblade_chronicles_3_day">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:date_input_options) { super().merge({ before_input: before_input, after_input: after_input }) }
+
+        it 'renders the date inputs with the before and after input' do
+          expect(date_inputs_element.to_html).to eq('
+            <div class="govuk-date-input">
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group" id="xenoblade_chronicles_3_day-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="test_model_xenoblade_chronicles_3_day">
+                    Day
+                  </label>
+                  <input inputmode="numeric" class="govuk-input govuk-date-input__input govuk-input--width-2" type="text" name="test_model[xenoblade_chronicles_3_day]" id="test_model_xenoblade_chronicles_3_day">
+                </div>
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

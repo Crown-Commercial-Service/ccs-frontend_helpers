@@ -25,6 +25,8 @@ module CCS
 
           # @param (see CCS::Components::GovUK::Field#initialize)
           # @param label [Hash] attributes for the label, see {CCS::Components::GovUK::Label#initialize Label#initialize} for more details.
+          # @param before_input [String] text or HTML to go before the input
+          # @param after_input [String] text or HTML to go after the input
           #
           # @option (see CCS::Components::GovUK::Field#initialize)
 
@@ -52,7 +54,9 @@ module CCS
               concat(label.render)
               concat(hint.render) if hint
               concat(display_error_message)
+              concat(before_input) if before_input
               concat(yield)
+              concat(after_input) if after_input
             end
           end
         end

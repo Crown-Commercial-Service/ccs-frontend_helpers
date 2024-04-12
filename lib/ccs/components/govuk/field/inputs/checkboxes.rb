@@ -12,17 +12,8 @@ module CCS
           #
           # This is used for generating the checkboxes component from the
           # {https://design-system.service.gov.uk/components/checkboxes GDS - Components - Checkboxes}
-          #
-          # @!attribute [r] checkbox_items
-          #   @return [Array<Item::Divider|Item::Checkbox|Item::Checkbox>] An array of the initialised checkbox items
 
           class Checkboxes < Inputs
-            private
-
-            attr_reader :checkbox_items
-
-            public
-
             # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
 
             # @param (see CCS::Components::GovUK::Field::Inputs#initialize)
@@ -42,22 +33,10 @@ module CCS
 
               checkbox_item_class = @options[:form] ? Item::Checkbox::Form : Inputs::Item::Checkbox::Tag
 
-              @checkbox_items = checkbox_items.map { |checkbox_item| checkbox_item[:divider] ? Item::Divider.new(divider: checkbox_item[:divider], type: 'checkboxes') : checkbox_item_class.new(attribute: attribute, form: @options[:form], context: @context, **checkbox_item) }
+              @input_items = checkbox_items.map { |checkbox_item| checkbox_item[:divider] ? Item::Divider.new(divider: checkbox_item[:divider], type: 'checkboxes') : checkbox_item_class.new(attribute: attribute, form: @options[:form], context: @context, **checkbox_item) }
             end
 
             # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
-
-            # Generates the HTML for the GOV.UK Checkboxes component
-            #
-            # @return [ActiveSupport::SafeBuffer]
-
-            def render
-              super() do
-                tag.div(**options[:attributes]) do
-                  checkbox_items.each { |checkbox_item| concat(checkbox_item.render) }
-                end
-              end
-            end
 
             # The default attributes for the checkboxes
 

@@ -6,9 +6,8 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
   include_context 'and I have a view context'
 
   let(:character_count_element) { Capybara::Node::Simple.new(result).find('div.govuk-character-count') }
-  let(:form_group_element) { Capybara::Node::Simple.new(result).find('div.govuk-form-group') }
   let(:label_element) { Capybara::Node::Simple.new(result).find('label.govuk-label') }
-  let(:hint_element) { Capybara::Node::Simple.new(result).find('div.govuk-form-group > div.govuk-hint') }
+  let(:hint_element) { Capybara::Node::Simple.new(result).first('div.govuk-form-group > div.govuk-hint') }
   let(:error_message_element) { Capybara::Node::Simple.new(result).find('p.govuk-error-message') }
   let(:textarea_element) { Capybara::Node::Simple.new(result).find('textarea.govuk-textarea') }
   let(:textarea_description_element) { Capybara::Node::Simple.new(result).find('div.govuk-character-count__message') }
@@ -56,14 +55,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+          </textarea>
           <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>
@@ -84,14 +81,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'correctly formats the HTML with character count around the textarea form' do
         expect(character_count_element.to_html).to eq('
-          <div class="govuk-character-count" data-module="govuk-character-count">
-            <div class="govuk-form-group" id="ouroboros-form-group">
-              <label class="govuk-label" for="ouroboros">
-                Explain why they are your favourite character
-              </label>
-              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-              </textarea>
-            </div>
+          <div data-module="govuk-character-count" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Explain why they are your favourite character
+            </label>
+            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+            </textarea>
             <div id="ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
           </div>
         '.to_one_line)
@@ -201,7 +196,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { classes: 'my-custom-textarea-class' } }
 
         it 'has the custom classes' do
-          expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
+          expect(character_count_element[:class]).to eq('govuk-form-group govuk-character-count my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
           expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
@@ -213,7 +208,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { attributes: { id: 'my-custom-textarea-id' } } }
 
         it 'has the custom ids' do
-          expect(form_group_element[:id]).to eq('my-custom-form-group-id')
+          expect(character_count_element[:id]).to eq('my-custom-form-group-id')
           expect(label_element[:id]).to eq('my-custom-label-id')
           expect(textarea_element[:id]).to eq('my-custom-textarea-id')
         end
@@ -259,17 +254,15 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         context 'when the default attributes are sent' do
           it 'correctly formats the HTML with the hint' do
             expect(character_count_element.to_html).to eq('
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-                <div class="govuk-form-group" id="ouroboros-form-group">
-                  <label class="govuk-label" for="ouroboros">
-                    Explain why they are your favourite character
-                  </label>
-                  <div id="ouroboros-hint" class="govuk-hint">
-                    For example, is it their combat, or their style?
-                  </div>
-                  <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
-                  </textarea>
+              <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+                <label class="govuk-label" for="ouroboros">
+                  Explain why they are your favourite character
+                </label>
+                <div id="ouroboros-hint" class="govuk-hint">
+                  For example, is it their combat, or their style?
                 </div>
+                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
+                </textarea>
                 <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                   You can enter up to 200 characters
                 </div>
@@ -309,17 +302,15 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and classes' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
-              </div>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -342,20 +333,18 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <div id="ouroboros-hint" class="govuk-hint">
-                  For example, is it their combat, or their style?
-                </div>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <div id="ouroboros-hint" class="govuk-hint">
+                For example, is it their combat, or their style?
               </div>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -372,6 +361,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:textarea_options) { { before_input: before_input } }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:textarea_options) { { after_input: after_input } }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -379,14 +442,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+          </textarea>
           <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>
@@ -407,14 +468,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'correctly formats the HTML with character count around the textarea form' do
         expect(character_count_element.to_html).to eq('
-          <div class="govuk-character-count" data-module="govuk-character-count">
-            <div class="govuk-form-group" id="ouroboros-form-group">
-              <label class="govuk-label" for="ouroboros">
-                Explain why they are your favourite character
-              </label>
-              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
-              </textarea>
-            </div>
+          <div data-module="govuk-character-count" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Explain why they are your favourite character
+            </label>
+            <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+            </textarea>
             <div id="ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
           </div>
         '.to_one_line)
@@ -532,7 +591,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { classes: 'my-custom-textarea-class' } }
 
         it 'has the custom classes' do
-          expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
+          expect(character_count_element[:class]).to eq('govuk-form-group govuk-character-count my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
           expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
@@ -544,7 +603,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { attributes: { id: 'my-custom-textarea-id' } } }
 
         it 'has the custom ids' do
-          expect(form_group_element[:id]).to eq('my-custom-form-group-id')
+          expect(character_count_element[:id]).to eq('my-custom-form-group-id')
           expect(label_element[:id]).to eq('my-custom-label-id')
           expect(textarea_element[:id]).to eq('my-custom-textarea-id')
         end
@@ -582,17 +641,15 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         context 'when the default attributes are sent' do
           it 'correctly formats the HTML with the hint' do
             expect(character_count_element.to_html).to eq('
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-                <div class="govuk-form-group" id="ouroboros-form-group">
-                  <label class="govuk-label" for="ouroboros">
-                    Explain why they are your favourite character
-                  </label>
-                  <div id="ouroboros-hint" class="govuk-hint">
-                    For example, is it their combat, or their style?
-                  </div>
-                  <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
-                  </textarea>
+              <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+                <label class="govuk-label" for="ouroboros">
+                  Explain why they are your favourite character
+                </label>
+                <div id="ouroboros-hint" class="govuk-hint">
+                  For example, is it their combat, or their style?
                 </div>
+                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5">
+                </textarea>
                 <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                   You can enter up to 200 characters
                 </div>
@@ -632,17 +689,15 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and classes' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
-              </div>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -666,20 +721,18 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <div id="ouroboros-hint" class="govuk-hint">
-                  For example, is it their combat, or their style?
-                </div>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
-                </textarea>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <div id="ouroboros-hint" class="govuk-hint">
+                For example, is it their combat, or their style?
               </div>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5">
+              </textarea>
               <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -696,6 +749,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:textarea_options) { { before_input: before_input } }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:textarea_options) { { after_input: after_input } }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea name="ouroboros" id="ouroboros" aria-describedby="ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5">
+              </textarea>
+              <div id="ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with form' do
@@ -705,14 +832,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
     let(:default_html) do
       '
-        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-          <div class="govuk-form-group" id="ouroboros-form-group">
-            <label class="govuk-label" for="test_model_ouroboros">
-              Explain why they are your favourite character
-            </label>
-            <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-            </textarea>
-          </div>
+        <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+          <label class="govuk-label" for="test_model_ouroboros">
+            Explain why they are your favourite character
+          </label>
+          <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+          </textarea>
           <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
             You can enter up to 200 characters
           </div>
@@ -733,14 +858,12 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'correctly formats the HTML with character count around the textarea form' do
         expect(character_count_element.to_html).to eq('
-          <div class="govuk-character-count" data-module="govuk-character-count">
-            <div class="govuk-form-group" id="ouroboros-form-group">
-              <label class="govuk-label" for="test_model_ouroboros">
-                Explain why they are your favourite character
-              </label>
-              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-              </textarea>
-            </div>
+          <div data-module="govuk-character-count" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+            <label class="govuk-label" for="test_model_ouroboros">
+              Explain why they are your favourite character
+            </label>
+            <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+            </textarea>
             <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message"></div>
           </div>
         '.to_one_line)
@@ -858,7 +981,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { classes: 'my-custom-textarea-class' } }
 
         it 'has the custom classes' do
-          expect(form_group_element[:class]).to eq('govuk-form-group my-custom-form-group-class')
+          expect(character_count_element[:class]).to eq('govuk-form-group govuk-character-count my-custom-form-group-class')
           expect(label_element[:class]).to eq('govuk-label my-custom-label-class')
           expect(textarea_element[:class]).to eq('govuk-textarea govuk-js-character-count my-custom-textarea-class')
         end
@@ -870,7 +993,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { attributes: { id: 'my-custom-textarea-id' } } }
 
         it 'has the custom ids' do
-          expect(form_group_element[:id]).to eq('my-custom-form-group-id')
+          expect(character_count_element[:id]).to eq('my-custom-form-group-id')
           expect(label_element[:id]).to eq('my-custom-label-id')
           expect(textarea_element[:id]).to eq('my-custom-textarea-id')
         end
@@ -908,17 +1031,15 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         context 'when the default attributes are sent' do
           it 'correctly formats the HTML with the hint' do
             expect(character_count_element.to_html).to eq('
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-                <div class="govuk-form-group" id="ouroboros-form-group">
-                  <label class="govuk-label" for="test_model_ouroboros">
-                    Explain why they are your favourite character
-                  </label>
-                  <div id="ouroboros-hint" class="govuk-hint">
-                    For example, is it their combat, or their style?
-                  </div>
-                  <textarea aria-describedby="test_model_ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-                  </textarea>
+              <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+                <label class="govuk-label" for="test_model_ouroboros">
+                  Explain why they are your favourite character
+                </label>
+                <div id="ouroboros-hint" class="govuk-hint">
+                  For example, is it their combat, or their style?
                 </div>
+                <textarea aria-describedby="test_model_ouroboros-info ouroboros-hint" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+                </textarea>
                 <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
                   You can enter up to 200 characters
                 </div>
@@ -958,19 +1079,17 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and classes' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="test_model_ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea aria-describedby="test_model_ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-                </textarea>
-              </div>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
               <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
-                You can enter up to 200 characters
+              You can enter up to 200 characters
               </div>
             </div>
           '.to_one_line)
@@ -992,20 +1111,18 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
         it 'correctly formats the HTML with error message and the hint with the aria-describedby from the hint then error message' do
           expect(character_count_element.to_html).to eq('
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-              <div class="govuk-form-group govuk-form-group--error" id="ouroboros-form-group">
-                <label class="govuk-label" for="test_model_ouroboros">
-                  Explain why they are your favourite character
-                </label>
-                <div id="ouroboros-hint" class="govuk-hint">
-                  For example, is it their combat, or their style?
-                </div>
-                <p class="govuk-error-message" id="ouroboros-error">
-                  <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
-                </p>
-                <textarea aria-describedby="test_model_ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
-                </textarea>
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-form-group--error govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <div id="ouroboros-hint" class="govuk-hint">
+                For example, is it their combat, or their style?
               </div>
+              <p class="govuk-error-message" id="ouroboros-error">
+                <span class="govuk-visually-hidden">Error:</span> You must enter your favourite character
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info ouroboros-hint ouroboros-error" class="govuk-textarea govuk-js-character-count govuk-textarea--error" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
               <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
                 You can enter up to 200 characters
               </div>
@@ -1019,6 +1136,80 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
           it 'has the textarea aria described by as the custom, hint and error id' do
             expect(textarea_element[:'aria-describedby']).to eq('some-id test_model_ouroboros-info ouroboros-hint ouroboros-error')
           end
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:textarea_options) { { before_input: before_input } }
+
+        it 'renders the character count with the before input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:textarea_options) { { after_input: after_input } }
+
+        it 'renders the character count with the after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:textarea_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the character count with the before and after input' do
+          expect(character_count_element.to_html).to eq('
+            <div data-module="govuk-character-count" data-maxlength="200" class="govuk-form-group govuk-character-count" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Explain why they are your favourite character
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <textarea aria-describedby="test_model_ouroboros-info" class="govuk-textarea govuk-js-character-count" rows="5" name="test_model[ouroboros]" id="test_model_ouroboros">
+              </textarea>
+              <div id="test_model_ouroboros-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

@@ -230,6 +230,68 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
         end
       end
     end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:file_upload_options) { { before_input: before_input } }
+
+        it 'renders the file upload with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:file_upload_options) { { after_input: after_input } }
+
+        it 'renders the file upload with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the file upload with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+    end
   end
 
   describe '.render with model' do
@@ -411,6 +473,68 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
 
         it 'has the file upload aria described by as the custom, hint and error id' do
           expect(file_upload_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:file_upload_options) { { before_input: before_input } }
+
+        it 'renders the file upload with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:file_upload_options) { { after_input: after_input } }
+
+        it 'renders the file upload with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the file upload with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end
@@ -597,6 +721,68 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
 
         it 'has the file upload aria described by as the custom, hint and error id' do
           expect(file_upload_element[:'aria-describedby']).to eq('some-id ouroboros-hint ouroboros-error')
+        end
+      end
+    end
+
+    context 'when considering before and after input' do
+      let(:before_input) { tag.p('I am before input', class: 'govuk-body') }
+      let(:after_input) { tag.p('I am after input', class: 'govuk-body') }
+
+      context 'when there is a before input' do
+        let(:file_upload_options) { { before_input: before_input } }
+
+        it 'renders the file upload with the before input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input class="govuk-file-upload" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is an after input' do
+        let(:file_upload_options) { { after_input: after_input } }
+
+        it 'renders the file upload with the after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Upload your favourite artwork
+              </label>
+              <input class="govuk-file-upload" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
+        end
+      end
+
+      context 'when there is a before and after input' do
+        let(:file_upload_options) { { before_input: before_input, after_input: after_input } }
+
+        it 'renders the file upload with the before and after input' do
+          expect(form_group_element.to_html).to eq('
+            <div class="govuk-form-group" id="ouroboros-form-group">
+              <label class="govuk-label" for="test_model_ouroboros">
+                Upload your favourite artwork
+              </label>
+              <p class="govuk-body">
+                I am before input
+              </p>
+              <input class="govuk-file-upload" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
+              <p class="govuk-body">
+                I am after input
+              </p>
+            </div>
+          '.to_one_line)
         end
       end
     end

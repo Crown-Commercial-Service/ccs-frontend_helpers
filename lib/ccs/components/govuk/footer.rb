@@ -37,7 +37,6 @@ module CCS
         def initialize(navigation: nil, meta: nil, **options)
           super(**options)
 
-          @options[:attributes][:role] = 'contentinfo'
           @options[:copyright] ||= '© Crown copyright'
 
           @navigation = navigation&.map { |navigation_item| Navigation.new(context: @context, **navigation_item) }

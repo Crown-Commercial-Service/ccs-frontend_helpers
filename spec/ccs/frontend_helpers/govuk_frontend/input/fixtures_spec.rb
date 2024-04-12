@@ -14,7 +14,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
     before do
       fixture_options[:name] ||= fixture_options[:id]
 
-      %i[id autocomplete pattern spellcheck type inputmode].each do |attribute|
+      %i[id autocomplete pattern spellcheck type inputmode autocapitalize].each do |attribute|
         next if fixture_options[attribute].nil?
 
         fixture_options[:attributes] ||= {}
@@ -175,6 +175,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
 
     context "when the fixture is 'with spellcheck disabled'" do
       let(:fixture_name) { 'with spellcheck disabled' }
+      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with autocapitalize turned off'" do
+      let(:fixture_name) { 'with autocapitalize turned off' }
       let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
@@ -403,6 +412,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
     context "when the fixture is 'with suffix with attributes'" do
       let(:fixture_name) { 'with suffix with attributes' }
       let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], suffix: fixture_options[:suffix], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with customised input wrapper'" do
+      let(:fixture_name) { 'with customised input wrapper' }
+      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], prefix: fixture_options[:prefix], suffix: fixture_options[:suffix], input_wrapper: fixture_options[:inputWrapper], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

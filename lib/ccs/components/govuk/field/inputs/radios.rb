@@ -12,14 +12,11 @@ module CCS
           #
           # This is used for generating the radios component from the
           # {https://design-system.service.gov.uk/components/radios GDS - Components - Radios}
-          #
-          # @!attribute [r] radio_items
-          #   @return [Array<Item::Divider|Item::Radio|Item::Radio>] An array of the initialised radio items
 
           class Radios < Inputs
             private
 
-            attr_reader :radio_items
+            attr_reader :input_items
 
             public
 
@@ -40,22 +37,10 @@ module CCS
 
               radio_item_class = @options[:form] ? Item::Radio::Form : Inputs::Item::Radio::Tag
 
-              @radio_items = radio_items.map { |radio_item| radio_item[:divider] ? Item::Divider.new(divider: radio_item[:divider], type: 'radios') : radio_item_class.new(attribute: attribute, form: @options[:form], context: @context, **radio_item) }
+              @input_items = radio_items.map { |radio_item| radio_item[:divider] ? Item::Divider.new(divider: radio_item[:divider], type: 'radios') : radio_item_class.new(attribute: attribute, form: @options[:form], context: @context, **radio_item) }
             end
 
             # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-
-            # Generates the HTML for the GOV.UK Radios component
-            #
-            # @return [ActiveSupport::SafeBuffer]
-
-            def render
-              super() do
-                tag.div(**options[:attributes]) do
-                  radio_items.each { |radio_item| concat(radio_item.render) }
-                end
-              end
-            end
 
             # The default attributes for the radios
 

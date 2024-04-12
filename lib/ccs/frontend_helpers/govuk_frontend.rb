@@ -24,6 +24,7 @@ require_relative 'govuk_frontend/label'
 require_relative 'govuk_frontend/notification_banner'
 require_relative 'govuk_frontend/pagination'
 require_relative 'govuk_frontend/panel'
+require_relative 'govuk_frontend/password_input'
 require_relative 'govuk_frontend/phase_banner'
 require_relative 'govuk_frontend/radios'
 require_relative 'govuk_frontend/select'
@@ -67,6 +68,7 @@ module CCS
       include NotificationBanner
       include Pagination
       include Panel
+      include PasswordInput
       include PhaseBanner
       include Radios
       include Select
