@@ -46,7 +46,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'fieldset params' => true,
     'fieldset with html' => true,
     'with fieldset, error message and describedBy' => true,
-    'item checked overrides value' => false
+    'item checked overrides value' => false,
+    'textarea in conditional' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures('radios')

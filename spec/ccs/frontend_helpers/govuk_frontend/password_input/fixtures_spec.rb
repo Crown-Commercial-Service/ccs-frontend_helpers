@@ -76,6 +76,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PasswordInput, '#fixtures', 
       end
     end
 
+    context "when the fixture is 'with input width class'" do
+      let(:fixture_name) { 'with input width class' }
+      let(:result) { govuk_password_input(fixture_options[:name], label: fixture_options[:label], classes: fixture_options[:classes], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with new-password autocomplete'" do
       let(:fixture_name) { 'with new-password autocomplete' }
       let(:result) { govuk_password_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
