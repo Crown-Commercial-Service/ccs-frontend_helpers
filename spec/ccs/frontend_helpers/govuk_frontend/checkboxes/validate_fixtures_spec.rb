@@ -47,7 +47,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtu
     "with single option (and hint) set 'aria-describedby' on input, and describedBy" => true,
     'with error and idPrefix' => true,
     'with error message and fieldset describedBy' => true,
-    'item checked overrides values' => false
+    'item checked overrides values' => false,
+    'textarea in conditional' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures('checkboxes')

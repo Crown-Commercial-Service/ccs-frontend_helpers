@@ -6,6 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PasswordInput, '#validate_fi
     'with hint text' => true,
     'with error message' => true,
     'with label as page heading' => true,
+    'with input width class' => true,
     'with new-password autocomplete' => true,
     'with translations' => true,
     'classes' => true,

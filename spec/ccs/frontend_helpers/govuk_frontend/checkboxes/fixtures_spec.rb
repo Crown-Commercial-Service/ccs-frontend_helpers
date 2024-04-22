@@ -490,5 +490,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
         expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'textarea in conditional'" do
+      let(:fixture_name) { 'textarea in conditional' }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
   end
 end
