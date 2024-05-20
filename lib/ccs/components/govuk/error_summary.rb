@@ -31,7 +31,7 @@ module CCS
         # @option options [String] :classes additional CSS classes for the error summary HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
 
-        def initialize(title:, error_summary_items:, description: nil, **options)
+        def initialize(title:, error_summary_items: [], description: nil, **options)
           super(**options)
 
           @title = title
@@ -51,9 +51,11 @@ module CCS
               concat(tag.h2(title, class: 'govuk-error-summary__title'))
               concat(tag.div(class: 'govuk-error-summary__body') do
                 concat(tag.p(description)) if description
-                concat(tag.ul(class: 'govuk-list govuk-error-summary__list') do
-                  error_summary_items.each { |error_summary_item| concat(error_summary_item.render) }
-                end)
+                if error_summary_items.any?
+                  concat(tag.ul(class: 'govuk-list govuk-error-summary__list') do
+                    error_summary_items.each { |error_summary_item| concat(error_summary_item.render) }
+                  end)
+                end
               end)
             end
           end

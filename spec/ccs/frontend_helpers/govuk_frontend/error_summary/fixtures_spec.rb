@@ -37,6 +37,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, '#fixtures', t
       end
     end
 
+    context "when the fixture is 'with description only'" do
+      let(:fixture_name) { 'with description only' }
+      let(:result) { govuk_error_summary(fixture_options[:titleText], description: fixture_options[:descriptionText]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with everything'" do
       let(:fixture_name) { 'with everything' }
       let(:result) { govuk_error_summary(fixture_options[:titleText], fixture_options[:errorList], fixture_options[:descriptionText]) }

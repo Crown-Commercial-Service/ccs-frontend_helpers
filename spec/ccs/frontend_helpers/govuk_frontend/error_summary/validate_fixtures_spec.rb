@@ -5,6 +5,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, '#validate_fix
     'default' => true,
     'without links' => true,
     'mixed with and without links' => true,
+    'with description only' => true,
     'with everything' => true,
     'html as titleText' => true,
     'title html' => true,
