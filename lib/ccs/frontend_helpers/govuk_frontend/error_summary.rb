@@ -19,7 +19,7 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ErrorSummary#render)
 
-        def govuk_error_summary(title, error_summary_items, description = nil, **options)
+        def govuk_error_summary(title, error_summary_items = [], description = nil, **options)
           Components::GovUK::ErrorSummary.new(context: self, title: title, error_summary_items: error_summary_items, description: description, **options).render
         end
 

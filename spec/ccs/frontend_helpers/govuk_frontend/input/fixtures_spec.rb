@@ -283,6 +283,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
       end
     end
 
+    context "when the fixture is 'zero value'" do
+      let(:fixture_name) { 'zero value' }
+      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], value: fixture_options[:value], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with describedBy'" do
       let(:fixture_name) { 'with describedBy' }
       let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes].merge({ aria: { describedby: fixture_options[:describedBy] } })) }
