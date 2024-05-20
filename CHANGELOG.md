@@ -1,3 +1,7 @@
+## [0.4.0] - 2024-05-20
+
+Update components to be compatible with GOV.UK Frontend v5.4
+
 ## [0.3.0] - 2024-04-12
 
 Update components to be compatible with GOV.UK Frontend v5.3
