@@ -37,7 +37,7 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              super() do
+              super do
                 form.button(number, **@options[:attributes])
               end
             end

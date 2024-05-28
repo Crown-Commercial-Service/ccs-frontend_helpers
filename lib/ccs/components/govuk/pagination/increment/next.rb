@@ -24,7 +24,7 @@ module CCS
 
             def render
               tag.div(class: 'govuk-pagination__next') do
-                super() do
+                super do
                   concat(pagination_icon) if block_is_level
                   concat(tag.span(class: pagination_text_classes) do
                     concat(text)
