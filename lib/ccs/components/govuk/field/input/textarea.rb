@@ -39,7 +39,7 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              super() do
+              super do
                 if options[:form]
                   options[:form].text_area(attribute, **options[:attributes])
                 else

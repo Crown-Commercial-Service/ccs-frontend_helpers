@@ -17,7 +17,7 @@ module CCS
                 # @option (see CCS::Components::GovUK::Field::Items::Item::Radio#initialize)
 
                 def initialize(attribute:, label:, **options)
-                  super(attribute: attribute, label: label, **options)
+                  super
 
                   (label[:attributes] ||= {})[:value] = @value
                   label[:attributes][:for] = @options[:attributes][:id] if @options[:attributes][:id]
@@ -30,7 +30,7 @@ module CCS
                 # @return [ActiveSupport::SafeBuffer]
 
                 def render
-                  super() do
+                  super do
                     @options[:form].radio_button(@attribute, @value, **@options[:attributes])
                   end
                 end

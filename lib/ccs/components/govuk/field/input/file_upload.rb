@@ -15,16 +15,12 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Input#initialize)
 
-            def initialize(attribute:, **options)
-              super(attribute: attribute, **options)
-            end
-
             # Generates the HTML for the GOV.UK File Upload component
             #
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              super() do
+              super do
                 if options[:form]
                   options[:form].file_field(attribute, **options[:attributes])
                 else

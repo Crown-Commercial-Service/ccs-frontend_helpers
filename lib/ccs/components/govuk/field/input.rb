@@ -50,7 +50,7 @@ module CCS
           # @return [ActiveSupport::SafeBuffer]
 
           def render
-            super() do |display_error_message|
+            super do |display_error_message|
               concat(label.render)
               concat(hint.render) if hint
               concat(display_error_message)

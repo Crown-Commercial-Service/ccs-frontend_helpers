@@ -35,7 +35,7 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def render
-              super() do
+              super do
                 link_to(number, href, **@options[:attributes])
               end
             end
