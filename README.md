@@ -1,6 +1,6 @@
 # CCS Frontend Helpers
 
-[![Ruby](https://github.com/tim-s-ccs/ccs-frontend_helpers/actions/workflows/main.yml/badge.svg)](https://github.com/tim-s-ccs/ccs-frontend_helpers/actions/workflows/main.yml)
+[![Ruby](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/actions/workflows/main.yml/badge.svg)](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/actions/workflows/main.yml)
 [![Gem Version](https://badge.fury.io/rb/ccs-frontend_helpers.svg)](https://badge.fury.io/rb/ccs-frontend_helpers)
 
 The CCS Frontend Helpers gem was created for use in the Crown Marketplace projects at the Crown Commercial Service.
@@ -14,10 +14,10 @@ The following table shows the version of CCS Frontend Helpers that you should us
 
 | CCS Frontend Helpers Version | Target GOV.UK Frontend Version |
 | ----------------------------- | ------------------------------ |
-| [0.4.0](https://github.com/tim-s-ccs/ccs-frontend_helpers/releases/tag/v0.4.0) | [5.4.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.4.0) |
-| [0.3.0](https://github.com/tim-s-ccs/ccs-frontend_helpers/releases/tag/v0.3.0) | [5.3.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.3.0) |
-| [0.2.0](https://github.com/tim-s-ccs/ccs-frontend_helpers/releases/tag/v0.2.0) | [5.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.2.0) |
-| [0.1.2](https://github.com/tim-s-ccs/ccs-frontend_helpers/releases/tag/v0.1.2) | [4.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.7.0) |
+| [0.4.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v0.4.0) | [5.4.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.4.0) |
+| [0.3.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v0.3.0) | [5.3.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.3.0) |
+| [0.2.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v0.2.0) | [5.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.2.0) |
+| [0.1.2](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v0.1.2) | [4.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.7.0) |
 
 Any other versions of GOV.UK Frontend not shown above _may_ still be compatible, but have not been specifically tested and verified.
 
@@ -45,7 +45,7 @@ module ApplicationHelper
 end 
 ```
 
-This will give you access to a variety of [GDS components](https://design-system.service.gov.uk/components) and [CCS components](https://github.com/tim-s-ccs/ts-ccs-frontend) to use in your application views.
+This will give you access to a variety of [GDS components](https://design-system.service.gov.uk/components) and [CCS components](https://github.com/Crown-Commercial-Service/ts-ccs-frontend) to use in your application views.
 The `GovUKFrontend` components are based on the components found in [GOV.UK Frontend v4.5.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.5.0).
 
 Documentation for the helper methods can be found at [LINK TO RDOCS](#)
@@ -95,7 +95,7 @@ Snyk is used more for analysing security issues and it will raise PRs itself for
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/tim-s-ccs/ccs-frontend_helpers.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Crown-Commercial-Service/ccs-frontend_helpers.
 
 To contribute to the project, you should checkout a new branch from `main` and make your changes.
 
