@@ -12,14 +12,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#helpers', type: :h
     let(:options) { {} }
 
     context 'when type is a' do
-      let(:options) { { href: 'https://github.com/tim-s-ccs/ccs-frontend_helpers' } }
+      let(:options) { { href: 'https://github.com/Crown-Commercial-Service/ccs-frontend_helpers' } }
 
       let(:button_element) { Capybara::Node::Simple.new(result).find('a.govuk-button') }
 
       context 'when the default attributes are sent' do
         it 'correctly formats the HTML with the text and content' do
           expect(button_element.to_html).to eq('
-            <a class="govuk-button" data-module="govuk-button" role="button" draggable="false" href="https://github.com/tim-s-ccs/ccs-frontend_helpers">
+            <a class="govuk-button" data-module="govuk-button" role="button" draggable="false" href="https://github.com/Crown-Commercial-Service/ccs-frontend_helpers">
               Go Beyond, Plus Ultra!
             </a>
           '.to_one_line)
@@ -31,7 +31,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#helpers', type: :h
 
         it 'correctly formats the HTML with the start button image' do
           expect(button_element.to_html).to eq('
-            <a class="govuk-button govuk-button--start" data-module="govuk-button" role="button" draggable="false" href="https://github.com/tim-s-ccs/ccs-frontend_helpers">
+            <a class="govuk-button govuk-button--start" data-module="govuk-button" role="button" draggable="false" href="https://github.com/Crown-Commercial-Service/ccs-frontend_helpers">
               Go Beyond, Plus Ultra!
               <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" aria-hidden="true" focusable="false">
                 <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
