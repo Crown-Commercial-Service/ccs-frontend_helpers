@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-ccs-frontend@^1.0.0-beta.5:
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/ccs-frontend/-/ccs-frontend-1.0.0-beta.5.tgz#d69ae71603074922d93f0c4eea31739abe2dd0da"
-  integrity sha512-thdhIusFYAOHCyQT2nPTi0cqz1nGTN6ZffFryy8zF21kklVkYyvKsnx+uxrjjhJKmAMgtqxzoXxONws3OeZ8YA==
+ccs-frontend@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ccs-frontend/-/ccs-frontend-1.0.0.tgz#88b53812894e10e5d3e546f54551f709d182c801"
+  integrity sha512-a+bNJwGaAovEA3K764XkV2GoMMMWGGItqmvDzM46Nq0JXs1oat3CXjptZ01TxXFae6eg4YKWoUMCHbfMBiU6TA==
 
 govuk-frontend@^5.4.0:
   version "5.4.0"
