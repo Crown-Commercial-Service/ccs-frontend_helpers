@@ -114,7 +114,7 @@ Snyk is used more for analysing security issues and it will raise PRs itself for
    - if the changelog has headings from a pre release, regroup the content under those headings in a single block
    - saving your changes
 
-6. Run `./bin/build-release` to:
+6. Run `./bin/build-release.sh` to:
 
    - commit the changes
    - push a branch to GitHub
