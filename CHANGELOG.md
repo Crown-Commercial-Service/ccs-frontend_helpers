@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.5.0-beta1] - 2024-06-07
+## [1.0.0] - 2024-06-07
 
 ### Changed
 
+- First major release of gem
 - Internal change to use CCS Frontend fixtures to test the CCS frontend components.
   This included some minor changes to the HTML for the components.
 
