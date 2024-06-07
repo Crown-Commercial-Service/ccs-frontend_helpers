@@ -22,7 +22,9 @@ jobs:
 
       - name: Get package version
         id: package_version
-        run: echo "ruby=$(./bin/version)" >> $GITHUB_OUTPUT
+        run: |
+          echo "ruby=$(./bin/version)" >> $GITHUB_OUTPUT
+          echo "ruby_semver=$(./bin/semver)" >> $GITHUB_OUTPUT
 
       - name: Check if version tag already exists
         id: version_tag
@@ -42,7 +44,7 @@ jobs:
         uses: mindsers/changelog-reader-action@v2
         with:
           validation_level: warn
-          version: ${{ steps.package_version.outputs.ruby }}
+          version: ${{ steps.package_version.outputs.ruby_semver }}
 
       - name: Create GitHub release
         if: ${{ steps.version_tag.outputs.exists == 'false' }}
@@ -50,5 +52,5 @@ jobs:
         with:
           tag_name: v${{ steps.package_version.outputs.ruby }}
           name: CCS Frontend Helpers v${{ steps.package_version.outputs.ruby }}
-          prerelease: contains(${{ steps.package_version.outputs.ruby }}, 'beta')
+          prerelease: ${{ contains(steps.package_version.outputs.ruby, 'beta') }}
           body: ${{ steps.changelog_reader.outputs.changes }}
