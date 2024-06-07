@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [0.5.0.beta0] - 2024-06-07
+
 Internal change to use CCS Frontend fixtures to test the CCS frontend components.
 This included some minor changes to the HTML for the components.
 
