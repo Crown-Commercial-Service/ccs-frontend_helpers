@@ -2,7 +2,7 @@
 
 require 'ccs/frontend_helpers/ccs_frontend/dashboard_section'
 
-RSpec.describe CCS::FrontendHelpers::CCSFrontend::DashboardSection, type: :helper do
+RSpec.describe CCS::FrontendHelpers::CCSFrontend::DashboardSection, '#helpers', type: :helper do
   include described_class
 
   let(:dashboard_section_element) { Capybara::Node::Simple.new(result).find('div.ccs-dashboard-section') }

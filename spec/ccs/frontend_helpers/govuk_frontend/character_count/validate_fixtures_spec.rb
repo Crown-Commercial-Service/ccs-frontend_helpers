@@ -27,9 +27,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#validate_f
     'when neither maxlength/maxwords nor textarea description are set' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('character-count')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'character-count')
 
-  FixturesLoader.get_fixture_names('character-count').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'character-count').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

@@ -6,7 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tabs, '#fixtures', type: :he
   include described_class
 
   describe '.govuk_tabs from fixtures' do
-    include_context 'and I have loaded the fixture'
+    include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'tabs' }
 

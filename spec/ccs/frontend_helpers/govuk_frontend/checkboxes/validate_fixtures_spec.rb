@@ -51,9 +51,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtu
     'textarea in conditional' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('checkboxes')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'checkboxes')
 
-  FixturesLoader.get_fixture_names('checkboxes').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'checkboxes').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

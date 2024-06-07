@@ -22,9 +22,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Fieldset, '#validate_fixture
     'attributes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('fieldset')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'fieldset')
 
-  FixturesLoader.get_fixture_names('fieldset').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'fieldset').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

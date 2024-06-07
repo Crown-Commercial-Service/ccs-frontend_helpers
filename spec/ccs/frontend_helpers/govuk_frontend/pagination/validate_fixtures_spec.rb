@@ -19,9 +19,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#validate_fixtu
     'with custom attributes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('pagination')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'pagination')
 
-  FixturesLoader.get_fixture_names('pagination').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'pagination').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

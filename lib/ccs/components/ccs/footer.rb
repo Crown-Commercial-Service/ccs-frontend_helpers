@@ -9,8 +9,10 @@ module CCS
       # = CCS Footer
       #
       # This is used for generating the footer component from the
-      # {https://github.com/tim-s-ccs/ts-ccs-frontend/tree/main/src/ccs/components/footer CCS - Components - Footer}
+      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/footer CCS - Components - Footer}
       #
+      # @!attribute [r] logo
+      #   @return [Logo] The initialised Logo component
       # @!attribute [r] navigation
       #   @return [Array<Navigation>] An array of the initialised navigation sections
       # @!attribute [r] meta
@@ -19,7 +21,7 @@ module CCS
       class Footer < Base
         private
 
-        attr_reader :navigation, :meta
+        attr_reader :logo, :navigation, :meta
 
         public
 
@@ -39,7 +41,8 @@ module CCS
 
           @options[:copyright] ||= '© Crown copyright'
 
-          @navigation = navigation&.map { |navigation_item| Navigation.new(context: @context, **navigation_item) }
+          @logo = Logo.new(context: @context)
+          @navigation = navigation.map { |navigation_item| Navigation.new(context: @context, **navigation_item) } if navigation.present?
           @meta = Meta.new(context: @context, **meta) if meta
         end
 
@@ -60,7 +63,7 @@ module CCS
               end
               concat(tag.div(class: 'ccs-footer__meta') do
                 concat(tag.div(class: 'ccs-footer__meta-item') do
-                  concat(tag.div(Logo.render, class: 'ccs-footer__logo'))
+                  concat(tag.div(logo.render, class: 'ccs-footer__logo'))
                   concat(footer_copyright)
                 end)
                 concat(tag.div(class: 'ccs-footer__meta-item ccs-footer__meta-item--grow') do

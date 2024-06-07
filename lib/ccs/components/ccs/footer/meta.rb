@@ -32,7 +32,7 @@ module CCS
           # @param context [ActionView::Base] the view context
 
           def initialize(context:, items: nil, visually_hidden_title: nil, text: nil)
-            @meta_links = items&.map { |meta_link| Link.new(li_class: 'ccs-footer__inline-list-item', context: context, **meta_link) }
+            @meta_links = items.map { |meta_link| Link.new(li_class: 'ccs-footer__inline-list-item', context: context, **meta_link) } if items.present?
             @visually_hidden_title = visually_hidden_title || 'Support links'
             @text = text
           end
@@ -45,7 +45,7 @@ module CCS
             capture do
               concat(tag.h2(visually_hidden_title, class: 'govuk-visually-hidden'))
               if meta_links
-                concat(tag.ul(class: 'ccs-footer__inline-list') do
+                concat(tag.ul(class: "ccs-footer__inline-list #{'ccs-footer__inline-list--bottom' unless text}".rstrip) do
                   meta_links.each { |meta_link| concat(meta_link.render) }
                 end)
               end

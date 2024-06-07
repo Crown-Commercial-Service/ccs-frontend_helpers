@@ -1,3 +1,10 @@
+# Changelog
+
+## Unreleased
+
+Internal change to use CCS Frontend fixtures to test the CCS frontend components.
+This included some minor changes to the HTML for the components.
+
 ## [0.4.0] - 2024-05-20
 
 Update components to be compatible with GOV.UK Frontend v5.4

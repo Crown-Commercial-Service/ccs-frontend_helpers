@@ -11,9 +11,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#validate_fixture
     'attributes' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('back-link')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'back-link')
 
-  FixturesLoader.get_fixture_names('back-link').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'back-link').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

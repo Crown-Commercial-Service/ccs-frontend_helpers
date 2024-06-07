@@ -6,7 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
   include described_class
 
   describe '.govuk_footer from fixtures' do
-    include_context 'and I have loaded the fixture'
+    include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'footer' }
     let(:fixture_html) { fixture[:html].to_one_line.gsub('aclass', 'a class').gsub('pathfill', 'path fill').gsub('svgaria', 'svg aria') }

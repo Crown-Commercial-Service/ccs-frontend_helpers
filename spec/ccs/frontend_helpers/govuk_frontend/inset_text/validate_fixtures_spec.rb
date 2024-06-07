@@ -10,9 +10,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::InsetText, '#validate_fixtur
     'attributes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('inset-text')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'inset-text')
 
-  FixturesLoader.get_fixture_names('inset-text').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'inset-text').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

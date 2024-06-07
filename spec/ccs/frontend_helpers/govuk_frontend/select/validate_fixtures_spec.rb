@@ -23,9 +23,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, '#validate_fixtures'
     'item selected overrides value' => false
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('select')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'select')
 
-  FixturesLoader.get_fixture_names('select').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'select').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

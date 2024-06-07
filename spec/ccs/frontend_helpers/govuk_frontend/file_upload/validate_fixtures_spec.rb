@@ -17,9 +17,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#validate_fixtu
     'with error, describedBy and hint' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('file-upload')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'file-upload')
 
-  FixturesLoader.get_fixture_names('file-upload').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'file-upload').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

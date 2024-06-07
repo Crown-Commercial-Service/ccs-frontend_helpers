@@ -18,9 +18,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tag, '#validate_fixtures', t
     'html' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('tag')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'tag')
 
-  FixturesLoader.get_fixture_names('tag').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'tag').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

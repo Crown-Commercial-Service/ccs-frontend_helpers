@@ -8,9 +8,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ExitThisPage, '#validate_fix
     'testing-html' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('exit-this-page')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'exit-this-page')
 
-  FixturesLoader.get_fixture_names('exit-this-page').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'exit-this-page').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

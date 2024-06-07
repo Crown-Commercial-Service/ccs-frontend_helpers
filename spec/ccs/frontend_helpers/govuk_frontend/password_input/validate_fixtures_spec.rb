@@ -15,9 +15,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PasswordInput, '#validate_fi
     'with describedBy' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('password-input')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'password-input')
 
-  FixturesLoader.get_fixture_names('password-input').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'password-input').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

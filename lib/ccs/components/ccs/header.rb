@@ -9,8 +9,10 @@ module CCS
       # = CCS Header
       #
       # This is used for generating the header component from the
-      # {https://github.com/tim-s-ccs/ts-ccs-frontend/tree/main/src/ccs/components/header CCS - Components - Header}
+      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/header CCS - Components - Header}
       #
+      # @!attribute [r] logo
+      #   @return [Logo] The initialised Logo component
       # @!attribute [r] service_authentication
       #   @return [ServiceAuthentication] The initialised service authentication section
       # @!attribute [r] navigation
@@ -21,7 +23,7 @@ module CCS
       class Header < Base
         private
 
-        attr_reader :service_authentication, :navigation, :service
+        attr_reader :logo, :service_authentication, :navigation, :service
 
         public
 
@@ -48,8 +50,9 @@ module CCS
           @options[:container_classes] ||= 'govuk-width-container'
           @options[:homepage_url] ||= 'https://www.crowncommercial.gov.uk'
 
+          @logo = Logo.new(context: @context)
           @service_authentication = ServiceAuthentication.new(service_authentication_items: service_authentication_items, container_classes: @options[:container_classes], context: @context) if service_authentication_items
-          @navigation = Navigation.new(navigation: navigation, serivce_name_present: service, menu_button: menu_button, context: @context) if navigation
+          @navigation = Navigation.new(navigation: navigation, serivce_name_present: service, menu_button: menu_button, context: @context) if navigation && (navigation[:primary_items] || navigation[:secondary_items])
           @service = service
         end
 
@@ -88,7 +91,7 @@ module CCS
 
         def header_logo
           tag.div(class: 'ccs-header__logo') do
-            link_to(Logo.render, options[:homepage_url], class: 'ccs-header__link ccs-header__link--homepage', aria: { label: 'Crown Commercial Service' })
+            link_to(logo.render, options[:homepage_url], class: 'ccs-header__link ccs-header__link--homepage', aria: { label: 'Crown Commercial Service' })
           end
         end
 

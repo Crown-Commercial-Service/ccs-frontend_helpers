@@ -42,9 +42,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#validate_fixtures'
     'id' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('button')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'button')
 
-  FixturesLoader.get_fixture_names('button').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'button').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

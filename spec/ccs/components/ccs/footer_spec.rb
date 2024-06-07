@@ -133,7 +133,7 @@ RSpec.describe CCS::Components::CCS::Footer do
                 <h2 class="govuk-visually-hidden">
                   What do the words mean?
                 </h2>
-                <ul class="ccs-footer__inline-list">
+                <ul class="ccs-footer__inline-list ccs-footer__inline-list--bottom">
                   <li class="ccs-footer__inline-list-item">
                     <a class="ccs-footer__link" href="/plus">
                       Plus

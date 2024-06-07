@@ -50,9 +50,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'textarea in conditional' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('radios')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'radios')
 
-  FixturesLoader.get_fixture_names('radios').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'radios').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

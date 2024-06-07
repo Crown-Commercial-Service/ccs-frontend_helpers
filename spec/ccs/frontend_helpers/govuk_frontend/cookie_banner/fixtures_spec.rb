@@ -6,7 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#fixtures', t
   include described_class
 
   describe '.govuk_cookie_banner from fixtures' do
-    include_context 'and I have loaded the fixture'
+    include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'cookie-banner' }
     let(:fixture_html) { fixture[:html].to_one_line.gsub('data-nosnippet ', 'data-nosnippet="true" ') }
