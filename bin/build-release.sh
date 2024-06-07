@@ -3,7 +3,7 @@ set -e
 
 # Check if there are unexpected changes. Changes to CHANGELOG.md, version.rb
 # and Gemfile.lock files are expected as part of the normal release process.
-changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!lib/ccs/frontend_helpers/version.rb' ':!Gemfile.lock')"
+changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!lib/ccs/frontend_helpers/version.rb' ':!Gemfile.lock' ':!README.md')"
 if [[ -n $changes ]]; then
   echo "⚠ Unexpected changes in your working directory:"
   echo "$changes"
