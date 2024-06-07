@@ -22,7 +22,7 @@ jobs:
 
       - name: Get package version
         id: package_version
-        run: echo "ruby=v$(./bin/version)" >> $GITHUB_OUTPUT
+        run: echo "ruby=$(./bin/version)" >> $GITHUB_OUTPUT
 
       - name: Check if version tag already exists
         id: version_tag
@@ -30,16 +30,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{ steps.package_version.outputs.ruby }}
+          tag: v${{ steps.package_version.outputs.ruby }}
 
       - name: Publish packaged to RubyGems
         if: ${{ steps.version_tag.outputs.exists == 'false' }}
         uses: rubygems/release-gem@v1
 
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          validation_level: warn
+          version: ${{ steps.package_version.outputs.ruby }}
+
       - name: Create GitHub release
         if: ${{ steps.version_tag.outputs.exists == 'false' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.package_version.outputs.ruby }}
-          name: CCS Frontend Helpers ${{ steps.package_version.outputs.ruby }}
-          prerelease: contains(steps.package_version.outputs.ruby, 'beta')
+          tag_name: v${{ steps.package_version.outputs.ruby }}
+          name: CCS Frontend Helpers v${{ steps.package_version.outputs.ruby }}
+          prerelease: contains(${{ steps.package_version.outputs.ruby }}, 'beta')
+          body: ${{ steps.changelog_reader.outputs.changes }}
