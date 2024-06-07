@@ -107,9 +107,24 @@ Snyk is used more for analysing security issues and it will raise PRs itself for
    git switch -c "release-$(./bin/version)"
    ```
 
-5. Push this branch to GitHub and create a pull request.
+5. Update the [`CHANGELOG.md`](/CHANGELOG.md) by:
 
-   Once the PR is reviewed and merged, the gem will automatically be published to [rubygems.org](https://rubygems.org) via a GitHub action.
+   - changing the 'Unreleased' heading to the new version number and release type. For example, '3.11.0 (Feature release)'
+   - adding a new 'Unreleased' heading above the new version number and release type, so users will know where to add PRs to the changelog
+   - if the changelog has headings from a pre release, regroup the content under those headings in a single block
+   - saving your changes
+
+6. Run `./bin/build-release` to:
+
+   - commit the changes
+   - push a branch to GitHub
+
+   You will now be prompted to continue or cancel. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the build and creation of the branch on GitHub.
+
+7. Create a pull request and copy the changelog text.
+   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
+
+8. Once a reviewer approves the pull request, merge it to **main**. The gem will then automatically be published to [rubygems.org](https://rubygems.org) via a GitHub action.
 
 ## Contributing
 
