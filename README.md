@@ -54,7 +54,7 @@ Documentation for the helper methods can be found at [LINK TO RDOCS](#)
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ### Linting
 
@@ -92,6 +92,22 @@ We use [dependabot](https://github.com/dependabot) and [Snyk](https://app.snyk.i
 We schedule `dependabot` to run every Sunday night which will get the latest dependency updates.
  
 Snyk is used more for analysing security issues and it will raise PRs itself for a developer to analyse.
+
+## Releasing
+
+1. Check out the **main** branch and pull the latest changes.
+
+2. Update the version number in `version.rb` (we follow [Semantic Versioning](https://semver.org/)).
+
+3. Create and check out a new branch (`release-[version]`)
+
+  ```shell
+   git switch -c "release-$(./bin/version)"
+   ```
+
+4. Push this branch to GitHub and create a pull request.
+
+   Once the PR is reviewed and merged, the gem will automatically be published to [rubygems.org](https://rubygems.org) via a GitHub action.
 
 ## Contributing
 

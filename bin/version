@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/ccs/frontend_helpers/version"
+
+puts CCS::FrontendHelpers::VERSION

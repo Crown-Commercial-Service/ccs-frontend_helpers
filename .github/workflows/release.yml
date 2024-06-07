@@ -1,0 +1,36 @@
+name: Create release on GitHub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+
+      - name: Get package version
+        id: package_version
+        run: echo "ruby=$(./bin/version)" >> $GITHUB_OUTPUT
+      
+      - name: Check if version tag already exists
+        id: version_tag
+        uses: mukunku/tag-exists-action@bdad1eaa119ce71b150b952c97351c75025c06a9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{ steps.package_version.outputs.ruby }}
+
+      - name: Create GitHub release
+        if: ${{ steps.version_tag.outputs.exists == 'false' }}
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.CCS_FRONTEND_PROJECT_GITHUB_TOKEN }}
+          tag: ${{ steps.package_version.outputs.ruby }}
+          name: Release v${{ steps.package_version.outputs.ruby }}
