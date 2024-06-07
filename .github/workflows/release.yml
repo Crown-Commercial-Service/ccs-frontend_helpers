@@ -37,6 +37,7 @@ jobs:
         uses: rubygems/release-gem@v1
 
       - name: Get Changelog Entry
+        if: ${{ steps.version_tag.outputs.exists == 'false' }}
         id: changelog_reader
         uses: mindsers/changelog-reader-action@v2
         with:
