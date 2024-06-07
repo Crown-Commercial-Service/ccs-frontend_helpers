@@ -1,4 +1,4 @@
-name: Create release on GitHub
+name: Publish the gem to RubyGems
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          bundler-cache: true
 
       - name: Get package version
         id: package_version
@@ -29,8 +29,11 @@ jobs:
 
       - name: Create GitHub release
         if: ${{ steps.version_tag.outputs.exists == 'false' }}
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v2
         with:
-          token: ${{ secrets.CCS_FRONTEND_PROJECT_GITHUB_TOKEN }}
-          tag: ${{ steps.package_version.outputs.ruby }}
+          tag_name: ${{ steps.package_version.outputs.ruby }}
           name: CCS Frontend Helpers ${{ steps.package_version.outputs.ruby }}
+
+      - name: Publish packaged to RubyGems
+        if: ${{ steps.version_tag.outputs.exists == 'false' }}
+        uses: rubygems/release-gem@v1
