@@ -99,13 +99,15 @@ Snyk is used more for analysing security issues and it will raise PRs itself for
 
 2. Update the version number in `version.rb` (we follow [Semantic Versioning](https://semver.org/)).
 
-3. Create and check out a new branch (`release-[version]`)
+3. Run `bundle install` to update the `Gemfile.lock`
+
+4. Create and check out a new branch (`release-[version]`)
 
   ```shell
    git switch -c "release-$(./bin/version)"
    ```
 
-4. Push this branch to GitHub and create a pull request.
+5. Push this branch to GitHub and create a pull request.
 
    Once the PR is reviewed and merged, the gem will automatically be published to [rubygems.org](https://rubygems.org) via a GitHub action.
 
