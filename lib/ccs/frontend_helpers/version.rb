@@ -2,6 +2,6 @@
 
 module CCS
   module FrontendHelpers
-    VERSION = '0.5.0.beta0'
+    VERSION = '0.5.0.beta1'
   end
 end

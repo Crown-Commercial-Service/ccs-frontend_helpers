@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ccs-frontend_helpers (0.5.0.beta0)
+    ccs-frontend_helpers (0.5.0.beta1)
       rails (>= 6.0)
 
 GEM
