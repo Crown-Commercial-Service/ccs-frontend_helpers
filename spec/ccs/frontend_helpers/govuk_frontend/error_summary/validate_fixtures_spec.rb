@@ -23,9 +23,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, '#validate_fix
     'autofocus explicitly enabled' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('error-summary')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'error-summary')
 
-  FixturesLoader.get_fixture_names('error-summary').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'error-summary').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

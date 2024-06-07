@@ -3,6 +3,7 @@
 require_relative 'ccs_frontend/dashboard_section'
 require_relative 'ccs_frontend/footer'
 require_relative 'ccs_frontend/header'
+require_relative 'ccs_frontend/logo'
 
 module CCS
   module FrontendHelpers
@@ -13,6 +14,7 @@ module CCS
       include DashboardSection
       include Footer
       include Header
+      include Logo
     end
   end
 end

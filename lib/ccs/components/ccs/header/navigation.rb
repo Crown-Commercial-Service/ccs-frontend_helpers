@@ -56,8 +56,9 @@ module CCS
             @primary_links = navigation[:primary_items]&.map { |navigation_link| Link.new(li_class: LI_CLASS, context: context, **navigation_link) }
             @secondary_links = navigation[:secondary_items]&.map { |navigation_link| Link.new(li_class: LI_CLASS, context: context, **navigation_link) }
             @navigation_label = navigation[:label] || menu_button[:text]
-            @navigation_classes = "ccs-header__navigation #{navigation[:classes]}".rstrip
+            @navigation_classes = 'ccs-header__navigation'
             @navigation_classes << ' ccs-header__navigation--no-service-name' unless serivce_name_present
+            @navigation_classes << " #{navigation[:classes]}" if navigation[:classes]
           end
 
           # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

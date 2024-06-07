@@ -33,7 +33,7 @@ module CCS
           def initialize(title:, href:, description:, **options)
             super(**options)
 
-            @options[:attributes][:class] = "ccs-dashboard-section__panel govuk-grid-column-#{@options[:width] || 'one-third'}"
+            @options[:attributes][:class] << " govuk-grid-column-#{@options[:width] || 'one-third'}"
 
             @title = title
             @href = href
@@ -50,6 +50,10 @@ module CCS
               concat(tag.p(description, class: 'ccs-dashboard-section__panel-description'))
             end
           end
+
+          # The default attributes for the dashboard panel
+
+          DEFAULT_ATTRIBUTES = { class: 'ccs-dashboard-section__panel' }.freeze
         end
       end
     end

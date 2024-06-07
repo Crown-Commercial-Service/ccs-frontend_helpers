@@ -1,4 +1,4 @@
-require 'action_view'
+require_relative '../base'
 
 module CCS
   module Components
@@ -6,18 +6,15 @@ module CCS
       # = CCS Logo
       #
       # This is used for generating the logo component from the
-      # {https://github.com/tim-s-ccs/ts-ccs-frontend/tree/main/src/ccs/components/logo CCS - Components - Logo}
+      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/logo CCS - Components - Logo}
 
-      class Logo
-        extend ActionView::Context
-        extend ActionView::Helpers
-
+      class Logo < Base
         # Generates the HTML for the CCS Logo.
         # Used in {CCS::Components::CCS::Header Header} and {CCS::Components::CCS::Footer Footer}
         #
         # @return [ActiveSupport::SafeBuffer]
 
-        def self.render
+        def render
           tag.span(class: 'ccs-logo') do
             concat(tag.svg(class: 'ccs-logo__svg', xmlns: 'http://www.w3.org/2000/svg', height: '101', width: '121', aria: { hidden: 'true' }, focusable: 'false', viewBox: '0 0 121 101') do
               CCS_LOGO_PATHS.each { |ccs_logo_path_attributes| concat(tag.path(**ccs_logo_path_attributes)) }

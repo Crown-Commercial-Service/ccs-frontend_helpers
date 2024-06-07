@@ -2,7 +2,7 @@
 
 require 'ccs/frontend_helpers/ccs_frontend/header'
 
-RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, type: :helper do
+RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :helper do
   include described_class
 
   let(:header_element) { Capybara::Node::Simple.new(result).find('header.ccs-header') }

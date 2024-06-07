@@ -13,9 +13,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Panel, '#validate_fixtures',
     'title with no body text' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('panel')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'panel')
 
-  FixturesLoader.get_fixture_names('panel').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'panel').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

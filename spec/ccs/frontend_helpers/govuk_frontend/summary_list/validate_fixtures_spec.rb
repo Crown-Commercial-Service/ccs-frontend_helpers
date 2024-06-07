@@ -35,9 +35,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#validate_fixt
     'summary card with only 1 action' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('summary-list')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'summary-list')
 
-  FixturesLoader.get_fixture_names('summary-list').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'summary-list').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

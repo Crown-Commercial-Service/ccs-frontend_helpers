@@ -6,7 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#fixtures', type
   include described_class
 
   describe '.govuk_date_input from fixtures' do
-    include_context 'and I have loaded the fixture'
+    include_context 'and I have loaded the GOV.UK Frontend fixture'
     include_context 'and I am using a field fixture'
 
     let(:component_name) { 'date-input' }

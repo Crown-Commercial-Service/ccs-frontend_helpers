@@ -2,7 +2,7 @@
 
 require 'ccs/frontend_helpers/ccs_frontend/footer'
 
-RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, type: :helper do
+RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :helper do
   include described_class
 
   let(:footer_element) { Capybara::Node::Simple.new(result).find('footer.ccs-footer') }
@@ -132,7 +132,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, type: :helper do
                 <h2 class="govuk-visually-hidden">
                   What do the words mean?
                 </h2>
-                <ul class="ccs-footer__inline-list">
+                <ul class="ccs-footer__inline-list ccs-footer__inline-list--bottom">
                   <li class="ccs-footer__inline-list-item">
                     <a class="ccs-footer__link" href="/plus">
                       Plus

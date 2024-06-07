@@ -31,9 +31,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#validate_fixtur
     'items without classes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('date-input')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'date-input')
 
-  FixturesLoader.get_fixture_names('date-input').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'date-input').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

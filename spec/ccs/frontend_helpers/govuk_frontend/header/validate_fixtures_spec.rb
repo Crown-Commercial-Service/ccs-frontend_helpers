@@ -27,9 +27,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures'
     'empty navigation array' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('header')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'header')
 
-  FixturesLoader.get_fixture_names('header').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'header').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

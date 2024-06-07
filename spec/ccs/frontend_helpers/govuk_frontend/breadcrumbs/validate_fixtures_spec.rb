@@ -16,9 +16,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#validate_fixt
     'html' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('breadcrumbs')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'breadcrumbs')
 
-  FixturesLoader.get_fixture_names('breadcrumbs').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'breadcrumbs').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

@@ -27,9 +27,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#validate_fix
     'full banner hidden' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('cookie-banner')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'cookie-banner')
 
-  FixturesLoader.get_fixture_names('cookie-banner').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'cookie-banner').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

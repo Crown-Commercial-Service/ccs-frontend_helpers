@@ -28,9 +28,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, '#valida
     'with invalid type' => false
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('notification-banner')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'notification-banner')
 
-  FixturesLoader.get_fixture_names('notification-banner').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'notification-banner').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

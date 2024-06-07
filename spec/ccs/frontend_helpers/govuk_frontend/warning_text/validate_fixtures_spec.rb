@@ -12,9 +12,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::WarningText, '#validate_fixt
     'no icon fallback text' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('warning-text')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'warning-text')
 
-  FixturesLoader.get_fixture_names('warning-text').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'warning-text').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

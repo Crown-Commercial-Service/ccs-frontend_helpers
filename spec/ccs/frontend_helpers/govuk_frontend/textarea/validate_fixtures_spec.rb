@@ -21,9 +21,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Textarea, '#validate_fixture
     'with hint, error message and described by' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('textarea')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'textarea')
 
-  FixturesLoader.get_fixture_names('textarea').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'textarea').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

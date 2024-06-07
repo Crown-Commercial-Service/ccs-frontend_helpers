@@ -26,9 +26,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#validate_fixtures'
     'with navigation item attributes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('footer')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'footer')
 
-  FixturesLoader.get_fixture_names('footer').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'footer').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

@@ -13,9 +13,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, '#validate_fix
     'visually hidden text removed' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('error-message')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'error-message')
 
-  FixturesLoader.get_fixture_names('error-message').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'error-message').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

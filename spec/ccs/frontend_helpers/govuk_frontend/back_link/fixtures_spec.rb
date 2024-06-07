@@ -6,7 +6,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
   include described_class
 
   describe '.govuk_back_link from fixtures' do
-    include_context 'and I have loaded the fixture'
+    include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'back-link' }
 

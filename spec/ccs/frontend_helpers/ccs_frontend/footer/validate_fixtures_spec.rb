@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#validate_fixtures', type: :helper do
+  fixture_list = {
+    'default' => true,
+    'with meta' => true,
+    'with custom meta' => true,
+    'with meta links and meta content' => true,
+    'with default width navigation (one column)' => true,
+    'with default width navigation (two columns)' => true,
+    'with navigation' => true,
+    'Full CCS example' => true,
+    'with three equal columns' => true,
+    'attributes' => true,
+    'classes' => true,
+    'with container classes' => true,
+    'with empty meta' => true,
+    'with empty meta items' => true,
+    'meta html as text' => true,
+    'with meta html' => true,
+    'with meta item attributes' => true,
+    'with empty navigation' => true,
+    'with navigation item attributes' => true
+  }
+
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, 'footer')
+
+  FixturesLoader.get_fixture_names(:ccs_frontend, 'footer').each do |fixture|
+    if fixture_list[fixture]
+      it "has spec'd the '#{fixture}' fixture" do
+        expect(fixture_list).to have_key(fixture)
+        expect(tested_fixtures).to include(fixture)
+      end
+    else
+      it "has skipped the '#{fixture}' fixture" do
+        expect(fixture_list).to have_key(fixture)
+        expect(tested_fixtures).not_to include(fixture)
+      end
+    end
+  end
+end

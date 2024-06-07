@@ -48,9 +48,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures',
     'with customised input wrapper' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('input')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'input')
 
-  FixturesLoader.get_fixture_names('input').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'input').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

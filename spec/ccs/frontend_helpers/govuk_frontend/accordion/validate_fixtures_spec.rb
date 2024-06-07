@@ -17,9 +17,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Accordion, '#validate_fixtur
     'with remember expanded off' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures('accordion')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'accordion')
 
-  FixturesLoader.get_fixture_names('accordion').each do |fixture|
+  FixturesLoader.get_fixture_names(:govuk_frontend, 'accordion').each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

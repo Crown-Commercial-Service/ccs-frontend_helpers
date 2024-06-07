@@ -54,8 +54,8 @@ RSpec.describe CCS::Components::CCS::DashboardSection::Panel, type: :helper do
     context 'when additional classes are passed' do
       let(:options) { { classes: 'my-custom-panel-class' } }
 
-      it 'does not have the custom class' do
-        expect(dashboard_section_panel_element[:class]).to eq('ccs-dashboard-section__panel govuk-grid-column-one-third')
+      it 'does have the custom class' do
+        expect(dashboard_section_panel_element[:class]).to eq('ccs-dashboard-section__panel my-custom-panel-class govuk-grid-column-one-third')
       end
     end
 
