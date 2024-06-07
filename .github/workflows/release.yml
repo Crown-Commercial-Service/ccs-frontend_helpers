@@ -32,13 +32,14 @@ jobs:
         with:
           tag: ${{ steps.package_version.outputs.ruby }}
 
+      - name: Publish packaged to RubyGems
+        if: ${{ steps.version_tag.outputs.exists == 'false' }}
+        uses: rubygems/release-gem@v1
+
       - name: Create GitHub release
         if: ${{ steps.version_tag.outputs.exists == 'false' }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.package_version.outputs.ruby }}
           name: CCS Frontend Helpers ${{ steps.package_version.outputs.ruby }}
-
-      - name: Publish packaged to RubyGems
-        if: ${{ steps.version_tag.outputs.exists == 'false' }}
-        uses: rubygems/release-gem@v1
+          prerelease: contains(steps.package_version.outputs.ruby, 'beta')
