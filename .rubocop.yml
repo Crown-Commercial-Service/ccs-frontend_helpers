@@ -1,18 +1,77 @@
 ---
 require:
-  - rubocop-rspec
-  - rubocop-rails
-  - rubocop-rake
-  - rubocop-capybara
+    - rubocop-capybara
+    - rubocop-rspec
+    - rubocop-rails
+    - rubocop-rake
 
 AllCops:
     NewCops: enable
     TargetRubyVersion: 3.0
     Exclude:
-        - 'bin/**/*'
-        - 'tmp/**/*'
-        - 'vendor/**/*'
+        - "bin/**/*"
+        - "tmp/**/*"
+        - "vendor/**/*"
 
+# Capyabara rubocop config
+Capybara:
+    Enabled: true
+
+# Rails rubocop config
+Rails:
+    Enabled: true
+
+Rails/HelperInstanceVariable:
+    Enabled: false
+
+Rails/DynamicFindBy:
+    Whitelist:
+        - find_by_id
+
+Rails/OutputSafety:
+    Exclude:
+        - "spec/ccs/frontend_helpers/**/*fixtures_spec.rb"
+
+# RSpec rubocop config
+RSpec:
+    Enabled: true
+
+RSpec/ContextWording:
+    Prefixes:
+        - when
+        - with
+        - without
+        - and
+
+RSpec/MultipleMemoizedHelpers:
+    Enabled: false
+
+RSpec/VariableName:
+    Enabled: false
+
+RSpec/VerifiedDoubleReference:
+    Enabled: false
+
+RSpec/NestedGroups:
+    Max: 5
+
+RSpec/ExampleLength:
+    Exclude:
+        - "spec/ccs/frontend_helpers/**/*"
+        - "spec/ccs/components/**/*"
+
+RSpec/MultipleExpectations:
+    Max: 3
+
+RSpec/FilePath:
+    Enabled: false
+
+RSpec/SpecFilePathFormat:
+    CustomTransform:
+        GovUKFrontend: govuk_frontend
+        GovUK: govuk
+
+# Standard rubocop config
 Bundler/OrderedGems:
     Enabled: false
 
@@ -47,7 +106,7 @@ Style/ClassAndModuleChildren:
     Enabled: false
 
 Layout/EndOfLine:
-   EnforcedStyle: lf
+    EnforcedStyle: lf
 
 Layout/TrailingEmptyLines:
     Enabled: true
@@ -56,9 +115,9 @@ Layout/LineLength:
     Max: 120
     Enabled: false
     AllowedPatterns:
-        - 'it .* do$'
-        - 'context .* do$'
-        - 'scenario .* do$'
+        - "it .* do$"
+        - "context .* do$"
+        - "scenario .* do$"
 
 Metrics/ClassLength:
     Enabled: false
@@ -70,30 +129,17 @@ Metrics/MethodLength:
 Metrics/AbcSize:
     Max: 25 # TODO: Restore to '20'
     Exclude:
-        - 'spec/**/*'
+        - "spec/**/*"
 
 Metrics/BlockLength:
     Max: 40
     Exclude:
-        - 'spec/**/*'
-
-RSpec/ContextWording:
-    Prefixes:
-      - when
-      - with
-      - without
-      - and
+        - "spec/**/*"
 
 Metrics/ModuleLength:
     Exclude:
-        - 'spec/ccs/frontend_helpers/**/*'
-        - 'spec/ccs/components/**/*'
-
-RSpec/MultipleMemoizedHelpers:
-    Enabled: false
-
-RSpec/VariableName:
-    Enabled: false
+        - "spec/ccs/frontend_helpers/**/*"
+        - "spec/ccs/components/**/*"
 
 Naming/VariableNumber:
     Enabled: false
@@ -101,38 +147,5 @@ Naming/VariableNumber:
 Lint/MissingSuper:
     Enabled: false
 
-Rails/HelperInstanceVariable:
-    Enabled: false
-
 Style/OptionalBooleanParameter:
     Enabled: false
-
-RSpec/VerifiedDoubleReference:
-    Enabled: false
-
-RSpec/NestedGroups:
-    Max: 5
-
-RSpec/ExampleLength:
-    Exclude:
-        - 'spec/ccs/frontend_helpers/**/*'
-        - 'spec/ccs/components/**/*'
-
-Rails/DynamicFindBy:
-  Whitelist:
-    - find_by_id
-
-RSpec/MultipleExpectations:
-    Max: 3
-
-RSpec/FilePath:
-    Enabled: false
-
-RSpec/SpecFilePathFormat:
-    CustomTransform:
-        GovUKFrontend: govuk_frontend
-        GovUK: govuk
-
-Rails/OutputSafety:
-    Exclude:
-        - 'spec/ccs/frontend_helpers/**/*fixtures_spec.rb'
