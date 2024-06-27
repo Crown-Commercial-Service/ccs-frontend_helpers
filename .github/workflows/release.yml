@@ -54,6 +54,8 @@ jobs:
       id-token: write
       contents: write
 
+    environment: ruby-gems
+
     steps:
       - uses: actions/checkout@v4
 
@@ -74,6 +76,8 @@ jobs:
     permissions:
       id-token: write
       contents: write
+
+    environment: ruby-gems
 
     steps:
       - uses: actions/checkout@v4
