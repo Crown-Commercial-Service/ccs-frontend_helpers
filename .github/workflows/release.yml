@@ -71,7 +71,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    needs: [publish]
+    needs: [publish, check_for_release]
 
     permissions:
       id-token: write
