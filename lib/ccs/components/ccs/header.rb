@@ -9,7 +9,7 @@ module CCS
       # = CCS Header
       #
       # This is used for generating the header component from the
-      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/header CCS - Components - Header}
+      # {https://github.com/Crown-Commercial-Service/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/header CCS - Components - Header}
       #
       # @!attribute [r] logo
       #   @return [Logo] The initialised Logo component

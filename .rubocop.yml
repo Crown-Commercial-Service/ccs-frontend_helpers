@@ -28,6 +28,9 @@ Rails/DynamicFindBy:
     Whitelist:
         - find_by_id
 
+Rails/FilePath:
+    Enabled: false
+
 Rails/OutputSafety:
     Exclude:
         - "spec/ccs/frontend_helpers/**/*fixtures_spec.rb"
@@ -62,9 +65,6 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
     Max: 3
-
-RSpec/FilePath:
-    Enabled: false
 
 RSpec/SpecFilePathFormat:
     CustomTransform:

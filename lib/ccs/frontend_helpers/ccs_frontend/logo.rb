@@ -8,7 +8,7 @@ module CCS
       # = CCS Logo
       #
       # This helper is used for generating the logo component from the
-      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/logo CCS - Components - Logo}
+      # {https://github.com/Crown-Commercial-Service/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/logo CCS - Components - Logo}
 
       module Logo
         # Generates the HTML for the CCS Logo component
