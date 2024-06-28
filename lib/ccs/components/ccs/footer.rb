@@ -9,7 +9,7 @@ module CCS
       # = CCS Footer
       #
       # This is used for generating the footer component from the
-      # {https://github.com/tim-s-ccs/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/footer CCS - Components - Footer}
+      # {https://github.com/Crown-Commercial-Service/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/footer CCS - Components - Footer}
       #
       # @!attribute [r] logo
       #   @return [Logo] The initialised Logo component

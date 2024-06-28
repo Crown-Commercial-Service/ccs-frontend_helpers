@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Update to CCS Frontend v1.1
+
+- The following CCS helpers have been added:
+  - Contact Us
+  - Password Strength
+
 ## [1.0.0] - 2024-06-07
 
 ### Changed
