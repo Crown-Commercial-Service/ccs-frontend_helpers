@@ -4,6 +4,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#validate_fixture
   fixture_list = {
     'default' => true,
     'with custom text' => true,
+    'with custom link' => true,
     'inverse' => true,
     'classes' => true,
     'html as text' => true,

@@ -19,7 +19,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#helpers', typ
 
     let(:default_html) do
       '
-        <div class="govuk-breadcrumbs">
+        <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
           <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
               <a class="govuk-breadcrumbs__link" href="/menu">
@@ -35,11 +35,11 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#helpers', typ
               Swordmarch
             </li>
           </ol>
-        </div>
+        </nav>
       '.to_one_line
     end
 
-    let(:breadcrumbs_element) { Capybara::Node::Simple.new(result).find('div.govuk-breadcrumbs') }
+    let(:breadcrumbs_element) { Capybara::Node::Simple.new(result).find('nav.govuk-breadcrumbs') }
 
     context 'when the default attributes are sent' do
       it 'correctly formats the HTML with the text and content' do

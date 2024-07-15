@@ -117,5 +117,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#fixtures', ty
         expect(result).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'custom label'" do
+      let(:fixture_name) { 'custom label' }
+      let(:result) { govuk_breadcrumbs(fixture_options[:items], attributes: { aria: { label: fixture_options[:labelText] } }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
   end
 end

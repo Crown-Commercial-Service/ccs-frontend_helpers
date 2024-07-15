@@ -317,6 +317,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
       end
     end
 
+    context "when the fixture is 'small with divider and None'" do
+      let(:fixture_name) { 'small with divider and None' }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with idPrefix'" do
       let(:fixture_name) { 'with idPrefix' }
       let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }

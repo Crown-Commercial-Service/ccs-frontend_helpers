@@ -5,7 +5,7 @@ require 'ccs/components/govuk/breadcrumbs'
 RSpec.describe CCS::Components::GovUK::Breadcrumbs do
   include_context 'and I have a view context'
 
-  let(:breadcrumbs_element) { Capybara::Node::Simple.new(result).find('div.govuk-breadcrumbs') }
+  let(:breadcrumbs_element) { Capybara::Node::Simple.new(result).find('nav.govuk-breadcrumbs') }
 
   describe '.render' do
     let(:govuk_breadcrumbs) { described_class.new(breadcrumb_links: items, context: view_context, **options) }
@@ -22,7 +22,7 @@ RSpec.describe CCS::Components::GovUK::Breadcrumbs do
 
     let(:default_html) do
       '
-        <div class="govuk-breadcrumbs">
+        <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
           <ol class="govuk-breadcrumbs__list">
             <li class="govuk-breadcrumbs__list-item">
               <a class="govuk-breadcrumbs__link" href="/menu">
@@ -38,7 +38,7 @@ RSpec.describe CCS::Components::GovUK::Breadcrumbs do
               Swordmarch
             </li>
           </ol>
-        </div>
+        </nav>
       '.to_one_line
     end
 

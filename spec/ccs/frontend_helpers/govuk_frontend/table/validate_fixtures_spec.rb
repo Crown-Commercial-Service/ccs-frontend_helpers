@@ -19,7 +19,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, '#validate_fixtures',
     'firstCellIsHeader with html as text' => true,
     'firstCellIsHeader with rowspan and colspan' => true,
     'firstCellIsHeader with attributes' => true,
-    'with falsey items' => false,
+    'with falsy items' => false,
     'rows with classes' => true,
     'rows with rowspan and colspan' => true,
     'rows with attributes' => true

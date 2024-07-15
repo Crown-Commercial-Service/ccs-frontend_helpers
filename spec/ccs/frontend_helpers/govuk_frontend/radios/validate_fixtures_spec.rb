@@ -30,7 +30,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'small with a divider' => true,
     'with idPrefix' => true,
     'minimal items and name' => true,
-    'with falsey items' => false,
+    'with falsy items' => false,
     'fieldset with describedBy' => true,
     'attributes' => true,
     'items with attributes' => true,

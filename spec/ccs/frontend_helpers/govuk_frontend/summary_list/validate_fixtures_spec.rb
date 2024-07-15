@@ -18,7 +18,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#validate_fixt
     'as a summary card with actions' => true,
     'as a summary card with actions plus summary list actions' => true,
     'attributes' => true,
-    'with falsey values' => false,
+    'with falsy values' => false,
     'key with html' => true,
     'key with classes' => true,
     'value with html' => true,

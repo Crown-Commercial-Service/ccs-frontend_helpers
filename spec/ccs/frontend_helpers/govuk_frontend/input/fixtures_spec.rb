@@ -14,7 +14,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
     before do
       fixture_options[:name] ||= fixture_options[:id]
 
-      %i[id autocomplete pattern spellcheck type inputmode autocapitalize].each do |attribute|
+      %i[id autocomplete pattern spellcheck type inputmode autocapitalize disabled].each do |attribute|
         next if fixture_options[attribute].nil?
 
         fixture_options[:attributes] ||= {}
@@ -152,6 +152,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'disabled'" do
+      let(:fixture_name) { 'disabled' }
+      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html.gsub('name=""', 'name="disabled-input"'))
       end
     end
 
