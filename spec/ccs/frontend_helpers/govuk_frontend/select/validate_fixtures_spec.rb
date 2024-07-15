@@ -12,14 +12,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, '#validate_fixtures'
     'with describedBy' => true,
     'attributes' => true,
     'attributes on items' => true,
-    'with falsey items' => false,
+    'with falsy items' => false,
     'hint' => true,
     'hint and describedBy' => true,
     'error' => true,
     'error and describedBy' => true,
     'without values' => true,
     'without values with selected value' => true,
-    'with falsey values' => true,
+    'with falsy values' => true,
     'item selected overrides value' => false
   }
 

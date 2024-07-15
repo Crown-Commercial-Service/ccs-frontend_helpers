@@ -30,6 +30,7 @@ module CCS
         def initialize(breadcrumb_links:, **options)
           super(**options)
           @options[:attributes][:class] << ' govuk-breadcrumbs--collapse-on-mobile' if @options[:collapse_on_mobile]
+          (@options[:attributes][:aria] ||= {})[:label] ||= 'Breadcrumb'
 
           @breadcrumb_links = breadcrumb_links.map { |breadcrumb_link| Link.new(context: @context, **breadcrumb_link) }
         end
@@ -39,7 +40,7 @@ module CCS
         # @return [ActiveSupport::SafeBuffer]
 
         def render
-          tag.div(**options[:attributes]) do
+          tag.nav(**options[:attributes]) do
             tag.ol(class: 'govuk-breadcrumbs__list') do
               breadcrumb_links.each { |breadcrumb_link| concat(breadcrumb_link.render) }
             end

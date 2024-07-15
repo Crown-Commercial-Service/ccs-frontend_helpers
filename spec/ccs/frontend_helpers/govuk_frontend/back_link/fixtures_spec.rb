@@ -10,7 +10,10 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
 
     let(:component_name) { 'back-link' }
 
-    before { fixture_options[:text] ||= 'Back' }
+    before do
+      fixture_options[:text] ||= 'Back'
+      fixture_options[:href] ||= '#'
+    end
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
@@ -23,6 +26,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
 
     context "when the fixture is 'with custom text'" do
       let(:fixture_name) { 'with custom text' }
+      let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with custom link'" do
+      let(:fixture_name) { 'with custom link' }
       let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href]) }
 
       it 'has HTML matching the fixture' do
@@ -68,7 +80,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
 
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
-      let(:result) { govuk_back_link(fixture_options[:html].html_safe, fixture_options[:href], attributes: fixture_options[:attributes]) }
+      let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

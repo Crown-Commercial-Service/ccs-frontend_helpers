@@ -13,7 +13,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Accordion, '#validate_fixtur
     'attributes' => true,
     'custom heading level' => true,
     'heading html' => true,
-    'with falsey values' => false,
+    'with falsy values' => false,
     'with remember expanded off' => true
   }
 

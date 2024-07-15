@@ -13,7 +13,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#validate_fixt
     'attributes' => true,
     'item attributes' => true,
     'html as text' => true,
-    'html' => true
+    'html' => true,
+    'custom label' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'breadcrumbs')

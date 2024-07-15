@@ -12,7 +12,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tabs, '#validate_fixtures', 
     'panel with attributes' => true,
     'no item list' => true,
     'empty item list' => true,
-    'with falsey values' => false,
+    'with falsy values' => false,
     'idPrefix' => true,
     'html as text' => true,
     'html' => true

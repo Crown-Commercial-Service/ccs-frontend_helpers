@@ -180,8 +180,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'with falsey values'" do
-      let(:fixture_name) { 'with falsey values' }
+    context "when the fixture is 'with falsy values'" do
+      let(:fixture_name) { 'with falsy values' }
       let(:result) { govuk_select(fixture_options[:name], fixture_options[:items], label: fixture_options[:label]) }
 
       it 'has HTML matching the fixture' do

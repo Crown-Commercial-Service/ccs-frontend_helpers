@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-ccs-frontend@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ccs-frontend/-/ccs-frontend-1.1.0.tgz#87316f0c9b9d0c6cbca0a3091be4f76c24f0741c"
-  integrity sha512-B0kdI1W4IpTqqa5Ikxd6JfuyAg0AupcODnsNzBNT/+dyQEPqqsgzIIzTsX5LeHrlI9ZhjNaRs2i1cmnmc1P+CA==
+ccs-frontend@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ccs-frontend/-/ccs-frontend-1.1.1.tgz#ec279e2c252ae70d546c1b78770ee8d02b576fd2"
+  integrity sha512-k6I7qGMNTgGRkofX45g73UXPz7Ai3R+hOcoIfjFdWqWPNa2zsScsfJtSbRaqYBD2T2LHso9ql3PuXIUywcBNfw==
 
-govuk-frontend@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.4.0.tgz#8f2e0b55ef7c7552a1efe68c7b40ff1b4a393e72"
-  integrity sha512-F3YwQYrYQqIPfNxsoph6O78Ey1unCB6cy6omx8KeWY9G504lWZFBSIaiUCma1jNLw9bOUU7Ui+tXG09jjqy0Mw==
+govuk-frontend@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.4.1.tgz#cae59d1fd441f7830445810c1d281eac06a835d1"
+  integrity sha512-Gmd8LV++TRh9OF6tA+9KQTpwvlsLcri7qRjViz9ji4YuwZvX+c9TD7tyE+dnJcqsQsJfhr9Fp38m3Hu3H7EIcQ==
