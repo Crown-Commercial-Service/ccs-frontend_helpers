@@ -11,7 +11,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#validate_fixture
     'custom attributes' => true,
     'custom id prefix' => true,
     'html passed as text' => true,
-    'html' => true
+    'html' => true,
+    'with empty values' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'task-list')

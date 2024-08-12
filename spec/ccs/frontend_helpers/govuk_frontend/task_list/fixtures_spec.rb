@@ -12,6 +12,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
 
     before do
       fixture_options[:items].each do |item|
+        next if item.blank?
+
         %i[title hint status].each do |attribute|
           if item.dig(attribute, :html)
             item[attribute][:text] = item[attribute][:html].html_safe
@@ -121,6 +123,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
     context "when the fixture is 'html'" do
       let(:fixture_name) { 'html' }
       let(:result) { govuk_task_list(fixture_options[:items], id_prefix: fixture_options[:idPrefix]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with empty values'" do
+      let(:fixture_name) { 'with empty values' }
+      let(:result) { govuk_task_list(fixture_options[:items]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
