@@ -30,7 +30,7 @@ module CCS
         def initialize(task_list_items:, id_prefix: nil, **options)
           super(**options)
 
-          @task_list_items = task_list_items.map.with_index(1) { |task_list_item, index| Item.new(context: @context, index: index, id_prefix: id_prefix || 'task-list', **task_list_item) }
+          @task_list_items = task_list_items.map.with_index(1) { |task_list_item, index| Item.new(context: @context, index: index, id_prefix: id_prefix || 'task-list', **task_list_item) if task_list_item.present? }
         end
 
         # Generates the HTML for the GOV.UK task list component
@@ -39,7 +39,7 @@ module CCS
 
         def render
           tag.ul(**options[:attributes]) do
-            task_list_items.each { |task_list_item| concat(task_list_item.render) }
+            task_list_items.each { |task_list_item| concat(task_list_item.render) if task_list_item }
           end
         end
 
