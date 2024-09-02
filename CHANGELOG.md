@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Update to CCS Frontend v1.1.3
+- Update to GOV.UK Frontend v5.6.0
+- The following GOV.UK helpers have been added:
+  - Service navigation
+
 ## [1.1.1] - 2024-08-12
 
 ### Added
