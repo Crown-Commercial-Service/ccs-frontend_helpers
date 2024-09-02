@@ -28,6 +28,7 @@ require_relative 'govuk_frontend/password_input'
 require_relative 'govuk_frontend/phase_banner'
 require_relative 'govuk_frontend/radios'
 require_relative 'govuk_frontend/select'
+require_relative 'govuk_frontend/service_navigation'
 require_relative 'govuk_frontend/skip_link'
 require_relative 'govuk_frontend/step_by_step_navigation'
 require_relative 'govuk_frontend/summary_list'
@@ -72,6 +73,7 @@ module CCS
       include PhaseBanner
       include Radios
       include Select
+      include ServiceNavigation
       include SkipLink
       include StepByStepNavigation
       include SummaryList

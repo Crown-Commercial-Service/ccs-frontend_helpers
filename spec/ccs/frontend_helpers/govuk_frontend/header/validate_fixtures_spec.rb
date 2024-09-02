@@ -15,6 +15,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures'
     'with product name' => true,
     'full width' => true,
     'full width with navigation' => true,
+    'with full width border' => true,
     'navigation item with html' => true,
     'navigation item with text without link' => true,
     'attributes' => true,

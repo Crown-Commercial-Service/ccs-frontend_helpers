@@ -130,6 +130,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
       end
     end
 
+    context "when the fixture is 'with full width border'" do
+      let(:fixture_name) { 'with full width border' }
+      let(:result) { govuk_header(product_name: fixture_options[:productName], classes: fixture_options[:classes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'navigation item with html'" do
       let(:fixture_name) { 'navigation item with html' }
       let(:result) { govuk_header(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation].map { |navigation_item| navigation_item.merge({ text: navigation_item[:html].html_safe }) } }) }
