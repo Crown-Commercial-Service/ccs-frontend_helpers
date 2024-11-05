@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update minimum required Rails version to v7.0
 - Updated minimum Ruby version to 3.1
+- Updated GOV.UK Frontend to v5.7.1
+- Updated CCS Frontend to v1.2.0
 
 ## [1.2.0] - 2024-09-02
 
