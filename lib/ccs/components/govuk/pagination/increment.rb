@@ -61,11 +61,11 @@ module CCS
           #
           # @return [ActiveSupport::SafeBuffer]
 
-          def render(&block)
+          def render(&)
             if options[:form]
-              options[:form].button(**options[:attributes], &block)
+              options[:form].button(**options[:attributes], &)
             else
-              link_to(options[:href], **options[:attributes], &block)
+              link_to(options[:href], **options[:attributes], &)
             end
           end
 

@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Fieldset#render)
 
-        def govuk_fieldset(**options, &block)
-          Components::GovUK::Fieldset.new(context: self, **options).render(&block)
+        def govuk_fieldset(**options, &)
+          Components::GovUK::Fieldset.new(context: self, **options).render(&)
         end
       end
     end

@@ -50,8 +50,8 @@ module CCS
           #
           # @return [ActiveSupport::SafeBuffer]
 
-          def render(&block)
-            tag.li(class: li_classes, &block)
+          def render(&)
+            tag.li(class: li_classes, &)
           end
 
           # The default attributes for the pagination link

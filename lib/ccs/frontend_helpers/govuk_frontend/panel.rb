@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Panel#render)
 
-        def govuk_panel(title_text, panel_text = nil, **options, &block)
-          Components::GovUK::Panel.new(context: self, title_text: title_text, panel_text: panel_text, **options).render(&block)
+        def govuk_panel(title_text, panel_text = nil, **options, &)
+          Components::GovUK::Panel.new(context: self, title_text: title_text, panel_text: panel_text, **options).render(&)
         end
       end
     end

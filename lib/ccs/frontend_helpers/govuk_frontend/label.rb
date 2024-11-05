@@ -20,8 +20,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Label#render)
 
-        def govuk_label(attribute, text = nil, **options, &block)
-          Components::GovUK::Label.new(context: self, attribute: attribute, text: text, **options).render(&block)
+        def govuk_label(attribute, text = nil, **options, &)
+          Components::GovUK::Label.new(context: self, attribute: attribute, text: text, **options).render(&)
         end
       end
     end
