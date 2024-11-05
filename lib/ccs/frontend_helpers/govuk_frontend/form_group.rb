@@ -24,14 +24,14 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::FormGroup#render)
 
-        def govuk_form_group(attribute, **options, &block)
+        def govuk_form_group(attribute, **options, &)
           error_message = if options[:model]
                             options[:model].errors[attribute].first
                           else
                             options[:error_message]
                           end
 
-          Components::GovUK::FormGroup.new(context: self, attribute: attribute, error_message: error_message, **options).render(&block)
+          Components::GovUK::FormGroup.new(context: self, attribute: attribute, error_message: error_message, **options).render(&)
         end
       end
     end

@@ -20,8 +20,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Hint#render)
 
-        def govuk_hint(text = nil, **options, &block)
-          Components::GovUK::Hint.new(context: self, text: text, **options).render(&block)
+        def govuk_hint(text = nil, **options, &)
+          Components::GovUK::Hint.new(context: self, text: text, **options).render(&)
         end
       end
     end

@@ -69,8 +69,8 @@ module CCS
         #
         # @return [ActiveSupport::SafeBuffer]
 
-        def render(&block)
-          form_group.render(&block)
+        def render(&)
+          form_group.render(&)
         end
 
         private

@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::PhaseBanner#render)
 
-        def govuk_phase_banner(tag_options, text = nil, **options, &block)
-          Components::GovUK::PhaseBanner.new(context: self, tag_options: tag_options, text: text, **options).render(&block)
+        def govuk_phase_banner(tag_options, text = nil, **options, &)
+          Components::GovUK::PhaseBanner.new(context: self, tag_options: tag_options, text: text, **options).render(&)
         end
       end
     end
