@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ServiceNavigation#render)
 
-        def govuk_service_navigation(**options)
-          Components::GovUK::ServiceNavigation.new(context: self, **options).render
+        def govuk_service_navigation(**)
+          Components::GovUK::ServiceNavigation.new(context: self, **).render
         end
       end
     end

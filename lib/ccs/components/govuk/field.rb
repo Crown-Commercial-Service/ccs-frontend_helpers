@@ -45,8 +45,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the field HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(attribute:, form_group: nil, hint: nil, before_input: nil, after_input: nil, **options)
-          super(**options)
+        def initialize(attribute:, form_group: nil, hint: nil, before_input: nil, after_input: nil, **)
+          super(**)
 
           (hint[:attributes] ||= {})[:id] = "#{attribute}-hint" if hint && !hint.dig(:attributes, :id)
 

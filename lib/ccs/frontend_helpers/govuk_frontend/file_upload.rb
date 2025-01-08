@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::FileUpload#render)
 
-        def govuk_file_upload(attribute, **options)
-          Components::GovUK::Field::Input::FileUpload.new(context: self, attribute: attribute, **options).render
+        def govuk_file_upload(attribute, **)
+          Components::GovUK::Field::Input::FileUpload.new(context: self, attribute: attribute, **).render
         end
       end
     end

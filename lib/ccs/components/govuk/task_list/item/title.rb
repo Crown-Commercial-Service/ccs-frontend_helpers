@@ -27,8 +27,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the task list item title HTML
 
-            def initialize(text:, id_prefix:, href: nil, hint_text: nil, **options)
-              super(**options)
+            def initialize(text:, id_prefix:, href: nil, hint_text: nil, **)
+              super(**)
               @options[:attributes][:aria] = { describedby: (hint_text ? "#{id_prefix}-hint " : '') + "#{id_prefix}-status" } if href
 
               @text = text

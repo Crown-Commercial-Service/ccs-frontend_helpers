@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::InsetText#render)
 
-        def govuk_inset_text(text = nil, **options, &)
-          Components::GovUK::InsetText.new(context: self, text: text, **options).render(&)
+        def govuk_inset_text(text = nil, **, &)
+          Components::GovUK::InsetText.new(context: self, text: text, **).render(&)
         end
       end
     end

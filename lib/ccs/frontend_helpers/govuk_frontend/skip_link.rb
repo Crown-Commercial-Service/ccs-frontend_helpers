@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::SkipLink#render)
 
-        def govuk_skip_link(text, href = nil, **options)
-          Components::GovUK::SkipLink.new(context: self, text: text, href: href, **options).render
+        def govuk_skip_link(text, href = nil, **)
+          Components::GovUK::SkipLink.new(context: self, text: text, href: href, **).render
         end
       end
     end

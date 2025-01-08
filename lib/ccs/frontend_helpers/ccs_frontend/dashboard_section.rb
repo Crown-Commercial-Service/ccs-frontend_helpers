@@ -18,8 +18,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::DashboardSection#render)
 
-        def ccs_dashboard_section(dashboard_section_panels, title_text = nil, **options)
-          Components::CCS::DashboardSection.new(context: self, dashboard_section_panels: dashboard_section_panels, title_text: title_text, **options).render
+        def ccs_dashboard_section(dashboard_section_panels, title_text = nil, **)
+          Components::CCS::DashboardSection.new(context: self, dashboard_section_panels: dashboard_section_panels, title_text: title_text, **).render
         end
       end
     end

@@ -42,8 +42,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Input#initialize)
 
-            def initialize(attribute:, field_type: :text, value: nil, prefix: nil, suffix: nil, input_wrapper: {}, **options)
-              super(attribute: attribute, **options)
+            def initialize(attribute:, field_type: :text, value: nil, prefix: nil, suffix: nil, input_wrapper: {}, **)
+              super(attribute: attribute, **)
 
               @field_type = :"#{field_type}_field"
               @value = @options[:model] ? @options[:model].send(attribute) : value

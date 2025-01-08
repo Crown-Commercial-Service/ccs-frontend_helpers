@@ -26,8 +26,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the password strength HTML
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(password_id:, password_strength_tests:, **options)
-          super(**options)
+        def initialize(password_id:, password_strength_tests:, **)
+          super(**)
 
           @options[:attributes][:data][:target] = password_id
 

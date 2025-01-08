@@ -24,8 +24,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the details HTML
         # @option options [Hash] :attributes ({ data: { module: 'govuk-details' } }) any additional attributes that will added as part of the HTML
 
-        def initialize(summary_text:, **options)
-          super(**options)
+        def initialize(summary_text:, **)
+          super(**)
 
           @summary_text = summary_text
         end

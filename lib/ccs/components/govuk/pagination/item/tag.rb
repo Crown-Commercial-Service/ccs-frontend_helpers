@@ -24,8 +24,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Pagination::Item)
 
-            def initialize(href:, **options)
-              super(**options)
+            def initialize(href:, **)
+              super(**)
 
               @href = href
             end

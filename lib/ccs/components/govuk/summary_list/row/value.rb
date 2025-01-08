@@ -22,8 +22,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the summary list row value HTML
 
-            def initialize(text:, **options)
-              super(**options)
+            def initialize(text:, **)
+              super(**)
 
               @text = text
             end

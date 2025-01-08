@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Accordion#render)
 
-        def govuk_accordion(accordion_id, accordion_sections, **options)
-          Components::GovUK::Accordion.new(context: self, accordion_id: accordion_id, accordion_sections: accordion_sections, **options).render
+        def govuk_accordion(accordion_id, accordion_sections, **)
+          Components::GovUK::Accordion.new(context: self, accordion_id: accordion_id, accordion_sections: accordion_sections, **).render
         end
       end
     end

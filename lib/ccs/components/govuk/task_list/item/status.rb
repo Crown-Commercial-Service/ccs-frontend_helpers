@@ -31,8 +31,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the task list row status HTML
 
-            def initialize(id_prefix:, tag_options: nil, text: nil, **options)
-              super(**options)
+            def initialize(id_prefix:, tag_options: nil, text: nil, **)
+              super(**)
               @options[:attributes][:id] = "#{id_prefix}-status"
 
               @text = text

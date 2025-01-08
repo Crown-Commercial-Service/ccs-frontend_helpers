@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Footer#render)
 
-        def govuk_footer(**options)
-          Components::GovUK::Footer.new(context: self, **options).render
+        def govuk_footer(**)
+          Components::GovUK::Footer.new(context: self, **).render
         end
       end
     end

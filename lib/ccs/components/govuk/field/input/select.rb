@@ -32,8 +32,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Input#initialize)
 
-            def initialize(attribute:, items:, selected: nil, **options)
-              super(attribute: attribute, **options)
+            def initialize(attribute:, items:, selected: nil, **)
+              super(attribute: attribute, **)
 
               @items = items.map do |item|
                 [

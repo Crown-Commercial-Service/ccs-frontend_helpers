@@ -28,8 +28,8 @@ module CCS
               # @option options [String] :classes additional CSS classes for the prefix/suffix HTML
               # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-              def initialize(text:, fix:, **options)
-                super(**options)
+              def initialize(text:, fix:, **)
+                super(**)
 
                 @options[:attributes][:class] = "govuk-input__#{fix}fix #{@options[:attributes][:class]}".rstrip
                 (@options[:attributes][:aria] ||= {})[:hidden] = true

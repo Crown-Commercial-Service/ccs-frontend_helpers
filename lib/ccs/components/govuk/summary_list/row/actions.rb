@@ -25,8 +25,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the summary list row actions HTML
 
-            def initialize(items:, card_title: nil, **options)
-              super(**options)
+            def initialize(items:, card_title: nil, **)
+              super(**)
 
               @action_links = items.map { |item| Action::Link.new(card_title: card_title, context: @context, **item) }
             end

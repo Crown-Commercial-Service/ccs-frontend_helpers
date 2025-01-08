@@ -24,8 +24,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Pagination::Item)
 
-            def initialize(form:, **options)
-              super(**options)
+            def initialize(form:, **)
+              super(**)
 
               @options[:attributes][:class] << ' pagination-number--button_as_link'
 

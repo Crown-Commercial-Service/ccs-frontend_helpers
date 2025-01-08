@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::CookieBanner#render)
 
-        def govuk_cookie_banner(messages, **options)
-          Components::GovUK::CookieBanner.new(context: self, messages: messages, **options).render
+        def govuk_cookie_banner(messages, **)
+          Components::GovUK::CookieBanner.new(context: self, messages: messages, **).render
         end
       end
     end

@@ -30,8 +30,8 @@ module CCS
         # @option options [String] :visually_hidden_text ('Error') visualy hidden text before the error message
         # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
 
-        def initialize(message:, attribute:, **options)
-          super(**options)
+        def initialize(message:, attribute:, **)
+          super(**)
 
           @options[:attributes][:id] ||= "#{attribute}-error" if attribute
 

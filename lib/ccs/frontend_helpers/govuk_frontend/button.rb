@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Button#render)
 
-        def govuk_button(text, **options)
-          Components::GovUK::Button.new(context: self, text: text, **options).render
+        def govuk_button(text, **)
+          Components::GovUK::Button.new(context: self, text: text, **).render
         end
       end
     end

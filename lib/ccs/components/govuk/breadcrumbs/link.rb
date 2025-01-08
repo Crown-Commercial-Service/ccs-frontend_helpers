@@ -28,8 +28,8 @@ module CCS
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML.
           #                                    If the link is blank then it defaults to +{ aria: { current: 'page' } }+
 
-          def initialize(text:, href: nil, **options)
-            super(**options)
+          def initialize(text:, href: nil, **)
+            super(**)
 
             @text = text
             @href = href

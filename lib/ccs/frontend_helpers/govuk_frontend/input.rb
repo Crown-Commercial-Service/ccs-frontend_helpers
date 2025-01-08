@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::TextInput#render)
 
-        def govuk_input(attribute, **options)
-          Components::GovUK::Field::Input::TextInput.new(context: self, attribute: attribute, **options).render
+        def govuk_input(attribute, **)
+          Components::GovUK::Field::Input::TextInput.new(context: self, attribute: attribute, **).render
         end
       end
     end

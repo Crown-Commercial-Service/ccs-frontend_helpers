@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Tag#render)
 
-        def govuk_tag(text, colour = nil, **options)
-          Components::GovUK::Tag.new(context: self, text: text, colour: colour, **options).render
+        def govuk_tag(text, colour = nil, **)
+          Components::GovUK::Tag.new(context: self, text: text, colour: colour, **).render
         end
       end
     end

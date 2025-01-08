@@ -40,8 +40,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the table HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
 
-        def initialize(rows:, head_cells: nil, caption: nil, first_cell_is_header: nil, **options)
-          super(**options)
+        def initialize(rows:, head_cells: nil, caption: nil, first_cell_is_header: nil, **)
+          super(**)
 
           @rows = rows.map do |row_cells|
             row_cells.map.with_index do |row_cell, index|

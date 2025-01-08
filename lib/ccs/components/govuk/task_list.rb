@@ -27,8 +27,8 @@ module CCS
         # @option options [Sting] :id_prefix id prefix for the task list, defaults to +'task-list'+
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(task_list_items:, id_prefix: nil, **options)
-          super(**options)
+        def initialize(task_list_items:, id_prefix: nil, **)
+          super(**)
 
           @task_list_items = task_list_items.map.with_index(1) { |task_list_item, index| Item.new(context: @context, index: index, id_prefix: id_prefix || 'task-list', **task_list_item) if task_list_item.present? }
         end

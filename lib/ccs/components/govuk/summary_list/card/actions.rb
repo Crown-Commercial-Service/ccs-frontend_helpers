@@ -25,8 +25,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the summary list card actions HTML
 
-            def initialize(items:, card_title:, **options)
-              super(**options)
+            def initialize(items:, card_title:, **)
+              super(**)
 
               @action_links = items.map { |item| Action::Link.new(context: @context, card_title: card_title, **item) }
             end

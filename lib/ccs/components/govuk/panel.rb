@@ -29,8 +29,8 @@ module CCS
         # @option options [Integer,String] :heading_level (default: 1) heading level for the panel title text
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(title_text:, panel_text: nil, **options)
-          super(**options)
+        def initialize(title_text:, panel_text: nil, **)
+          super(**)
 
           @title_text = title_text
           @panel_text = panel_text

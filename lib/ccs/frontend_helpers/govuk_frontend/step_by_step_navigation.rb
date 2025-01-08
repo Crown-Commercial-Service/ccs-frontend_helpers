@@ -27,8 +27,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::StepByStepNavigation#render)
 
-        def govuk_step_by_step_navigation(step_by_step_navigation_sections, **options)
-          Components::GovUK::StepByStepNavigation.new(context: self, step_by_step_navigation_sections: step_by_step_navigation_sections, **options).render
+        def govuk_step_by_step_navigation(step_by_step_navigation_sections, **)
+          Components::GovUK::StepByStepNavigation.new(context: self, step_by_step_navigation_sections: step_by_step_navigation_sections, **).render
         end
       end
     end

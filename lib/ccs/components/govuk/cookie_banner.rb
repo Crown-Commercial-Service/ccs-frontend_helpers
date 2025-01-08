@@ -26,8 +26,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the cookie banner HTML
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(messages:, **options)
-          super(**options)
+        def initialize(messages:, **)
+          super(**)
 
           (@options[:attributes][:data] ||= {})[:nosnippet] = 'true'
           @options[:attributes][:role] = 'region'

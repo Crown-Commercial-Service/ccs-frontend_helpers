@@ -16,8 +16,8 @@ module CCS
               #
               # @option (see CCS::Components::GovUK::Field::Items::Item#initialize))
 
-              def initialize(attribute:, label:, **options)
-                super(attribute: attribute, item_class: 'govuk-checkboxes__item', **options)
+              def initialize(attribute:, label:, **)
+                super(attribute: attribute, item_class: 'govuk-checkboxes__item', **)
 
                 label[:classes] = "govuk-checkboxes__label #{label[:classes]}".rstrip
               end

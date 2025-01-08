@@ -30,8 +30,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the summary list HTML
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(summary_list_items:, card: nil, **options)
-          super(**options)
+        def initialize(summary_list_items:, card: nil, **)
+          super(**)
 
           any_row_has_actions = summary_list_items.any? { |summary_list_item| summary_list_item.dig(:actions, :items).present? }
 

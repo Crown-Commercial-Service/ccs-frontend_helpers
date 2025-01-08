@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Inputs::Radios#render)
 
-        def govuk_radios(attribute, radio_items, **options)
-          Components::GovUK::Field::Inputs::Radios.new(context: self, attribute: attribute, radio_items: radio_items, **options).render
+        def govuk_radios(attribute, radio_items, **)
+          Components::GovUK::Field::Inputs::Radios.new(context: self, attribute: attribute, radio_items: radio_items, **).render
         end
       end
     end

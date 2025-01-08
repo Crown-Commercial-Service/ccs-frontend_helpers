@@ -32,8 +32,8 @@ module CCS
             # @option options [String] :classes additional CSS classes for the summary list action link HTML
             # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-            def initialize(text:, href:, visually_hidden_text: nil, card_title: nil, **options)
-              super(**options)
+            def initialize(text:, href:, visually_hidden_text: nil, card_title: nil, **)
+              super(**)
 
               @text = text
               @href = href

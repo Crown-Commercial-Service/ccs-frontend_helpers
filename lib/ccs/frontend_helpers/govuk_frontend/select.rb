@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::Select#render)
 
-        def govuk_select(attribute, items, **options)
-          Components::GovUK::Field::Input::Select.new(context: self, attribute: attribute, items: items, **options).render
+        def govuk_select(attribute, items, **)
+          Components::GovUK::Field::Input::Select.new(context: self, attribute: attribute, items: items, **).render
         end
       end
     end

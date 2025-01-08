@@ -31,8 +31,8 @@ module CCS
           #                                    If the +:type+ key is present with a value of +:button+,
           #                                   the action will be rendered as a button
 
-          def initialize(text:, href: nil, **options)
-            super(**options)
+          def initialize(text:, href: nil, **)
+            super(**)
 
             @text = text
             @href = href

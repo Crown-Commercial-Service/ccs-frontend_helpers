@@ -7,18 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add support for to ruby v3.4
+
 ## [2.1.0] - 2025-01-08
 
 ### Changed
 
 - Updated CCS Frontend to v1.3.2 (update to the CCS logo)
+- Updated minimum Ruby version to v3.2
 
 ## [2.0.0] - 2024-11-05
 
 ### Changed
 
 - Update minimum required Rails version to v7.0
-- Updated minimum Ruby version to 3.1
+- Updated minimum Ruby version to v3.1
 
 ### Added
 

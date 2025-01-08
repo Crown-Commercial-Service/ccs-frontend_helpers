@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Header#render)
 
-        def govuk_header(**options)
-          Components::GovUK::Header.new(context: self, **options).render
+        def govuk_header(**)
+          Components::GovUK::Header.new(context: self, **).render
         end
       end
     end

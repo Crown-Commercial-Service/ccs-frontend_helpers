@@ -38,8 +38,8 @@ module CCS
         # @option options [Boolean] :use_tudor_crown flag to use the new tudor crown for the GOV.UK Logo
         # @option options [Hash] :attributes additional attributes that will added as part of the header HTML
 
-        def initialize(navigation: nil, menu_button: nil, service: nil, **options)
-          super(**options)
+        def initialize(navigation: nil, menu_button: nil, service: nil, **)
+          super(**)
 
           @options[:container_classes] ||= 'govuk-width-container'
           @options[:homepage_url] ||= '/'

@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Inputs::Checkboxes#render)
 
-        def govuk_checkboxes(attribute, checkbox_items, **options)
-          Components::GovUK::Field::Inputs::Checkboxes.new(context: self, attribute: attribute, checkbox_items: checkbox_items, **options).render
+        def govuk_checkboxes(attribute, checkbox_items, **)
+          Components::GovUK::Field::Inputs::Checkboxes.new(context: self, attribute: attribute, checkbox_items: checkbox_items, **).render
         end
       end
     end

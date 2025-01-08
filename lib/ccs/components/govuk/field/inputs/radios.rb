@@ -28,8 +28,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Inputs#initialize)
 
-            def initialize(attribute:, radio_items:, **options)
-              super(attribute: attribute, **options)
+            def initialize(attribute:, radio_items:, **)
+              super(attribute: attribute, **)
 
               @options[:value] = (@options[:model] || @options[:form].object).send(attribute) if @options[:model] || @options[:form]
 

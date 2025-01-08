@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Inputs::DateInput#render)
 
-        def govuk_date_input(attribute, **options)
-          Components::GovUK::Field::Inputs::DateInput.new(context: self, attribute: attribute, **options).render
+        def govuk_date_input(attribute, **)
+          Components::GovUK::Field::Inputs::DateInput.new(context: self, attribute: attribute, **).render
         end
       end
     end

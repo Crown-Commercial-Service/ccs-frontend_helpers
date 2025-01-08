@@ -22,8 +22,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Inputs#initialize)
 
-            def initialize(attribute:, checkbox_items:, **options)
-              super(attribute: attribute, **options)
+            def initialize(attribute:, checkbox_items:, **)
+              super(attribute: attribute, **)
 
               @options[:values] ||= []
               @options[:values] = (@options[:model] || @options[:form].object).send(attribute) || [] if @options[:model] || @options[:form]

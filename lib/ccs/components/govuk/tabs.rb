@@ -34,8 +34,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the tabs HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
 
-        def initialize(items:, title: nil, id_prefix: nil, **options)
-          super(**options)
+        def initialize(items:, title: nil, id_prefix: nil, **)
+          super(**)
 
           @title = title || 'Contents'
           id_prefix ||= sanitize_to_id(@title.downcase)

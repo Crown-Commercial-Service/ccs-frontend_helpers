@@ -29,8 +29,8 @@ module CCS
         # @option options [ActionView::Helpers::FormBuilder] :form the form builder used to create the submit button
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(text:, **options)
-          super(**options)
+        def initialize(text:, **)
+          super(**)
 
           if @options[:attributes][:disabled]
             @options[:attributes][:aria] ||= {}

@@ -27,8 +27,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the back link HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(text:, href:, **options)
-          super(**options)
+        def initialize(text:, href:, **)
+          super(**)
 
           @text = text
           @href = href

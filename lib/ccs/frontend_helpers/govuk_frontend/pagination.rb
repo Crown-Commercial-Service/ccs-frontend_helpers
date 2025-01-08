@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Pagination#render)
 
-        def govuk_pagination(**options)
-          Components::GovUK::Pagination.new(context: self, **options).render
+        def govuk_pagination(**)
+          Components::GovUK::Pagination.new(context: self, **).render
         end
       end
     end

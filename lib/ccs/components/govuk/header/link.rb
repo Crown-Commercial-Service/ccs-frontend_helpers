@@ -27,8 +27,8 @@ module CCS
           # @option options [Boolean] :active flag to mark the navigation item as active or not
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(text:, href: nil, **options)
-            super(**options)
+          def initialize(text:, href: nil, **)
+            super(**)
 
             @text = text
             @href = href
