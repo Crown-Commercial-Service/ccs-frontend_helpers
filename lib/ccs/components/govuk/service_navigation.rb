@@ -34,8 +34,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the service navigation HTML
         # @option options [Hash] :attributes additional attributes that will added as part of the service navigation HTML
 
-        def initialize(navigation: nil, menu_button: nil, service: nil, **options)
-          super(**options)
+        def initialize(navigation: nil, menu_button: nil, service: nil, **)
+          super(**)
 
           (@options[:attributes][:aria] ||= {})[:label] ||= 'Service information' if service
 

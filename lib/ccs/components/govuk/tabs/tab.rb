@@ -30,8 +30,8 @@ module CCS
           #
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(index:, id_prefix:, label:, panel:, **options)
-            super(**options)
+          def initialize(index:, id_prefix:, label:, panel:, **)
+            super(**)
 
             @options[:attributes][:class] = 'govuk-tabs__tab'
 

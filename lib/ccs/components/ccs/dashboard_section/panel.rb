@@ -30,8 +30,8 @@ module CCS
           # @option options [String] :width (default: 'one-third') the width of the panel
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML.
 
-          def initialize(title:, href:, description:, **options)
-            super(**options)
+          def initialize(title:, href:, description:, **)
+            super(**)
 
             @options[:attributes][:class] << " govuk-grid-column-#{@options[:width] || 'one-third'}"
 

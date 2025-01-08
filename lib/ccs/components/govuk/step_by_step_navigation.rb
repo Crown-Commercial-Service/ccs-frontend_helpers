@@ -26,8 +26,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the step by step navigation HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(step_by_step_navigation_sections:, **options)
-          super(**options)
+        def initialize(step_by_step_navigation_sections:, **)
+          super(**)
 
           DEFAULT_SHOW_HIDE_TEXT.each { |key, value| @options[:attributes][:data][key] ||= value }
 

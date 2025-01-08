@@ -36,8 +36,8 @@ module CCS
           #
           # @option options [String] :classes additional CSS classes for the summary list row HTML
 
-          def initialize(any_row_has_actions:, key:, value:, actions: nil, card_title: nil, **options)
-            super(**options)
+          def initialize(any_row_has_actions:, key:, value:, actions: nil, card_title: nil, **)
+            super(**)
 
             actions_present = actions && actions[:items].present?
 

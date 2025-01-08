@@ -36,8 +36,8 @@ module CCS
         # @option options [ActiveSupport::SafeBuffer,String] :copyright The copyright information, (default: '© Crown copyright')
         # @option options [Hash] :attributes additional attributes that will added as part of the HTML
 
-        def initialize(navigation: nil, meta: nil, **options)
-          super(**options)
+        def initialize(navigation: nil, meta: nil, **)
+          super(**)
 
           @options[:copyright] ||= '© Crown copyright'
 

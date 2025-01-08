@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ErrorSummary#render)
 
-        def govuk_error_summary(title, error_summary_items = [], description = nil, **options)
-          Components::GovUK::ErrorSummary.new(context: self, title: title, error_summary_items: error_summary_items, description: description, **options).render
+        def govuk_error_summary(title, error_summary_items = [], description = nil, **)
+          Components::GovUK::ErrorSummary.new(context: self, title: title, error_summary_items: error_summary_items, description: description, **).render
         end
 
         # Generates the HTML for the GOV.UK Error summary component using the error messages in an ActiveModel
@@ -35,12 +35,12 @@ module CCS
         # @return [NilClass, ActiveSupport::SafeBuffer] if error messages are not on the model it will return nil,
         #                                               otherwise it returns the error summary HTML.
 
-        def govuk_error_summary_with_model(model, title, description = nil, **options)
+        def govuk_error_summary_with_model(model, title, description = nil, **)
           return if model.errors.blank?
 
           error_summary_items = model.errors.map { |error| { text: error.message, href: "##{error.attribute}-error" } }
 
-          Components::GovUK::ErrorSummary.new(context: self, title: title, error_summary_items: error_summary_items, description: description, **options).render
+          Components::GovUK::ErrorSummary.new(context: self, title: title, error_summary_items: error_summary_items, description: description, **).render
         end
       end
     end

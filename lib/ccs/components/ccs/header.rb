@@ -44,8 +44,8 @@ module CCS
         # @option options [String] :homepage_url URL of the homepage. Defaults to +/https://www.crowncommercial.gov.uk+
         # @option options [Hash] :attributes additional attributes that will added as part of the header HTML
 
-        def initialize(service_authentication_items: nil, navigation: nil, menu_button: nil, service: nil, **options)
-          super(**options)
+        def initialize(service_authentication_items: nil, navigation: nil, menu_button: nil, service: nil, **)
+          super(**)
 
           @options[:container_classes] ||= 'govuk-width-container'
           @options[:homepage_url] ||= 'https://www.crowncommercial.gov.uk'

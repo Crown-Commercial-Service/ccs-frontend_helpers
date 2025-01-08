@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Tabs#render)
 
-        def govuk_tabs(items, title = nil, **options)
-          Components::GovUK::Tabs.new(context: self, items: items, title: title, **options).render
+        def govuk_tabs(items, title = nil, **)
+          Components::GovUK::Tabs.new(context: self, items: items, title: title, **).render
         end
       end
     end

@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::Footer#render)
 
-        def ccs_footer(**options)
-          Components::CCS::Footer.new(context: self, **options).render
+        def ccs_footer(**)
+          Components::CCS::Footer.new(context: self, **).render
         end
       end
     end

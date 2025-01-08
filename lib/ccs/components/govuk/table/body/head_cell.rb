@@ -25,8 +25,8 @@ module CCS
             # @option options [String] :classes additional CSS classes for the cell
             # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the cell
 
-            def initialize(text:, **options)
-              super(**options)
+            def initialize(text:, **)
+              super(**)
 
               @options[:attributes][:scope] = 'row'
 

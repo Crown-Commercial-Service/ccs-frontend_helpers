@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::SummaryList#render)
 
-        def govuk_summary_list(summary_list_items, **options)
-          Components::GovUK::SummaryList.new(context: self, summary_list_items: summary_list_items, **options).render
+        def govuk_summary_list(summary_list_items, **)
+          Components::GovUK::SummaryList.new(context: self, summary_list_items: summary_list_items, **).render
         end
       end
     end

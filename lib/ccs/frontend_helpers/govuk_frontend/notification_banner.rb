@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::NotificationBanner#render)
 
-        def govuk_notification_banner(text = nil, success_banner = nil, **options, &)
-          Components::GovUK::NotificationBanner.new(context: self, text: text, success_banner: success_banner, **options).render(&)
+        def govuk_notification_banner(text = nil, success_banner = nil, **, &)
+          Components::GovUK::NotificationBanner.new(context: self, text: text, success_banner: success_banner, **).render(&)
         end
       end
     end

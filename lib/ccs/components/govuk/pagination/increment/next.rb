@@ -14,8 +14,8 @@ module CCS
             #
             # @option (see Increment#initialize)
 
-            def initialize(text: nil, **options)
-              super(type: :next, text: text, default_text: 'Next', **options)
+            def initialize(text: nil, **)
+              super(type: :next, text: text, default_text: 'Next', **)
             end
 
             # Generates the HTML for the next link in the pagination

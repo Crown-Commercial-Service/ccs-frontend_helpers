@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Details#render)
 
-        def govuk_details(summary_text, **options, &)
-          Components::GovUK::Details.new(context: self, summary_text: summary_text, **options).render(&)
+        def govuk_details(summary_text, **, &)
+          Components::GovUK::Details.new(context: self, summary_text: summary_text, **).render(&)
         end
       end
     end

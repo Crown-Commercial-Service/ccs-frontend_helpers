@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::Header#render)
 
-        def ccs_header(**options)
-          Components::CCS::Header.new(context: self, **options).render
+        def ccs_header(**)
+          Components::CCS::Header.new(context: self, **).render
         end
       end
     end

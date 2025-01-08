@@ -32,8 +32,8 @@ module CCS
           #
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(index:, id_prefix:, content: nil, text: nil, **options)
-            super(**options)
+          def initialize(index:, id_prefix:, content: nil, text: nil, **)
+            super(**)
             @options[:attributes][:class] = "govuk-tabs__panel #{'govuk-tabs__panel--hidden' if index > 1}".rstrip
             @options[:attributes][:id] ||= "#{id_prefix}-#{index}"
 

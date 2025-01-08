@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::TaskList#render)
 
-        def govuk_task_list(task_list_items, **options)
-          Components::GovUK::TaskList.new(context: self, task_list_items: task_list_items, **options).render
+        def govuk_task_list(task_list_items, **)
+          Components::GovUK::TaskList.new(context: self, task_list_items: task_list_items, **).render
         end
       end
     end

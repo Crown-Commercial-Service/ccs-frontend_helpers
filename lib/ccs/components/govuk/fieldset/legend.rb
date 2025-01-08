@@ -32,8 +32,8 @@ module CCS
           # @option caption [String] :text text for the caption
           # @option caption [String] :classes additional CSS classes for the caption HTML
 
-          def initialize(text:, is_page_heading: nil, caption: nil, **options)
-            super(**options)
+          def initialize(text:, is_page_heading: nil, caption: nil, **)
+            super(**)
 
             @text = text
             @is_page_heading = is_page_heading

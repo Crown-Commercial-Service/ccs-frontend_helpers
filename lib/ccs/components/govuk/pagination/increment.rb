@@ -40,8 +40,8 @@ module CCS
           # @option options  [ActionView::Helpers::FormBuilder] :form optional form builder used to create the button
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(type:, default_text:, block_is_level:, text: nil, label_text: nil, **options)
-            super(**options)
+          def initialize(type:, default_text:, block_is_level:, text: nil, label_text: nil, **)
+            super(**)
 
             @options[:attributes][:class] = "govuk-link govuk-pagination__link #{'pagination--button_as_link' if @options[:form]}".rstrip
             @options[:attributes][:rel] = type.to_s

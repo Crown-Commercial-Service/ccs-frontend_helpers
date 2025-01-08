@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Breadcrumbs#render)
 
-        def govuk_breadcrumbs(breadcrumb_links, **options)
-          Components::GovUK::Breadcrumbs.new(context: self, breadcrumb_links: breadcrumb_links, **options).render
+        def govuk_breadcrumbs(breadcrumb_links, **)
+          Components::GovUK::Breadcrumbs.new(context: self, breadcrumb_links: breadcrumb_links, **).render
         end
       end
     end

@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ExitThisPage#render)
 
-        def govuk_exit_this_page(text = nil, redirect_url = nil, **options)
-          Components::GovUK::ExitThisPage.new(context: self, text: text, redirect_url: redirect_url, **options).render
+        def govuk_exit_this_page(text = nil, redirect_url = nil, **)
+          Components::GovUK::ExitThisPage.new(context: self, text: text, redirect_url: redirect_url, **).render
         end
       end
     end

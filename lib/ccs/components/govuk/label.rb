@@ -31,8 +31,8 @@ module CCS
         # @option options [Boolean] :is_page_heading (false) if the label is also the heading it will rendered in a h1
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(attribute:, text: nil, form: nil, **options)
-          super(**options)
+        def initialize(attribute:, text: nil, form: nil, **)
+          super(**)
 
           @attribute = attribute
           @text = text

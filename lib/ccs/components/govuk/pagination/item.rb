@@ -27,8 +27,8 @@ module CCS
           # @option options [Boolean] :ellipsis If the value is +true+ then an ellipsis will be rendered
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(number:, current: false, **options)
-            super(**options)
+          def initialize(number:, current: false, **)
+            super(**)
 
             @number = number
 

@@ -40,8 +40,8 @@ module CCS
         # @option options [ActionView::Helpers::FormBuilder] :form form builder used to create pagination buttons
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(pagination_previous: nil, pagination_items: nil, pagination_next: nil, **options)
-          super(**options)
+        def initialize(pagination_previous: nil, pagination_items: nil, pagination_next: nil, **)
+          super(**)
 
           block_is_level = pagination_items.blank? && (pagination_previous.present? || pagination_next.present?)
 

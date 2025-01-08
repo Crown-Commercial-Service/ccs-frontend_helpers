@@ -27,8 +27,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the form group HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(attribute:, error_message: nil, **options)
-          super(**options)
+        def initialize(attribute:, error_message: nil, **)
+          super(**)
 
           @options[:attributes][:id] ||= "#{attribute}-form-group"
           @options[:attributes][:class][..15] = 'govuk-form-group govuk-form-group--error' if error_message

@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::ContactUs#render)
 
-        def ccs_contact_us(contact_us_link_href, **options)
-          Components::CCS::ContactUs.new(contact_us_link_href: contact_us_link_href, context: self, **options).render
+        def ccs_contact_us(contact_us_link_href, **)
+          Components::CCS::ContactUs.new(contact_us_link_href: contact_us_link_href, context: self, **).render
         end
       end
     end

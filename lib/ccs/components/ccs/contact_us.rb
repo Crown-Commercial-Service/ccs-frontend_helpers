@@ -32,8 +32,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the contact us HTML
         # @option options [Hash] :attributes additional attributes that will added as part of the contact us HTML
 
-        def initialize(contact_us_link_href:, having_problems_text: nil, contact_us_link_text: nil, contact_us_text: nil, **options)
-          super(**options)
+        def initialize(contact_us_link_href:, having_problems_text: nil, contact_us_link_text: nil, contact_us_text: nil, **)
+          super(**)
 
           @contact_us_link_href = contact_us_link_href
           @contact_us_link_text = contact_us_link_text || 'Contact us (opens in a new tab)'

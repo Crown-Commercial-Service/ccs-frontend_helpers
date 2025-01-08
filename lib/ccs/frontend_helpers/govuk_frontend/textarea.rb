@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::Textarea#render)
 
-        def govuk_textarea(attribute, **options)
-          Components::GovUK::Field::Input::Textarea.new(context: self, attribute: attribute, **options).render
+        def govuk_textarea(attribute, **)
+          Components::GovUK::Field::Input::Textarea.new(context: self, attribute: attribute, **).render
         end
       end
     end

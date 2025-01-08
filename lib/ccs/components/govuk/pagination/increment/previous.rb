@@ -14,8 +14,8 @@ module CCS
             #
             # @option (see Increment#initialize)
 
-            def initialize(text: nil, **options)
-              super(type: :prev, text: text, default_text: 'Previous', **options)
+            def initialize(text: nil, **)
+              super(type: :prev, text: text, default_text: 'Previous', **)
             end
 
             # Generates the HTML for the previous link in the pagination

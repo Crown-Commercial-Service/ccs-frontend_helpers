@@ -26,8 +26,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the fieldset HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(legend: nil, **options)
-          super(**options)
+        def initialize(legend: nil, **)
+          super(**)
 
           @legend = Legend.new(context: @context, **legend) if legend
         end

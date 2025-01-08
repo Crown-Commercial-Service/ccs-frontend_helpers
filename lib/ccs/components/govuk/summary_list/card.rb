@@ -30,8 +30,8 @@ module CCS
           # @option options [String] :classes additional CSS classes for the summary card HTML
           # @option options [Hash] :attributes any additional attributes that will be added as part of the HTML
 
-          def initialize(title: nil, actions: nil, **options)
-            super(**options)
+          def initialize(title: nil, actions: nil, **)
+            super(**)
 
             @title = Title.new(context: @context, **title) if title
             @actions = Actions.new(context: @context, card_title: title&.dig(:text), **actions) if actions

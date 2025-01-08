@@ -27,8 +27,8 @@ module CCS
         # @option options [Boolean] :collapse_on_mobile indicates if it is to colapse breadcrumbs on mobile
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(breadcrumb_links:, **options)
-          super(**options)
+        def initialize(breadcrumb_links:, **)
+          super(**)
           @options[:attributes][:class] << ' govuk-breadcrumbs--collapse-on-mobile' if @options[:collapse_on_mobile]
           (@options[:attributes][:aria] ||= {})[:label] ||= 'Breadcrumb'
 

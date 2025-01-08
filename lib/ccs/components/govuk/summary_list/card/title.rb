@@ -25,8 +25,8 @@ module CCS
             #
             # @option options [String] :classes additional CSS classes for the summary list card title HTML
 
-            def initialize(text:, heading_level: '2', **options)
-              super(**options)
+            def initialize(text:, heading_level: '2', **)
+              super(**)
 
               @text = text
               @heading_level = heading_level

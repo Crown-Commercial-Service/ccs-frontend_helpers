@@ -29,8 +29,8 @@ module CCS
         # @option options [String] :width (default: 'full') the width of the dashboard section
         # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-        def initialize(dashboard_section_panels:, title_text: nil, **options)
-          super(**options)
+        def initialize(dashboard_section_panels:, title_text: nil, **)
+          super(**)
 
           @options[:width] ||= 'full'
 

@@ -26,8 +26,8 @@ module CCS
             # @option options [String] :format specify format of a cell
             # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the cell
 
-            def initialize(text:, **options)
-              super(**options)
+            def initialize(text:, **)
+              super(**)
 
               @options[:attributes][:class] += " govuk-table__header--#{@options[:format]}" if @options[:format]
               @options[:attributes][:scope] = 'col'

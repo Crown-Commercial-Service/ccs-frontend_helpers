@@ -21,8 +21,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::WarningText#render)
 
-        def govuk_warning_text(text = nil, **options, &)
-          Components::GovUK::WarningText.new(context: self, text: text, **options).render(&)
+        def govuk_warning_text(text = nil, **, &)
+          Components::GovUK::WarningText.new(context: self, text: text, **).render(&)
         end
       end
     end

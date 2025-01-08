@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::ErrorMessage#render)
 
-        def govuk_error_message(error_message, attribute = nil, **options)
-          Components::GovUK::ErrorMessage.new(context: self, message: error_message, attribute: attribute, **options).render
+        def govuk_error_message(error_message, attribute = nil, **)
+          Components::GovUK::ErrorMessage.new(context: self, message: error_message, attribute: attribute, **).render
         end
 
         # Generates the HTML for the GOV.UK Error message component using the error messages in an ActiveModel
@@ -34,11 +34,11 @@ module CCS
         # @return [NilClass, ActiveSupport::SafeBuffer] if the error message is not on the model it will return nil,
         #                                               otherwise it returns the error message HTML
 
-        def govuk_error_message_with_model(model, attribute, **options)
+        def govuk_error_message_with_model(model, attribute, **)
           error_message = model.errors[attribute].first
           return unless error_message
 
-          Components::GovUK::ErrorMessage.new(context: self, message: error_message, attribute: attribute, **options).render
+          Components::GovUK::ErrorMessage.new(context: self, message: error_message, attribute: attribute, **).render
         end
       end
     end

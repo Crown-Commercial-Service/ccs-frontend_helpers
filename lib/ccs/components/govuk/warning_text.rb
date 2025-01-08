@@ -26,8 +26,8 @@ module CCS
         # @option options [String] :icon_fallback_text the fallback text for the icon (default: +'Warning'+)
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(text: nil, **options)
-          super(**options)
+        def initialize(text: nil, **)
+          super(**)
 
           @text = text
         end

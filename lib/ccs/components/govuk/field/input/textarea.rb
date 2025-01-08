@@ -26,8 +26,8 @@ module CCS
             #
             # @option (see CCS::Components::GovUK::Field::Input#initialize)
 
-            def initialize(attribute:, content: nil, rows: 5, **options)
-              super(attribute: attribute, **options)
+            def initialize(attribute:, content: nil, rows: 5, **)
+              super(attribute: attribute, **)
 
               @options[:attributes][:rows] ||= rows
 

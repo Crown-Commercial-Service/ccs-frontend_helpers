@@ -56,8 +56,8 @@ module CCS
             # @option conditional [ActiveSupport::SafeBuffer] content the HTML content
             # @option conditional [Hash] attributes[:id] the id of the conditional section
 
-            def initialize(attribute:, value:, item_class:, hint: nil, conditional: nil, **options)
-              super(**options)
+            def initialize(attribute:, value:, item_class:, hint: nil, conditional: nil, **)
+              super(**)
 
               initialise_item_hint(attribute, value, hint) if hint
               initialize_item_conditional(attribute, value, conditional) if conditional && conditional[:content]

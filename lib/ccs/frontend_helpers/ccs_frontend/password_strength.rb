@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::PasswordStrength#render)
 
-        def ccs_password_strength(password_id, password_strength_tests, **options)
-          Components::CCS::PasswordStrength.new(password_id: password_id, password_strength_tests: password_strength_tests, context: self, **options).render
+        def ccs_password_strength(password_id, password_strength_tests, **)
+          Components::CCS::PasswordStrength.new(password_id: password_id, password_strength_tests: password_strength_tests, context: self, **).render
         end
       end
     end

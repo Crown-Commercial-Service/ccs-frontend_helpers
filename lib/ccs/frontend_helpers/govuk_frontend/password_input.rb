@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::Input::PasswordInput#render)
 
-        def govuk_password_input(attribute, **options)
-          Components::GovUK::Field::Input::PasswordInput.new(context: self, attribute: attribute, **options).render
+        def govuk_password_input(attribute, **)
+          Components::GovUK::Field::Input::PasswordInput.new(context: self, attribute: attribute, **).render
         end
       end
     end

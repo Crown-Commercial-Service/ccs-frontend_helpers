@@ -35,8 +35,8 @@ module CCS
           # @option options [String] :classes additional CSS classes for the cookie message HTML
           # @option options [Hash] :attributes any additional attributes that will added as part of the HTML
 
-          def initialize(heading_text: nil, content: nil, text: nil, actions: nil, **options)
-            super(**options)
+          def initialize(heading_text: nil, content: nil, text: nil, actions: nil, **)
+            super(**)
 
             @heading_text = heading_text
             @content = content

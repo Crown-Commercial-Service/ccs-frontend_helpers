@@ -39,8 +39,8 @@ module CCS
           #
           # @option options [String] :classes additional CSS classes for the task list item HTML
 
-          def initialize(title:, status:, index:, id_prefix:, hint_text: nil, **options)
-            super(**options)
+          def initialize(title:, status:, index:, id_prefix:, hint_text: nil, **)
+            super(**)
             @options[:attributes][:class] << ' govuk-task-list__item--with-link' if title[:href]
 
             @id_prefix = "#{id_prefix}-#{index}"

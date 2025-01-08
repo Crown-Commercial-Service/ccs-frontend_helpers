@@ -31,8 +31,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the error summary HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will be added as part of the HTML
 
-        def initialize(title:, error_summary_items: [], description: nil, **options)
-          super(**options)
+        def initialize(title:, error_summary_items: [], description: nil, **)
+          super(**)
 
           @title = title
           @error_summary_items = error_summary_items.map { |error_summary_item| Item.new(context: @context, **error_summary_item) }

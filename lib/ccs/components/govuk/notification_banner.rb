@@ -32,8 +32,8 @@ module CCS
         # @option options [String] :heading_level (2) the heading level for the title text
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(text: nil, success_banner: nil, **options)
-          super(**options)
+        def initialize(text: nil, success_banner: nil, **)
+          super(**)
 
           @text = text
           @success_banner = success_banner || false

@@ -19,8 +19,8 @@ module CCS
         #
         # @return (see CCS::Components::GovUK::BackLink#render)
 
-        def govuk_back_link(text, href, **options)
-          Components::GovUK::BackLink.new(context: self, text: text, href: href, **options).render
+        def govuk_back_link(text, href, **)
+          Components::GovUK::BackLink.new(context: self, text: text, href: href, **).render
         end
       end
     end

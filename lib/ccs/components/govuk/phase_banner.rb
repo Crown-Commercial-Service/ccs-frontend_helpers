@@ -33,8 +33,8 @@ module CCS
         # @option options [String] :classes additional CSS classes for the phase banner HTML
         # @option options [Hash] :attributes ({}) any additional attributes that will added as part of the HTML
 
-        def initialize(tag_options:, text: nil, **options)
-          super(**options)
+        def initialize(tag_options:, text: nil, **)
+          super(**)
 
           tag_options[:classes] = "govuk-phase-banner__content__tag #{tag_options[:classes]}".rstrip
           tag_options[:context] = @context
