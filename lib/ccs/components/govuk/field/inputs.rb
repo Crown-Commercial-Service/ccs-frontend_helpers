@@ -46,7 +46,7 @@ module CCS
           # @return [ActiveSupport::SafeBuffer]
 
           def render(&block)
-            super() do |display_error_message|
+            super do |display_error_message|
               if fieldset
                 fieldset.render do
                   field_inner_html(display_error_message, &block)
