@@ -1,9 +1,11 @@
 ---
+plugins:
+    - rubocop-rails
+    - rubocop-rake
+
 require:
     - rubocop-capybara
     - rubocop-rspec
-    - rubocop-rails
-    - rubocop-rake
 
 AllCops:
     NewCops: enable
@@ -118,6 +120,9 @@ Layout/LineLength:
         - "it .* do$"
         - "context .* do$"
         - "scenario .* do$"
+
+Lint/UselessConstantScoping:
+    Enabled: false
 
 Metrics/ClassLength:
     Enabled: false

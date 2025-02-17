@@ -5,6 +5,14 @@ updates:
     schedule:
       interval: "weekly"
       day: "sunday"
+
+    # Group packages into shared PR
+    groups:
+      rubocop:
+        patterns:
+          - 'rubocop'
+          - 'rubocop-*'
+
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
