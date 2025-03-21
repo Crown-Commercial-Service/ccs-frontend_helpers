@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2025-03-21
+
 ### Added
 
 - Add support for to ruby v3.4
+- Updated GOV.UK Frontend to v5.9.0
+- Updated CCS Frontend to v1.3.3
 
 ## [2.1.0] - 2025-01-08
 
