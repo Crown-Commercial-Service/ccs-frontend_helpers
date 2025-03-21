@@ -124,6 +124,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PasswordInput, '#fixtures', 
       end
     end
 
+    context "when the fixture is 'id'" do
+      let(:fixture_name) { 'id' }
+      let(:result) { govuk_password_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'value'" do
       let(:fixture_name) { 'value' }
       let(:result) { govuk_password_input(fixture_options[:name], label: fixture_options[:label], value: fixture_options[:value], attributes: fixture_options[:attributes]) }

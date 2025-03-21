@@ -3,6 +3,7 @@
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Select, '#validate_fixtures', type: :helper do
   fixture_list = {
     'default' => true,
+    'id' => true,
     'with no items' => true,
     'with selected value' => true,
     'with hint text and error message' => true,

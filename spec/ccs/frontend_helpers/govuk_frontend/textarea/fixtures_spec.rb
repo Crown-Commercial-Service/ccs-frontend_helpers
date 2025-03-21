@@ -115,6 +115,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Textarea, '#fixtures', type:
       end
     end
 
+    context "when the fixture is 'id'" do
+      let(:fixture_name) { 'id' }
+      let(:result) { govuk_textarea(fixture_options[:name], label: fixture_options[:label], attributes: { id: fixture_options[:id] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
       let(:result) { govuk_textarea(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }

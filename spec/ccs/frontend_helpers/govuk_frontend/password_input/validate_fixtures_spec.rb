@@ -10,6 +10,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PasswordInput, '#validate_fi
     'with new-password autocomplete' => true,
     'with translations' => true,
     'classes' => true,
+    'id' => true,
     'value' => true,
     'attributes' => true,
     'with describedBy' => true,

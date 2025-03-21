@@ -2,10 +2,10 @@
 plugins:
     - rubocop-rails
     - rubocop-rake
+    - rubocop-rspec
 
 require:
     - rubocop-capybara
-    - rubocop-rspec
 
 AllCops:
     NewCops: enable
