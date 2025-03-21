@@ -274,6 +274,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
       end
     end
 
+    context "when the fixture is 'id'" do
+      let(:fixture_name) { 'id' }
+      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'custom type'" do
       let(:fixture_name) { 'custom type' }
       let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }

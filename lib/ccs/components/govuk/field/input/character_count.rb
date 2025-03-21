@@ -58,6 +58,8 @@ module CCS
             def initialise_textarea(attribute, character_count_attribute, character_count_options, context, options)
               set_character_count_from_group_options(character_count_options, options)
 
+              character_count_attribute = options.dig(:attributes, :id) if options.dig(:attributes, :id)
+
               ((options[:attributes] ||= {})[:aria] ||= {})[:describedby] = [options.dig(:attributes, :aria, :describedby), "#{character_count_attribute}-info"].compact.join(' ')
               options[:classes] = "govuk-js-character-count #{options[:classes]}".rstrip
 

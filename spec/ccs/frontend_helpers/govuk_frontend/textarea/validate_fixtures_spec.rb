@@ -13,6 +13,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Textarea, '#validate_fixture
     'with spellcheck enabled' => true,
     'with spellcheck disabled' => true,
     'classes' => true,
+    'id' => true,
     'attributes' => true,
     'with describedBy' => true,
     'with hint and described by' => true,

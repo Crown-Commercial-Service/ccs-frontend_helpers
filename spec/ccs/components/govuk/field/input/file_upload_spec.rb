@@ -9,6 +9,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
   let(:label_element) { Capybara::Node::Simple.new(result).find('label.govuk-label') }
   let(:hint_element) { Capybara::Node::Simple.new(result).find('div.govuk-hint') }
   let(:error_message_element) { Capybara::Node::Simple.new(result).find('p.govuk-error-message') }
+  let(:file_upload_drop_zone_element) { Capybara::Node::Simple.new(result).find('div.govuk-drop-zone') }
   let(:file_upload_element) { Capybara::Node::Simple.new(result).find('input.govuk-file-upload') }
 
   let(:result) { govuk_file_upload.render }
@@ -292,6 +293,56 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
         end
       end
     end
+
+    context 'when considering the JavaScript enhancement' do
+      let(:file_upload_options) { { javascript: true } }
+
+      it 'correctly formats the HTML with the JavaScript enhancement' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Upload your favourite artwork
+            </label>
+            <div class="govuk-drop-zone" data-module="govuk-file-upload">
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+            </div>
+          </div>
+        '.to_one_line)
+      end
+
+      context 'and there are localisations' do
+        let(:file_upload_options) do
+          {
+            javascript: true,
+            choose_files_button_text: 'Choose files',
+            no_file_chosen_text: 'No file chosen',
+            # rubocop:disable Style/FormatStringToken
+            multiple_files_chosen_text: {
+              other: 'Many files (%{count}) chosen',
+              one: 'One file (%{count}) chosen'
+            },
+            # rubocop:enable Style/FormatStringToken
+            drop_instruction_text: 'Drop here',
+            entered_drop_zone_text: 'You are in the drop zone',
+            left_drop_zone_text: 'You have left the drop zone'
+          }
+        end
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'renders with localisation elements' do
+          expect(file_upload_drop_zone_element[:'data-i18n.choose-files-button']).to eq('Choose files')
+          expect(file_upload_drop_zone_element[:'data-i18n.no-file-chosen']).to eq('No file chosen')
+          # rubocop:disable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.other']).to eq('Many files (%{count}) chosen')
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.one']).to eq('One file (%{count}) chosen')
+          # rubocop:enable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.drop-instruction']).to eq('Drop here')
+          expect(file_upload_drop_zone_element[:'data-i18n.entered-drop-zone']).to eq('You are in the drop zone')
+          expect(file_upload_drop_zone_element[:'data-i18n.left-drop-zone']).to eq('You have left the drop zone')
+        end
+        # rubocop:enable RSpec/MultipleExpectations
+      end
+    end
   end
 
   describe '.render with model' do
@@ -536,6 +587,56 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
             </div>
           '.to_one_line)
         end
+      end
+    end
+
+    context 'when considering the JavaScript enhancement' do
+      let(:file_upload_options) { { javascript: true } }
+
+      it 'correctly formats the HTML with the JavaScript enhancement' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Upload your favourite artwork
+            </label>
+            <div class="govuk-drop-zone" data-module="govuk-file-upload">
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+            </div>
+          </div>
+        '.to_one_line)
+      end
+
+      context 'and there are localisations' do
+        let(:file_upload_options) do
+          {
+            javascript: true,
+            choose_files_button_text: 'Choose files',
+            no_file_chosen_text: 'No file chosen',
+            # rubocop:disable Style/FormatStringToken
+            multiple_files_chosen_text: {
+              other: 'Many files (%{count}) chosen',
+              one: 'One file (%{count}) chosen'
+            },
+            # rubocop:enable Style/FormatStringToken
+            drop_instruction_text: 'Drop here',
+            entered_drop_zone_text: 'You are in the drop zone',
+            left_drop_zone_text: 'You have left the drop zone'
+          }
+        end
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'renders with localisation elements' do
+          expect(file_upload_drop_zone_element[:'data-i18n.choose-files-button']).to eq('Choose files')
+          expect(file_upload_drop_zone_element[:'data-i18n.no-file-chosen']).to eq('No file chosen')
+          # rubocop:disable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.other']).to eq('Many files (%{count}) chosen')
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.one']).to eq('One file (%{count}) chosen')
+          # rubocop:enable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.drop-instruction']).to eq('Drop here')
+          expect(file_upload_drop_zone_element[:'data-i18n.entered-drop-zone']).to eq('You are in the drop zone')
+          expect(file_upload_drop_zone_element[:'data-i18n.left-drop-zone']).to eq('You have left the drop zone')
+        end
+        # rubocop:enable RSpec/MultipleExpectations
       end
     end
   end
@@ -784,6 +885,56 @@ RSpec.describe CCS::Components::GovUK::Field::Input::FileUpload do
             </div>
           '.to_one_line)
         end
+      end
+    end
+
+    context 'when considering the JavaScript enhancement' do
+      let(:file_upload_options) { { javascript: true } }
+
+      it 'correctly formats the HTML with the JavaScript enhancement' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="test_model_ouroboros">
+              Upload your favourite artwork
+            </label>
+            <div class="govuk-drop-zone" data-module="govuk-file-upload">
+              <input class="govuk-file-upload" type="file" name="test_model[ouroboros]" id="test_model_ouroboros">
+            </div>
+          </div>
+        '.to_one_line)
+      end
+
+      context 'and there are localisations' do
+        let(:file_upload_options) do
+          {
+            javascript: true,
+            choose_files_button_text: 'Choose files',
+            no_file_chosen_text: 'No file chosen',
+            # rubocop:disable Style/FormatStringToken
+            multiple_files_chosen_text: {
+              other: 'Many files (%{count}) chosen',
+              one: 'One file (%{count}) chosen'
+            },
+            # rubocop:enable Style/FormatStringToken
+            drop_instruction_text: 'Drop here',
+            entered_drop_zone_text: 'You are in the drop zone',
+            left_drop_zone_text: 'You have left the drop zone'
+          }
+        end
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'renders with localisation elements' do
+          expect(file_upload_drop_zone_element[:'data-i18n.choose-files-button']).to eq('Choose files')
+          expect(file_upload_drop_zone_element[:'data-i18n.no-file-chosen']).to eq('No file chosen')
+          # rubocop:disable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.other']).to eq('Many files (%{count}) chosen')
+          expect(file_upload_drop_zone_element[:'data-i18n.multiple-files-chosen.one']).to eq('One file (%{count}) chosen')
+          # rubocop:enable Style/FormatStringToken
+          expect(file_upload_drop_zone_element[:'data-i18n.drop-instruction']).to eq('Drop here')
+          expect(file_upload_drop_zone_element[:'data-i18n.entered-drop-zone']).to eq('You are in the drop zone')
+          expect(file_upload_drop_zone_element[:'data-i18n.left-drop-zone']).to eq('You have left the drop zone')
+        end
+        # rubocop:enable RSpec/MultipleExpectations
       end
     end
   end

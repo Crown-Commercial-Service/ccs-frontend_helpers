@@ -14,7 +14,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#helpers', type
       label: {
         text: 'Upload your favourite artwork'
       }
-    }
+    }.merge(file_upload_options)
   end
   let(:minimum_options) do
     {
@@ -34,6 +34,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#helpers', type
       }
     }
   end
+  let(:file_upload_options) { {} }
   let(:test_model) { TestModel.new }
 
   describe '.govuk_file_upload' do
@@ -112,6 +113,23 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#helpers', type
               <span class="govuk-visually-hidden">Error:</span> You must upload a file
             </p>
             <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload govuk-file-upload--error" aria-describedby="ouroboros-hint ouroboros-error">
+          </div>
+        '.to_one_line)
+      end
+    end
+
+    context 'when considering the JavaScript enhancement' do
+      let(:file_upload_options) { { javascript: true } }
+
+      it 'correctly formats the HTML with the JavaScript enhancement' do
+        expect(form_group_element.to_html).to eq('
+          <div class="govuk-form-group" id="ouroboros-form-group">
+            <label class="govuk-label" for="ouroboros">
+              Upload your favourite artwork
+            </label>
+            <div class="govuk-drop-zone" data-module="govuk-file-upload">
+              <input type="file" name="ouroboros" id="ouroboros" class="govuk-file-upload">
+            </div>
           </div>
         '.to_one_line)
       end

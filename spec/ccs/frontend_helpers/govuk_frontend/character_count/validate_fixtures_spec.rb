@@ -13,6 +13,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#validate_f
     'with threshold' => true,
     'with translations' => true,
     'classes' => true,
+    'id' => true,
     'attributes' => true,
     'formGroup with classes' => true,
     'custom classes on countMessage' => true,

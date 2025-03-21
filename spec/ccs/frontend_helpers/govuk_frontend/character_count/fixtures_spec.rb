@@ -43,8 +43,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], content: fixture_options[:value], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -53,8 +52,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], error_message: fixture_options[:errorMessage][:text], content: fixture_options[:value], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info").gsub("#{fixture_options[:id]}-error", "#{fixture_options[:name]}-error").gsub('govuk-textarea--error govuk-js-character-count', 'govuk-js-character-count govuk-textarea--error'))
+        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-error", "#{fixture_options[:name]}-error").gsub('govuk-textarea--error govuk-js-character-count', 'govuk-js-character-count govuk-textarea--error'))
       end
     end
 
@@ -63,7 +61,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], rows: fixture_options[:rows], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -77,7 +75,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       end
 
       it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -143,6 +141,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       end
     end
 
+    context "when the fixture is 'id'" do
+      let(:fixture_name) { 'id' }
+      let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], attributes: { id: fixture_options[:id] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], attributes: fixture_options[:attributes]) }
@@ -202,8 +209,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -212,8 +218,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -222,8 +227,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], attributes: { id: fixture_options[:id], maxlength: fixture_options[:maxlength] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 
@@ -232,8 +236,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       let(:result) { govuk_character_count(fixture_options[:name], label: fixture_options[:label], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # We use the attribute instead of the ID as the source of the area described by
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-info", "#{fixture_options[:name]}-info"))
+        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 

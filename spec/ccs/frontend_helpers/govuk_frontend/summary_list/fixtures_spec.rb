@@ -177,6 +177,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#fixtures', ty
       end
     end
 
+    context "when the fixture is 'as a summary card extreme'" do
+      let(:fixture_name) { 'as a summary card extreme' }
+      let(:result) { govuk_summary_list(fixture_options[:rows], card: fixture_options[:card]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
       let(:result) { govuk_summary_list(fixture_options[:rows], attributes: fixture_options[:attributes]) }
