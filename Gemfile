@@ -18,7 +18,7 @@ gem 'nokogiri-diff', '~> 0.3.0'
 # Gems for linting/formatting the package
 gem 'rubocop', '~> 1.75'
 gem 'rubocop-capybara', '~> 2.22'
-gem 'rubocop-rails', '~> 2.30'
+gem 'rubocop-rails', '~> 2.31'
 gem 'rubocop-rake', '~> 0.7'
 gem 'rubocop-rspec', '~> 3.5'
 
