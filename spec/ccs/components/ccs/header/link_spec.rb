@@ -9,12 +9,13 @@ RSpec.describe CCS::Components::CCS::Header::Link do
   let(:header_link_element) { header_list_element.find('a') }
 
   describe '.render' do
-    let(:ccs_header_link) { described_class.new(text: text, li_class: li_class, href: href, context: view_context, **options) }
+    let(:ccs_header_link) { described_class.new(text: text, li_class: li_class, href: href, method: method, context: view_context, **options) }
     let(:result) { ccs_header_link.render }
 
     let(:text) { 'Here we go' }
     let(:li_class) { 'ccs-header__navigation-item' }
     let(:href) { '/here-we-go' }
+    let(:method) { nil }
     let(:options) { {} }
 
     let(:default_html) { '<li class="ccs-header__navigation-item"><a class="ccs-header__link" href="/here-we-go">Here we go</a></li>' }
@@ -44,6 +45,72 @@ RSpec.describe CCS::Components::CCS::Header::Link do
 
         it 'has the active class' do
           expect(header_list_element[:class]).to eq('ccs-header__navigation-item ccs-header__navigation-item--active')
+        end
+      end
+    end
+
+    context 'when a method is passed' do
+      context 'and the the method is post' do
+        let(:method) { :post }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(header_list_element.to_html).to eq('
+            <li class="ccs-header__navigation-item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <button class="ccs-header__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>
+          '.to_one_line)
+        end
+      end
+
+      context 'and the the method is put' do
+        let(:method) { :put }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(header_list_element.to_html).to eq('
+            <li class="ccs-header__navigation-item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="put" autocomplete="off">
+                <button class="ccs-header__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
+        end
+      end
+
+      context 'and the the method is patch' do
+        let(:method) { :patch }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(header_list_element.to_html).to eq('
+            <li class="ccs-header__navigation-item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="patch" autocomplete="off">
+                <button class="ccs-header__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
+        end
+      end
+
+      context 'and the the method is delete' do
+        let(:method) { :delete }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(header_list_element.to_html).to eq('
+            <li class="ccs-header__navigation-item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="delete" autocomplete="off">
+                <button class="ccs-header__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
         end
       end
     end

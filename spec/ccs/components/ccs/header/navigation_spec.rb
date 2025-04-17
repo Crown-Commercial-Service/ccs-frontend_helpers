@@ -112,6 +112,74 @@ RSpec.describe CCS::Components::CCS::Header::Navigation do
       end
     end
 
+    context 'and there are HTTP methods in the navigation items' do
+      let(:navigation) do
+        {
+          primary_items: [
+            {
+              text: 'Go',
+              href: '/go',
+              method: :post
+            },
+            {
+              text: 'Beyond',
+              active: true
+            },
+          ],
+          secondary_items: [
+            {
+              text: 'Plus',
+              href: '/plus',
+              method: :patch
+            },
+            {
+              text: 'Ultra!',
+              href: '/ultra'
+            },
+          ]
+        }.merge(navigation_options)
+      end
+
+      it 'renders the links as buttons' do
+        expect(navigation_section_element.to_html).to eq('
+          <nav aria-label="Menu" class="ccs-header__navigation">
+            <button name="button" type="button" class="ccs-header__menu-button ccs-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" hidden="hidden">
+              Menu
+            </button>
+            <div id="navigation" class="ccs-header__navigation-lists">
+              <ul id="navigation-secondary" class="ccs-header__navigation-secondary-list">
+                <li class="ccs-header__navigation-item">
+                  <form class="button_to" method="post" action="/plus">
+                    <input type="hidden" name="_method" value="patch" autocomplete="off">
+                    <button class="ccs-header__button_as_link" type="submit">
+                      Plus
+                    </button>
+                  </form>
+                </li>
+                <li class="ccs-header__navigation-item">
+                  <a class="ccs-header__link" href="/ultra">
+                    Ultra!
+                  </a>
+                </li>
+              </ul>
+              <ul id="navigation-primary" class="ccs-header__navigation-primary-list">
+                <li class="ccs-header__navigation-item">
+                  <form class="button_to" method="post" action="/go">
+                    <button class="ccs-header__button_as_link" type="submit">
+                      Go
+                    </button>
+                  </form>
+                </li>
+                <li class="ccs-header__navigation-item ccs-header__navigation-item--active">
+                  Beyond
+                </li>
+              </ul>
+            </div>
+          </nav>
+        '.to_one_line)
+      end
+    end
+
     context 'and there is only primary navigation' do
       let(:navigation) do
         {

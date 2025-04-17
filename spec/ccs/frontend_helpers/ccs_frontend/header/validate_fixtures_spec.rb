@@ -5,6 +5,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#validate_fixtures', 
     'default' => true,
     'with service name' => true,
     'with authentication options' => true,
+    'with authentication options for sign out' => true,
     'with both navigation' => true,
     'with only primary navigation' => true,
     'with only secondary navigation' => true,
@@ -22,7 +23,8 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#validate_fixtures', 
     'custom homepage url' => true,
     'navigation item with attributes' => true,
     'navigation item with html as text' => true,
-    'navigation item with html without link' => true
+    'navigation item with html without link' => true,
+    'with authentication options with other http methods' => true,
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, 'header')

@@ -1,0 +1,18 @@
+{
+  "lockfileVersion": 0,
+  "workspaces": {
+    "": {
+      "devDependencies": {
+        "ccs-frontend": "^1.4.0",
+        "govuk-frontend": "^5.9.0",
+      },
+    },
+  },
+  "packages": {
+    "ccs-frontend": ["ccs-frontend@1.4.0", "", { "peerDependencies": { "govuk-frontend": "^5.9.0", "jquery": "^3.x" } }, "sha512-GX0wln6Tojcl7ZeLMPuq0uDh3jST2cV95HKLoOOYMsk783aCJXCaD9NANPHJClKGViuovw0piTIhPuM89nozBw=="],
+
+    "govuk-frontend": ["govuk-frontend@5.9.0", "", {}, "sha512-8NzmyoDtRFYyHs413DfNPR8Zo6qw6Q02Mruxml/Yfy+EueaOI/JZ4gVM8d0pqzJmTiMcJuHhvxqYEgBRmqeoyA=="],
+
+    "jquery": ["jquery@3.7.1", "", {}, "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="],
+  }
+}
