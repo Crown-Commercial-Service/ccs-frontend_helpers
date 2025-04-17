@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2025-04-17
+
 ### Added
 
 - Added the ability have muttons instead of links for the header links.
