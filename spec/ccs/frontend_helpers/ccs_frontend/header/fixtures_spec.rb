@@ -10,7 +10,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#fixtures', type: :he
 
     let(:component_name) { 'header' }
     # Because Rails automatically adds names to buttons and the hidden attribute is a bit different
-    let(:fixture_html) { fixture[:html].to_one_line.gsub('<button ', '<button name="button" ').gsub('hidden>', 'hidden="hidden">') }
+    let(:fixture_html) { fixture[:html].to_one_line.gsub('<button type="button" class="ccs-header__menu-button', '<button name="button" type="button" class="ccs-header__menu-button').gsub('hidden>', 'hidden="hidden">') }
 
     before do
       {
@@ -73,6 +73,15 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#fixtures', type: :he
 
     context "when the fixture is 'with authentication options'" do
       let(:fixture_name) { 'with authentication options' }
+      let(:result) { ccs_header(service_authentication_items: fixture_options[:serviceAuthentication]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with authentication options for sign out'" do
+      let(:fixture_name) { 'with authentication options for sign out' }
       let(:result) { ccs_header(service_authentication_items: fixture_options[:serviceAuthentication]) }
 
       it 'has HTML matching the fixture' do
@@ -236,6 +245,15 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#fixtures', type: :he
     context "when the fixture is 'navigation item with html without link'" do
       let(:fixture_name) { 'navigation item with html without link' }
       let(:result) { ccs_header(service: fixture_options[:service], navigation: fixture_options[:navigation]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with authentication options with other http methods'" do
+      let(:fixture_name) { 'with authentication options with other http methods' }
+      let(:result) { ccs_header(navigation: fixture_options[:navigation], service_authentication_items: fixture_options[:serviceAuthentication]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)

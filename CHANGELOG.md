@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added the ability have muttons instead of links for the header links.
+  This is because we need to send a delete request when signing out and this was previously done by Rails UJS which was removed in Rails 7.2
+- Updated CCS Frontend to v1.4.0
+
+### Changed
+
+- Change from using Yarn to using Bun to manage the NodeJS packages (Internal only)
+- Make Rails 7.2 the minimum required version for this Gem
+
 ## [2.2.0] - 2025-03-21
 
 ### Added

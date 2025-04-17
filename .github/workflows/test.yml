@@ -26,7 +26,7 @@ jobs:
           bundler-cache: true
 
       - name: Fetch the GOV.UK Frontend fixtures
-        run: yarn install
+        run: bun install
 
       - name: Run the default task
         run: bundle exec rake
