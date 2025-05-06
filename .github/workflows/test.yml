@@ -25,6 +25,11 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.1.42
+
       - name: Fetch the GOV.UK Frontend fixtures
         run: bun install
 

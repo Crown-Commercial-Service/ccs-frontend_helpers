@@ -13,11 +13,12 @@ updates:
           - 'rubocop'
           - 'rubocop-*'
 
-  - package-ecosystem: "npm"
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "sunday"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
