@@ -23,6 +23,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#validat
     'with custom navigation toggle text and navigation label' => true,
     'with custom navigation classes' => true,
     'with custom navigation ID' => true,
+    'with navigation having empty values' => true,
+    'with navigation having only empty values' => true,
+    'with navigation being an empty array' => true,
     'with slotted content' => false
   }
 

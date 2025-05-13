@@ -3,7 +3,6 @@
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures', type: :helper do
   fixture_list = {
     'default' => true,
-    "with St Edward's crown" => true,
     'with service name' => true,
     'with service name but no service url' => true,
     'with navigation' => true,
@@ -18,6 +17,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures'
     'with full width border' => true,
     'navigation item with html' => true,
     'navigation item with text without link' => true,
+    "with St. Edward's Crown" => true,
     'attributes' => true,
     'classes' => true,
     'custom homepage url' => true,
@@ -25,7 +25,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures'
     'navigation item with html as text' => true,
     'navigation item with html without link' => true,
     'with custom navigation label and custom menu button text' => true,
-    'empty navigation array' => true
+    'empty navigation array' => true,
+    'rebrand' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'header')

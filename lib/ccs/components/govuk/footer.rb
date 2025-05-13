@@ -1,6 +1,7 @@
 require_relative '../base'
 require_relative 'footer/navigation'
 require_relative 'footer/meta'
+require_relative 'logo'
 
 module CCS
   module Components
@@ -14,11 +15,13 @@ module CCS
       #   @return [Array<Navigation>] An array of the initialised navigation sections
       # @!attribute [r] meta
       #   @return [Meta] The initialised meta section
+      # @!attribute [r] logo
+      #   @return [Logo] The initialised logo component
 
       class Footer < Base
         private
 
-        attr_reader :navigation, :meta
+        attr_reader :navigation, :meta, :logo
 
         public
 
@@ -32,6 +35,7 @@ module CCS
         # @option options [String] :container_class classes that can be added to the inner container
         # @option options [ActiveSupport::SafeBuffer,String] :content_licence The content licence information, see {CCS::Components::GovUK::Footer#footer_content_licence footer_content_licence} for default
         # @option options [ActiveSupport::SafeBuffer,String] :copyright The copyright information, (default: '© Crown copyright')
+        # @option options [Boolean] :rebrand flag to use the rebrand footer which includes the logo
         # @option options [Hash] :attributes additional attributes that will added as part of the HTML
 
         def initialize(navigation: nil, meta: nil, **)
@@ -39,6 +43,7 @@ module CCS
 
           @options[:copyright] ||= '© Crown copyright'
 
+          @logo = Logo.new(rebrand: true, use_logotype: false, classes: 'govuk-footer__crown', context: @context) if @options[:rebrand]
           @navigation = navigation&.map { |navigation_item| Navigation.new(context: @context, **navigation_item) }
           @meta = Meta.new(context: @context, **meta) if meta
         end
@@ -52,6 +57,7 @@ module CCS
         def render
           tag.footer(**options[:attributes]) do
             tag.div(class: "govuk-width-container #{options[:container_classes]}".rstrip) do
+              concat(logo.render) if logo
               if navigation.present?
                 concat(tag.div(class: 'govuk-footer__navigation') do
                   navigation.each { |navigation_item| concat(navigation_item.render) }
