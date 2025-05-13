@@ -23,7 +23,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#validate_fixtures'
     'with meta html' => true,
     'with meta item attributes' => true,
     'with empty navigation' => true,
-    'with navigation item attributes' => true
+    'with navigation item attributes' => true,
+    'rebrand' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'footer')

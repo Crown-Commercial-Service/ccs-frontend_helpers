@@ -192,6 +192,33 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#fixture
       end
     end
 
+    context "when the fixture is 'with navigation having empty values'" do
+      let(:fixture_name) { 'with navigation having empty values' }
+      let(:result) { govuk_service_navigation(navigation: { items: fixture_options[:navigation] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with navigation having only empty values'" do
+      let(:fixture_name) { 'with navigation having only empty values' }
+      let(:result) { govuk_service_navigation(navigation: { items: fixture_options[:navigation] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with navigation being an empty array'" do
+      let(:fixture_name) { 'with navigation being an empty array' }
+      let(:result) { govuk_service_navigation(navigation: { items: fixture_options[:navigation] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with custom navigation ID'" do
       let(:fixture_name) { 'with custom navigation ID' }
       let(:result) { govuk_service_navigation(navigation: { items: fixture_options[:navigation], id: fixture_options[:navigationId] }) }

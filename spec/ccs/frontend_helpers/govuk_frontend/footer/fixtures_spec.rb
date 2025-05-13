@@ -9,7 +9,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
     include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'footer' }
-    let(:fixture_html) { fixture[:html].to_one_line.gsub('aclass', 'a class').gsub('pathfill', 'path fill').gsub('svgaria', 'svg aria') }
+    let(:fixture_html) { fixture[:html].to_one_line.gsub('aclass', 'a class').gsub('pathfill', 'path fill').gsub('svgaria', 'svg aria').gsub('svgfocusable', 'svg focusable') }
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
@@ -203,6 +203,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
     context "when the fixture is 'with navigation item attributes'" do
       let(:fixture_name) { 'with navigation item attributes' }
       let(:result) { govuk_footer(navigation: fixture_options[:navigation]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'rebrand'" do
+      let(:fixture_name) { 'rebrand' }
+      let(:result) { govuk_footer(rebrand: fixture_options[:rebrand]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

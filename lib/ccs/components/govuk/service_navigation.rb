@@ -39,7 +39,7 @@ module CCS
 
           (@options[:attributes][:aria] ||= {})[:label] ||= 'Service information' if service
 
-          @navigation = Navigation.new(navigation: navigation, menu_button: menu_button, context: @context) if navigation && navigation[:items].present?
+          @navigation = Navigation.new(navigation: navigation, menu_button: menu_button, context: @context) if navigation && navigation[:items]&.compact_blank!.present?
           @service = service
         end
 

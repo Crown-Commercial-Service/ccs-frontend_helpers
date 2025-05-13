@@ -8,6 +8,7 @@ RSpec.describe CCS::Components::GovUK::Footer do
   let(:footer_element) { Capybara::Node::Simple.new(result).find('footer.govuk-footer') }
   let(:footer_content_licence_element) { footer_element.find('span.govuk-footer__licence-description') }
   let(:footer_copyright_element) { footer_element.find('a.govuk-footer__copyright-logo') }
+  let(:footer_logo_element) { footer_element.find('div.govuk-width-container > svg') }
 
   describe '.render' do
     let(:govuk_footer) { described_class.new(context: view_context, **footer_options) }
@@ -209,6 +210,14 @@ RSpec.describe CCS::Components::GovUK::Footer do
 
       it 'has the container classees on the container div' do
         expect(footer_copyright_element).to have_content('Here is my copyright')
+      end
+    end
+
+    context 'when rebrand is true' do
+      let(:options) { { rebrand: true } }
+
+      it 'has the logo in the container' do
+        expect(footer_logo_element[:class]).to eq('govuk-footer__crown')
       end
     end
   end

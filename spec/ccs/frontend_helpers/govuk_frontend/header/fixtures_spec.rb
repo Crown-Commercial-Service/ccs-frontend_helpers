@@ -11,20 +11,11 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
     let(:component_name) { 'header' }
     let(:fixture_html) { fixture[:html].to_one_line.gsub('svgfocusable', 'svg focusable') }
     # Because Rails automatically adds names to buttons and the hidden attribute is a bit different
-    let(:fixture_with_navigation_html) { fixture_html.gsub('<button ', '<button name="button" ').gsub('hidden>', 'hidden="hidden">') }
+    let(:fixture_with_navigation_html) { fixture_html.gsub('<button ', '<button name="button" ').gsub('hidden>', 'hidden="hidden">').gsub('svgfocusable', 'svg focusable') }
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
       let(:result) { govuk_header }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with St Edward's crown'" do
-      let(:fixture_name) { "with St Edward's crown" }
-      let(:result) { govuk_header(use_tudor_crown: false) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
@@ -157,6 +148,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
       end
     end
 
+    context "when the fixture is 'with St. Edward's Crown'" do
+      let(:fixture_name) { "with St. Edward's Crown" }
+      let(:result) { govuk_header(use_tudor_crown: false) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
       let(:result) { govuk_header(attributes: fixture_options[:attributes]) }
@@ -226,6 +226,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_with_navigation_html)
+      end
+    end
+
+    context "when the fixture is 'rebrand'" do
+      let(:fixture_name) { 'rebrand' }
+      let(:result) { govuk_header(rebrand: fixture_options[:rebrand]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
       end
     end
   end
