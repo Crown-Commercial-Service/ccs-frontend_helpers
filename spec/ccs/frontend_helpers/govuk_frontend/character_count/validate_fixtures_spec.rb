@@ -5,6 +5,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#validate_f
     'default' => true,
     'with custom textarea description' => true,
     'with hint' => true,
+    'with error' => true,
+    'with hint and error' => true,
     'with default value' => true,
     'with default value exceeding limit' => true,
     'with custom rows' => true,
