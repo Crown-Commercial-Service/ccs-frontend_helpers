@@ -9,7 +9,7 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Navigation do
   let(:menu_button_element) { navigation_section_element.find('button.govuk-service-navigation__toggle', visible: :hidden) }
 
   describe '.render' do
-    let(:govuk_service_navigation_navigation) { described_class.new(navigation: navigation, menu_button: menu_button, context: view_context) }
+    let(:govuk_service_navigation_navigation) { described_class.new(navigation: navigation, menu_button: menu_button, collapse_navigation_on_mobile: collapse_navigation_on_mobile, context: view_context) }
     let(:result) { govuk_service_navigation_navigation.render }
 
     let(:navigation) do
@@ -31,6 +31,7 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Navigation do
       }.merge(navigation_options)
     end
     let(:menu_button) { nil }
+    let(:collapse_navigation_on_mobile) { nil }
     let(:navigation_options) { {} }
 
     let(:default_html) do
@@ -109,6 +110,39 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Navigation do
 
         it 'has the custom menu button text' do
           expect(menu_button_element[:'aria-label']).to eq 'This is the menu that you can show or hide'
+        end
+      end
+
+      context 'when collapse_navigation_on_mobile is false' do
+        let(:collapse_navigation_on_mobile) { false }
+
+        it 'does not show the menu button' do
+          expect(navigation_section_element.all('button.govuk-service-navigation__toggle', visible: :hidden)).to be_empty
+        end
+      end
+
+      context 'when only one navigation link is false' do
+        let(:navigation) do
+          {
+            items: [
+              {
+                text: 'Here',
+                href: '/here'
+              },
+            ]
+          }.merge(navigation_options)
+        end
+
+        it 'does not show the menu button' do
+          expect(navigation_section_element.all('button.govuk-service-navigation__toggle', visible: :hidden)).to be_empty
+        end
+
+        context 'and collapse_navigation_on_mobile is true' do
+          let(:collapse_navigation_on_mobile) { true }
+
+          it 'does show the menu button' do
+            expect(navigation_section_element.all('button.govuk-service-navigation__toggle', visible: :hidden)).not_to be_empty
+          end
         end
       end
     end

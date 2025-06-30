@@ -18,6 +18,8 @@ module CCS
         #   @return [String] The id for the navigation
         # @!attribute [r] menu_button
         #   @return [Hash] The options for the menu button
+        # @!attribute [r] collapse_navigation_on_mobile
+        #   @return [Boolean] Flag to collapse navigation on mobile
 
         class Navigation
           include ActionView::Context
@@ -25,15 +27,16 @@ module CCS
 
           private
 
-          attr_reader :navigation, :menu_button
+          attr_reader :navigation, :menu_button, :collapse_navigation_on_mobile
 
           public
 
-          # rubocop:disable Metrics/CyclomaticComplexity
+          # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
 
           # @param navigation [Hash] options for the navigation
           # @param context [ActionView::Base] the view context
           # @param menu_button [Hash] options for the menu button
+          # @param collapse_navigation_on_mobile [Boolean] flag to collapse navigation on mobile
           #
           # @option navigation [Array] :items an array of links for the navigation section.
           #                            See {Components::GovUK::ServiceNavigation::Link#initialize Link#initialize} for details of the items in the array.
@@ -45,7 +48,7 @@ module CCS
           # @option menu_button [String] :label text for the aria-label attribute of the button that opens the mobile navigation.
           #                                     Defaults to +Show or hide menu+.
 
-          def initialize(navigation:, context:, menu_button: nil)
+          def initialize(navigation:, context:, menu_button: nil, collapse_navigation_on_mobile: nil)
             menu_button ||= {}
             menu_button[:text] ||= 'Menu'
 
@@ -58,9 +61,11 @@ module CCS
             @navigation[:links] = navigation[:items].map { |navigation_link| Link.new(context: context, **navigation_link) }
             @navigation[:label] = navigation[:label] || menu_button[:text]
             @navigation[:class] = "govuk-service-navigation__wrapper #{navigation[:classes]}".rstrip
+
+            @collapse_navigation_on_mobile = collapse_navigation_on_mobile.nil? ? @navigation[:links].length > 1 : collapse_navigation_on_mobile
           end
 
-          # rubocop:enable Metrics/CyclomaticComplexity
+          # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
 
           # Generates the HTML for the GOV.UK Service Navigation navigation
           #
@@ -68,7 +73,7 @@ module CCS
 
           def render
             tag.nav(aria: { label: navigation[:label] }, class: navigation[:class]) do
-              concat(button_tag(menu_button[:text], type: :button, class: 'govuk-service-navigation__toggle govuk-js-service-navigation-toggle', aria: menu_button[:aria], hidden: true))
+              concat(button_tag(menu_button[:text], type: :button, class: 'govuk-service-navigation__toggle govuk-js-service-navigation-toggle', aria: menu_button[:aria], hidden: true)) if collapse_navigation_on_mobile
               concat(tag.ul(id: navigation[:id], class: 'govuk-service-navigation__list') do
                 navigation[:links].each { |navigation_link| concat(navigation_link.render) }
               end)
