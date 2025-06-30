@@ -102,6 +102,42 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#fixture
       end
     end
 
+    context "when the fixture is 'inverse'" do
+      let(:fixture_name) { 'inverse' }
+      let(:result) { govuk_service_navigation(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }, classes: fixture_options[:classes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with collapseNavigationOnMobile set to false'" do
+      let(:fixture_name) { 'with collapseNavigationOnMobile set to false' }
+      let(:result) { govuk_service_navigation(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }, collapse_navigation_on_mobile: fixture_options[:collapseNavigationOnMobile]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with a single navigation item'" do
+      let(:fixture_name) { 'with a single navigation item' }
+      let(:result) { govuk_service_navigation(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with a single navigation item and collapseNavigationOnMobile set to true'" do
+      let(:fixture_name) { 'with a single navigation item and collapseNavigationOnMobile set to true' }
+      let(:result) { govuk_service_navigation(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }, collapse_navigation_on_mobile: fixture_options[:collapseNavigationOnMobile]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with no options set'" do
       let(:fixture_name) { 'with no options set' }
       let(:result) { govuk_service_navigation }

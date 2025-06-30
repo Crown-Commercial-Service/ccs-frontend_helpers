@@ -33,13 +33,14 @@ module CCS
         #
         # @option options [String] :classes additional CSS classes for the service navigation HTML
         # @option options [Hash] :attributes additional attributes that will added as part of the service navigation HTML
+        # @option options [Boolean] :collapse_navigation_on_mobile flag to collapse navigation on mobile
 
         def initialize(navigation: nil, menu_button: nil, service: nil, **)
           super(**)
 
           (@options[:attributes][:aria] ||= {})[:label] ||= 'Service information' if service
 
-          @navigation = Navigation.new(navigation: navigation, menu_button: menu_button, context: @context) if navigation && navigation[:items]&.compact_blank!.present?
+          @navigation = Navigation.new(navigation: navigation, menu_button: menu_button, collapse_navigation_on_mobile: options[:collapse_navigation_on_mobile], context: @context) if navigation && navigation[:items]&.compact_blank!.present?
           @service = service
         end
 
