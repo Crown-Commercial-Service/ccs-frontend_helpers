@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures', type: :helper do
+  component_name = 'header'
   fixture_list = {
     'default' => true,
     'with service name' => true,
@@ -26,12 +27,18 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#validate_fixtures'
     'navigation item with html without link' => true,
     'with custom navigation label and custom menu button text' => true,
     'empty navigation array' => true,
-    'rebrand' => true
+    'rebrand' => true,
+    'with service name and navigation and rebrand' => true,
+    'with product name and rebrand' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'header')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'header').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

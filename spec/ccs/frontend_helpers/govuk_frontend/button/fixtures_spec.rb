@@ -94,54 +94,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'with active state'" do
-      let(:fixture_name) { 'with active state' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with hover state'" do
-      let(:fixture_name) { 'with hover state' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with focus state'" do
-      let(:fixture_name) { 'with focus state' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'secondary'" do
       let(:fixture_name) { 'secondary' }
       let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'secondary disabled'" do
-      let(:fixture_name) { 'secondary disabled' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name], disabled: fixture_options[:disabled] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'secondary link'" do
-      let(:fixture_name) { 'secondary link' }
-      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], classes: fixture_options[:classes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
@@ -157,54 +112,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'warning disabled'" do
-      let(:fixture_name) { 'warning disabled' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name], disabled: fixture_options[:disabled] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'warning link'" do
-      let(:fixture_name) { 'warning link' }
-      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], classes: fixture_options[:classes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'inverse'" do
       let(:fixture_name) { 'inverse' }
       let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'inverse disabled'" do
-      let(:fixture_name) { 'inverse disabled' }
-      let(:result) { govuk_button(fixture_options[:text], classes: fixture_options[:classes], attributes: { name: fixture_options[:name], disabled: fixture_options[:disabled] }) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'inverse link'" do
-      let(:fixture_name) { 'inverse link' }
-      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], classes: fixture_options[:classes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'inverse start'" do
-      let(:fixture_name) { 'inverse start' }
-      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], classes: fixture_options[:classes], is_start_button: fixture_options[:isStartButton]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

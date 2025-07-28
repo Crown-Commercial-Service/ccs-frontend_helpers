@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#validate_fixtures', type: :helper do
+  component_name = 'pagination'
   fixture_list = {
     'default' => true,
     'with custom navigation landmark' => true,
@@ -12,16 +13,19 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#validate_fixtu
     'with prev and next only' => true,
     'with prev and next only and labels' => true,
     'with prev and next only and very long labels' => true,
-    'with prev and next only in a different language' => true,
     'with previous only' => true,
     'with next only' => true,
     'with custom classes' => true,
     'with custom attributes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'pagination')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'pagination').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

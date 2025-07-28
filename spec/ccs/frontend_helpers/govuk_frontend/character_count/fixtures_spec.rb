@@ -38,15 +38,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#fixtures',
       end
     end
 
-    context "when the fixture is 'with error'" do
-      let(:fixture_name) { 'with error' }
-      let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html.gsub("#{fixture_options[:id]}-error", "#{fixture_options[:name]}-error").gsub('govuk-textarea--error govuk-js-character-count', 'govuk-js-character-count govuk-textarea--error'))
-      end
-    end
-
     context "when the fixture is 'with hint and error'" do
       let(:fixture_name) { 'with hint and error' }
       let(:result) { govuk_character_count(fixture_options[:name], { maxlength: fixture_options[:maxlength] }, label: fixture_options[:label], hint: fixture_options[:hint], error_message: fixture_options[:errorMessage][:text]) }

@@ -76,16 +76,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#fixtures', type
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
-      let(:result) { govuk_date_input(fixture_options[:name], attributes: fixture_options[:attributes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'complete question'" do
-      let(:fixture_name) { 'complete question' }
-      let(:result) { govuk_date_input(fixture_options[:name], date_items: fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint], attributes: fixture_options[:attributes]) }
+      let(:result) { govuk_date_input(fixture_options[:name], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -128,8 +119,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#fixtures', type
       end
     end
 
-    context "when the fixture is 'with default items'" do
-      let(:fixture_name) { 'with default items' }
+    context "when the fixture is 'with items'" do
+      let(:fixture_name) { 'with items' }
       let(:result) { govuk_date_input(fixture_options[:name], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do

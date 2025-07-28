@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures', type: :helper do
+  component_name = 'radios'
   fixture_list = {
     'default' => true,
+    'with hint' => true,
     'inline' => true,
     'with disabled' => true,
     'with legend as page heading' => true,
-    'with a medium legend' => true,
     'with a divider' => true,
     'with hints on items' => true,
     'without fieldset' => true,
@@ -15,7 +16,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'with conditional items' => true,
     'with conditional items with special characters' => true,
     'with conditional item checked' => true,
-    'prechecked' => true,
     'prechecked using value' => true,
     'with conditional items and pre-checked value' => true,
     'with optional form-group classes showing group error' => true,
@@ -23,10 +23,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'small with long text' => true,
     'small with error' => true,
     'small with hint' => true,
-    'small with disabled' => true,
     'small with conditional reveal' => true,
     'small inline' => true,
-    'small inline extreme' => true,
     'small with a divider' => true,
     'with idPrefix' => true,
     'minimal items and name' => true,
@@ -50,9 +48,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#validate_fixtures'
     'textarea in conditional' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'radios')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'radios').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

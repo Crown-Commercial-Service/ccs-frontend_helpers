@@ -1,18 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#validate_fixtures', type: :helper do
+  component_name = 'file-upload'
   fixture_list = {
     'default' => true,
     'allows multiple files' => true,
-    'allows image files only' => true,
-    'allows direct media capture' => true,
     'disabled' => true,
     'with hint text' => true,
     'with error message and hint' => true,
     'with label as page heading' => true,
     'with optional form-group classes' => true,
     'enhanced' => true,
-    'enhanced, disabled' => true,
     'enhanced, with error message and hint' => true,
     'translated' => true,
     'with value' => false,
@@ -27,9 +25,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#validate_fixtu
     'translated, no javascript enhancement' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'file-upload')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'file-upload').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

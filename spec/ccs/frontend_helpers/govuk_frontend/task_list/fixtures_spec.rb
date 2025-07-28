@@ -48,8 +48,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
       end
     end
 
-    context "when the fixture is 'example with 3 states'" do
-      let(:fixture_name) { 'example with 3 states' }
+    context "when the fixture is 'with hint text and additional states'" do
+      let(:fixture_name) { 'with hint text and additional states' }
       let(:result) { govuk_task_list(fixture_options[:items]) }
 
       it 'has HTML matching the fixture' do
@@ -57,8 +57,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
       end
     end
 
-    context "when the fixture is 'example with hint text and additional states'" do
-      let(:fixture_name) { 'example with hint text and additional states' }
+    context "when the fixture is 'with all possible colours'" do
+      let(:fixture_name) { 'with all possible colours' }
       let(:result) { govuk_task_list(fixture_options[:items]) }
 
       it 'has HTML matching the fixture' do
@@ -66,17 +66,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
       end
     end
 
-    context "when the fixture is 'example with all possible colours'" do
-      let(:fixture_name) { 'example with all possible colours' }
-      let(:result) { govuk_task_list(fixture_options[:items]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'example with very long single word tags'" do
-      let(:fixture_name) { 'example with very long single word tags' }
+    context "when the fixture is 'with very long single word tags'" do
+      let(:fixture_name) { 'with very long single word tags' }
       let(:result) { govuk_task_list(fixture_options[:items]) }
 
       it 'has HTML matching the fixture' do

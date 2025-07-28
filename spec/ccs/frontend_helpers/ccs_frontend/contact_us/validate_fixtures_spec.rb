@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::CCSFrontend::ContactUs, '#validate_fixtures', type: :helper do
+  component_name = 'contact-us'
   fixture_list = {
     'default' => true,
     'with custom text' => true,
@@ -9,9 +10,13 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::ContactUs, '#validate_fixtures
     'classes' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, 'contact-us')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:ccs_frontend, 'contact-us').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:ccs_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:ccs_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

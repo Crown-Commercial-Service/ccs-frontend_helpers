@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, '#validate_fixtures', type: :helper do
+  component_name = 'error-message'
   fixture_list = {
     'default' => true,
     'translated' => true,
@@ -13,9 +14,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorMessage, '#validate_fix
     'visually hidden text removed' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'error-message')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'error-message').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

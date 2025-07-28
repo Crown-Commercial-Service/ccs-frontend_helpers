@@ -135,15 +135,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#fixtures', typ
       end
     end
 
-    context "when the fixture is 'with prev and next only in a different language'" do
-      let(:fixture_name) { 'with prev and next only in a different language' }
-      let(:result) { govuk_pagination(**fixture_options) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'with previous only'" do
       let(:fixture_name) { 'with previous only' }
       let(:result) { govuk_pagination(**fixture_options) }

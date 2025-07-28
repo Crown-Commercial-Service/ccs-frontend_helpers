@@ -75,7 +75,16 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#fixtures', type: :
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
-      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], hint: fixture_options[:hint]) }
+      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with hint'" do
+      let(:fixture_name) { 'with hint' }
+      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -102,15 +111,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#fixtures', type: :
 
     context "when the fixture is 'with legend as page heading'" do
       let(:fixture_name) { 'with legend as page heading' }
-      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with a medium legend'" do
-      let(:fixture_name) { 'with a medium legend' }
       let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       it 'has HTML matching the fixture' do
@@ -190,15 +190,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'prechecked'" do
-      let(:fixture_name) { 'prechecked' }
-      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'prechecked using value'" do
       let(:fixture_name) { 'prechecked using value' }
       let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], value: fixture_options[:value]) }
@@ -262,15 +253,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'small with disabled'" do
-      let(:fixture_name) { 'small with disabled' }
-      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], form_group: fixture_options[:formGroup]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'small with conditional reveal'" do
       let(:fixture_name) { 'small with conditional reveal' }
       let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], form_group: fixture_options[:formGroup]) }
@@ -282,15 +264,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Radios, '#fixtures', type: :
 
     context "when the fixture is 'small inline'" do
       let(:fixture_name) { 'small inline' }
-      let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'small inline extreme'" do
-      let(:fixture_name) { 'small inline extreme' }
       let(:result) { govuk_radios(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
 
       it 'has HTML matching the fixture' do

@@ -227,15 +227,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#fixtures', type: :h
       end
     end
 
-    context "when the fixture is 'with prefix and long suffix'" do
-      let(:fixture_name) { 'with prefix and long suffix' }
-      let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], prefix: fixture_options[:prefix], suffix: fixture_options[:suffix], attributes: fixture_options[:attributes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'with prefix and suffix and error'" do
       let(:fixture_name) { 'with prefix and suffix and error' }
       let(:result) { govuk_input(fixture_options[:name], label: fixture_options[:label], prefix: fixture_options[:prefix], suffix: fixture_options[:suffix], error_message: fixture_options[:errorMessage][:text], attributes: fixture_options[:attributes]) }

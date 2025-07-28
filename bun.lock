@@ -3,8 +3,8 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "ccs-frontend": "^1.4.1",
-        "govuk-frontend": "^5.11.1",
+        "ccs-frontend": "1.4.1",
+        "govuk-frontend": "5.11.1",
       },
     },
   },

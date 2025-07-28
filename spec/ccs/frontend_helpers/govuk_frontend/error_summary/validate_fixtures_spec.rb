@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, '#validate_fixtures', type: :helper do
+  component_name = 'error-summary'
   fixture_list = {
     'default' => true,
     'without links' => true,
@@ -23,9 +24,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ErrorSummary, '#validate_fix
     'autofocus explicitly enabled' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'error-summary')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'error-summary').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)
