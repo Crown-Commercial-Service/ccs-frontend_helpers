@@ -28,15 +28,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Breadcrumbs, '#fixtures', ty
       end
     end
 
-    context "when the fixture is 'with multiple levels'" do
-      let(:fixture_name) { 'with multiple levels' }
-      let(:result) { govuk_breadcrumbs(fixture_options[:items]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'without the home section'" do
       let(:fixture_name) { 'without the home section' }
       let(:result) { govuk_breadcrumbs(fixture_options[:items]) }

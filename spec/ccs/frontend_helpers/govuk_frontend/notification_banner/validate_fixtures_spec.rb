@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, '#validate_fixtures', type: :helper do
+  component_name = 'notification-banner'
   fixture_list = {
     'default' => true,
-    'paragraph as html heading' => true,
     'with text as html' => true,
     'with type as success' => true,
-    'success with custom html' => true,
-    'with a list' => true,
     'with long heading' => true,
     'with lots of content' => true,
     'auto-focus disabled, with type as success' => true,
@@ -28,9 +26,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, '#valida
     'with invalid type' => false
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'notification-banner')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'notification-banner').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

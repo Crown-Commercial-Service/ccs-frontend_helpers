@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures', type: :helper do
+  component_name = 'input'
   fixture_list = {
     'default' => true,
     'with hint text' => true,
@@ -23,7 +24,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures',
     'with prefix' => true,
     'with suffix' => true,
     'with prefix and suffix' => true,
-    'with prefix and long suffix' => true,
     'with prefix and suffix and error' => true,
     'with prefix and suffix and width modifier' => true,
     'with extra letter spacing' => true,
@@ -50,9 +50,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Input, '#validate_fixtures',
     'with customised input wrapper' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'input')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'input').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

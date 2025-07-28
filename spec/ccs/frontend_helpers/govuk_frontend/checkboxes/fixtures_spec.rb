@@ -85,7 +85,16 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with hint'" do
+      let(:fixture_name) { 'with hint' }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -94,7 +103,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with pre-checked values'" do
       let(:fixture_name) { 'with pre-checked values' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], values: fixture_options[:values]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], values: fixture_options[:values]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -155,51 +164,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
       end
     end
 
-    context "when the fixture is 'with a medium legend'" do
-      let(:fixture_name) { 'with a medium legend' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'without fieldset'" do
-      let(:fixture_name) { 'without fieldset' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with single option set 'aria-describedby' on input'" do
-      let(:fixture_name) { "with single option set 'aria-describedby' on input" }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with single option (and hint) set 'aria-describedby' on input" do
-      let(:fixture_name) { "with single option (and hint) set 'aria-describedby' on input" }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with fieldset and error message'" do
-      let(:fixture_name) { 'with fieldset and error message' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'with error message'" do
       let(:fixture_name) { 'with error message' }
       let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], error_message: fixture_options[:errorMessage][:text]) }
@@ -209,18 +173,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
       end
     end
 
-    context "when the fixture is 'with error message and hints on items'" do
-      let(:fixture_name) { 'with error message and hints on items' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], error_message: fixture_options[:errorMessage][:text]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'with very long option text'" do
       let(:fixture_name) { 'with very long option text' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint], error_message: fixture_options[:errorMessage][:text]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -299,15 +254,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
       end
     end
 
-    context "when the fixture is 'small with disabled'" do
-      let(:fixture_name) { 'small with disabled' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'small with conditional reveal'" do
       let(:fixture_name) { 'small with conditional reveal' }
       let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
@@ -337,7 +283,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'classes'" do
       let(:fixture_name) { 'classes' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], classes: fixture_options[:classes]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], classes: fixture_options[:classes]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -355,7 +301,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'attributes'" do
       let(:fixture_name) { 'attributes' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], attributes: fixture_options[:attributes]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -364,7 +310,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with checked item'" do
       let(:fixture_name) { 'with checked item' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -373,7 +319,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'items with attributes'" do
       let(:fixture_name) { 'items with attributes' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -382,7 +328,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'empty conditional'" do
       let(:fixture_name) { 'empty conditional' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -391,7 +337,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with label classes'" do
       let(:fixture_name) { 'with label classes' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -400,7 +346,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'multiple hints'" do
       let(:fixture_name) { 'multiple hints' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], hint: fixture_options[:hint]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)
@@ -454,7 +400,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with single option set 'aria-describedby' on input, and describedBy'" do
       let(:fixture_name) { "with single option set 'aria-describedby' on input, and describedBy" }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], error_message: fixture_options[:errorMessage][:text]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       before do
         fixture_options[:items].each do |item|
@@ -469,7 +415,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with single option (and hint) set 'aria-describedby' on input, and describedBy'" do
       let(:fixture_name) { "with single option (and hint) set 'aria-describedby' on input, and describedBy" }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], error_message: fixture_options[:errorMessage][:text]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], hint: fixture_options[:hint]) }
 
       before do
         fixture_options[:items].each do |item|
@@ -484,7 +430,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#fixtures', typ
 
     context "when the fixture is 'with error and idPrefix'" do
       let(:fixture_name) { 'with error and idPrefix' }
-      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], error_message: fixture_options[:errorMessage][:text]) }
+      let(:result) { govuk_checkboxes(fixture_options[:name], fixture_options[:items], fieldset: fixture_options[:fieldset], error_message: fixture_options[:errorMessage][:text]) }
 
       it 'has HTML matching the fixture' do
         expect(result.to_one_line).to eq_html(fixture_html)

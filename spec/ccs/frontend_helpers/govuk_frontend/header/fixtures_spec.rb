@@ -132,7 +132,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
 
     context "when the fixture is 'navigation item with html'" do
       let(:fixture_name) { 'navigation item with html' }
-      let(:result) { govuk_header(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation].map { |navigation_item| navigation_item.merge({ text: navigation_item[:html].html_safe }) } }) }
+      let(:result) { govuk_header(navigation: { items: fixture_options[:navigation].map { |navigation_item| navigation_item.merge({ text: navigation_item[:html].html_safe }) } }) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_with_navigation_html)
@@ -141,7 +141,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
 
     context "when the fixture is 'navigation item with text without link'" do
       let(:fixture_name) { 'navigation item with text without link' }
-      let(:result) { govuk_header(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }) }
+      let(:result) { govuk_header(navigation: { items: fixture_options[:navigation] }) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_with_navigation_html)
@@ -232,6 +232,24 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#fixtures', type: :
     context "when the fixture is 'rebrand'" do
       let(:fixture_name) { 'rebrand' }
       let(:result) { govuk_header(rebrand: fixture_options[:rebrand]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with service name and navigation and rebrand'" do
+      let(:fixture_name) { 'with service name and navigation and rebrand' }
+      let(:result) { govuk_header(service: { name: fixture_options[:serviceName], href: fixture_options[:serviceUrl] }, navigation: { items: fixture_options[:navigation] }, rebrand: fixture_options[:rebrand]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_with_navigation_html)
+      end
+    end
+
+    context "when the fixture is 'with product name and rebrand'" do
+      let(:fixture_name) { 'with product name and rebrand' }
+      let(:result) { govuk_header(product_name: fixture_options[:productName], rebrand: fixture_options[:rebrand]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

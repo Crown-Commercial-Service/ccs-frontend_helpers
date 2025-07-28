@@ -78,15 +78,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#fixtures', ty
       end
     end
 
-    context "when the fixture is 'with no first action'" do
-      let(:fixture_name) { 'with no first action' }
-      let(:result) { govuk_summary_list(fixture_options[:rows]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'no-border'" do
       let(:fixture_name) { 'no-border' }
       let(:result) { govuk_summary_list(fixture_options[:rows], classes: fixture_options[:classes]) }
@@ -107,15 +98,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#fixtures', ty
 
     context "when the fixture is 'overridden-widths'" do
       let(:fixture_name) { 'overridden-widths' }
-      let(:result) { govuk_summary_list(fixture_options[:rows]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'check-your-answers'" do
-      let(:fixture_name) { 'check-your-answers' }
       let(:result) { govuk_summary_list(fixture_options[:rows]) }
 
       it 'has HTML matching the fixture' do

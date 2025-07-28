@@ -43,24 +43,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#fixtures', typ
       end
     end
 
-    context "when the fixture is 'allows image files only'" do
-      let(:fixture_name) { 'allows image files only' }
-      let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'allows direct media capture'" do
-      let(:fixture_name) { 'allows direct media capture' }
-      let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'disabled'" do
       let(:fixture_name) { 'disabled' }
       let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], attributes: fixture_options[:attributes]) }
@@ -111,15 +93,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#fixtures', typ
     context "when the fixture is 'enhanced'" do
       let(:fixture_name) { 'enhanced' }
       let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], javascript: fixture_options[:javascript]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'enhanced, disabled'" do
-      let(:fixture_name) { 'enhanced, disabled' }
-      let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], javascript: fixture_options[:javascript], hint: fixture_options[:hint], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

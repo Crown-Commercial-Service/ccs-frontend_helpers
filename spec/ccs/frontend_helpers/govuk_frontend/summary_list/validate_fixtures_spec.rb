@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#validate_fixtures', type: :helper do
+  component_name = 'summary-list'
   fixture_list = {
     'default' => true,
     'with actions' => true,
     'translated' => true,
     'with some actions' => true,
-    'with no first action' => true,
     'no-border' => true,
     'no-border on last row' => true,
     'overridden-widths' => true,
-    'check-your-answers' => true,
     'extreme' => true,
     'as a summary card with a text header' => true,
     'as a summary card with a custom header level' => true,
@@ -36,9 +35,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::SummaryList, '#validate_fixt
     'summary card with only 1 action' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'summary-list')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'summary-list').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

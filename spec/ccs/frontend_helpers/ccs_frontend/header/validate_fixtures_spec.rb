@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#validate_fixtures', type: :helper do
+  component_name = 'header'
   fixture_list = {
     'default' => true,
     'with service name' => true,
@@ -27,9 +28,13 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#validate_fixtures', 
     'with authentication options with other http methods' => true,
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, 'header')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:ccs_frontend, 'header').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:ccs_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:ccs_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

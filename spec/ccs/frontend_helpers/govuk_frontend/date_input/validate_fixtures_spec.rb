@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#validate_fixtures', type: :helper do
+  component_name = 'date-input'
   fixture_list = {
     'default' => true,
-    'complete question' => true,
     'day and month' => true,
     'month and year' => true,
     'with errors only' => true,
@@ -11,7 +11,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#validate_fixtur
     'with error on day input' => false,
     'with error on month input' => false,
     'with error on year input' => false,
-    'with default items' => true,
+    'with items' => true,
     'with optional form-group classes' => true,
     'with autocomplete values' => true,
     'with input attributes' => true,
@@ -31,9 +31,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::DateInput, '#validate_fixtur
     'items without classes' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'date-input')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'date-input').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

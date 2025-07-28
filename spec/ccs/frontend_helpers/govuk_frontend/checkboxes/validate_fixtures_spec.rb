@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtures', type: :helper do
+  component_name = 'checkboxes'
   fixture_list = {
     'default' => true,
+    'with hint' => true,
     'with pre-checked values' => true,
     'with divider and None' => true,
     'with divider, None and conditional items' => true,
@@ -10,13 +12,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtu
     'with hints on items' => true,
     'with disabled item' => true,
     'with legend as a page heading' => true,
-    'with a medium legend' => true,
-    'without fieldset' => true,
-    "with single option set 'aria-describedby' on input" => true,
-    "with single option (and hint) set 'aria-describedby' on input" => true,
-    'with fieldset and error message' => true,
     'with error message' => true,
-    'with error message and hints on items' => true,
     'with very long option text' => true,
     'with conditional items' => true,
     'with conditional items with special characters' => true,
@@ -26,7 +22,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtu
     'small with long text' => true,
     'small with error' => true,
     'small with hint' => true,
-    'small with disabled' => true,
     'small with conditional reveal' => true,
     'small with divider and None' => true,
     'with idPrefix' => true,
@@ -52,9 +47,13 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Checkboxes, '#validate_fixtu
     'textarea in conditional' => true
   }
 
-  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, 'checkboxes')
+  tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
 
-  FixturesLoader.get_fixture_names(:govuk_frontend, 'checkboxes').each do |fixture|
+  it 'has only the tested fixtures' do
+    expect(fixture_list.keys.sort).to eq(FixturesLoader.get_fixture_names(:govuk_frontend, component_name).sort)
+  end
+
+  FixturesLoader.get_fixture_names(:govuk_frontend, component_name).each do |fixture|
     if fixture_list[fixture]
       it "has spec'd the '#{fixture}' fixture" do
         expect(fixture_list).to have_key(fixture)

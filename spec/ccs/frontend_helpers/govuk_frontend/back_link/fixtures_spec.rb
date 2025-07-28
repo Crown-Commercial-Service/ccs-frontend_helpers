@@ -24,24 +24,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
       end
     end
 
-    context "when the fixture is 'with custom text'" do
-      let(:fixture_name) { 'with custom text' }
-      let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with custom link'" do
-      let(:fixture_name) { 'with custom link' }
-      let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'inverse'" do
       let(:fixture_name) { 'inverse' }
       let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href], classes: fixture_options[:classes]) }
@@ -72,6 +54,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::BackLink, '#fixtures', type:
     context "when the fixture is 'html'" do
       let(:fixture_name) { 'html' }
       let(:result) { govuk_back_link(fixture_options[:html].html_safe, fixture_options[:href]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with custom text and link'" do
+      let(:fixture_name) { 'with custom text and link' }
+      let(:result) { govuk_back_link(fixture_options[:text], fixture_options[:href]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

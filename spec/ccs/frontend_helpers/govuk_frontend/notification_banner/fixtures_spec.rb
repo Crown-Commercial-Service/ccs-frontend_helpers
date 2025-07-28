@@ -19,19 +19,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, '#fixtur
       end
     end
 
-    context "when the fixture is 'paragraph as html heading'" do
-      let(:fixture_name) { 'paragraph as html heading' }
-      let(:result) do
-        govuk_notification_banner do
-          fixture_options[:html].html_safe
-        end
-      end
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'with text as html'" do
       let(:fixture_name) { 'with text as html' }
       let(:result) do
@@ -51,32 +38,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::NotificationBanner, '#fixtur
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'success with custom html'" do
-      let(:fixture_name) { 'success with custom html' }
-      let(:result) do
-        govuk_notification_banner(nil, true) do
-          fixture_options[:html].html_safe
-        end
-      end
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'with a list'" do
-      let(:fixture_name) { 'with a list' }
-      let(:result) do
-        govuk_notification_banner do
-          fixture_options[:html].html_safe
-        end
-      end
-
-      it 'has HTML matching the fixture' do
-        expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
 

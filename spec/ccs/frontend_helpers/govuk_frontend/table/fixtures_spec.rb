@@ -19,8 +19,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, '#fixtures', type: :h
       end
     end
 
-    context "when the fixture is 'table with head'" do
-      let(:fixture_name) { 'table with head' }
+    context "when the fixture is 'with head'" do
+      let(:fixture_name) { 'with head' }
       let(:result) { govuk_table(fixture_options[:head], fixture_options[:rows]) }
 
       it 'has HTML matching the fixture' do
@@ -28,8 +28,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Table, '#fixtures', type: :h
       end
     end
 
-    context "when the fixture is 'table with head and caption'" do
-      let(:fixture_name) { 'table with head and caption' }
+    context "when the fixture is 'with head and caption'" do
+      let(:fixture_name) { 'with head and caption' }
       let(:result) { govuk_table(fixture_options[:head], fixture_options[:rows], caption: { text: fixture_options[:caption], classes: fixture_options[:captionClasses] }, first_cell_is_header: fixture_options[:firstCellIsHeader]) }
 
       it 'has HTML matching the fixture' do

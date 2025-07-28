@@ -28,15 +28,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tag, '#fixtures', type: :hel
       end
     end
 
-    context "when the fixture is 'blue'" do
-      let(:fixture_name) { 'blue' }
-      let(:result) { govuk_tag(fixture_options[:text], fixture_name) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'light blue'" do
       let(:fixture_name) { 'light blue' }
       let(:result) { govuk_tag(fixture_options[:text], fixture_name.gsub(' ', '-')) }
