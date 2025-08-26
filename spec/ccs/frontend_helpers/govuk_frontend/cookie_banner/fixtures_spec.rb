@@ -255,5 +255,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#fixtures', t
         expect(result).to eq_html(fixture_html.gsub('<button type=', '<button name="button" type=').gsub('hidden ', 'hidden="hidden" '))
       end
     end
+
+    context "when the fixture is 'rebrand'" do
+      let(:fixture_name) { 'rebrand' }
+      let(:result) { govuk_cookie_banner(fixture_options[:messages]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
   end
 end

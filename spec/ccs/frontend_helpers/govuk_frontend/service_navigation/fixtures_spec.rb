@@ -263,5 +263,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#fixture
         expect(result).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'rebrand'" do
+      let(:fixture_name) { 'rebrand' }
+      let(:result) { govuk_service_navigation(navigation: { items: fixture_options[:navigation] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
   end
 end
