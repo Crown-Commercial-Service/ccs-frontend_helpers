@@ -31,7 +31,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#validat
     'with navigation having empty values' => true,
     'with navigation having only empty values' => true,
     'with navigation being an empty array' => true,
-    'with slotted content' => false
+    'with slotted content' => false,
+    'rebrand' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
