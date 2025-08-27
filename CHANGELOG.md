@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Updated CCS Frontend to v2.0.0
+
+### Removed
+
+- The CCS Header is now just the logo as all other parts should now go in the GOV.UK Service Navigation component
+
 ## [2.5.0] - 2025-06-30
 
 ### Added
