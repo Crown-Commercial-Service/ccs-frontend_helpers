@@ -10,11 +10,12 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Link do
   let(:service_navigation_text_element) { service_navigation_list_element.find('span.govuk-service-navigation__text') }
 
   describe '.render' do
-    let(:govuk_service_navigation_link) { described_class.new(text: text, href: href, context: view_context, **options) }
+    let(:govuk_service_navigation_link) { described_class.new(text: text, href: href, method: method, context: view_context, **options) }
     let(:result) { govuk_service_navigation_link.render }
 
     let(:text) { 'Here we go' }
     let(:href) { '/here-we-go' }
+    let(:method) { nil }
     let(:options) { {} }
 
     let(:default_html) { '<li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="/here-we-go">Here we go</a></li>' }
@@ -100,6 +101,72 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Link do
 
         it 'has the aria-current as "page"' do
           expect(service_navigation_text_element[:'aria-current']).to eq('page')
+        end
+      end
+    end
+
+    context 'when a method is passed' do
+      context 'and the the method is post' do
+        let(:method) { :post }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(service_navigation_list_element.to_html).to eq('
+            <li class="govuk-service-navigation__item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <button class="govuk-service-navigation__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>
+          '.to_one_line)
+        end
+      end
+
+      context 'and the the method is put' do
+        let(:method) { :put }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(service_navigation_list_element.to_html).to eq('
+            <li class="govuk-service-navigation__item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="put" autocomplete="off">
+                <button class="govuk-service-navigation__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
+        end
+      end
+
+      context 'and the the method is patch' do
+        let(:method) { :patch }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(service_navigation_list_element.to_html).to eq('
+            <li class="govuk-service-navigation__item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="patch" autocomplete="off">
+                <button class="govuk-service-navigation__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
+        end
+      end
+
+      context 'and the the method is delete' do
+        let(:method) { :delete }
+
+        it 'correctly formats the HTML with the link inside the list element' do
+          expect(service_navigation_list_element.to_html).to eq('
+            <li class="govuk-service-navigation__item">
+              <form class="button_to" method="post" action="/here-we-go">
+                <input type="hidden" name="_method" value="delete" autocomplete="off">
+                <button class="govuk-service-navigation__button_as_link" type="submit">
+                  Here we go
+                </button>
+              </form>
+            </li>'.to_one_line)
         end
       end
     end
