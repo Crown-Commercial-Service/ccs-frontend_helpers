@@ -14,6 +14,7 @@ The following table shows the version of CCS Frontend Helpers that you should us
 
 | CCS Frontend Helpers Version  | Target GOV.UK Frontend Version | Target CCS Frontend Version |
 | ----------------------------- | ------------------------------ | --------------------------- |
+| [3.0.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v3.0.0) | [5.11.2](https://github.com/alphagov/govuk-frontend/releases/tag/v5.11.2) | [2.0.0](https://github.com/Crown-Commercial-Service/ccs-frontend-project/releases/tag/v2.0.0) |
 | [2.5.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v2.5.0) | [5.11.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.11.0) | [1.4.1](https://github.com/Crown-Commercial-Service/ccs-frontend-project/releases/tag/v1.4.1) |
 | [2.4.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v2.4.0) | [5.10.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.10.0) | [1.4.1](https://github.com/Crown-Commercial-Service/ccs-frontend-project/releases/tag/v1.4.1) |
 | [2.3.0](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/releases/tag/v2.3.0) | [5.9.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.9.0) | [1.4.0](https://github.com/Crown-Commercial-Service/ccs-frontend-project/releases/tag/v1.4.0) |
