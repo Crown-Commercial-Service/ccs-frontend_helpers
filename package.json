@@ -6,6 +6,6 @@
   "license": "MIT",
   "devDependencies": {
     "govuk-frontend": "5.11.2",
-    "ccs-frontend": "2.0.0"
+    "ccs-frontend": "2.0.1"
   }
 }
