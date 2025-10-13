@@ -108,6 +108,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#fixtures', typ
       end
     end
 
+    context "when the fixture is 'enhanced, multiple files'" do
+      let(:fixture_name) { 'enhanced, multiple files' }
+      let(:result) { govuk_file_upload(fixture_options[:name], label: fixture_options[:label], javascript: fixture_options[:javascript], attributes: fixture_options[:attributes]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'translated'" do
       let(:fixture_name) { 'translated' }
       let(:result) do

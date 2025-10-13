@@ -4,6 +4,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#validate_fixture
   component_name = 'task-list'
   fixture_list = {
     'default' => true,
+    'forced hover state' => true,
     'with hint text and additional states' => true,
     'with all possible colours' => true,
     'with very long single word tags' => true,
