@@ -12,6 +12,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::FileUpload, '#validate_fixtu
     'with optional form-group classes' => true,
     'enhanced' => true,
     'enhanced, with error message and hint' => true,
+    'enhanced, multiple files' => true,
     'translated' => true,
     'with value' => false,
     'attributes' => true,

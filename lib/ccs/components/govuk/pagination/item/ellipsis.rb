@@ -18,7 +18,7 @@ module CCS
             # @return [ActiveSupport::SafeBuffer]
 
             def self.render
-              tag.li('⋯', class: 'govuk-pagination__item govuk-pagination__item--ellipses')
+              tag.li('⋯', class: 'govuk-pagination__item govuk-pagination__item--ellipsis')
             end
           end
         end

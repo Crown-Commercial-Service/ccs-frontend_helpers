@@ -57,7 +57,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
               </a>
             </div>
             <ul class="govuk-pagination__list">
-              <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+              <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
                 ⋯
               </li>
               <li class="govuk-pagination__item">
@@ -75,7 +75,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
                   5
                 </a>
               </li>
-              <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+              <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
                 ⋯
               </li>
             </ul>
@@ -116,7 +116,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
               </button>
             </div>
             <ul class="govuk-pagination__list">
-              <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+              <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
                 ⋯
               </li>
               <li class="govuk-pagination__item">
@@ -134,7 +134,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#helpers', type
                   5
                 </button>
               </li>
-              <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+              <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
                 ⋯
               </li>
             </ul>

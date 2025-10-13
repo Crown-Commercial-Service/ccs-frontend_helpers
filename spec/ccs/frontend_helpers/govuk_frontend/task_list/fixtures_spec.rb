@@ -48,6 +48,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::TaskList, '#fixtures', type:
       end
     end
 
+    context "when the fixture is 'forced hover state'" do
+      let(:fixture_name) { 'forced hover state' }
+      let(:result) { govuk_task_list(fixture_options[:items]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html.gsub('govuk-task-list__item--with-link :hover', ':hover govuk-task-list__item--with-link'))
+      end
+    end
+
     context "when the fixture is 'with hint text and additional states'" do
       let(:fixture_name) { 'with hint text and additional states' }
       let(:result) { govuk_task_list(fixture_options[:items]) }

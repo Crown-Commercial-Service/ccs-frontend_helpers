@@ -3,15 +3,15 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "ccs-frontend": "2.0.1",
-        "govuk-frontend": "5.12.0",
+        "ccs-frontend": "2.1.0",
+        "govuk-frontend": "5.13.0",
       },
     },
   },
   "packages": {
-    "ccs-frontend": ["ccs-frontend@2.0.1", "", { "peerDependencies": { "govuk-frontend": "^5.11.2", "jquery": "^3.x" } }, "sha512-5NiHYL/b1qQl0AAIdzYureDBrIozlHrZ1DVZCweXYdIwDEYYWQW3jjHwzEFsfEzprUR0aZIT4stitLYpf9GXyQ=="],
+    "ccs-frontend": ["ccs-frontend@2.1.0", "", { "peerDependencies": { "govuk-frontend": "^5.13.0", "jquery": "^3.x" } }, "sha512-1V+Dcj5r702VsOGizeyfw2+EdxiJM7mipKpkAcah14bnTsb3ofHxdTyimazIRouGwnteKhhpZBhhVai3Yz/pNg=="],
 
-    "govuk-frontend": ["govuk-frontend@5.12.0", "", {}, "sha512-gNr/UVDoORVOqVKTC9i9HOKKPeM4IDTAqtnd3t6U8LQibEr+8Q+FB7Id0u/MfR/5mqPfenG/+VGLW96vJXok/g=="],
+    "govuk-frontend": ["govuk-frontend@5.13.0", "", {}, "sha512-6N3pHelWN7wftdM6e4YEzZAfattapa1gnd+Al6d5PUbfTr9D+T2dnphpNpjX75CTEhihlQqlL0RDQ3WIfZ3PSg=="],
 
     "jquery": ["jquery@3.7.1", "", {}, "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="],
   }

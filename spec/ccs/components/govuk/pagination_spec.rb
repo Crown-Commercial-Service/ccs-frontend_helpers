@@ -10,7 +10,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
   let(:pagination_prev_element) { Capybara::Node::Simple.new(result).find('div.govuk-pagination__prev') }
   let(:pagination_item_element) { Capybara::Node::Simple.new(result).find('li.govuk-pagination__item:nth-of-type(2)') }
   let(:pagination_current_item_element) { Capybara::Node::Simple.new(result).find('li.govuk-pagination__item:nth-of-type(3)') }
-  let(:pagination_ellipsis_item_element) { Capybara::Node::Simple.new(result).find('li.govuk-pagination__item--ellipses') }
+  let(:pagination_ellipsis_item_element) { Capybara::Node::Simple.new(result).find('li.govuk-pagination__item--ellipsis') }
 
   let(:result) { govuk_pagination.render }
 
@@ -58,7 +58,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
             </a>
           </div>
           <ul class="govuk-pagination__list">
-            <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+            <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
               ⋯
             </li>
             <li class="govuk-pagination__item">
@@ -76,7 +76,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
                 5
               </a>
             </li>
-            <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+            <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
               ⋯
             </li>
           </ul>
@@ -193,7 +193,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
             </button>
           </div>
           <ul class="govuk-pagination__list">
-            <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+            <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
               ⋯
             </li>
             <li class="govuk-pagination__item">
@@ -211,7 +211,7 @@ RSpec.describe CCS::Components::GovUK::Pagination do
                 5
               </button>
             </li>
-            <li class="govuk-pagination__item govuk-pagination__item--ellipses">
+            <li class="govuk-pagination__item govuk-pagination__item--ellipsis">
               ⋯
             </li>
           </ul>
