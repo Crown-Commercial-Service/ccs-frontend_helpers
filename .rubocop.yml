@@ -71,6 +71,12 @@ RSpec/SpecFilePathFormat:
         GovUKFrontend: govuk_frontend
         GovUK: govuk
 
+RSpec/LeakyLocalVariable:
+    Exclude:
+      - "spec/ccs/frontend_helpers/**/validate_fixtures_spec.rb"
+      - "spec/ccs/frontend_helpers/ccs_frontend_spec.rb"
+      - "spec/ccs/frontend_helpers/govuk_frontend_spec.rb"
+
 # Standard rubocop config
 Bundler/OrderedGems:
     Enabled: false
