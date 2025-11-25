@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.0] - 2025-11-25
+
 ### Added
 
 - Updated CCS Frontend to v2.1.1
