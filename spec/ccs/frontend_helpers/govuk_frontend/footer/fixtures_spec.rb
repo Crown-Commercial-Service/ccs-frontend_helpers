@@ -9,7 +9,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
     include_context 'and I have loaded the GOV.UK Frontend fixture'
 
     let(:component_name) { 'footer' }
-    let(:fixture_html) { fixture[:html].to_one_line.gsub('aclass', 'a class').gsub('pathfill', 'path fill').gsub('svgaria', 'svg aria').gsub('svgfocusable', 'svg focusable') }
+    let(:fixture_html) { fixture[:html].to_one_line.gsub('aclass', 'a class').gsub('pathfill', 'path fill').gsub('svgaria', 'svg aria').gsub('svgfocusable', 'svg focusable').gsub('All content is available under the<a', 'All content is available under the <a') }
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }

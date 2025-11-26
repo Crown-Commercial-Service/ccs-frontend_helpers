@@ -4,6 +4,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Logo, '#validate_fixtures', ty
   component_name = 'logo'
   fixture_list = {
     'default' => true,
+    'with crown only' => true,
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, component_name)

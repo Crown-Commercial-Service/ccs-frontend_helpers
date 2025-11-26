@@ -114,7 +114,7 @@ module CCS
             if options[:content_licence]
               concat(options[:content_licence])
             else
-              concat('All content is available under the')
+              concat('All content is available under the ')
               concat(link_to('Open Government Licence v3.0', 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/', class: 'govuk-footer__link', rel: 'license'))
               concat(', except where otherwise stated')
             end

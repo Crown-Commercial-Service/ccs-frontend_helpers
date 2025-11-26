@@ -18,5 +18,14 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Logo, '#fixtures', type: :help
         expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'with crown only'" do
+      let(:fixture_name) { 'with crown only' }
+      let(:result) { ccs_logo(show_only_crown: fixture_options[:showOnlyCrown]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
   end
 end
