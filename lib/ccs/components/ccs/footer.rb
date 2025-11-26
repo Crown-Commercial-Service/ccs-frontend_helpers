@@ -41,7 +41,7 @@ module CCS
 
           @options[:copyright] ||= '© Crown copyright'
 
-          @logo = Logo.new(context: @context)
+          @logo = Logo.new(context: @context, show_only_crown: true)
           @navigation = navigation.map { |navigation_item| Navigation.new(context: @context, **navigation_item) } if navigation.present?
           @meta = Meta.new(context: @context, **meta) if meta
         end
@@ -62,13 +62,10 @@ module CCS
                 concat(tag.hr(class: 'ccs-footer__section-break'))
               end
               concat(tag.div(class: 'ccs-footer__meta') do
-                concat(tag.div(class: 'ccs-footer__meta-item') do
-                  concat(tag.div(logo.render, class: 'ccs-footer__logo'))
-                  concat(footer_copyright)
-                end)
                 concat(tag.div(class: 'ccs-footer__meta-item ccs-footer__meta-item--grow') do
                   concat(meta.render) if meta
                 end)
+                concat(tag.div(footer_copyright, class: 'ccs-footer__meta-item'))
               end)
             end
           end
@@ -88,7 +85,10 @@ module CCS
 
         def footer_copyright
           tag.div(class: 'ccs-footer__copyright') do
-            link_to(options[:copyright], 'https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/', class: 'ccs-footer__link')
+            link_to('https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/', class: 'ccs-footer__link') do
+              concat(tag.div(logo.render, class: 'ccs-footer__logo'))
+              concat(options[:copyright])
+            end
           end
         end
       end

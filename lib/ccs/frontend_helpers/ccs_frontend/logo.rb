@@ -15,8 +15,8 @@ module CCS
         #
         # @return (see CCS::Components::CCS::Logo#render)
 
-        def ccs_logo
-          Components::CCS::Logo.new(context: self).render
+        def ccs_logo(**)
+          Components::CCS::Logo.new(context: self, **).render
         end
       end
     end

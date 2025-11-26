@@ -107,16 +107,6 @@ RSpec.describe CCS::Components::CCS::Footer do
             </div>
             <hr class=\"ccs-footer__section-break\">
             <div class=\"ccs-footer__meta\">
-              <div class=\"ccs-footer__meta-item\">
-                <div class=\"ccs-footer__logo\">
-                  #{ccs_logo_html}
-                </div>
-                <div class=\"ccs-footer__copyright\">
-                  <a class=\"ccs-footer__link\" href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\">
-                    © Crown copyright
-                  </a>
-                </div>
-              </div>
               <div class=\"ccs-footer__meta-item ccs-footer__meta-item--grow\">
                 <h2 class=\"govuk-visually-hidden\">
                   What do the words mean?
@@ -133,6 +123,16 @@ RSpec.describe CCS::Components::CCS::Footer do
                     </a>
                   </li>
                 </ul>
+              </div>
+              <div class=\"ccs-footer__meta-item\">
+                <div class=\"ccs-footer__copyright\">
+                  <a class=\"ccs-footer__link\" href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\">
+                    <div class=\"ccs-footer__logo\">
+                      #{ccs_logo_crown_html}
+                    </div>
+                    © Crown copyright
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -154,17 +154,17 @@ RSpec.describe CCS::Components::CCS::Footer do
           <footer class=\"ccs-footer\">
             <div class=\"govuk-width-container\">
               <div class=\"ccs-footer__meta\">
+                <div class=\"ccs-footer__meta-item ccs-footer__meta-item--grow\">
+                </div>
                 <div class=\"ccs-footer__meta-item\">
-                  <div class=\"ccs-footer__logo\">
-                    #{ccs_logo_html}
-                  </div>
                   <div class=\"ccs-footer__copyright\">
                     <a class=\"ccs-footer__link\" href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\">
+                      <div class=\"ccs-footer__logo\">
+                        #{ccs_logo_crown_html}
+                      </div>
                       © Crown copyright
                     </a>
                   </div>
-                </div>
-                <div class=\"ccs-footer__meta-item ccs-footer__meta-item--grow\">
                 </div>
               </div>
             </div>
