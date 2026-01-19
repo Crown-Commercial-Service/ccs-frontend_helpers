@@ -87,7 +87,7 @@ module CCS
 
           pagination_item_class = form ? Item::Form : Item::Tag
 
-          @pagination_items = pagination_items.map { |pagination_item| pagination_item[:ellipsis] ? Item::Ellipsis : pagination_item_class.new(form: form, context: context, **pagination_item) }
+          @pagination_items = pagination_items.compact_blank.map { |pagination_item| pagination_item[:ellipsis] ? Item::Ellipsis : pagination_item_class.new(form: form, context: context, **pagination_item) }
         end
       end
     end

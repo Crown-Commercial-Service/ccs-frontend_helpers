@@ -1,17 +1,18 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "devDependencies": {
-        "ccs-frontend": "2.3.0",
-        "govuk-frontend": "5.13.0",
+        "ccs-frontend": "2.4.0",
+        "govuk-frontend": "5.14.0",
       },
     },
   },
   "packages": {
-    "ccs-frontend": ["ccs-frontend@2.3.0", "", { "peerDependencies": { "govuk-frontend": "^5.13.0", "jquery": "^3.x" } }, "sha512-eMrcqFDaH+bkEw1jZ7R3NsEGY+W1ClF6AzkKH09e5DM23Pq9WjT/M57fkvCtQkQynJTYZGNIyFT66gJmBdA+rA=="],
+    "ccs-frontend": ["ccs-frontend@2.4.0", "", { "peerDependencies": { "govuk-frontend": "^5.14.0", "jquery": "^4.x" } }, "sha512-ZqVx/G1aNFnExMo/c1exM694M2kI8EAiWWW1AoXly1iGnfrqRcv+qLVSRlTLDuZ9dh8IZN7kfmNeh+XnUGSaRA=="],
 
-    "govuk-frontend": ["govuk-frontend@5.13.0", "", {}, "sha512-6N3pHelWN7wftdM6e4YEzZAfattapa1gnd+Al6d5PUbfTr9D+T2dnphpNpjX75CTEhihlQqlL0RDQ3WIfZ3PSg=="],
+    "govuk-frontend": ["govuk-frontend@5.14.0", "", {}, "sha512-MgfaXswIM6KpXS2T5gltEnzgVLgfM3UoE9+rYkhBiR0suaJ8Let31VZXQZqz9QhiPDbv28fW1nRjIyLujfZIBA=="],
 
     "jquery": ["jquery@3.7.1", "", {}, "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="],
   }

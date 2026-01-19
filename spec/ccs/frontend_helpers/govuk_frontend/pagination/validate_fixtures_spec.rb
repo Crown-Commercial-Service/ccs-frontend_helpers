@@ -16,7 +16,8 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#validate_fixtu
     'with previous only' => true,
     'with next only' => true,
     'with custom classes' => true,
-    'with custom attributes' => true
+    'with custom attributes' => true,
+    'with empty items' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)

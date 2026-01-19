@@ -170,5 +170,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Pagination, '#fixtures', typ
         expect(result).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'with empty items'" do
+      let(:fixture_name) { 'with empty items' }
+      let(:result) { govuk_pagination(**fixture_options) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
   end
 end

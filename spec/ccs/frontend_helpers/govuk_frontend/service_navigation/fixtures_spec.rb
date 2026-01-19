@@ -10,7 +10,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::ServiceNavigation, '#fixture
 
     let(:component_name) { 'service-navigation' }
     # Because Rails automatically adds names to buttons and the hidden attribute is a bit different
-    let(:fixture_html) { fixture[:html].to_one_line.gsub('<button ', '<button name="button" ').gsub('hidden>', 'hidden="hidden">') }
+    let(:fixture_html) { fixture[:html].to_one_line.gsub('<button ', '<button name="button" ').gsub('hidden ', 'hidden="hidden" ') }
 
     context "when the fixture is 'default'" do
       let(:fixture_name) { 'default' }
