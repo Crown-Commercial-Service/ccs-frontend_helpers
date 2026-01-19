@@ -56,6 +56,7 @@ module CCS
 
             menu_button[:aria] = { controls: @navigation[:id] }
             menu_button[:aria][:label] = menu_button[:label] if menu_button[:label] && menu_button[:label] != menu_button[:text]
+            menu_button[:aria][:hidden] = true
 
             @menu_button = menu_button
             @navigation[:links] = navigation[:items].map { |navigation_link| Link.new(context: context, **navigation_link) }

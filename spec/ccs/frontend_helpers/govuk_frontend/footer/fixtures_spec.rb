@@ -29,6 +29,15 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
       end
     end
 
+    context "when the fixture is 'with no content licence'" do
+      let(:fixture_name) { 'with no content licence' }
+      let(:result) { govuk_footer(content_licence: fixture_options[:contentLicence]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with custom text content licence and copyright notice'" do
       let(:fixture_name) { 'with custom text content licence and copyright notice' }
       let(:result) { govuk_footer(content_licence: fixture_options[:contentLicence][:text], copyright: fixture_options[:copyright][:text]) }
@@ -56,9 +65,27 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
       end
     end
 
+    context "when the fixture is 'with only custom meta'" do
+      let(:fixture_name) { 'with only custom meta' }
+      let(:result) { govuk_footer(content_licence: fixture_options[:contentLicence], meta: { text: fixture_options[:meta][:text] }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
     context "when the fixture is 'with meta links and meta content'" do
       let(:fixture_name) { 'with meta links and meta content' }
       let(:result) { govuk_footer(meta: { items: fixture_options[:meta][:items], text: fixture_options[:meta][:html].html_safe }) }
+
+      it 'has HTML matching the fixture' do
+        expect(result).to eq_html(fixture_html)
+      end
+    end
+
+    context "when the fixture is 'with only meta links'" do
+      let(:fixture_name) { 'with only meta links' }
+      let(:result) { govuk_footer(content_licence: fixture_options[:contentLicence], meta: { items: fixture_options[:meta][:items] }) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

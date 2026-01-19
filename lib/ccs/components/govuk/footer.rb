@@ -67,8 +67,10 @@ module CCS
               concat(tag.div(class: 'govuk-footer__meta') do
                 concat(tag.div(class: 'govuk-footer__meta-item govuk-footer__meta-item--grow') do
                   concat(meta.render) if meta
-                  concat(footer_logo)
-                  concat(footer_content_licence)
+                  unless options.key?(:content_licence) && options[:content_licence].nil?
+                    concat(footer_logo)
+                    concat(footer_content_licence)
+                  end
                 end)
                 concat(footer_copyright)
               end)
