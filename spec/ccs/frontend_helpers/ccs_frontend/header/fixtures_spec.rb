@@ -55,5 +55,14 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#fixtures', type: :he
         expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'with GCA branding'" do
+      let(:fixture_name) { 'with GCA branding' }
+      let(:result) { ccs_header(use_gca_branding: fixture_options[:useGcaBranding]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
   end
 end

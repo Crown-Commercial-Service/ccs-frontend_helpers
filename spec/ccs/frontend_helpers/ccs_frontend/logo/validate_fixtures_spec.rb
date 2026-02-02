@@ -4,6 +4,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Logo, '#validate_fixtures', ty
   component_name = 'logo'
   fixture_list = {
     'default' => true,
+    'use GCA branding' => true,
     'with crown only' => true,
   }
 

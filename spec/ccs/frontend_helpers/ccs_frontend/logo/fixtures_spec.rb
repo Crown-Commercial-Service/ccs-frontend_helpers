@@ -27,5 +27,14 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Logo, '#fixtures', type: :help
         expect(result.to_one_line).to eq_html(fixture_html)
       end
     end
+
+    context "when the fixture is 'use GCA branding'" do
+      let(:fixture_name) { 'use GCA branding' }
+      let(:result) { ccs_logo(use_gca_branding: fixture_options[:useGcaBranding]) }
+
+      it 'has HTML matching the fixture' do
+        expect(result.to_one_line).to eq_html(fixture_html)
+      end
+    end
   end
 end

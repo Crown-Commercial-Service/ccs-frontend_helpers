@@ -19,6 +19,7 @@ module CCS
 
         public
 
+        # @param use_gca_branding [Boolean] flag to use GCA branding in logo
         # @param options [Hash] options that will be used in customising the HTML
         #
         # @option options [String] :classes additional CSS classes for the header HTML
@@ -26,13 +27,13 @@ module CCS
         # @option options [String] :homepage_url URL of the homepage. Defaults to +/https://www.crowncommercial.gov.uk+
         # @option options [Hash] :attributes additional attributes that will added as part of the header HTML
 
-        def initialize(**)
+        def initialize(use_gca_branding: nil, **)
           super
 
           @options[:container_classes] ||= 'govuk-width-container'
-          @options[:homepage_url] ||= 'https://www.crowncommercial.gov.uk'
+          @options[:homepage_url] ||= (use_gca_branding ? 'https://www.gca.gov.uk' : 'https://www.crowncommercial.gov.uk')
 
-          @logo = Logo.new(context: @context)
+          @logo = Logo.new(context: @context, use_gca_branding: use_gca_branding)
         end
 
         # Generates the HTML for the CCS Header component

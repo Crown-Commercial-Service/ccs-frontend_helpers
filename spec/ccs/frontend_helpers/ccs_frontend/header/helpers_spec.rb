@@ -51,5 +51,23 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
         ".to_one_line)
       end
     end
+
+    context 'when using the GCA branding' do
+      let(:result) { ccs_header(use_gca_branding: true) }
+
+      it 'correctly formats the HTML for the logo' do
+        expect(header_element.to_html).to eq("
+          <header class=\"ccs-header\" data-module=\"ccs-header\">
+            <div class=\"ccs-header__container govuk-width-container\">
+              <div class=\"ccs-header__logo\">
+                <a class=\"ccs-header__link ccs-header__link--homepage\" aria-label=\"Crown Commercial Service\" href=\"https://www.gca.gov.uk\">
+                  #{gca_logo_html}
+                </a>
+              </div>
+            </div>
+          </header>
+        ".to_one_line)
+      end
+    end
   end
 end
