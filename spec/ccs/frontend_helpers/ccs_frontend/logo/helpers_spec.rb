@@ -25,5 +25,13 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Logo, '#helpers', type: :helpe
         expect(logo_element.to_html).to eq(ccs_logo_crown_html)
       end
     end
+
+    context 'when using the GCA branding' do
+      let(:result) { ccs_logo(use_gca_branding: true) }
+
+      it 'correctly formats the HTML for the logo' do
+        expect(logo_element.to_html).to eq(gca_logo_html)
+      end
+    end
   end
 end

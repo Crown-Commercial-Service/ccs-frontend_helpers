@@ -26,5 +26,13 @@ RSpec.describe CCS::Components::CCS::Logo do
         expect(logo_element.to_html).to eq(ccs_logo_crown_html)
       end
     end
+
+    context 'when using the GCA branding' do
+      let(:ccs_logo) { described_class.new(context: view_context, use_gca_branding: true) }
+
+      it 'correctly formats the HTML for the logo' do
+        expect(logo_element.to_html).to eq(gca_logo_html)
+      end
+    end
   end
 end

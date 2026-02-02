@@ -7,9 +7,30 @@ module CCS
       #
       # This is used for generating the logo component from the
       # {https://github.com/Crown-Commercial-Service/ccs-frontend-project/tree/main/packages/ccs-frontend/src/ccs/components/logo CCS - Components - Logo}
+      #
+      # @!attribute [r] show_only_crown
+      #   @return [Boolean] Flag to show only the crown part of the logo
+      # @!attribute [r] use_gca_branding
+      #   @return [Boolean] Flag to use GCA branding in logo
 
       class Logo < Base
-        # rubocop:disable Metrics/AbcSize
+        private
+
+        attr_reader :show_only_crown, :use_gca_branding
+
+        public
+
+        # @param show_only_crown [Boolean] flag to show only the crown part of the logo
+        # @param use_gca_branding [Boolean] flag to use GCA branding in logo
+
+        def initialize(show_only_crown: nil, use_gca_branding: nil, **)
+          super
+
+          @show_only_crown = show_only_crown
+          @use_gca_branding = use_gca_branding
+        end
+
+        # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
         # Generates the HTML for the CCS Logo.
         # Used in {CCS::Components::CCS::Header Header} and {CCS::Components::CCS::Footer Footer}
@@ -18,7 +39,7 @@ module CCS
 
         def render
           tag.span(class: 'ccs-logo') do
-            if @options[:show_only_crown]
+            if show_only_crown
               concat(tag.svg(class: 'ccs-logo__svg', xmlns: 'http://www.w3.org/2000/svg', width: '132.22', height: '121', aria: { hidden: 'true' }, focusable: 'false', viewBox: '0 0 371.06668 339.57333') do
                 concat(tag.g(transform: 'matrix(1.3333333,0,0,-1.3333333,0,339.57333)') do
                   tag.g(transform: 'scale(0.34)') do
@@ -31,24 +52,36 @@ module CCS
                 concat(tag.g(transform: 'matrix(1.3333333,0,0,-1.3333333,0,339.57333)') do
                   tag.g(transform: 'scale(0.1)') do
                     CCS_STACKED_LOGO_PATHS.each { |ccs_logo_path_attributes| concat(tag.path(**ccs_logo_path_attributes)) }
-                    concat(logo_stacked_text_graphic)
+                    concat(use_gca_branding ? logo_stacked_text_graphic_gca : logo_stacked_text_graphic_ccs)
                   end
                 end)
               end)
-              concat(tag.svg(class: 'ccs-logo__svg ccs-logo__svg--linear', xmlns: 'http://www.w3.org/2000/svg', width: '320', height: '48.5', aria: { hidden: 'true' }, focusable: 'false', viewBox: '0 0 899 137') do
-                concat(tag.g(transform: 'matrix(1.3333333,0,0,-1.3333333,0,137)') do
-                  tag.g(transform: 'scale(0.1)') do
-                    CCS_LINEAR_LOGO_PATHS.each { |ccs_logo_path_attributes| concat(tag.path(**ccs_logo_path_attributes)) }
-                    concat(logo_linear_text_graphic)
-                  end
+              if use_gca_branding
+                concat(tag.svg(class: 'ccs-logo__svg ccs-logo__svg--linear', xmlns: 'http://www.w3.org/2000/svg', width: '378', height: '48.5', aria: { hidden: 'true' }, focusable: 'false', viewBox: '0 0 1061 137') do
+                  concat(tag.g(transform: 'matrix(1.3333333,0,0,-1.3333333,0,137)') do
+                    tag.g(transform: 'scale(0.1)') do
+                      CCS_LINEAR_LOGO_PATHS.each { |ccs_logo_path_attributes| concat(tag.path(**ccs_logo_path_attributes)) }
+                      concat(logo_linear_text_graphic_gca)
+                    end
+                  end)
                 end)
-              end)
-              concat(tag.span('Crown Commercial Service', class: 'ccs-logo__text', hidden: true))
+                concat(tag.span('Government Commercial Agency', class: 'ccs-logo__text', hidden: true))
+              else
+                concat(tag.svg(class: 'ccs-logo__svg ccs-logo__svg--linear', xmlns: 'http://www.w3.org/2000/svg', width: '320', height: '48.5', aria: { hidden: 'true' }, focusable: 'false', viewBox: '0 0 899 137') do
+                  concat(tag.g(transform: 'matrix(1.3333333,0,0,-1.3333333,0,137)') do
+                    tag.g(transform: 'scale(0.1)') do
+                      CCS_LINEAR_LOGO_PATHS.each { |ccs_logo_path_attributes| concat(tag.path(**ccs_logo_path_attributes)) }
+                      concat(logo_linear_text_graphic_ccs)
+                    end
+                  end)
+                end)
+                concat(tag.span('Crown Commercial Service', class: 'ccs-logo__text', hidden: true))
+              end
             end
           end
         end
 
-        # rubocop:enable Metrics/AbcSize
+        # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
         # Array of the SVG paths for the CCS Logo
 
@@ -526,7 +559,7 @@ module CCS
 
         private
 
-        def logo_stacked_text_graphic
+        def logo_stacked_text_graphic_ccs
           tag.g(transform: 'scale(10)') do
             tag.text(
               'xml:space': 'preserve',
@@ -540,7 +573,21 @@ module CCS
           end
         end
 
-        def logo_linear_text_graphic
+        def logo_stacked_text_graphic_gca
+          tag.g(transform: 'scale(10)') do
+            tag.text(
+              'xml:space': 'preserve',
+              transform: 'matrix(1,0,0,-1,20.3102,129.569)',
+              class: 'ccs-logo__text-graphic'
+            ) do
+              concat(tag.tspan('Government ', x: '0 35 62 85 110 125 149 188 212 237 250', y: '0', 'sodipodi:role': 'line'))
+              concat(tag.tspan('Commercial ', x: '0 33.314499 59.416096 99.105995 138.7959 163.4126 177.5981 201.77882 210.5835 234.9653 244.37253', y: '53', 'sodipodi:role': 'line'))
+              concat(tag.tspan('Agency ', x: '0 31.5 58 82.5 108 133.5', y: '106', 'sodipodi:role': 'line'))
+            end
+          end
+        end
+
+        def logo_linear_text_graphic_ccs
           tag.g(transform: 'scale(10)') do
             tag.text(
               'xml:space': 'preserve',
@@ -548,6 +595,18 @@ module CCS
               class: 'ccs-logo__text-graphic'
             ) do
               concat(tag.tspan('Crown Commercial Service', x: '0 33.2603 47.4161 72.572395 107.4747 133.2486 143.2486 176.5631 202.6647 242.3546 282.0445 306.6612 320.8467 345.0274 353.8321 378.2139 387.6211 397.6211 427.3687 451.9859 467.7828 489.9898 498.8726 523.1763', y: '0', 'sodipodi:role': 'line'))
+            end
+          end
+        end
+
+        def logo_linear_text_graphic_gca
+          tag.g(transform: 'scale(10)') do
+            tag.text(
+              'xml:space': 'preserve',
+              transform: 'matrix(1,0,0,-1,120,30)',
+              class: 'ccs-logo__text-graphic'
+            ) do
+              concat(tag.tspan('Government Commercial Agency', x: '0 35 62 85 110 125 149 188 212 237 250 260 293.314499 319.416096 359.105995 398.7959 423.4126 437.5981 461.77882 470.5835 494.9653 504.37253 515 546.5 573 597.5 623 648.5', y: '0', 'sodipodi:role': 'line'))
             end
           end
         end
