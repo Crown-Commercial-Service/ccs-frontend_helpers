@@ -1,5 +1,4 @@
 require 'active_model'
-require 'action_view'
 
 class TestModel
   include ActiveModel::Model
@@ -13,5 +12,3 @@ class TestModel
                 :xenoblade_chronicles_3_year,
                 :xenoblade_chronicles_3_yyyy
 end
-
-class TestView < ActionView::Base; end
