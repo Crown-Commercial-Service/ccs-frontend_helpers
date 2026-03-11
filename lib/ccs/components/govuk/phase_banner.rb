@@ -62,7 +62,7 @@ module CCS
 
         # The default attributes for the phase banner
 
-        DEFAULT_ATTRIBUTES = { class: 'govuk-phase-banner' }.freeze
+        DEFAULT_ATTRIBUTES = { class: 'govuk-phase-banner govuk-width-container' }.freeze
       end
     end
   end

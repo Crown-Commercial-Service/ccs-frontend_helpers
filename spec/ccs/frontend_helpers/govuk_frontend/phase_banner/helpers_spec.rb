@@ -17,7 +17,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PhaseBanner, '#helpers', typ
 
     let(:default_html) do
       '
-        <div class="govuk-phase-banner">
+        <div class="govuk-phase-banner govuk-width-container">
           <p class="govuk-phase-banner__content">
             <strong class="govuk-tag govuk-phase-banner__content__tag">
               Eunie
@@ -53,7 +53,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::PhaseBanner, '#helpers', typ
 
       it 'renders the phase banner with the block' do
         expect(phase_banner_element.to_html).to eq('
-          <div class="govuk-phase-banner">
+          <div class="govuk-phase-banner govuk-width-container">
             <p class="govuk-phase-banner__content">
               <strong class="govuk-tag govuk-phase-banner__content__tag">
                 Eunie

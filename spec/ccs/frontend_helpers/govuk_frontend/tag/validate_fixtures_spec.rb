@@ -5,7 +5,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tag, '#validate_fixtures', t
   fixture_list = {
     'default' => true,
     'grey' => true,
-    'light blue' => true,
     'turquoise' => true,
     'green' => true,
     'purple' => true,

@@ -28,18 +28,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tag, '#fixtures', type: :hel
       end
     end
 
-    context "when the fixture is 'light blue'" do
-      let(:fixture_name) { 'light blue' }
-      let(:result) { govuk_tag(fixture_options[:text], fixture_name.gsub(' ', '-')) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
     context "when the fixture is 'turquoise'" do
       let(:fixture_name) { 'turquoise' }
-      let(:result) { govuk_tag(fixture_options[:text], fixture_name) }
+      let(:result) { govuk_tag(fixture_options[:text], 'teal') }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
@@ -66,7 +57,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Tag, '#fixtures', type: :hel
 
     context "when the fixture is 'pink'" do
       let(:fixture_name) { 'pink' }
-      let(:result) { govuk_tag(fixture_options[:text], fixture_name) }
+      let(:result) { govuk_tag(fixture_options[:text], 'magenta') }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)

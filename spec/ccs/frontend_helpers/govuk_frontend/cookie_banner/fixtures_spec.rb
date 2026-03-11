@@ -80,7 +80,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#fixtures', t
 
       it 'has HTML matching the fixture' do
         # Rails renders button tags with name by default
-        expect(result).to eq_html(fixture_html.gsub('<button type=', '<button name="button" type=').gsub('hidden>', 'hidden="hidden">'))
+        expect(result).to eq_html(fixture_html.gsub('<button type="button"', '<button name="button" type="button"').gsub('hidden>', 'hidden="hidden">'))
       end
     end
 
@@ -252,16 +252,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#fixtures', t
       let(:result) { govuk_cookie_banner(fixture_options[:messages], classes: fixture_options[:classes], attributes: { hidden: fixture_options[:hidden], data: { 'hide-cookie-banner': fixture_options[:attributes][:'data-hide-cookie-banner'] } }) }
 
       it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html.gsub('<button type=', '<button name="button" type=').gsub('hidden ', 'hidden="hidden" '))
-      end
-    end
-
-    context "when the fixture is 'rebrand'" do
-      let(:fixture_name) { 'rebrand' }
-      let(:result) { govuk_cookie_banner(fixture_options[:messages]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
+        expect(result).to eq_html(fixture_html.gsub('<button type="button"', '<button name="button" type="button"').gsub('hidden ', 'hidden="hidden" '))
       end
     end
   end

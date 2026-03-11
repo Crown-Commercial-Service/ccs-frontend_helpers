@@ -58,32 +58,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'input'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
-      let(:fixture_name) { 'input' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, attributes: { name: fixture_options[:name] }) }
-
-      it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input data-disable-with=\"#{fixture_options[:text]}\" "))
-      end
-    end
-
-    context "when the fixture is 'input disabled'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
-      let(:fixture_name) { 'input disabled' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, attributes: { name: fixture_options[:name], disabled: fixture_options[:disabled] }) }
-
-      it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input data-disable-with=\"#{fixture_options[:text]}\" "))
-      end
-    end
-
     context "when the fixture is 'prevent double click'" do
       let(:fixture_name) { 'prevent double click' }
       let(:result) { govuk_button(fixture_options[:text], attributes: { data: { 'prevent-double-click': true } }) }
@@ -133,23 +107,10 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
 
     context "when the fixture is 'link attributes'" do
       let(:fixture_name) { 'link attributes' }
-      let(:result) { govuk_button(fixture_options[:text], href: '#', attributes: fixture_options[:attributes]) }
+      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], attributes: fixture_options[:attributes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'input attributes'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
-      let(:fixture_name) { 'input attributes' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, attributes: fixture_options[:attributes]) }
-
-      it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with and name of commit by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input name=\"commit\" data-disable-with=\"#{fixture_options[:text]}\" "))
       end
     end
 
@@ -165,23 +126,10 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
 
     context "when the fixture is 'link classes'" do
       let(:fixture_name) { 'link classes' }
-      let(:result) { govuk_button(fixture_options[:text], href: '#', classes: fixture_options[:classes]) }
+      let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href], classes: fixture_options[:classes]) }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'input classes'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
-      let(:fixture_name) { 'input classes' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, classes: fixture_options[:classes]) }
-
-      it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with and name of commit by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input name=\"commit\" data-disable-with=\"#{fixture_options[:text]}\" "))
       end
     end
 
@@ -204,31 +152,9 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
       end
     end
 
-    context "when the fixture is 'input type'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
-      let(:fixture_name) { 'input type' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, attributes: { type: fixture_options[:type] }) }
-
-      it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with and name of commit by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input name=\"commit\" data-disable-with=\"#{fixture_options[:text]}\" "))
-      end
-    end
-
     context "when the fixture is 'explicit link'" do
       let(:fixture_name) { 'explicit link' }
       let(:result) { govuk_button(fixture_options[:text], href: fixture_options[:href]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
-
-    context "when the fixture is 'no href'" do
-      let(:fixture_name) { 'no href' }
-      let(:result) { govuk_button(fixture_options[:text], href: '#') }
 
       it 'has HTML matching the fixture' do
         expect(result).to eq_html(fixture_html)
@@ -286,15 +212,12 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Button, '#fixtures', type: :
     end
 
     context "when the fixture is 'id'" do
-      include_context 'and I have a view context from self'
-      include_context 'and I have a form'
-
       let(:fixture_name) { 'id' }
-      let(:result) { govuk_button(fixture_options[:text], form: form, attributes: { id: fixture_options[:id] }) }
+      let(:result) { govuk_button(fixture_options[:text], attributes: { id: fixture_options[:id] }) }
 
       it 'has HTML matching the fixture' do
-        # Rails renders input tags with data-disable-with by default
-        expect(result).to eq_html(fixture_html.gsub('<input ', "<input name=\"commit\" data-disable-with=\"#{fixture_options[:text]}\" "))
+        # Rails renders submit tags with name by default
+        expect(result).to eq_html(fixture_html.gsub('<button ', '<button name="button" '))
       end
     end
   end
