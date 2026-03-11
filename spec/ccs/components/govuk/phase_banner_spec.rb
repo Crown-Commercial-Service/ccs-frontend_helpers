@@ -18,7 +18,7 @@ RSpec.describe CCS::Components::GovUK::PhaseBanner do
 
     let(:default_html) do
       '
-        <div class="govuk-phase-banner">
+        <div class="govuk-phase-banner govuk-width-container">
           <p class="govuk-phase-banner__content">
             <strong class="govuk-tag govuk-phase-banner__content__tag">
               Eunie
@@ -57,7 +57,7 @@ RSpec.describe CCS::Components::GovUK::PhaseBanner do
       it 'correctly formats the HTML with the phase banner HTML' do
         expect(phase_banner_element.to_html).to eq(
           '
-          <div class="govuk-phase-banner">
+          <div class="govuk-phase-banner govuk-width-container">
             <p class="govuk-phase-banner__content">
               <strong class="govuk-tag govuk-phase-banner__content__tag">
                 Eunie
@@ -85,7 +85,7 @@ RSpec.describe CCS::Components::GovUK::PhaseBanner do
       let(:options) { { classes: 'my-custom-class' } }
 
       it 'has the custom class' do
-        expect(phase_banner_element[:class]).to eq('govuk-phase-banner my-custom-class')
+        expect(phase_banner_element[:class]).to eq('govuk-phase-banner govuk-width-container my-custom-class')
       end
     end
 

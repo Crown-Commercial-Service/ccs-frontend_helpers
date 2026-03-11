@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Updated CCS Frontend to v3.0.0
+- Updated GOV.UK Frontend to v6.1.0
+
 ## [3.5.0] - 2026-02-02
 
 ### Added

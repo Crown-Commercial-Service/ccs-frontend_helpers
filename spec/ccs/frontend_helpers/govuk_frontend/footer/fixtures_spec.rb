@@ -235,14 +235,5 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Footer, '#fixtures', type: :
         expect(result).to eq_html(fixture_html)
       end
     end
-
-    context "when the fixture is 'rebrand'" do
-      let(:fixture_name) { 'rebrand' }
-      let(:result) { govuk_footer(rebrand: fixture_options[:rebrand]) }
-
-      it 'has HTML matching the fixture' do
-        expect(result).to eq_html(fixture_html)
-      end
-    end
   end
 end

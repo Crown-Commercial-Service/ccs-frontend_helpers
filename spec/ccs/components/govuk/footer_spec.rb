@@ -5,7 +5,7 @@ require 'ccs/components/govuk/footer'
 RSpec.describe CCS::Components::GovUK::Footer do
   include_context 'and I have a view context'
 
-  let(:footer_element) { Capybara::Node::Simple.new(result).find('footer.govuk-footer') }
+  let(:footer_element) { Capybara::Node::Simple.new(result).find('div.govuk-footer') }
   let(:footer_content_licence_element) { footer_element.find('span.govuk-footer__licence-description') }
   let(:footer_copyright_element) { footer_element.find('a.govuk-footer__copyright-logo') }
   let(:footer_logo_element) { footer_element.find('div.govuk-width-container > svg') }
@@ -68,8 +68,21 @@ RSpec.describe CCS::Components::GovUK::Footer do
 
     let(:default_html) do
       '
-        <footer class="govuk-footer">
+        <div class="govuk-footer">
           <div class="govuk-width-container">
+            <svg class="govuk-footer__crown" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 60" height="30" width="32" fill="currentcolor">
+              <g>
+                <circle cx="20" cy="17.6" r="3.7"></circle>
+                <circle cx="10.2" cy="23.5" r="3.7"></circle>
+                <circle cx="3.7" cy="33.2" r="3.7"></circle>
+                <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                <circle cx="43.3" cy="17.6" r="3.7"></circle>
+                <circle cx="53.2" cy="23.5" r="3.7"></circle>
+                <circle cx="59.7" cy="33.2" r="3.7"></circle>
+                <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
+              </g>
+            </svg>
             <div class="govuk-footer__navigation">
               <div class="govuk-footer__section govuk-grid-column-two-thirds">
                 <h2 class="govuk-footer__heading govuk-heading-m">
@@ -123,7 +136,7 @@ RSpec.describe CCS::Components::GovUK::Footer do
               </div>
             </div>
           </div>
-        </footer>
+        </div>
       '.to_one_line
     end
 
@@ -138,8 +151,21 @@ RSpec.describe CCS::Components::GovUK::Footer do
 
       it 'correctly formats the HTML for the footer without any navigation or meta item lists' do
         expect(footer_element.to_html).to eq('
-          <footer class="govuk-footer">
+          <div class="govuk-footer">
             <div class="govuk-width-container">
+              <svg class="govuk-footer__crown" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 60" height="30" width="32" fill="currentcolor">
+                <g>
+                  <circle cx="20" cy="17.6" r="3.7"></circle>
+                  <circle cx="10.2" cy="23.5" r="3.7"></circle>
+                  <circle cx="3.7" cy="33.2" r="3.7"></circle>
+                  <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                  <circle cx="43.3" cy="17.6" r="3.7"></circle>
+                  <circle cx="53.2" cy="23.5" r="3.7"></circle>
+                  <circle cx="59.7" cy="33.2" r="3.7"></circle>
+                  <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                  <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
+                </g>
+              </svg>
               <div class="govuk-footer__meta">
                 <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
                   <svg class="govuk-footer__licence-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
@@ -156,7 +182,7 @@ RSpec.describe CCS::Components::GovUK::Footer do
                 </div>
               </div>
             </div>
-          </footer>
+          </div>
         '.to_one_line)
       end
     end
@@ -206,14 +232,6 @@ RSpec.describe CCS::Components::GovUK::Footer do
 
       it 'has the container classees on the container div' do
         expect(footer_copyright_element).to have_content('Here is my copyright')
-      end
-    end
-
-    context 'when rebrand is true' do
-      let(:options) { { rebrand: true } }
-
-      it 'has the logo in the container' do
-        expect(footer_logo_element[:class]).to eq('govuk-footer__crown')
       end
     end
   end

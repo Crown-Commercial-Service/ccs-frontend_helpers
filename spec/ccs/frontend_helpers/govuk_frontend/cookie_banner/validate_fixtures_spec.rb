@@ -26,7 +26,6 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CookieBanner, '#validate_fix
     'link classes' => true,
     'link attributes' => true,
     'full banner hidden' => true,
-    'rebrand' => true
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:govuk_frontend, component_name)
