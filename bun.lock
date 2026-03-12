@@ -4,13 +4,13 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "ccs-frontend": "3.0.0",
+        "ccs-frontend": "3.1.0",
         "govuk-frontend": "6.1.0",
       },
     },
   },
   "packages": {
-    "ccs-frontend": ["ccs-frontend@3.0.0", "", { "peerDependencies": { "govuk-frontend": "^6.1.0", "jquery": "^4.x" } }, "sha512-8e+l1pw9iSN0N4u3EHwxfxYMc3OHtbDU39X7G6OPyuf4Yex9MTVZ1p2eAiuhGXb5P0SODR0mZ5vFI0THOhBY7A=="],
+    "ccs-frontend": ["ccs-frontend@3.1.0", "", { "peerDependencies": { "govuk-frontend": "^6.1.0", "jquery": "^4.x" } }, "sha512-5O/QVDt06qB6goQ1lXvI532WNRChxvFDUDT98oKcVQ6nHMsokAk2TYENmUlmTePUPo4tAqGx8OvyEIuR0Go02g=="],
 
     "govuk-frontend": ["govuk-frontend@6.1.0", "", {}, "sha512-sqivexZFa82LiDIDVMItsUlqEXE/wEUWWBqzEoxHvUFLBH7bY0C8lVrj1qsDThSnj5JEUMS7isBAbKnfQ5Qp6g=="],
 

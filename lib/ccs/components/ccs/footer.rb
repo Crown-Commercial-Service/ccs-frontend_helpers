@@ -53,7 +53,7 @@ module CCS
         # @return [ActiveSupport::SafeBuffer]
 
         def render
-          tag.footer(**options[:attributes]) do
+          tag.div(**options[:attributes]) do
             tag.div(class: "govuk-width-container #{options[:container_classes]}".rstrip) do
               if navigation
                 concat(tag.div(class: 'ccs-footer__navigation') do

@@ -7,7 +7,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
 
   include_context 'and I have created the CCS logo HTML'
 
-  let(:header_element) { Capybara::Node::Simple.new(result).find('header.ccs-header') }
+  let(:header_element) { Capybara::Node::Simple.new(result).find('div.ccs-header') }
 
   describe '.ccs_header' do
     let(:result) { ccs_header(**options) }
@@ -16,7 +16,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
 
     let(:default_html) do
       "
-        <header class=\"ccs-header\" data-module=\"ccs-header\">
+        <div class=\"ccs-header\" data-module=\"ccs-header\">
           <div class=\"ccs-header__container govuk-width-container\">
             <div class=\"ccs-header__logo\">
               <a class=\"ccs-header__link ccs-header__link--homepage\" aria-label=\"Crown Commercial Service\" href=\"https://www.crowncommercial.gov.uk/my-hero-academia\">
@@ -24,7 +24,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
               </a>
             </div>
           </div>
-        </header>
+        </div>
       ".to_one_line
     end
 
@@ -39,7 +39,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
 
       it 'correctly formats the HTML with the hint text' do
         expect(header_element.to_html).to eq("
-          <header class=\"ccs-header\" data-module=\"ccs-header\">
+          <div class=\"ccs-header\" data-module=\"ccs-header\">
             <div class=\"ccs-header__container govuk-width-container\">
               <div class=\"ccs-header__logo\">
                 <a class=\"ccs-header__link ccs-header__link--homepage\" aria-label=\"Crown Commercial Service\" href=\"https://www.crowncommercial.gov.uk\">
@@ -47,7 +47,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
                 </a>
               </div>
             </div>
-          </header>
+          </div>
         ".to_one_line)
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
 
       it 'correctly formats the HTML for the logo' do
         expect(header_element.to_html).to eq("
-          <header class=\"ccs-header\" data-module=\"ccs-header\">
+          <div class=\"ccs-header\" data-module=\"ccs-header\">
             <div class=\"ccs-header__container govuk-width-container\">
               <div class=\"ccs-header__logo\">
                 <a class=\"ccs-header__link ccs-header__link--homepage\" aria-label=\"Crown Commercial Service\" href=\"https://www.gca.gov.uk\">
@@ -65,7 +65,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#helpers', type: :hel
                 </a>
               </div>
             </div>
-          </header>
+          </div>
         ".to_one_line)
       end
     end
