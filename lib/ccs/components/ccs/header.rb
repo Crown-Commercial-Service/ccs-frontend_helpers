@@ -41,7 +41,7 @@ module CCS
         # @return [ActiveSupport::SafeBuffer]
 
         def render
-          tag.header(**options[:attributes]) do
+          tag.div(**options[:attributes]) do
             concat(tag.div(class: "ccs-header__container #{options[:container_classes]}".rstrip) do
               concat(header_logo)
             end)

@@ -7,7 +7,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :hel
 
   include_context 'and I have created the CCS logo HTML'
 
-  let(:footer_element) { Capybara::Node::Simple.new(result).find('footer.ccs-footer') }
+  let(:footer_element) { Capybara::Node::Simple.new(result).find('div.ccs-footer') }
   let(:footer_navigation_element) { footer_element.find('div.ccs-footer__navigation') }
   let(:footer_navigation_item_element) { footer_navigation_element.first('li.ccs-footer__list-item > a') }
   let(:footer_meta_element) { footer_element.find('div.ccs-footer__meta-item.ccs-footer__meta-item--grow') }
@@ -72,7 +72,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :hel
 
     let(:default_html) do
       "
-        <footer class=\"ccs-footer\">
+        <div class=\"ccs-footer\">
           <div class=\"govuk-width-container\">
             <div class=\"ccs-footer__navigation\">
               <div class=\"ccs-footer__section govuk-grid-column-two-thirds\">
@@ -136,7 +136,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :hel
               </div>
             </div>
           </div>
-        </footer>
+        </div>
       ".to_one_line
     end
 
@@ -151,7 +151,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :hel
 
       it 'correctly formats the HTML for the footer without any navigation or meta item lists' do
         expect(footer_element.to_html).to eq("
-          <footer class=\"ccs-footer\">
+          <div class=\"ccs-footer\">
             <div class=\"govuk-width-container\">
               <div class=\"ccs-footer__meta\">
                 <div class=\"ccs-footer__meta-item ccs-footer__meta-item--grow\">
@@ -168,7 +168,7 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Footer, '#helpers', type: :hel
                 </div>
               </div>
             </div>
-          </footer>
+          </div>
         ".to_one_line)
       end
     end

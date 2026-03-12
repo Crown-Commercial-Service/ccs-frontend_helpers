@@ -10,7 +10,7 @@ module CCS
   #
   # The CCS Frontend Helperss module contains view helpers based on:
   # - {https://design-system.service.gov.uk/components GDS components}
-  # - {https://github.com/tim-s-ccs/ts-ccs-frontend CCS components}
+  # - {https://github.com/Crown-Commercial-Service/ccs-frontend-project CCS components}
   # that can be used in Ruby on Rails projects within CCS.
 
   module FrontendHelpers
