@@ -16,7 +16,7 @@ gem 'simplecov', '~> 0.21'
 gem 'nokogiri-diff', '~> 0.3.0'
 
 # Gems for linting/formatting the package
-gem 'rubocop', '~> 1.85'
+gem 'rubocop', '~> 1.86', '>= 1.86.0'
 gem 'rubocop-capybara', '~> 2.22'
 gem 'rubocop-rails', '~> 2.34'
 gem 'rubocop-rake', '~> 0.7'
