@@ -23,4 +23,4 @@ gem 'rubocop-rake', '~> 0.7'
 gem 'rubocop-rspec', '~> 3.9'
 
 # Gems for documenting the package
-gem 'yard', '~> 0.9'
+gem 'yard', '~> 0.9', '>= 0.9.42'
