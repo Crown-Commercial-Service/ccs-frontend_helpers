@@ -5,10 +5,13 @@ require_relative 'lib/ccs/frontend_helpers/version'
 Gem::Specification.new do |spec|
   spec.name = 'ccs-frontend_helpers'
   spec.version = CCS::FrontendHelpers::VERSION
-  spec.authors = ['Crown Commercial Service']
+  spec.authors = [
+    'Crown Commercial Service',
+    'Government Commerical Agency'
+  ]
 
-  spec.summary = 'Gem containing view helpers for CCS Ruby on Rails projects'
-  spec.description = 'Gem containing view helpers for CCS Ruby on Rails projects'
+  spec.summary = 'Gem containing view helpers for GCA (formally CCS) Ruby on Rails projects'
+  spec.description = 'Gem containing view helpers for CCS (formally CCS) Ruby on Rails projects'
   spec.homepage = 'https://github.com/Crown-Commercial-Service/ccs-frontend_helpers'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.2.0'

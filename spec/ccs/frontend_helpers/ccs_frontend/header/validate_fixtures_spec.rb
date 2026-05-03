@@ -8,7 +8,6 @@ RSpec.describe CCS::FrontendHelpers::CCSFrontend::Header, '#validate_fixtures', 
     'attributes' => true,
     'classes' => true,
     'custom homepage url' => true,
-    'with GCA branding' => true,
   }
 
   tested_fixtures = FixturesLoader.get_tested_fixtures(:ccs_frontend, component_name)

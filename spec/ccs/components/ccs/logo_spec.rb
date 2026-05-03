@@ -4,7 +4,7 @@ require 'ccs/components/ccs/logo'
 
 RSpec.describe CCS::Components::CCS::Logo do
   include_context 'and I have a view context'
-  include_context 'and I have created the CCS logo HTML'
+  include_context 'and I have created the GCA logo HTML'
 
   let(:logo_element) { Capybara::Node::Simple.new(result).find('span.ccs-logo') }
 
@@ -15,7 +15,7 @@ RSpec.describe CCS::Components::CCS::Logo do
       let(:ccs_logo) { described_class.new(context: view_context) }
 
       it 'correctly formats the HTML for the logo' do
-        expect(logo_element.to_html).to eq(ccs_logo_html)
+        expect(logo_element.to_html).to eq(gca_logo_html)
       end
     end
 
@@ -24,14 +24,6 @@ RSpec.describe CCS::Components::CCS::Logo do
 
       it 'correctly formats the HTML for the logo' do
         expect(logo_element.to_html).to eq(ccs_logo_crown_html)
-      end
-    end
-
-    context 'when using the GCA branding' do
-      let(:ccs_logo) { described_class.new(context: view_context, use_gca_branding: true) }
-
-      it 'correctly formats the HTML for the logo' do
-        expect(logo_element.to_html).to eq(gca_logo_html)
       end
     end
   end
