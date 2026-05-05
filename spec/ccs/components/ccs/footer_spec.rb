@@ -4,7 +4,7 @@ require 'ccs/components/ccs/footer'
 
 RSpec.describe CCS::Components::CCS::Footer do
   include_context 'and I have a view context'
-  include_context 'and I have created the CCS logo HTML'
+  include_context 'and I have created the GCA logo HTML'
 
   let(:footer_element) { Capybara::Node::Simple.new(result).find('div.ccs-footer') }
   let(:footer_navigation_element) { footer_element.find('div.ccs-footer__navigation') }

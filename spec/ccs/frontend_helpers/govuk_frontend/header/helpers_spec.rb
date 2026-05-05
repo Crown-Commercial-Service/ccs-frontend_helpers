@@ -10,14 +10,14 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::Header, '#helpers', type: :h
   describe '.govuk_header' do
     let(:result) { govuk_header(**options) }
 
-    let(:options) { { homepage_url: 'https://www.crowncommercial.gov.uk/' } }
+    let(:options) { { homepage_url: 'https://www.gca.gov.uk/' } }
 
     let(:default_html) do
       '
         <div class="govuk-header">
           <div class="govuk-header__container govuk-width-container">
             <div class="govuk-header__logo">
-              <a class="govuk-header__homepage-link" href="https://www.crowncommercial.gov.uk/">
+              <a class="govuk-header__homepage-link" href="https://www.gca.gov.uk/">
                 <svg aria-label="GOV.UK" class="govuk-header__logotype" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 324 60" height="30" width="162" fill="currentcolor">
                   <title>GOV.UK</title>
                   <g>

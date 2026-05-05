@@ -3,7 +3,7 @@
 [![Ruby](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/actions/workflows/release.yml/badge.svg)](https://github.com/Crown-Commercial-Service/ccs-frontend_helpers/actions/workflows/release.yml)
 [![Gem Version](https://badge.fury.io/rb/ccs-frontend_helpers.svg)](https://badge.fury.io/rb/ccs-frontend_helpers)
 
-The CCS Frontend Helpers gem was created for use in the Crown Marketplace projects at the Crown Commercial Service.
+The CCS Frontend Helpers gem was created for use in the Crown Marketplace projects at the Government Commercial Agency.
 This project contains two applications (both use the Ruby on Rails framework):
 - [Crown Marketplace](https://github.com/Crown-Commercial-Service/crown-marketplace)
 - [Crown Marketplace Legacy](https://github.com/Crown-Commercial-Service/crown-marketplace-legacy)
