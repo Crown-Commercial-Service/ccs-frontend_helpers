@@ -41,7 +41,7 @@ RSpec.describe CCS::Components::GovUK::ErrorSummary::Item do
 
       it 'has the error message in the li without a link' do
         expect(error_summary_item_element).to have_no_css('a', text: 'You must select your least favourite character')
-        expect(error_summary_item_element).to have_content('You must select your least favourite character')
+        expect(error_summary_item_element).to have_text('You must select your least favourite character')
       end
 
       context 'when custom attributes are sent' do

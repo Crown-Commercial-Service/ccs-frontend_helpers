@@ -106,7 +106,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
       let(:textarea_options) { { content: 'Come on, who else?' } }
 
       it 'has the content in the text area' do
-        expect(textarea_element).to have_content('Come on, who else?')
+        expect(textarea_element).to have_text('Come on, who else?')
       end
     end
 
@@ -363,7 +363,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
       before { test_model.ouroboros = 'Come on, who else?' }
 
       it 'has the content in the text area' do
-        expect(textarea_element).to have_content('Come on, who else?')
+        expect(textarea_element).to have_text('Come on, who else?')
       end
     end
 
@@ -599,7 +599,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::Textarea do
       before { test_model.ouroboros = 'Come on, who else?' }
 
       it 'has the content in the text area' do
-        expect(textarea_element).to have_content('Come on, who else?')
+        expect(textarea_element).to have_text('Come on, who else?')
       end
     end
 

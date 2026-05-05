@@ -89,7 +89,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
       let(:label) { { text: 'The Day' } }
 
       it 'has the custom label text' do
-        expect(date_input_item_label_element).to have_content('The Day')
+        expect(date_input_item_label_element).to have_text('The Day')
       end
     end
 
@@ -173,7 +173,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
       let(:label) { { text: 'The Month' } }
 
       it 'has the custom label text' do
-        expect(date_input_item_label_element).to have_content('The Month')
+        expect(date_input_item_label_element).to have_text('The Month')
       end
     end
 
@@ -259,7 +259,7 @@ RSpec.describe CCS::Components::GovUK::Field::Inputs::DateInput::Item do
       let(:label) { { text: 'The Month' } }
 
       it 'has the custom label text' do
-        expect(date_input_item_label_element).to have_content('The Month')
+        expect(date_input_item_label_element).to have_text('The Month')
       end
     end
 

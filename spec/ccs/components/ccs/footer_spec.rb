@@ -209,7 +209,7 @@ RSpec.describe CCS::Components::CCS::Footer do
       let(:options) { { copyright: 'Here is my copyright' } }
 
       it 'has the container classees on the container div' do
-        expect(footer_copyright_element).to have_content('Here is my copyright')
+        expect(footer_copyright_element).to have_text('Here is my copyright')
       end
     end
   end

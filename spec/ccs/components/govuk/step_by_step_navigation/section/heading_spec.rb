@@ -62,7 +62,7 @@ RSpec.describe CCS::Components::GovUK::StepByStepNavigation::Section::Heading do
 
       it 'changes the circle class to logic and has the logic text' do
         expect(step_by_step_navigation_heading_element.find('.gem-c-step-nav__circle')[:class]).to eq('gem-c-step-nav__circle gem-c-step-nav__circle--logic')
-        expect(step_by_step_navigation_heading_element.find('.gem-c-step-nav__circle-background')).to have_content('or')
+        expect(step_by_step_navigation_heading_element.find('.gem-c-step-nav__circle-background')).to have_text('or')
       end
     end
   end

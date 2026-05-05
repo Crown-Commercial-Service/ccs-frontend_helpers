@@ -63,7 +63,7 @@ RSpec.describe CCS::Components::GovUK::Logo do
       it 'has the additional attributes' do
         expect(logo_element[:'aria-label']).to eq('hello there')
         expect(logo_element[:role]).to eq('img')
-        expect(logo_title_element).to have_content('hello there')
+        expect(logo_title_element).to have_text('hello there')
       end
     end
 
