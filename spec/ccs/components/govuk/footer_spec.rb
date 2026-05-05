@@ -223,7 +223,7 @@ RSpec.describe CCS::Components::GovUK::Footer do
       let(:options) { { content_licence: 'Here is my content license' } }
 
       it 'has the container classees on the container div' do
-        expect(footer_content_licence_element).to have_content('Here is my content license')
+        expect(footer_content_licence_element).to have_text('Here is my content license')
       end
     end
 
@@ -231,7 +231,7 @@ RSpec.describe CCS::Components::GovUK::Footer do
       let(:options) { { copyright: 'Here is my copyright' } }
 
       it 'has the container classees on the container div' do
-        expect(footer_copyright_element).to have_content('Here is my copyright')
+        expect(footer_copyright_element).to have_text('Here is my copyright')
       end
     end
   end

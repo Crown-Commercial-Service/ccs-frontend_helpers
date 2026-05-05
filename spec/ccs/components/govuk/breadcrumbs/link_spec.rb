@@ -41,7 +41,7 @@ RSpec.describe CCS::Components::GovUK::Breadcrumbs::Link do
 
       it 'has the text in the li without a link' do
         expect(breadcrumb_link_element).to have_no_css('a', text: 'Menu')
-        expect(breadcrumb_link_element).to have_content('Menu')
+        expect(breadcrumb_link_element).to have_text('Menu')
       end
 
       context 'when custom attributes are sent' do

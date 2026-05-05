@@ -69,7 +69,7 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Link do
 
       it 'has the text in the li without a link' do
         expect(service_navigation_list_element).to have_no_css('a', text: 'Here we go')
-        expect(service_navigation_list_element).to have_content('Here we go')
+        expect(service_navigation_list_element).to have_text('Here we go')
       end
 
       context 'when the item is active' do

@@ -58,7 +58,7 @@ RSpec.describe CCS::Components::GovUK::NotificationBanner do
       let(:options) { { title_text: 'Important information' } }
 
       it 'has the correct title text' do
-        expect(notification_banner_element.find_by_id('govuk-notification-banner-title')).to have_content('Important information')
+        expect(notification_banner_element.find_by_id('govuk-notification-banner-title')).to have_text('Important information')
       end
     end
 

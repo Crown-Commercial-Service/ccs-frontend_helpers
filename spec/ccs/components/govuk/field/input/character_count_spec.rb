@@ -98,7 +98,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -108,7 +108,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -167,14 +167,14 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
 
       it 'uses the custom textarea description message' do
-        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+        expect(textarea_description_element).to have_text('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
         let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
         it 'has the custom classes for the textarea description' do
-          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element).to have_text('Enter no more than 200 characters')
           expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
         end
       end
@@ -183,7 +183,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
 
         it 'has no message but does have the data attribute' do
-          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(textarea_description_element).to have_no_text('Enter more characters')
           expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
@@ -218,7 +218,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:textarea_options) { { content: 'Come on, who else?' } }
 
         it 'has the content in the text area' do
-          expect(textarea_element).to have_content('Come on, who else?')
+          expect(textarea_element).to have_text('Come on, who else?')
         end
       end
 
@@ -485,7 +485,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -495,7 +495,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -554,14 +554,14 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
 
       it 'uses the custom textarea description message' do
-        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+        expect(textarea_description_element).to have_text('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
         let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
         it 'has the custom classes for the textarea description' do
-          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element).to have_text('Enter no more than 200 characters')
           expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
         end
       end
@@ -570,7 +570,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
 
         it 'has no message but does have the data attribute' do
-          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(textarea_description_element).to have_no_text('Enter more characters')
           expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
@@ -581,7 +581,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         before { test_model.ouroboros = 'Come on, who else?' }
 
         it 'has the content in the text area' do
-          expect(textarea_element).to have_content('Come on, who else?')
+          expect(textarea_element).to have_text('Come on, who else?')
         end
       end
 
@@ -875,7 +875,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
 
       it 'has the max words data attribute and the text for the textarea description is updated' do
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -885,7 +885,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       it 'has the max length and words data attribute but the textarea description uses max words' do
         expect(character_count_element[:'data-maxlength']).to eq('200')
         expect(character_count_element[:'data-maxwords']).to eq('150')
-        expect(textarea_description_element).to have_content('You can enter up to 150 words')
+        expect(textarea_description_element).to have_text('You can enter up to 150 words')
       end
     end
 
@@ -944,14 +944,14 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
       let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
 
       it 'uses the custom textarea description message' do
-        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+        expect(textarea_description_element).to have_text('Enter no more than 200 characters')
       end
 
       context 'and there are additional classes' do
         let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters', classes: 'extra-textarea-description-class' } }) }
 
         it 'has the custom classes for the textarea description' do
-          expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+          expect(textarea_description_element).to have_text('Enter no more than 200 characters')
           expect(textarea_description_element[:class]).to eq('govuk-hint govuk-character-count__message extra-textarea-description-class')
         end
       end
@@ -960,7 +960,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         let(:character_count_options) { { textarea_description: { count_message: 'Enter more characters' } } }
 
         it 'has no message but does have the data attribute' do
-          expect(textarea_description_element).to have_no_content('Enter more characters')
+          expect(textarea_description_element).to have_no_text('Enter more characters')
           expect(character_count_element[:'data-i18n.textarea-description.other']).to eq('Enter more characters')
         end
       end
@@ -971,7 +971,7 @@ RSpec.describe CCS::Components::GovUK::Field::Input::CharacterCount do
         before { test_model.ouroboros = 'Come on, who else?' }
 
         it 'has the content in the text area' do
-          expect(textarea_element).to have_content('Come on, who else?')
+          expect(textarea_element).to have_text('Come on, who else?')
         end
       end
 

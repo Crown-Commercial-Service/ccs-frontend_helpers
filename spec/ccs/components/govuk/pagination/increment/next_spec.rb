@@ -71,14 +71,14 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
       let(:options) { { text: 'Go to the next page' } }
 
       it 'has the custom text' do
-        expect(pagination_next_element).to have_content('Go to the next page')
+        expect(pagination_next_element).to have_text('Go to the next page')
       end
     end
 
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -90,7 +90,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -119,7 +119,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does have the title decorated class' do
@@ -131,7 +131,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does have the label text' do
-          expect(pagination_next_element).to have_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -197,14 +197,14 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
       let(:options) { { text: 'Go to the next page' } }
 
       it 'has the custom text' do
-        expect(pagination_next_element).to have_content('Go to the next page')
+        expect(pagination_next_element).to have_text('Go to the next page')
       end
     end
 
     context 'when block_is_level is false' do
       context 'and label text is not provided' do
         it 'does not have any label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -216,7 +216,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do
@@ -245,7 +245,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
 
       context 'and label text is not provided' do
         it 'does not have the label text' do
-          expect(pagination_next_element).to have_no_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_no_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does have the title decorated class' do
@@ -257,7 +257,7 @@ RSpec.describe CCS::Components::GovUK::Pagination::Increment::Next do
         let(:options) { { label_text: 'Go Beyond, Plus Ultra!' } }
 
         it 'does have the label text' do
-          expect(pagination_next_element).to have_content('Next page:Go Beyond, Plus Ultra!')
+          expect(pagination_next_element).to have_text('Next page:Go Beyond, Plus Ultra!')
         end
 
         it 'does not have the title decorated class' do

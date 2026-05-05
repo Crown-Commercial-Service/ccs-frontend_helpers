@@ -41,7 +41,7 @@ RSpec.describe CCS::Components::GovUK::ExitThisPage do
       let(:govuk_exit_this_page) { described_class.new(text: 'Custom text', context: view_context) }
 
       it 'correctly formats the HTML with the button' do
-        expect(exit_this_page_element.find('a')).to have_content('Custom text')
+        expect(exit_this_page_element.find('a')).to have_text('Custom text')
       end
     end
 

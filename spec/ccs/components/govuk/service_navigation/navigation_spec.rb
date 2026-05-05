@@ -101,7 +101,7 @@ RSpec.describe CCS::Components::GovUK::ServiceNavigation::Navigation do
         let(:menu_button) { { text: 'This is the menu' } }
 
         it 'has the custom menu button text' do
-          expect(menu_button_element).to have_content('This is the menu')
+          expect(menu_button_element).to have_text('This is the menu')
         end
       end
 

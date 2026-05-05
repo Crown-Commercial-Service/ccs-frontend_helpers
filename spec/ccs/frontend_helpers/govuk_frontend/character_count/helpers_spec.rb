@@ -78,7 +78,7 @@ RSpec.describe CCS::FrontendHelpers::GovUKFrontend::CharacterCount, '#helpers', 
       let(:character_count_options) { super().merge({ textarea_description: { count_message: 'Enter no more than %<count>s characters' } }) }
 
       it 'uses the custom textarea description message' do
-        expect(textarea_description_element).to have_content('Enter no more than 200 characters')
+        expect(textarea_description_element).to have_text('Enter no more than 200 characters')
       end
     end
 
