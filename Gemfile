@@ -20,7 +20,7 @@ gem 'rubocop', '~> 1.87'
 gem 'rubocop-capybara', '~> 2.23'
 gem 'rubocop-rails', '~> 2.35'
 gem 'rubocop-rake', '~> 0.7'
-gem 'rubocop-rspec', '~> 3.9'
+gem 'rubocop-rspec', '~> 3.10'
 
 # Gems for documenting the package
 gem 'yard', '~> 0.9'
