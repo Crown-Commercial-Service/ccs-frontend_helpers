@@ -5,14 +5,14 @@
     "": {
       "devDependencies": {
         "ccs-frontend": "3.2.0",
-        "govuk-frontend": "6.1.0",
+        "govuk-frontend": "6.2.0",
       },
     },
   },
   "packages": {
     "ccs-frontend": ["ccs-frontend@3.2.0", "", { "peerDependencies": { "govuk-frontend": "^6.1.0", "jquery": "^4.x" } }, "sha512-RH3lmFJWlSDNvquCqD/G42jsTCjHZeaTy0YqzX4W5bzGxFdshoeoa0RtHe0yIcJMGgHQASvzRLmtF6SYudhtVQ=="],
 
-    "govuk-frontend": ["govuk-frontend@6.1.0", "", {}, "sha512-sqivexZFa82LiDIDVMItsUlqEXE/wEUWWBqzEoxHvUFLBH7bY0C8lVrj1qsDThSnj5JEUMS7isBAbKnfQ5Qp6g=="],
+    "govuk-frontend": ["govuk-frontend@6.2.0", "", {}, "sha512-PCRyQT+7kiV2dUz0Ku6Co+Nx4anOwJ7mAduXYbTQHK2krppBSynv9dBXtOYha/8j+LIzK7FqesTbJl9HD6ekHg=="],
 
     "jquery": ["jquery@3.7.1", "", {}, "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="],
   }
