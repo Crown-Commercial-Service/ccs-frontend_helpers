@@ -12,7 +12,7 @@ gem 'rake', '~> 13.4'
 # Gems for testing the package
 gem 'capybara', '~> 3.40.0'
 gem 'rspec', '~> 3.13'
-gem 'simplecov', '~> 0.21'
+gem 'simplecov', '~> 1.2'
 gem 'nokogiri-diff', '~> 0.3.0'
 
 # Gems for linting/formatting the package
